@@ -329,7 +329,11 @@ do_gen() {
 		dates, etc. when reading the file, and others delay this parsing until
 		the data is used. It's only intended as a rough comparison and
 		demonstration that a parser isn't atrociously slow. If performance is of
+<<<<<<< HEAD
 		prime concern then you should run your own benchmarks based on your
+=======
+		prime concern thne you should run your own benchmarks based on your
+>>>>>>> eca326c (Add new-parser.zsh template; record dependencies)
 		real-world use case in any case.</p>
 		</div>
 
