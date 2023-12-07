@@ -10,7 +10,7 @@ setup() {
 }
 
 typeset -A info=(
-	lang    'OCAML'
+	lang    'OCaml'
 	toml    '1.0'
 	site    'https://github.com/dmbaturin/otoml'
 	src     'git@github.com:dmbaturin/otoml.git'

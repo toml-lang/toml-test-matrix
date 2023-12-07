@@ -5,38 +5,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TOML test matrix</title>
 <style>
-html         { background-color:#eee; font:18px/1.5em sans-serif; }
-body         { overflow-y:scroll; }
-.page        { background-color:#fff; padding:1em; max-width:80em; margin:1em auto;
-               box-shadow:2px 2px #000; border-radius:2px; border:1px solid #666; }
-.intro       { padding:0 1em; }
-small, em    { font-size:.75em; }
-table        { border-collapse:separate; border-spacing:0; margin-left:-1em; margin-right:-1em; margin-bottom:-1em;}
-td, th       { border:1px solid #d7d7d7; padding:.5em;  }
-td:nth-child(2) { white-space:nowrap; }
+html            { background-color:#eee; font:18px/1.5em sans-serif; }
+body            { overflow-y:scroll; }
+.page           { background-color:#fff; padding:1em; max-width:80em; margin:1em auto;
+                  box-shadow:2px 2px #000; border-radius:2px; border:1px solid #666; }
+.intro          { padding:0 1em; }
+small, em       { font-size:.75em; }
+table           { border-collapse:separate; border-spacing:0; margin:-1em; }
+tfoot           { display:none; text-align:center; color:red; }
+td, th          { border:1px solid #d7d7d7; padding:.5em;  }
 td:nth-child(3) { white-space:nowrap; }
-th           { position:sticky; top:0; padding:0 .5em; white-space:nowrap; text-align:left;
-               background:#f3f3f3; font-weight:normal; font-size:.9em; border-bottom:2px solid #000; }
-th.noborder  { border-left:none; border-right:none; }
-tr:hover     { background-color:#fffef1; }
-.pass        { }
-.fail        { float:right; }
-.didfail     { font-weight:bold; color:red; }
-.bench       { text-align:right; }
-a            { text-decoration:none; }
-a:hover      { text-decoration:underline; }
-.ui:visited  { color:LinkText; text-decoration:none; }
-.bars        { height:.5em; line-height:0; }
-.barp, .barf { display:inline-block; height:.5em; }
-.barp        { background:#e1e1e1; color:#fff; }
-.barf        { background:red; color:#fff; text-align:right;}
-.allpass     {  }
-#langs       { gap:1em; margin-bottom:.5em; display:none; line-height:2.5em; }
-#langs >span:nth-child(1) { white-space:nowrap; }
-label        { white-space:nowrap; break-inside:avoid; margin-right:.4em; padding:.3em;
-               box-shadow:2px 2px #000; border-radius:2px; border:1px solid #666; user-select:none; }
-label:hover  { background:#eee; }
-.on          { box-shadow:-1px -1px #000; background:#eee; }
+td:nth-child(4) { white-space:nowrap; }
+th              { position:sticky; top:0; padding:0 .5em; white-space:nowrap; text-align:left;
+                  background:#f3f3f3; font-weight:normal; font-size:.9em; border-bottom:2px solid #000; }
+th.noborder     { border-left:none; border-right:none; }
+tr:hover        { background-color:#fffef1; }
+.pass           { }
+.fail           { float:right; }
+.didfail        { font-weight:bold; color:red; }
+.bench          { text-align:right; }
+a               { text-decoration:none; }
+a:hover         { text-decoration:underline; }
+.ui:visited     { color:LinkText; text-decoration:none; }
+.bars           { height:.5em; line-height:0; }
+.barp, .barf    { display:inline-block; height:.5em; }
+.barp           { background:#e1e1e1; color:#fff; }
+.barf           { background:red; color:#fff; text-align:right;}
+.allpass        { }
+#btns           { display:none; font-size:.9em; line-height:2.5em; margin-bottom:2em; }
+#langs          { display:flex; margin-bottom:.5em; }
+.btn-lbl        { display:inline-block; min-width:10em; }
+label           { white-space:nowrap; break-inside:avoid; margin-right:.4em; padding:.3em;
+                  box-shadow:2px 2px #000; border-radius:2px; border:1px solid #666; user-select:none; }
+label:hover     { background:#eee; }
+.on             { box-shadow:-1px -1px #000; background:#eee; }
 input[type="checkbox"] { vertical-align:text-top; }
 </style>
 </head>
@@ -63,25 +65,63 @@ real-world use case in any case.</p>
 </div>
 
 <div class="page">
-<div id="langs"><span>Show only:</span><span>
+<div id="btns">
+<div id="version">
+<span class="btn-lbl">At least TOML</span><!--
+--><label><input type="radio" name="toml_vers" value='1.0'>1.0</label>
+<label><input type="radio" name="toml_vers" value='0.5'>0.5</label>
+<label><input type="radio" name="toml_vers" value='0.4' checked>0.4</label>
+</div>
+<div id="langs"><span class="btn-lbl">Language</span><span>
+<label><input type='checkbox' value='Ada'>Ada</label>
 <label><input type='checkbox' value='C'>C</label>
 <label><input type='checkbox' value='C#'>C#</label>
 <label><input type='checkbox' value='C++'>C++</label>
+<label><input type='checkbox' value='CHICKEN'>CHICKEN</label>
+<label><input type='checkbox' value='Chez'>Chez</label>
+<label><input type='checkbox' value='Clojure'>Clojure</label>
+<label><input type='checkbox' value='Crystal'>Crystal</label>
+<label><input type='checkbox' value='D'>D</label>
 <label><input type='checkbox' value='Dart'>Dart</label>
+<label><input type='checkbox' value='Erlang'>Erlang</label>
 <label><input type='checkbox' value='Fortran'>Fortran</label>
 <label><input type='checkbox' value='Go'>Go</label>
+<label><input type='checkbox' value='Grain'>Grain</label>
 <label><input type='checkbox' value='Guile'>Guile</label>
 <label><input type='checkbox' value='Haskell'>Haskell</label>
 <label><input type='checkbox' value='JS'>JS</label>
+<label><input type='checkbox' value='Janet'>Janet</label>
+<label><input type='checkbox' value='Java'>Java</label>
+<label><input type='checkbox' value='Julia'>Julia</label>
+<label><input type='checkbox' value='Kotlin'>Kotlin</label>
+<label><input type='checkbox' value='LabVIEW'>LabVIEW</label>
 <label><input type='checkbox' value='Lisp'>Lisp</label>
-<label><input type='checkbox' value='OCAML'>OCAML</label>
+<label><input type='checkbox' value='Lua'>Lua</label>
+<label><input type='checkbox' value='MATLAB'>MATLAB</label>
+<label><input type='checkbox' value='Nim'>Nim</label>
+<label><input type='checkbox' value='OCaml'>OCaml</label>
+<label><input type='checkbox' value='Obj-C'>Obj-C</label>
+<label><input type='checkbox' value='PHP'>PHP</label>
+<label><input type='checkbox' value='Pascal'>Pascal</label>
+<label><input type='checkbox' value='Perl'>Perl</label>
 <label><input type='checkbox' value='Python'>Python</label>
+<label><input type='checkbox' value='R'>R</label>
 <label><input type='checkbox' value='Racket'>Racket</label>
+<label><input type='checkbox' value='Raku'>Raku</label>
 <label><input type='checkbox' value='Ruby'>Ruby</label>
 <label><input type='checkbox' value='Rust'>Rust</label>
-</span></div>
+<label><input type='checkbox' value='Scala'>Scala</label>
+<label><input type='checkbox' value='Smalltalk'>Smalltalk</label>
+<label><input type='checkbox' value='Swift'>Swift</label>
+<label><input type='checkbox' value='V'>V</label>
+<label><input type='checkbox' value='Xojo'>Xojo</label>
+<label><input type='checkbox' value='Zig'>Zig</label>
+</span>
+</div> <!-- langs -->
+</div> <!-- btns -->
 <table>
 <thead><tr>
+<th class="noborder"></th>
 <th class="noborder"></th>
 <th class="noborder"></th>
 <th>Name</th>
@@ -93,10 +133,29 @@ real-world use case in any case.</p>
 <th></th>
 </tr></thead>
 <tbody>
-<tr data-lang="C++">
-<td><span title="Compliant">✅</span></td>
+<tr data-lang="Ada" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>Ada</td>
+<td><a href="https://github.com/pmderodat/ada-toml">ada-toml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="C++" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
 <td>C++</td>
-<td title="Version d8fa9a1"><a href="https://github.com/marzer/tomlplusplus">toml++</a></td>
+<td><a href="https://github.com/erbsland-dev/erbsland-qt-toml">qt-toml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="C++" data-toml="1.0">
+<td><span title="Compliant">✅</span></td>
+<td>1.0</td>
+<td>C++</td>
+<td title="toml++ version d8fa9a1"><a href="https://github.com/marzer/tomlplusplus">toml++</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
@@ -122,10 +181,11 @@ real-world use case in any case.</p>
 <td class='bench'>0.20s</td>
 <td><a href="output/c++-toml++.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="C++">
+<tr data-lang="C++" data-toml="1.0">
 <td><span title="Compliant">✅</span></td>
+<td>1.0</td>
 <td>C++</td>
-<td title="Version c32a20e"><a href="https://github.com/ToruNiina/toml11">toml11</a></td>
+<td title="toml11 version c32a20e"><a href="https://github.com/ToruNiina/toml11">toml11</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
@@ -145,10 +205,20 @@ real-world use case in any case.</p>
 <td class='bench'>4.38s</td>
 <td><a href="output/c++-toml11.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="C">
+<tr data-lang="C++" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>C++</td>
+<td><a href="https://github.com/cktan/tomlcpp">tomlcpp</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="C" data-toml="1.0">
 <td><span title="Compliant">✅</span></td>
+<td>1.0</td>
 <td>C</td>
-<td title="Version 76f86d0"><a href="https://github.com/arp242/toml-c">toml-c</a></td>
+<td title="toml-c version 76f86d0"><a href="https://github.com/arp242/toml-c">toml-c</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
@@ -168,10 +238,11 @@ real-world use case in any case.</p>
 <td class='bench'>4.30s</td>
 <td><a href="output/c-toml-c.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="C">
+<tr data-lang="C" data-toml="1.0">
 <td><span title="Non-compliant">❌</span></td>
+<td>1.0</td>
 <td>C</td>
-<td title="Version 5221b3d"><a href="https://github.com/cktan/tomlc99">tomlc99</a></td>
+<td title="tomlc99 version 5221b3d"><a href="https://github.com/cktan/tomlc99">tomlc99</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp " style="width:96.089384999999993%"></span><span class="barf" style="width:3.910615%"></span>
@@ -191,10 +262,65 @@ real-world use case in any case.</p>
 <td class='bench'>11.94s</td>
 <td><a href="output/c-tomlc99.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="C#">
-<td><span title="Non-compliant">❌</span></td>
+<tr data-lang="Chez" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>Chez</td>
+<td><a href="https://github.com/Yunoinsky/chez-toml">chez-toml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="CHICKEN" data-toml="0.4">
+<td><span title="Not yet tested">❔</span></td>
+<td>0.4</td>
+<td>CHICKEN</td>
+<td><a href="https://github.com/caolan/chicken-toml">chicken-toml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Clojure" data-toml="0.4">
+<td><span title="Not yet tested">❔</span></td>
+<td>0.4</td>
+<td>Clojure</td>
+<td><a href="https://github.com/lantiga/clj-toml">clj-toml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Crystal" data-toml="0.4">
+<td><span title="Not yet tested">❔</span></td>
+<td>0.4</td>
+<td>Crystal</td>
+<td><a href="https://github.com/manastech/crystal-toml">crystal-toml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Crystal" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>Crystal</td>
+<td><a href="https://github.com/syeopite/ctoml-cr">ctoml-cr</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="C#" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
 <td>C#</td>
-<td title="Version 0.16.2"><a href="https://github.com/xoofx/Tomlyn">tomlyn</a></td>
+<td><a href="https://github.com/SamboyCoding/Tomlet">tomlet</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="C#" data-toml="1.0">
+<td><span title="Non-compliant">❌</span></td>
+<td>1.0</td>
+<td>C#</td>
+<td title="tomlyn version 0.16.2"><a href="https://github.com/xoofx/Tomlyn">tomlyn</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp " style="width:98.324021999999999%"></span><span class="barf" style="width:1.675978%"></span>
@@ -214,10 +340,29 @@ real-world use case in any case.</p>
 <td class='bench'>1.70s</td>
 <td><a href="output/cs-tomlyn.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="Dart">
+<tr data-lang="C#" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>C#</td>
+<td><a href="https://github.com/dezhidki/Tommy">tommy</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="D" data-toml="0.5">
+<td><span title="Not yet tested">❔</span></td>
+<td>0.5</td>
+<td>D</td>
+<td><a href="https://github.com/Kripth/toml">toml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Dart" data-toml="1.0">
 <td><span title="Compliant">✅</span></td>
+<td>1.0</td>
 <td>Dart</td>
-<td title="Version f5e6e5f"><a href="https://github.com/just95/toml.dart">toml.dart</a></td>
+<td title="toml.dart version f5e6e5f"><a href="https://github.com/just95/toml.dart">toml.dart</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
@@ -243,10 +388,38 @@ real-world use case in any case.</p>
 <td class='bench'>1.24s</td>
 <td><a href="output/dart-toml.dart.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="Fortran">
-<td><span title="Non-compliant">❌</span></td>
+<tr data-lang="Erlang" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>Erlang</td>
+<td><a href="https://github.com/filmor/tomerl">tomerl</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Erlang" data-toml="0.4">
+<td><span title="Not yet tested">❔</span></td>
+<td>0.4</td>
+<td>Erlang</td>
+<td><a href="https://github.com/dozzie/toml">toml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Fortran" data-toml="0.4">
+<td><span title="Not yet tested">❔</span></td>
+<td>0.4</td>
 <td>Fortran</td>
-<td title="Version 59a62ce"><a href="https://github.com/toml-f/toml-f">toml-f</a></td>
+<td><a href="https://github.com/gregfi/f_tomlc99">f_tomlc99</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Fortran" data-toml="1.0">
+<td><span title="Non-compliant">❌</span></td>
+<td>1.0</td>
+<td>Fortran</td>
+<td title="toml-f version 59a62ce"><a href="https://github.com/toml-f/toml-f">toml-f</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp " style="width:93.854748999999998%"></span><span class="barf" style="width:6.145251%"></span>
@@ -272,10 +445,11 @@ real-world use case in any case.</p>
 <td class='bench'>150.98s</td>
 <td><a href="output/fortran-toml-f.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="Go">
+<tr data-lang="Go" data-toml="1.0">
 <td><span title="Compliant">✅</span></td>
+<td>1.0</td>
 <td>Go</td>
-<td title="Version 358c8d2"><a href="https://github.com/pelletier/go-toml">go-toml</a></td>
+<td title="go-toml version 358c8d2"><a href="https://github.com/pelletier/go-toml">go-toml</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
@@ -301,10 +475,29 @@ real-world use case in any case.</p>
 <td class='bench'>1.70s</td>
 <td><a href="output/go-go-toml.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="Go">
-<td><span title="Compliant">✅</span></td>
+<tr data-lang="Go" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
 <td>Go</td>
-<td title="Version 4223137"><a href="https://github.com/BurntSushi/toml">toml</a></td>
+<td><a href="https://github.com/komkom/toml">komkom-toml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Go" data-toml="0.4">
+<td><span title="Not yet tested">❔</span></td>
+<td>0.4</td>
+<td>Go</td>
+<td><a href="https://github.com/naoina/toml">naoina-toml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Go" data-toml="1.0">
+<td><span title="Compliant">✅</span></td>
+<td>1.0</td>
+<td>Go</td>
+<td title="toml version 4223137"><a href="https://github.com/BurntSushi/toml">toml</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
@@ -330,10 +523,20 @@ real-world use case in any case.</p>
 <td class='bench'>0.38s</td>
 <td><a href="output/go-toml.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="Guile">
+<tr data-lang="Grain" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>Grain</td>
+<td><a href="https://github.com/spotandjake/Grain-Toml">Grain-Toml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Guile" data-toml="1.0">
 <td><span title="Non-compliant">❌</span></td>
+<td>1.0</td>
 <td>Guile</td>
-<td title="Version ecb24de"><a href="https://github.com/hylophile/guile-toml">toml</a></td>
+<td title="toml version ecb24de"><a href="https://github.com/hylophile/guile-toml">toml</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp " style="width:97.206704000000002%"></span><span class="barf" style="width:2.793296%"></span>
@@ -359,10 +562,11 @@ real-world use case in any case.</p>
 <td class='bench'><em>(TODO)</em></td>
 <td><a href="output/guile-toml.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="Haskell">
+<tr data-lang="Haskell" data-toml="1.0">
 <td><span title="Non-compliant">❌</span></td>
+<td>1.0</td>
 <td>Haskell</td>
-<td title="Version 112e649"><a href="https://github.com/glguy/toml-parser">toml-parser</a></td>
+<td title="toml-parser version 112e649"><a href="https://github.com/glguy/toml-parser">toml-parser</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
@@ -388,10 +592,11 @@ real-world use case in any case.</p>
 <td class='bench'><em>(TODO)</em></td>
 <td><a href="output/haskell-toml-parser.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="Haskell">
+<tr data-lang="Haskell" data-toml="1.0">
 <td><span title="Non-compliant">❌</span></td>
+<td>1.0</td>
 <td>Haskell</td>
-<td title="Version d37c53f"><a href="https://github.com/brandonchinn178/toml-reader">toml-reader</a></td>
+<td title="toml-reader version d37c53f"><a href="https://github.com/brandonchinn178/toml-reader">toml-reader</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp " style="width:98.882682000000003%"></span><span class="barf" style="width:1.117318%"></span>
@@ -411,10 +616,65 @@ real-world use case in any case.</p>
 <td class='bench'><em>(TODO)</em></td>
 <td><a href="output/haskell-toml-reader.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="JS">
+<tr data-lang="Haskell" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>Haskell</td>
+<td><a href="https://github.com/kowainik/tomland">tomland</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Janet" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>Janet</td>
+<td><a href="https://github.com/pyrmont/tomlin">tomlin</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Java" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>Java</td>
+<td><a href="https://github.com/TheElectronWill/Night-Config">Night-Config</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Java" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>Java</td>
+<td><a href="https://github.com/FasterXML/jackson-dataformats-text">jackson</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Java" data-toml="0.4">
+<td><span title="Not yet tested">❔</span></td>
+<td>0.4</td>
+<td>Java</td>
+<td><a href="https://github.com/mwanji/toml4j">toml4j</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Java" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>Java</td>
+<td><a href="https://github.com/tomlj/tomlj">tomlj</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="JS" data-toml="1.0">
 <td><span title="Non-compliant">❌</span></td>
+<td>1.0</td>
 <td>JS</td>
-<td title="Version 3f1b842"><a href="https://github.com/iarna/iarna-toml">iarna-toml</a></td>
+<td title="iarna-toml version 3f1b842"><a href="https://github.com/iarna/iarna-toml">iarna-toml</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp " style="width:96.089384999999993%"></span><span class="barf" style="width:3.910615%"></span>
@@ -440,10 +700,11 @@ real-world use case in any case.</p>
 <td class='bench'>0.60s</td>
 <td><a href="output/js-iarna-toml.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="JS">
+<tr data-lang="JS" data-toml="1.0">
 <td><span title="Compliant">✅</span></td>
+<td>1.0</td>
 <td>JS</td>
-<td title="Version b843be0"><a href="https://github.com/LongTengDao/j-toml">j-toml</a></td>
+<td title="j-toml version b843be0"><a href="https://github.com/LongTengDao/j-toml">j-toml</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
@@ -469,10 +730,20 @@ real-world use case in any case.</p>
 <td class='bench'>0.96s</td>
 <td><a href="output/js-j-toml.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="JS">
-<td><span title="Non-compliant">❌</span></td>
+<tr data-lang="JS" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
 <td>JS</td>
-<td title="Version 5ccd1d1"><a href="https://github.com/squirrelchat/smol-toml">smol-toml</a></td>
+<td><a href="https://github.com/sunnyadn/js-toml">js-toml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="JS" data-toml="1.0">
+<td><span title="Non-compliant">❌</span></td>
+<td>1.0</td>
+<td>JS</td>
+<td title="smol-toml version 5ccd1d1"><a href="https://github.com/squirrelchat/smol-toml">smol-toml</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp " style="width:99.441340999999994%"></span><span class="barf" style="width:0.558659%"></span>
@@ -498,10 +769,11 @@ real-world use case in any case.</p>
 <td class='bench'>0.41s</td>
 <td><a href="output/js-smol-toml.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="JS">
+<tr data-lang="JS" data-toml="1.0">
 <td><span title="Compliant">✅</span></td>
+<td>1.0</td>
 <td>JS</td>
-<td title="Version 048af88"><a href="https://github.com/ota-meshi/toml-eslint-parser">toml-eslint-parser</a></td>
+<td title="toml-eslint-parser version 048af88"><a href="https://github.com/ota-meshi/toml-eslint-parser">toml-eslint-parser</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
@@ -521,10 +793,74 @@ real-world use case in any case.</p>
 <td class='bench'>1.26s</td>
 <td><a href="output/js-toml-eslint-parser.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="Lisp">
+<tr data-lang="JS" data-toml="0.4">
+<td><span title="Not yet tested">❔</span></td>
+<td>0.4</td>
+<td>JS</td>
+<td><a href="https://github.com/BinaryMuse/toml-node">toml-node</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="JS" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>JS</td>
+<td><a href="https://github.com/huan231/toml-nodejs">toml-nodejs</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Julia" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>Julia</td>
+<td><a href="https://github.com/JuliaLang/TOML.jl">TOML</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Kotlin" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>Kotlin</td>
+<td><a href="https://github.com/valderman/4koma">4koma</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Kotlin" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>Kotlin</td>
+<td><a href="https://github.com/Peanuuutz/tomlkt">tomlkt</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="LabVIEW" data-toml="0.4">
+<td><span title="Not yet tested">❔</span></td>
+<td>0.4</td>
+<td>LabVIEW</td>
+<td><a href="https://github.com/erdosmiller/lv-toml">lv-toml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="LabVIEW" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>LabVIEW</td>
+<td><a href="https://github.com/JKISoftware/toml-edit-labview">toml-edit</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Lisp" data-toml="1.0">
 <td><span title="Non-compliant">❌</span></td>
+<td>1.0</td>
 <td>Lisp</td>
-<td title="Version c0c3fe7"><a href="https://github.com/sheepduke/clop">clop</a></td>
+<td title="clop version c0c3fe7"><a href="https://github.com/sheepduke/clop">clop</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp " style="width:98.324021999999999%"></span><span class="barf" style="width:1.675978%"></span>
@@ -544,10 +880,74 @@ real-world use case in any case.</p>
 <td class='bench'><em>(TODO)</em></td>
 <td><a href="output/lisp-clop.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="OCAML">
+<tr data-lang="Lisp" data-toml="0.4">
+<td><span title="Not yet tested">❔</span></td>
+<td>0.4</td>
+<td>Lisp</td>
+<td><a href="https://github.com/sgarciac/sawyer">sawyer</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Lua" data-toml="0.4">
+<td><span title="Not yet tested">❔</span></td>
+<td>0.4</td>
+<td>Lua</td>
+<td><a href="https://github.com/jonstoler/lua-toml">lua-toml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Lua" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>Lua</td>
+<td><a href="https://github.com/LebJe/toml.lua">toml.lua</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="MATLAB" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>MATLAB</td>
+<td><a href="https://github.com/g-s-k/matlab-toml">matlab-toml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Nim" data-toml="0.5">
+<td><span title="Not yet tested">❔</span></td>
+<td>0.5</td>
+<td>Nim</td>
+<td><a href="https://github.com/NimParsers/parsetoml">parsetoml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Nim" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>Nim</td>
+<td><a href="https://github.com/status-im/nim-toml-serialization">toml_serialization</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Obj-C" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>Obj-C</td>
+<td><a href="https://github.com/monkeydom/ObjectiveTOML">ObjectiveTOML</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="OCaml" data-toml="1.0">
 <td><span title="Non-compliant">❌</span></td>
-<td>OCAML</td>
-<td title="Version f6ab907"><a href="https://github.com/dmbaturin/otoml">otoml</a></td>
+<td>1.0</td>
+<td>OCaml</td>
+<td title="otoml version f6ab907"><a href="https://github.com/dmbaturin/otoml">otoml</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp " style="width:98.324021999999999%"></span><span class="barf" style="width:1.675978%"></span>
@@ -573,10 +973,83 @@ real-world use case in any case.</p>
 <td class='bench'><em>(TODO)</em></td>
 <td><a href="output/ocaml-otoml.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="Python">
-<td><span title="Non-compliant">❌</span></td>
+<tr data-lang="OCaml" data-toml="0.4">
+<td><span title="Not yet tested">❔</span></td>
+<td>0.4</td>
+<td>OCaml</td>
+<td><a href="https://github.com/mackwic/to.ml">to.ml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Pascal" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>Pascal</td>
+<td><a href="https://github.com/genericptr/fpTOML">fpTOML</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Perl" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>Perl</td>
+<td><a href="https://github.com/sysread/TOML-Tiny">TOML-Tiny</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Perl" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>Perl</td>
+<td><a href="https://github.com/FGasper/p5-TOML-XS">p5-TOML-XS</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="PHP" data-toml="0.4">
+<td><span title="Not yet tested">❔</span></td>
+<td>0.4</td>
+<td>PHP</td>
+<td><a href="https://github.com/betrixed/Toml-Pun8">Toml-Pun8</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="PHP" data-toml="0.4">
+<td><span title="Not yet tested">❔</span></td>
+<td>0.4</td>
+<td>PHP</td>
+<td><a href="https://github.com/leonelquinteros/php-toml">php-toml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="PHP" data-toml="0.4">
+<td><span title="Not yet tested">❔</span></td>
+<td>0.4</td>
+<td>PHP</td>
+<td><a href="https://github.com/yosymfony/toml">toml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Python" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
 <td>Python</td>
-<td title="Version 65bab75"><a href="https://github.com/uiri/toml">toml</a></td>
+<td><a href="https://github.com/bobfang1992/pytomlpp">pytomlpp</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Python" data-toml="1.0">
+<td><span title="Non-compliant">❌</span></td>
+<td>1.0</td>
+<td>Python</td>
+<td title="toml version 65bab75"><a href="https://github.com/uiri/toml">toml</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp " style="width:89.944134000000005%"></span><span class="barf" style="width:10.055866%"></span>
@@ -602,10 +1075,11 @@ real-world use case in any case.</p>
 <td class='bench'>2.31s</td>
 <td><a href="output/python-toml.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="Python">
+<tr data-lang="Python" data-toml="1.0">
 <td><span title="Compliant">✅</span></td>
+<td>1.0</td>
 <td>Python</td>
-<td title="Version 9d939b5"><a href="https://github.com/hukkin/tomli-w">tomli</a></td>
+<td title="tomli version 9d939b5"><a href="https://github.com/hukkin/tomli-w">tomli</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
@@ -631,10 +1105,11 @@ real-world use case in any case.</p>
 <td class='bench'>1.20s</td>
 <td><a href="output/python-tomli.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="Python">
+<tr data-lang="Python" data-toml="1.0">
 <td><span title="Compliant">✅</span></td>
+<td>1.0</td>
 <td>Python</td>
-<td title="Version 636f697"><a href="https://github.com/sdispater/tomlkit">tomlkit</a></td>
+<td title="tomlkit version 636f697"><a href="https://github.com/sdispater/tomlkit">tomlkit</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
@@ -660,10 +1135,11 @@ real-world use case in any case.</p>
 <td class='bench'>49.52s</td>
 <td><a href="output/python-tomlkit.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="Python">
+<tr data-lang="Python" data-toml="1.0">
 <td><span title="Compliant">✅</span></td>
+<td>1.0</td>
 <td>Python</td>
-<td title="Version Python 3.12.0"><a href="https://docs.python.org/3/library/tomllib.html">tomllib</a></td>
+<td title="tomllib version Python 3.12.0"><a href="https://docs.python.org/3/library/tomllib.html">tomllib</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
@@ -683,10 +1159,20 @@ real-world use case in any case.</p>
 <td class='bench'>1.18s</td>
 <td><a href="output/python-tomllib.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="Racket">
+<tr data-lang="R" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>R</td>
+<td><a href="https://github.com/eddelbuettel/rcpptoml">rcpptoml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Racket" data-toml="1.0">
 <td><span title="Non-compliant">❌</span></td>
+<td>1.0</td>
 <td>Racket</td>
-<td title="Version fe46aa2"><a href="https://github.com/toml-racket/toml-racket">toml-racket</a></td>
+<td title="toml-racket version fe46aa2"><a href="https://github.com/toml-racket/toml-racket">toml-racket</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp " style="width:99.441340999999994%"></span><span class="barf" style="width:0.558659%"></span>
@@ -712,10 +1198,29 @@ real-world use case in any case.</p>
 <td class='bench'><em>(TODO)</em></td>
 <td><a href="output/racket-toml-racket.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="Ruby">
+<tr data-lang="Raku" data-toml="0.4">
+<td><span title="Not yet tested">❔</span></td>
+<td>0.4</td>
+<td>Raku</td>
+<td><a href="https://github.com/atweiden/config-toml">config-toml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Raku" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>Raku</td>
+<td><a href="https://github.com/tony-o/raku-toml">toml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Ruby" data-toml="1.0">
 <td><span title="Non-compliant">❌</span></td>
+<td>1.0</td>
 <td>Ruby</td>
-<td title="Version 6bdfc3b"><a href="https://github.com/mame/perfect_toml">perfect_toml</a></td>
+<td title="perfect_toml version 6bdfc3b"><a href="https://github.com/mame/perfect_toml">perfect_toml</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
@@ -741,10 +1246,11 @@ real-world use case in any case.</p>
 <td class='bench'>0.76s</td>
 <td><a href="output/ruby-perfect_toml.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="Ruby">
+<tr data-lang="Ruby" data-toml="1.0">
 <td><span title="Non-compliant">❌</span></td>
+<td>1.0</td>
 <td>Ruby</td>
-<td title="Version 34ad28e"><a href="https://github.com/emancu/toml-rb">toml-rb</a></td>
+<td title="toml-rb version 34ad28e"><a href="https://github.com/emancu/toml-rb">toml-rb</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp " style="width:84.916201000000001%"></span><span class="barf" style="width:15.083799%"></span>
@@ -770,10 +1276,20 @@ real-world use case in any case.</p>
 <td class='bench'>199.80s</td>
 <td><a href="output/ruby-toml-rb.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="Ruby">
-<td><span title="Compliant">✅</span></td>
+<tr data-lang="Ruby" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
 <td>Ruby</td>
-<td title="Version db2eddb"><a href="https://github.com/fbernier/tomlrb">tomlrb</a></td>
+<td><a href="https://github.com/kgiszczak/tomlib">tomlib</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Ruby" data-toml="1.0">
+<td><span title="Compliant">✅</span></td>
+<td>1.0</td>
+<td>Ruby</td>
+<td title="tomlrb version db2eddb"><a href="https://github.com/fbernier/tomlrb">tomlrb</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
@@ -793,10 +1309,11 @@ real-world use case in any case.</p>
 <td class='bench'>4.49s</td>
 <td><a href="output/ruby-tomlrb.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="Rust">
+<tr data-lang="Rust" data-toml="1.0">
 <td><span title="Non-compliant">❌</span></td>
+<td>1.0</td>
 <td>Rust</td>
-<td title="Version 0.1.4"><a href="https://github.com/dtolnay/basic-toml">basic-toml</a></td>
+<td title="basic-toml version 0.1.4"><a href="https://github.com/dtolnay/basic-toml">basic-toml</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp " style="width:88.268156000000005%"></span><span class="barf" style="width:11.731844%"></span>
@@ -816,10 +1333,11 @@ real-world use case in any case.</p>
 <td class='bench'>0.28s</td>
 <td><a href="output/rust-basic-toml.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="Rust">
+<tr data-lang="Rust" data-toml="1.0">
 <td><span title="Non-compliant">❌</span></td>
+<td>1.0</td>
 <td>Rust</td>
-<td title="Version 0.12.1"><a href="https://github.com/tamasfe/taplo/tree/master/crates/taplo">taplo</a></td>
+<td title="taplo version 0.12.1"><a href="https://github.com/tamasfe/taplo/tree/master/crates/taplo">taplo</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp " style="width:97.765362999999994%"></span><span class="barf" style="width:2.234637%"></span>
@@ -839,10 +1357,11 @@ real-world use case in any case.</p>
 <td class='bench'>45.04s</td>
 <td><a href="output/rust-taplo.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="Rust">
+<tr data-lang="Rust" data-toml="1.0">
 <td><span title="Compliant">✅</span></td>
+<td>1.0</td>
 <td>Rust</td>
-<td title="Version 0.8.1"><a href="https://github.com/toml-rs/toml/tree/main/crates/toml">toml</a></td>
+<td title="toml version 0.8.1"><a href="https://github.com/toml-rs/toml/tree/main/crates/toml">toml</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
@@ -868,10 +1387,11 @@ real-world use case in any case.</p>
 <td class='bench'>0.18s</td>
 <td><a href="output/rust-toml.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="Rust">
+<tr data-lang="Rust" data-toml="1.0">
 <td><span title="Compliant">✅</span></td>
+<td>1.0</td>
 <td>Rust</td>
-<td title="Version 0.20.1"><a href="https://github.com/toml-rs/toml/tree/main/crates/toml_edit">toml_edit</a></td>
+<td title="toml_edit version 0.20.1"><a href="https://github.com/toml-rs/toml/tree/main/crates/toml_edit">toml_edit</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
@@ -897,32 +1417,144 @@ real-world use case in any case.</p>
 <td class='bench'>0.17s</td>
 <td><a href="output/rust-toml_edit.html" class="ui">output</a></td>
 </tr>
-</tbody></table>
+<tr data-lang="Scala" data-toml="0.4">
+<td><span title="Not yet tested">❔</span></td>
+<td>0.4</td>
+<td>Scala</td>
+<td><a href="https://github.com/jvican/stoml">stoml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Smalltalk" data-toml="0.5">
+<td><span title="Not yet tested">❔</span></td>
+<td>0.5</td>
+<td>Smalltalk</td>
+<td><a href="https://github.com/DraagrenKirneh/TOML">TOML</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Swift" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>Swift</td>
+<td><a href="https://github.com/dduan/TOMLDecoder">TOMLDecoder</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Swift" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>Swift</td>
+<td><a href="https://github.com/LebJe/TOMLKit">TOMLKit</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Swift" data-toml="0.4">
+<td><span title="Not yet tested">❔</span></td>
+<td>0.4</td>
+<td>Swift</td>
+<td><a href="https://github.com/jdfergason/swift-toml">swift-toml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="V" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>V</td>
+<td><a href="https://github.com/vlang/v/tree/master/vlib/toml">toml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Xojo" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>Xojo</td>
+<td><a href="https://github.com/ktekinay/Xojo-TOML/">Xojo-TOML</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Zig" data-toml="1.0">
+<td><span title="Not yet tested">❔</span></td>
+<td>1.0</td>
+<td>Zig</td>
+<td><a href="https://codeberg.org/Egoist/toml-zig">toml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+<tr data-lang="Zig" data-toml="0.5">
+<td><span title="Not yet tested">❔</span></td>
+<td>0.5</td>
+<td>Zig</td>
+<td><a href="https://github.com/aeronavery/zig-toml">zig-toml</a></td>
+<td colspan="6" style="width:60em"><em>No test scripts yet
+(<a href="https://github.com/arp242/toml-test-matrix#adding-a-parser">instructions</a>)</em></td>
+<td></td>
+</tr>
+</tbody>
+<tfoot id="tfoot"><tr><td colspan="10"><b>Nothing matched the selection.</b></td></tr></tfoot>
+</table>
 </div> <!-- page -->
 <p style="float:right; font-size:.75em; margin:1em; margin-top:-.75em;">
 Generated on 2023-12-07;
 <a href="https://github.com/arp242/toml-test-matrix">https://github.com/arp242/toml-test-matrix</a>
 </p>
 <script>
-window.langs.style.display = 'flex'
+window.btns.style.display = 'block'
 
-let checks = document.querySelectorAll('input'),
+let checks = document.querySelectorAll('#langs input'),
+vers   = Array.from(document.querySelectorAll('#version input')),
 rows   = document.querySelectorAll('tbody tr')
+
+let display = () => {
+let boxes       = {},
+v           = vers.filter((elem) => elem.checked )[0].value,
+filter_lang = false,
+n           = 0
+checks.forEach((elem) => {
+boxes[elem.value] = elem.checked
+filter_lang = filter_lang || elem.checked
+})
+
+rows.forEach((elem) => {
+if (parseFloat(elem.dataset.toml) < v)
+return elem.style.display = 'none'
+if (filter_lang && !boxes[elem.dataset.lang])
+return elem.style.display = 'none'
+n++
+elem.style.display = ''
+})
+window.tfoot.style.display = n === 0 ? 'table-footer-group' : 'none'
+}
 window.langs.addEventListener('click', (e) => {
 if (e.target.tagName !== 'INPUT')
 return
 e.target.parentNode.classList.toggle('on')
-let boxes = {},
-v     = false
-checks.forEach((elem) => boxes[elem.value] = elem.checked)
-rows.forEach((elem) => {
-elem.style.display = boxes[elem.dataset.lang] ? '' : 'none'
-v = v || boxes[elem.dataset.lang]
+display()
 })
-if (!v)
-rows.forEach((elem) => elem.style.display = '')
+window.version.addEventListener('click', (e) => {
+if (e.target.tagName !== 'INPUT')
+return
+vers.forEach((elem) => elem.parentNode.classList.remove('on'))
+e.target.parentNode.classList.add('on')
+display()
 })
+
 // Make sure we keep the list after refresh in Firefox (which keeps form state).
+vers.forEach((elem) => {
+if (elem.checked) {
+elem.click()
+elem.parentNode.classList.toggle('on')
+elem.click()
+}
+})
 checks.forEach((elem) => {
 if (elem.checked) {
 elem.click()
