@@ -1,5 +1,9 @@
 deps() { print 'python git' }
 
+deps() {
+	print 'python git'
+}
+
 setup() {
 	cd src
 	if [[ ! -d tomli ]]; then
