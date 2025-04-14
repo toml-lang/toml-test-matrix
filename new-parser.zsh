@@ -1,6 +1,7 @@
 # Parser template – copy to "parsers/[language]-[pkg-name].zsh".
 
-# Print whatever is needed to build and run this.
+# Print space-separated list of whatever is needed to build and run this; the
+# tools are looked up in $PATH.
 deps() {
 	print 'tool build-tool'
 }
@@ -12,9 +13,8 @@ setup() {
 }
 
 # Run after completion, mostly to ensure output/[name].html is stable between
-# runs (e.g. by removing memory addresses from stack traces).
-#
-# Should rarely be needed.
+# runs (e.g. by removing memory addresses from stack traces). Should rarely be
+# needed.
 # after-run() {
 # }
 
@@ -29,7 +29,7 @@ typeset -A info=(
 	site    'https://example.com'
 
 	# Project source; only git supported for now.
-	src     'git@gexample.com/toml.git'
+	src     'https://example.com/toml.git'
 
 	# Decoder binary for toml-test.
 	#

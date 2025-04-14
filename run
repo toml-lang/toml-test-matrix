@@ -470,15 +470,15 @@ do_gen() {
 		desc10k=good
 		if [[ $took10k != '(error)' ]]; then
 			float n=$took10k
-			(( $n >= 50.0 )) && desc10k=slow
+			(( $n >= 25.0 )) && desc10k=slow
 		fi
 
 		took5M=$(tail -n2 $out | grep '^took' | cut -d' ' -f3)
 		desc5M=good
 		if [[ $took5M != '(error)' ]]; then
 			float n=$took5M
-			(( $n >= 2.0  )) && desc5M=slow
-			(( $n >= 40.0 )) && desc5M='very slow'
+			(( $n >= 1.0  )) && desc5M=slow
+			(( $n >= 10.0 )) && desc5M='very slow'
 		fi
 
 
