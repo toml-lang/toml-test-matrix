@@ -26,6 +26,7 @@ tr:hover        { background-color:#fffef1; }
 .pass           { }
 .fail           { float:right; }
 .didfail        { font-weight:bold; color:red; }
+.didfail-mute   { }
 a               { text-decoration:none; }
 a:hover         { text-decoration:underline; }
 .ui:visited     { color:LinkText; text-decoration:none; }
@@ -33,6 +34,7 @@ a:hover         { text-decoration:underline; }
 .barp, .barf    { display:inline-block; height:.5em; }
 .barp           { background:#e1e1e1; color:#fff; }
 .barf           { background:red; color:#fff; text-align:right;}
+.barf-mute      { background:#999; }
 .allpass        { }
 #langs          { gap:1em; margin-bottom:.5em; display:none; line-height:2.5em; }
 #langs >span:nth-child(1) { white-space:nowrap; }
@@ -123,7 +125,7 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
+<span class="barp allpass" style="width:100%"></span><span class="barf barf-mute" style="width:0%"></span>
 </div>
 <small class="pass">pass: 371</small>
 <span class="fail ">fail: 0</span>
@@ -152,7 +154,7 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
+<span class="barp allpass" style="width:100%"></span><span class="barf barf-mute" style="width:0%"></span>
 </div>
 <small class="pass">pass: 371</small>
 <span class="fail ">fail: 0</span>
@@ -175,10 +177,10 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <td style='width:30em'><em>(doesn't include encoder)</em></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:94.878706%"></span><span class="barf" style="width:5.121294%"></span>
+<span class="barp " style="width:94.878706%"></span><span class="barf barf-mute" style="width:5.121294%"></span>
 </div>
 <small class="pass">pass: 352</small>
-<span class="fail didfail">fail: 19</span>
+<span class="fail didfail-mute">fail: 19</span>
 </td>
 <td class='good' title='0.3 milliseconds'>good</td>
 <td class='slow' title='4.75 seconds'>slow</td>
@@ -198,10 +200,10 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <td style='width:30em'><em>(doesn't include encoder)</em></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:78.975741%"></span><span class="barf" style="width:21.024259%"></span>
+<span class="barp " style="width:78.975741%"></span><span class="barf barf-mute" style="width:21.024259%"></span>
 </div>
 <small class="pass">pass: 293</small>
-<span class="fail didfail">fail: 78</span>
+<span class="fail didfail-mute">fail: 78</span>
 </td>
 <td class='good' title='0.3 milliseconds'>good</td>
 <td class='slow' title='12.76 seconds'>slow</td>
@@ -221,10 +223,10 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <td style='width:30em'><em>(TODO)</em></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:98.652291%"></span><span class="barf" style="width:1.347709%"></span>
+<span class="barp " style="width:98.652291%"></span><span class="barf barf-mute" style="width:1.347709%"></span>
 </div>
 <small class="pass">pass: 366</small>
-<span class="fail didfail">fail: 5</span>
+<span class="fail didfail-mute">fail: 5</span>
 </td>
 <td><em>(TODO)</em></td>
 <td><em>(TODO)</em></td>
@@ -250,7 +252,7 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
+<span class="barp allpass" style="width:100%"></span><span class="barf barf-mute" style="width:0%"></span>
 </div>
 <small class="pass">pass: 371</small>
 <span class="fail ">fail: 0</span>
@@ -279,10 +281,10 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:91.374663%"></span><span class="barf" style="width:8.625337%"></span>
+<span class="barp " style="width:91.374663%"></span><span class="barf barf-mute" style="width:8.625337%"></span>
 </div>
 <small class="pass">pass: 339</small>
-<span class="fail didfail">fail: 32</span>
+<span class="fail didfail-mute">fail: 32</span>
 </td>
 <td class='good' title='1.2 milliseconds'>good</td>
 <td class='very-slow' title='145.63 seconds'>very slow</td>
@@ -308,7 +310,7 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
+<span class="barp allpass" style="width:100%"></span><span class="barf barf-mute" style="width:0%"></span>
 </div>
 <small class="pass">pass: 371</small>
 <span class="fail ">fail: 0</span>
@@ -337,10 +339,10 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:96.495957%"></span><span class="barf" style="width:3.504043%"></span>
+<span class="barp " style="width:96.495957%"></span><span class="barf barf-mute" style="width:3.504043%"></span>
 </div>
 <small class="pass">pass: 358</small>
-<span class="fail didfail">fail: 13</span>
+<span class="fail didfail-mute">fail: 13</span>
 </td>
 <td class='good' title='0.9 milliseconds'>good</td>
 <td class='good' title='0.36 seconds'>good</td>
@@ -366,10 +368,10 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:96.226415%"></span><span class="barf" style="width:3.773585%"></span>
+<span class="barp " style="width:96.226415%"></span><span class="barf barf-mute" style="width:3.773585%"></span>
 </div>
 <small class="pass">pass: 357</small>
-<span class="fail didfail">fail: 14</span>
+<span class="fail didfail-mute">fail: 14</span>
 </td>
 <td><em>(TODO)</em></td>
 <td><em>(TODO)</em></td>
@@ -395,10 +397,10 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:99.460916%"></span><span class="barf" style="width:0.539084%"></span>
+<span class="barp " style="width:99.460916%"></span><span class="barf barf-mute" style="width:0.539084%"></span>
 </div>
 <small class="pass">pass: 369</small>
-<span class="fail didfail">fail: 2</span>
+<span class="fail didfail-mute">fail: 2</span>
 </td>
 <td class='good' title='2.7 milliseconds'>good</td>
 <td class='good' title='0.97 seconds'>good</td>
@@ -424,10 +426,10 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:96.226415%"></span><span class="barf" style="width:3.773585%"></span>
+<span class="barp " style="width:96.226415%"></span><span class="barf barf-mute" style="width:3.773585%"></span>
 </div>
 <small class="pass">pass: 357</small>
-<span class="fail didfail">fail: 14</span>
+<span class="fail didfail-mute">fail: 14</span>
 </td>
 <td class='good' title='12.2 milliseconds'>good</td>
 <td class='good' title='1.02 seconds'>good</td>
@@ -453,10 +455,10 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:96.226415%"></span><span class="barf" style="width:3.773585%"></span>
+<span class="barp " style="width:96.226415%"></span><span class="barf barf-mute" style="width:3.773585%"></span>
 </div>
 <small class="pass">pass: 357</small>
-<span class="fail didfail">fail: 14</span>
+<span class="fail didfail-mute">fail: 14</span>
 </td>
 <td><em>(error)</em></td>
 <td><em>(error)</em></td>
@@ -476,10 +478,10 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <td style='width:30em'><em>(doesn't include encoder)</em></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:97.574124%"></span><span class="barf" style="width:2.425876%"></span>
+<span class="barp " style="width:97.574124%"></span><span class="barf barf-mute" style="width:2.425876%"></span>
 </div>
 <small class="pass">pass: 362</small>
-<span class="fail didfail">fail: 9</span>
+<span class="fail didfail-mute">fail: 9</span>
 </td>
 <td class='good' title='22.4 milliseconds'>good</td>
 <td class='good' title='1.47 seconds'>good</td>
@@ -499,7 +501,7 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <td style='width:30em'><em>(doesn't include encoder)</em></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
+<span class="barp allpass" style="width:100%"></span><span class="barf barf-mute" style="width:0%"></span>
 </div>
 <small class="pass">pass: 371</small>
 <span class="fail ">fail: 0</span>
@@ -528,10 +530,10 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:85.983827%"></span><span class="barf" style="width:14.016173%"></span>
+<span class="barp " style="width:85.983827%"></span><span class="barf barf-mute" style="width:14.016173%"></span>
 </div>
 <small class="pass">pass: 319</small>
-<span class="fail didfail">fail: 52</span>
+<span class="fail didfail-mute">fail: 52</span>
 </td>
 <td><em>(TODO)</em></td>
 <td><em>(TODO)</em></td>
@@ -557,10 +559,10 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:80.323450%"></span><span class="barf" style="width:19.676550%"></span>
+<span class="barp " style="width:80.323450%"></span><span class="barf barf-mute" style="width:19.676550%"></span>
 </div>
 <small class="pass">pass: 298</small>
-<span class="fail didfail">fail: 73</span>
+<span class="fail didfail-mute">fail: 73</span>
 </td>
 <td class='good' title='3.7 milliseconds'>good</td>
 <td class='good' title='1.80 seconds'>good</td>
@@ -586,7 +588,7 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
+<span class="barp allpass" style="width:100%"></span><span class="barf barf-mute" style="width:0%"></span>
 </div>
 <small class="pass">pass: 371</small>
 <span class="fail ">fail: 0</span>
@@ -615,10 +617,10 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:98.382749%"></span><span class="barf" style="width:1.617251%"></span>
+<span class="barp " style="width:98.382749%"></span><span class="barf barf-mute" style="width:1.617251%"></span>
 </div>
 <small class="pass">pass: 365</small>
-<span class="fail didfail">fail: 6</span>
+<span class="fail didfail-mute">fail: 6</span>
 </td>
 <td class='slow' title='90.4 milliseconds'>slow</td>
 <td class='very-slow' title='55.34 seconds'>very slow</td>
@@ -638,7 +640,7 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <td style='width:30em'><em>(doesn't include encoder)</em></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
+<span class="barp allpass" style="width:100%"></span><span class="barf barf-mute" style="width:0%"></span>
 </div>
 <small class="pass">pass: 371</small>
 <span class="fail ">fail: 0</span>
@@ -667,10 +669,10 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:99.730458%"></span><span class="barf" style="width:0.269542%"></span>
+<span class="barp " style="width:99.730458%"></span><span class="barf barf-mute" style="width:0.269542%"></span>
 </div>
 <small class="pass">pass: 370</small>
-<span class="fail didfail">fail: 1</span>
+<span class="fail didfail-mute">fail: 1</span>
 </td>
 <td><em>(TODO)</em></td>
 <td><em>(TODO)</em></td>
@@ -696,10 +698,10 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:97.574124%"></span><span class="barf" style="width:2.425876%"></span>
+<span class="barp " style="width:97.574124%"></span><span class="barf barf-mute" style="width:2.425876%"></span>
 </div>
 <small class="pass">pass: 362</small>
-<span class="fail didfail">fail: 9</span>
+<span class="fail didfail-mute">fail: 9</span>
 </td>
 <td class='good' title='1.7 milliseconds'>good</td>
 <td class='good' title='0.76 seconds'>good</td>
@@ -725,10 +727,10 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:81.132075%"></span><span class="barf" style="width:18.867925%"></span>
+<span class="barp " style="width:81.132075%"></span><span class="barf barf-mute" style="width:18.867925%"></span>
 </div>
 <small class="pass">pass: 301</small>
-<span class="fail didfail">fail: 70</span>
+<span class="fail didfail-mute">fail: 70</span>
 </td>
 <td><em>(TODO)</em></td>
 <td><em>(TODO)</em></td>
@@ -748,10 +750,10 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <td style='width:30em'><em>(doesn't include encoder)</em></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:94.609164%"></span><span class="barf" style="width:5.390836%"></span>
+<span class="barp " style="width:94.609164%"></span><span class="barf barf-mute" style="width:5.390836%"></span>
 </div>
 <small class="pass">pass: 351</small>
-<span class="fail didfail">fail: 20</span>
+<span class="fail didfail-mute">fail: 20</span>
 </td>
 <td class='good' title='7.6 milliseconds'>good</td>
 <td class='slow' title='5.04 seconds'>slow</td>
@@ -771,10 +773,10 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <td style='width:30em'><em>(TODO)</em></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:98.921833%"></span><span class="barf" style="width:1.078167%"></span>
+<span class="barp " style="width:98.921833%"></span><span class="barf barf-mute" style="width:1.078167%"></span>
 </div>
 <small class="pass">pass: 367</small>
-<span class="fail didfail">fail: 4</span>
+<span class="fail didfail-mute">fail: 4</span>
 </td>
 <td class='good' title='0.7 milliseconds'>good</td>
 <td class='good' title='0.29 seconds'>good</td>
@@ -800,10 +802,10 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:55.525606%"></span><span class="barf" style="width:44.474394%"></span>
+<span class="barp " style="width:55.525606%"></span><span class="barf barf-mute" style="width:44.474394%"></span>
 </div>
 <small class="pass">pass: 206</small>
-<span class="fail didfail">fail: 165</span>
+<span class="fail didfail-mute">fail: 165</span>
 </td>
 <td><em>(TODO)</em></td>
 <td><em>(TODO)</em></td>
@@ -823,10 +825,10 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <td style='width:30em'><em>(TODO)</em></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:0.000000%"></span><span class="barf" style="width:100.000000%"></span>
+<span class="barp " style="width:0.000000%"></span><span class="barf barf-mute" style="width:100.000000%"></span>
 </div>
 <small class="pass">pass: 0</small>
-<span class="fail didfail">fail: 371</span>
+<span class="fail didfail-mute">fail: 371</span>
 </td>
 <td class='good' title='1.5 milliseconds'>good</td>
 <td class='very-slow' title='52.15 seconds'>very slow</td>
@@ -852,7 +854,7 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
+<span class="barp allpass" style="width:100%"></span><span class="barf barf-mute" style="width:0%"></span>
 </div>
 <small class="pass">pass: 371</small>
 <span class="fail ">fail: 0</span>
@@ -881,7 +883,7 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
+<span class="barp allpass" style="width:100%"></span><span class="barf barf-mute" style="width:0%"></span>
 </div>
 <small class="pass">pass: 371</small>
 <span class="fail ">fail: 0</span>

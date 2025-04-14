@@ -375,6 +375,7 @@ do_gen() {
 			.pass           { }
 			.fail           { float:right; }
 			.didfail        { font-weight:bold; color:red; }
+			.didfail-mute   { }
 			a               { text-decoration:none; }
 			a:hover         { text-decoration:underline; }
 			.ui:visited     { color:LinkText; text-decoration:none; }
@@ -382,6 +383,7 @@ do_gen() {
 			.barp, .barf    { display:inline-block; height:.5em; }
 			.barp           { background:#e1e1e1; color:#fff; }
 			.barf           { background:red; color:#fff; text-align:right;}
+			.barf-mute      { background:#999; }
 			.allpass        { }
 			#langs          { gap:1em; margin-bottom:.5em; display:none; line-height:2.5em; }
 			#langs >span:nth-child(1) { white-space:nowrap; }
@@ -490,7 +492,7 @@ do_gen() {
 		vfail=""
 		(( $v[5] > 0 ))  && vfail='didfail'
 		ifail=""
-		(( $iv[5] > 0 )) && ifail='didfail'
+		(( $iv[5] > 0 )) && ifail='didfail-mute'
 		efail=""
 		(( $e[5] > 0 ))  && efail='didfail'
 
@@ -550,7 +552,7 @@ do_gen() {
 		cat >>index.html <<-EOF
 				<td style="width:30em">
 					<div class="bars">
-						<span class="barp $alli" style="width:$passiw%"></span><span class="barf" style="width:$failiw%"></span>
+						<span class="barp $alli" style="width:$passiw%"></span><span class="barf barf-mute" style="width:$failiw%"></span>
 					</div>
 					<small class="pass">pass: $iv[3]</small>
 					<span class="fail $ifail">fail: $iv[5]</span>
