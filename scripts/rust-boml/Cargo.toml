@@ -1,0 +1,11 @@
+[package]
+name = "rust-boml"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+
+[dependencies]
+serde_json.workspace = true
+boml.workspace = true
+toml-test.workspace = true
+toml-test-harness.workspace = true
