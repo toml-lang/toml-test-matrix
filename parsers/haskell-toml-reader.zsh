@@ -37,8 +37,6 @@ setup() {
 	cabal build
 
 	# What a path... Copy it to something vaguely managable.
-	# dist-newstyle/build/x86_64-linux/ghc-9.4.7/toml-reader-0.2.1.0/t/parser-validator/build/parser-validator/parser-validator .
-	# dist-newstyle/build/x86_64-linux/ghc-9.4.7/toml-reader-0.2.1.0/x/perf/build/perf/perf
 	cp dist-newstyle/build/x86_64-linux/ghc-*/toml-reader-*/t/parser-validator/build/parser-validator/parser-validator .
 	cp dist-newstyle/build/x86_64-linux/ghc-*/toml-reader-*/x/perf/build/perf/perf perf-bin
 }
