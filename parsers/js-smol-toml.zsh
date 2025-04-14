@@ -1,4 +1,4 @@
-deps() { print 'node npm' }
+deps() { print 'node npm pnpm' }
 
 setup() {
 	npm install

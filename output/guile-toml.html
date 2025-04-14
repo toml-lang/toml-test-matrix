@@ -2,27 +2,30 @@
 toml version ecb24de
 <b>FAIL</b> <b>valid/inline-table/array-values</b>
 <b> </b>    Backtrace:
-<b> </b>              12 (apply-smob/1 #<catch-closure 7f8b55d8e080>)
 <b> </b>    In ice-9/boot-9.scm:
-<b> </b>        705:2 11 (call-with-prompt _ _ #<procedure default-prompt-handle…>)
+<b> </b>      1755:12 13 (with-exception-handler _ _ #:unwind? _ #:unwind-for-type _)
+<b> </b>    In unknown file:
+<b> </b>              12 (apply-smob/0 #<thunk 7f7120514300>)
+<b> </b>    In ice-9/boot-9.scm:
+<b> </b>        724:2 11 (call-with-prompt _ _ #<procedure default-prompt-handler (k proc)>)
 <b> </b>    In ice-9/eval.scm:
-<b> </b>        619:8 10 (_ #(#(#<directory (guile-user) 7f8b55ada140>)))
+<b> </b>        619:8 10 (_ #(#(#<directory (guile-user) 7f7120517c80>)))
 <b> </b>    In ice-9/boot-9.scm:
-<b> </b>       2312:4  9 (save-module-excursion _)
-<b> </b>      3832:12  8 (_)
+<b> </b>       2858:4  9 (save-module-excursion _)
+<b> </b>      4408:12  8 (_)
 <b> </b>    In test/test-decoder.scm:
 <b> </b>        58:14  7 (_)
 <b> </b>    In toml/parser.scm:
-<b> </b>       373:22  6 (peg-tree->scm _)
+<b> </b>        190:6  6 (peg-tree->scm _)
 <b> </b>       280:18  5 (add-kv-to-tree () _ _)
 <b> </b>       167:23  4 (loop _)
-<b> </b>       373:22  3 (peg-tree->scm _)
+<b> </b>        190:6  3 (peg-tree->scm _)
 <b> </b>       280:18  2 (add-kv-to-tree () _ _)
 <b> </b>       167:23  1 (loop _)
-<b> </b>    In unknown file:
-<b> </b>               0 (scm-error misc-error #f "~A ~S" ("err: ~a" array) #f)
+<b> </b>    In test/test-decoder.scm:
+<b> </b>         41:9  0 (test-value->scm array)
 <b> </b>
-<b> </b>    ERROR: In procedure scm-error:
+<b> </b>    test/test-decoder.scm:41:9: In procedure test-value->scm:
 <b> </b>    err: ~a array
 <b> </b>
 <b> </b>    Exit 1
@@ -44,27 +47,30 @@ toml version ecb24de
 
 <b>     output from parser-cmd (stderr):</b>
        Backtrace:
-                 12 (apply-smob/1 #<catch-closure 7f8b55d8e080>)
        In ice-9/boot-9.scm:
-           705:2 11 (call-with-prompt _ _ #<procedure default-prompt-handle…>)
+         1755:12 13 (with-exception-handler _ _ #:unwind? _ #:unwind-for-type _)
+       In unknown file:
+                 12 (apply-smob/0 #<thunk 7f7120514300>)
+       In ice-9/boot-9.scm:
+           724:2 11 (call-with-prompt _ _ #<procedure default-prompt-handler (k proc)>)
        In ice-9/eval.scm:
-           619:8 10 (_ #(#(#<directory (guile-user) 7f8b55ada140>)))
+           619:8 10 (_ #(#(#<directory (guile-user) 7f7120517c80>)))
        In ice-9/boot-9.scm:
-          2312:4  9 (save-module-excursion _)
-         3832:12  8 (_)
+          2858:4  9 (save-module-excursion _)
+         4408:12  8 (_)
        In test/test-decoder.scm:
            58:14  7 (_)
        In toml/parser.scm:
-          373:22  6 (peg-tree->scm _)
+           190:6  6 (peg-tree->scm _)
           280:18  5 (add-kv-to-tree () _ _)
           167:23  4 (loop _)
-          373:22  3 (peg-tree->scm _)
+           190:6  3 (peg-tree->scm _)
           280:18  2 (add-kv-to-tree () _ _)
           167:23  1 (loop _)
-       In unknown file:
-                  0 (scm-error misc-error #f "~A ~S" ("err: ~a" array) #f)
+       In test/test-decoder.scm:
+            41:9  0 (test-value->scm array)
 
-       ERROR: In procedure scm-error:
+       test/test-decoder.scm:41:9: In procedure test-value->scm:
        err: ~a array
 
        Exit 1
@@ -74,20 +80,23 @@ toml version ecb24de
 
 <b>FAIL</b> <b>valid/key/dotted-empty</b>
 <b> </b>    Backtrace:
-<b> </b>               8 (apply-smob/1 #<catch-closure 7fbc31b730c0>)
 <b> </b>    In ice-9/boot-9.scm:
-<b> </b>        705:2  7 (call-with-prompt _ _ #<procedure default-prompt-handle…>)
+<b> </b>      1755:12  9 (with-exception-handler _ _ #:unwind? _ #:unwind-for-type _)
+<b> </b>    In unknown file:
+<b> </b>               8 (apply-smob/0 #<thunk 7f66ed114300>)
+<b> </b>    In ice-9/boot-9.scm:
+<b> </b>        724:2  7 (call-with-prompt _ _ #<procedure default-prompt-handler (k proc)>)
 <b> </b>    In ice-9/eval.scm:
-<b> </b>        619:8  6 (_ #(#(#<directory (guile-user) 7fbc31806140>)))
+<b> </b>        619:8  6 (_ #(#(#<directory (guile-user) 7f66ed117c80>)))
 <b> </b>    In ice-9/boot-9.scm:
-<b> </b>       2312:4  5 (save-module-excursion _)
-<b> </b>      3832:12  4 (_)
+<b> </b>       2858:4  5 (save-module-excursion _)
+<b> </b>      4408:12  4 (_)
 <b> </b>    In test/test-decoder.scm:
 <b> </b>        58:14  3 (_)
 <b> </b>    In toml/parser.scm:
 <b> </b>       367:45  2 (peg-tree->scm _)
 <b> </b>    In srfi/srfi-1.scm:
-<b> </b>       592:17  1 (map1 ((simple-key (simple-key "x"))))
+<b> </b>       586:17  1 (map1 ((simple-key (simple-key "x"))))
 <b> </b>    In unknown file:
 <b> </b>               0 (string-join (simple-key "x") "" #<undefined>)
 <b> </b>
@@ -104,20 +113,23 @@ toml version ecb24de
 
 <b>     output from parser-cmd (stderr):</b>
        Backtrace:
-                  8 (apply-smob/1 #<catch-closure 7fbc31b730c0>)
        In ice-9/boot-9.scm:
-           705:2  7 (call-with-prompt _ _ #<procedure default-prompt-handle…>)
+         1755:12  9 (with-exception-handler _ _ #:unwind? _ #:unwind-for-type _)
+       In unknown file:
+                  8 (apply-smob/0 #<thunk 7f66ed114300>)
+       In ice-9/boot-9.scm:
+           724:2  7 (call-with-prompt _ _ #<procedure default-prompt-handler (k proc)>)
        In ice-9/eval.scm:
-           619:8  6 (_ #(#(#<directory (guile-user) 7fbc31806140>)))
+           619:8  6 (_ #(#(#<directory (guile-user) 7f66ed117c80>)))
        In ice-9/boot-9.scm:
-          2312:4  5 (save-module-excursion _)
-         3832:12  4 (_)
+          2858:4  5 (save-module-excursion _)
+         4408:12  4 (_)
        In test/test-decoder.scm:
            58:14  3 (_)
        In toml/parser.scm:
           367:45  2 (peg-tree->scm _)
        In srfi/srfi-1.scm:
-          592:17  1 (map1 ((simple-key (simple-key "x"))))
+          586:17  1 (map1 ((simple-key (simple-key "x"))))
        In unknown file:
                   0 (string-join (simple-key "x") "" #<undefined>)
 
@@ -131,22 +143,24 @@ toml version ecb24de
 
 <b>FAIL</b> <b>valid/spec/table-9</b>
 <b> </b>    Backtrace:
-<b> </b>               7 (apply-smob/1 #<catch-closure 7f83ce5ed0c0>)
 <b> </b>    In ice-9/boot-9.scm:
-<b> </b>        705:2  6 (call-with-prompt _ _ #<procedure default-prompt-handle…>)
+<b> </b>      1755:12  8 (with-exception-handler _ _ #:unwind? _ #:unwind-for-type _)
+<b> </b>    In unknown file:
+<b> </b>               7 (apply-smob/0 #<thunk 7efee5914300>)
+<b> </b>    In ice-9/boot-9.scm:
+<b> </b>        724:2  6 (call-with-prompt _ _ #<procedure default-prompt-handler (k proc)>)
 <b> </b>    In ice-9/eval.scm:
-<b> </b>        619:8  5 (_ #(#(#<directory (guile-user) 7f83cdf93140>)))
+<b> </b>        619:8  5 (_ #(#(#<directory (guile-user) 7efee5917c80>)))
 <b> </b>    In ice-9/boot-9.scm:
-<b> </b>       2312:4  4 (save-module-excursion _)
-<b> </b>      3832:12  3 (_)
+<b> </b>       2858:4  4 (save-module-excursion _)
+<b> </b>      4408:12  3 (_)
 <b> </b>    In test/test-decoder.scm:
 <b> </b>        58:14  2 (_)
 <b> </b>    In toml/parser.scm:
 <b> </b>       386:13  1 (peg-tree->scm _)
-<b> </b>    In unknown file:
-<b> </b>               0 (scm-error misc-error #f "~A ~S ~S ~S" ("guile-toml…" …) …)
+<b> </b>        315:4  0 (check-explicit-table-keys _ _ _)
 <b> </b>
-<b> </b>    ERROR: In procedure scm-error:
+<b> </b>    toml/parser.scm:315:4: In procedure check-explicit-table-keys:
 <b> </b>    guile-toml: redefinition not allowed ("fruit" "apple" "texture") (("fruit" "apple" "taste") ("fruit" "apple") ("fruit")) 1
 <b> </b>
 <b> </b>    Exit 1
@@ -164,22 +178,24 @@ toml version ecb24de
 
 <b>     output from parser-cmd (stderr):</b>
        Backtrace:
-                  7 (apply-smob/1 #<catch-closure 7f83ce5ed0c0>)
        In ice-9/boot-9.scm:
-           705:2  6 (call-with-prompt _ _ #<procedure default-prompt-handle…>)
+         1755:12  8 (with-exception-handler _ _ #:unwind? _ #:unwind-for-type _)
+       In unknown file:
+                  7 (apply-smob/0 #<thunk 7efee5914300>)
+       In ice-9/boot-9.scm:
+           724:2  6 (call-with-prompt _ _ #<procedure default-prompt-handler (k proc)>)
        In ice-9/eval.scm:
-           619:8  5 (_ #(#(#<directory (guile-user) 7f83cdf93140>)))
+           619:8  5 (_ #(#(#<directory (guile-user) 7efee5917c80>)))
        In ice-9/boot-9.scm:
-          2312:4  4 (save-module-excursion _)
-         3832:12  3 (_)
+          2858:4  4 (save-module-excursion _)
+         4408:12  3 (_)
        In test/test-decoder.scm:
            58:14  2 (_)
        In toml/parser.scm:
           386:13  1 (peg-tree->scm _)
-       In unknown file:
-                  0 (scm-error misc-error #f "~A ~S ~S ~S" ("guile-toml…" …) …)
+           315:4  0 (check-explicit-table-keys _ _ _)
 
-       ERROR: In procedure scm-error:
+       toml/parser.scm:315:4: In procedure check-explicit-table-keys:
        guile-toml: redefinition not allowed ("fruit" "apple" "texture") (("fruit" "apple" "taste") ("fruit" "apple") ("fruit")) 1
 
        Exit 1
@@ -189,22 +205,24 @@ toml version ecb24de
 
 <b>FAIL</b> <b>valid/table/array-within-dotted</b>
 <b> </b>    Backtrace:
-<b> </b>               7 (apply-smob/1 #<catch-closure 7fa18b58e1a0>)
 <b> </b>    In ice-9/boot-9.scm:
-<b> </b>        705:2  6 (call-with-prompt _ _ #<procedure default-prompt-handle…>)
+<b> </b>      1755:12  8 (with-exception-handler _ _ #:unwind? _ #:unwind-for-type _)
+<b> </b>    In unknown file:
+<b> </b>               7 (apply-smob/0 #<thunk 7fb818d14300>)
+<b> </b>    In ice-9/boot-9.scm:
+<b> </b>        724:2  6 (call-with-prompt _ _ #<procedure default-prompt-handler (k proc)>)
 <b> </b>    In ice-9/eval.scm:
-<b> </b>        619:8  5 (_ #(#(#<directory (guile-user) 7fa18b2b3140>)))
+<b> </b>        619:8  5 (_ #(#(#<directory (guile-user) 7fb818d17c80>)))
 <b> </b>    In ice-9/boot-9.scm:
-<b> </b>       2312:4  4 (save-module-excursion _)
-<b> </b>      3832:12  3 (_)
+<b> </b>       2858:4  4 (save-module-excursion _)
+<b> </b>      4408:12  3 (_)
 <b> </b>    In test/test-decoder.scm:
 <b> </b>        58:14  2 (_)
 <b> </b>    In toml/parser.scm:
 <b> </b>        399:9  1 (peg-tree->scm _)
-<b> </b>    In unknown file:
-<b> </b>               0 (scm-error misc-error #f "~A ~S ~S ~S" ("guile-toml…" …) …)
+<b> </b>        315:4  0 (check-explicit-table-keys _ _ _)
 <b> </b>
-<b> </b>    ERROR: In procedure scm-error:
+<b> </b>    toml/parser.scm:315:4: In procedure check-explicit-table-keys:
 <b> </b>    guile-toml: redefinition not allowed ("fruit" "apple" "seeds") (("fruit")) 0
 <b> </b>
 <b> </b>    Exit 1
@@ -218,22 +236,24 @@ toml version ecb24de
 
 <b>     output from parser-cmd (stderr):</b>
        Backtrace:
-                  7 (apply-smob/1 #<catch-closure 7fa18b58e1a0>)
        In ice-9/boot-9.scm:
-           705:2  6 (call-with-prompt _ _ #<procedure default-prompt-handle…>)
+         1755:12  8 (with-exception-handler _ _ #:unwind? _ #:unwind-for-type _)
+       In unknown file:
+                  7 (apply-smob/0 #<thunk 7fb818d14300>)
+       In ice-9/boot-9.scm:
+           724:2  6 (call-with-prompt _ _ #<procedure default-prompt-handler (k proc)>)
        In ice-9/eval.scm:
-           619:8  5 (_ #(#(#<directory (guile-user) 7fa18b2b3140>)))
+           619:8  5 (_ #(#(#<directory (guile-user) 7fb818d17c80>)))
        In ice-9/boot-9.scm:
-          2312:4  4 (save-module-excursion _)
-         3832:12  3 (_)
+          2858:4  4 (save-module-excursion _)
+         4408:12  3 (_)
        In test/test-decoder.scm:
            58:14  2 (_)
        In toml/parser.scm:
            399:9  1 (peg-tree->scm _)
-       In unknown file:
-                  0 (scm-error misc-error #f "~A ~S ~S ~S" ("guile-toml…" …) …)
+           315:4  0 (check-explicit-table-keys _ _ _)
 
-       ERROR: In procedure scm-error:
+       toml/parser.scm:315:4: In procedure check-explicit-table-keys:
        guile-toml: redefinition not allowed ("fruit" "apple" "seeds") (("fruit")) 0
 
        Exit 1
@@ -243,20 +263,23 @@ toml version ecb24de
 
 <b>FAIL</b> <b>valid/table/empty-name</b>
 <b> </b>    Backtrace:
-<b> </b>               8 (apply-smob/1 #<catch-closure 7ffac478e1a0>)
 <b> </b>    In ice-9/boot-9.scm:
-<b> </b>        705:2  7 (call-with-prompt _ _ #<procedure default-prompt-handle…>)
+<b> </b>      1755:12  9 (with-exception-handler _ _ #:unwind? _ #:unwind-for-type _)
+<b> </b>    In unknown file:
+<b> </b>               8 (apply-smob/0 #<thunk 7fd776114300>)
+<b> </b>    In ice-9/boot-9.scm:
+<b> </b>        724:2  7 (call-with-prompt _ _ #<procedure default-prompt-handler (k proc)>)
 <b> </b>    In ice-9/eval.scm:
-<b> </b>        619:8  6 (_ #(#(#<directory (guile-user) 7ffac450e140>)))
+<b> </b>        619:8  6 (_ #(#(#<directory (guile-user) 7fd776117c80>)))
 <b> </b>    In ice-9/boot-9.scm:
-<b> </b>       2312:4  5 (save-module-excursion _)
-<b> </b>      3832:12  4 (_)
+<b> </b>       2858:4  5 (save-module-excursion _)
+<b> </b>      4408:12  4 (_)
 <b> </b>    In test/test-decoder.scm:
 <b> </b>        58:14  3 (_)
 <b> </b>    In toml/parser.scm:
 <b> </b>       376:22  2 (peg-tree->scm _)
 <b> </b>    In srfi/srfi-1.scm:
-<b> </b>       592:17  1 (map1 ((simple-key (simple-key "a"))))
+<b> </b>       586:17  1 (map1 ((simple-key (simple-key "a"))))
 <b> </b>    In unknown file:
 <b> </b>               0 (string-join (simple-key "a") "" #<undefined>)
 <b> </b>
@@ -277,20 +300,23 @@ toml version ecb24de
 
 <b>     output from parser-cmd (stderr):</b>
        Backtrace:
-                  8 (apply-smob/1 #<catch-closure 7ffac478e1a0>)
        In ice-9/boot-9.scm:
-           705:2  7 (call-with-prompt _ _ #<procedure default-prompt-handle…>)
+         1755:12  9 (with-exception-handler _ _ #:unwind? _ #:unwind-for-type _)
+       In unknown file:
+                  8 (apply-smob/0 #<thunk 7fd776114300>)
+       In ice-9/boot-9.scm:
+           724:2  7 (call-with-prompt _ _ #<procedure default-prompt-handler (k proc)>)
        In ice-9/eval.scm:
-           619:8  6 (_ #(#(#<directory (guile-user) 7ffac450e140>)))
+           619:8  6 (_ #(#(#<directory (guile-user) 7fd776117c80>)))
        In ice-9/boot-9.scm:
-          2312:4  5 (save-module-excursion _)
-         3832:12  4 (_)
+          2858:4  5 (save-module-excursion _)
+         4408:12  4 (_)
        In test/test-decoder.scm:
            58:14  3 (_)
        In toml/parser.scm:
           376:22  2 (peg-tree->scm _)
        In srfi/srfi-1.scm:
-          592:17  1 (map1 ((simple-key (simple-key "a"))))
+          586:17  1 (map1 ((simple-key (simple-key "a"))))
        In unknown file:
                   0 (string-join (simple-key "a") "" #<undefined>)
 
@@ -500,20 +526,6 @@ toml version ecb24de
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/string/bad-uni-esc-6</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       bad-uni-esc-6 = "This string contains a non scalar unicode codepoint \uD801"
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "bad-uni-esc-6": {"type": "string", "value": "This string contains a non scalar unicode codepoint �"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
 <b>FAIL</b> <b>invalid/table/append-to-array-with-dotted-keys</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -555,9 +567,9 @@ toml version ecb24de
 <b>     want:</b>
        Exit code 1
 
-toml-test v2024-05-31 [./src/guile-toml/test/test-decoder.scm]: using embedded tests
-  valid tests: 177 passed,  5 failed
-invalid tests: 356 passed, 15 failed
+toml-test v2025-04-14 [./src/guile-toml/test/test-decoder.scm]: using embedded tests
+  valid tests: 180 passed,  5 failed
+invalid tests: 357 passed, 14 failed
 
 ==> ENCODER TESTS
 <b>FAIL</b> <b>valid/inline-table/array-values</b>
@@ -684,7 +696,7 @@ invalid tests: 356 passed, 15 failed
           is preserved.
        '''
 
-toml-test v2024-05-31 [./src/guile-toml/test/test-encoder.scm]: using embedded tests
-encoder tests: 178 passed,  4 failed
+toml-test v2025-04-14 [./src/guile-toml/test/test-encoder.scm]: using embedded tests
+encoder tests: 181 passed,  4 failed
 took 0.0 0.0
 </pre>

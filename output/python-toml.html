@@ -4,16 +4,15 @@ toml version 65bab75
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
 <b> </b>        tdata = toml.loads(sys.stdin.read())
-<b> </b>                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 511, in loads
 <b> </b>        ret = decoder.load_line(line, currentlevel, multikey,
-<b> </b>              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>                                multibackslash)
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 778, in load_line
 <b> </b>        value, vtype = self.load_value(pair[1], strictly_valid)
-<b> </b>                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>                       ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 880, in load_value
 <b> </b>        return (self.load_array(v), "array")
-<b> </b>                ^^^^^^^^^^^^^^^^^^
+<b> </b>                ~~~~~~~~~~~~~~~^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 1001, in load_array
 <b> </b>        a[b] = a[b] + ',' + a[b + 1]
 <b> </b>                            ~^^^^^^^
@@ -38,16 +37,15 @@ toml version 65bab75
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
            tdata = toml.loads(sys.stdin.read())
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 511, in loads
            ret = decoder.load_line(line, currentlevel, multikey,
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                   multibackslash)
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 778, in load_line
            value, vtype = self.load_value(pair[1], strictly_valid)
-                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                          ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 880, in load_value
            return (self.load_array(v), "array")
-                   ^^^^^^^^^^^^^^^^^^
+                   ~~~~~~~~~~~~~~~^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 1001, in load_array
            a[b] = a[b] + ',' + a[b + 1]
                                ~^^^^^^^
@@ -62,13 +60,12 @@ toml version 65bab75
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
 <b> </b>        tdata = toml.loads(sys.stdin.read())
-<b> </b>                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 511, in loads
 <b> </b>        ret = decoder.load_line(line, currentlevel, multikey,
-<b> </b>              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>                                multibackslash)
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 767, in load_line
 <b> </b>        k, koffset = self._load_line_multiline_str(pair[1])
-<b> </b>                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 797, in _load_line_multiline_str
 <b> </b>        while len(newp) > 1 and newp[-1][0] != '"' and newp[-1][0] != "'":
 <b> </b>                                ~~~~~~~~^^^
@@ -87,13 +84,12 @@ toml version 65bab75
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
            tdata = toml.loads(sys.stdin.read())
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 511, in loads
            ret = decoder.load_line(line, currentlevel, multikey,
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                   multibackslash)
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 767, in load_line
            k, koffset = self._load_line_multiline_str(pair[1])
-                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 797, in _load_line_multiline_str
            while len(newp) > 1 and newp[-1][0] != '"' and newp[-1][0] != "'":
                                    ~~~~~~~~^^^
@@ -184,12 +180,13 @@ toml version 65bab75
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 511, in loads
 <b> </b>        ret = decoder.load_line(line, currentlevel, multikey,
-<b> </b>              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>                                multibackslash)
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 778, in load_line
 <b> </b>        value, vtype = self.load_value(pair[1], strictly_valid)
-<b> </b>                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>                       ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 894, in load_value
 <b> </b>        raise ValueError("Weirdness with leading zeroes or "
+<b> </b>                         "underscores in your number.")
 <b> </b>    ValueError: Weirdness with leading zeroes or underscores in your number.
 <b> </b>
 <b> </b>    During handling of the above exception, another exception occurred:
@@ -197,7 +194,6 @@ toml version 65bab75
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
 <b> </b>        tdata = toml.loads(sys.stdin.read())
-<b> </b>                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 514, in loads
 <b> </b>        raise TomlDecodeError(str(err), original, pos)
 <b> </b>    toml.decoder.TomlDecodeError: Weirdness with leading zeroes or underscores in your number. (line 4 column 1 char 47)
@@ -217,12 +213,13 @@ toml version 65bab75
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 511, in loads
            ret = decoder.load_line(line, currentlevel, multikey,
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                   multibackslash)
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 778, in load_line
            value, vtype = self.load_value(pair[1], strictly_valid)
-                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                          ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 894, in load_value
            raise ValueError("Weirdness with leading zeroes or "
+                            "underscores in your number.")
        ValueError: Weirdness with leading zeroes or underscores in your number.
 
        During handling of the above exception, another exception occurred:
@@ -230,7 +227,6 @@ toml version 65bab75
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
            tdata = toml.loads(sys.stdin.read())
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 514, in loads
            raise TomlDecodeError(str(err), original, pos)
        toml.decoder.TomlDecodeError: Weirdness with leading zeroes or underscores in your number. (line 4 column 1 char 47)
@@ -312,16 +308,15 @@ toml version 65bab75
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
 <b> </b>        tdata = toml.loads(sys.stdin.read())
-<b> </b>                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 511, in loads
 <b> </b>        ret = decoder.load_line(line, currentlevel, multikey,
-<b> </b>              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>                                multibackslash)
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 778, in load_line
 <b> </b>        value, vtype = self.load_value(pair[1], strictly_valid)
-<b> </b>                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>                       ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 880, in load_value
 <b> </b>        return (self.load_array(v), "array")
-<b> </b>                ^^^^^^^^^^^^^^^^^^
+<b> </b>                ~~~~~~~~~~~~~~~^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 1001, in load_array
 <b> </b>        a[b] = a[b] + ',' + a[b + 1]
 <b> </b>                            ~^^^^^^^
@@ -340,16 +335,15 @@ toml version 65bab75
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
            tdata = toml.loads(sys.stdin.read())
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 511, in loads
            ret = decoder.load_line(line, currentlevel, multikey,
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                   multibackslash)
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 778, in load_line
            value, vtype = self.load_value(pair[1], strictly_valid)
-                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                          ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 880, in load_value
            return (self.load_array(v), "array")
-                   ^^^^^^^^^^^^^^^^^^
+                   ~~~~~~~~~~~~~~~^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 1001, in load_array
            a[b] = a[b] + ',' + a[b + 1]
                                ~^^^^^^^
@@ -364,12 +358,13 @@ toml version 65bab75
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 511, in loads
 <b> </b>        ret = decoder.load_line(line, currentlevel, multikey,
-<b> </b>              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>                                multibackslash)
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 778, in load_line
 <b> </b>        value, vtype = self.load_value(pair[1], strictly_valid)
-<b> </b>                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>                       ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 883, in load_value
 <b> </b>        self.load_inline_object(v, inline_object)
+<b> </b>        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 677, in load_inline_object
 <b> </b>        raise ValueError("Invalid inline table value encountered")
 <b> </b>    ValueError: Invalid inline table value encountered
@@ -379,7 +374,6 @@ toml version 65bab75
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
 <b> </b>        tdata = toml.loads(sys.stdin.read())
-<b> </b>                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 514, in loads
 <b> </b>        raise TomlDecodeError(str(err), original, pos)
 <b> </b>    toml.decoder.TomlDecodeError: Invalid inline table value encountered (line 1 column 1 char 0)
@@ -396,12 +390,13 @@ toml version 65bab75
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 511, in loads
            ret = decoder.load_line(line, currentlevel, multikey,
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                   multibackslash)
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 778, in load_line
            value, vtype = self.load_value(pair[1], strictly_valid)
-                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                          ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 883, in load_value
            self.load_inline_object(v, inline_object)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 677, in load_inline_object
            raise ValueError("Invalid inline table value encountered")
        ValueError: Invalid inline table value encountered
@@ -411,7 +406,6 @@ toml version 65bab75
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
            tdata = toml.loads(sys.stdin.read())
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 514, in loads
            raise TomlDecodeError(str(err), original, pos)
        toml.decoder.TomlDecodeError: Invalid inline table value encountered (line 1 column 1 char 0)
@@ -468,9 +462,10 @@ toml version 65bab75
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
 <b> </b>        tdata = toml.loads(sys.stdin.read())
-<b> </b>                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 260, in loads
 <b> </b>        raise TomlDecodeError("Found invalid character in key name: '" +
+<b> </b>                              item + "'. Try quoting the key name.",
+<b> </b>                              original, i)
 <b> </b>    toml.decoder.TomlDecodeError: Found invalid character in key name: '"'. Try quoting the key name. (line 7 column 11 char 166)
 <b> </b>
 <b> </b>    Exit 1
@@ -496,9 +491,10 @@ toml version 65bab75
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
            tdata = toml.loads(sys.stdin.read())
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 260, in loads
            raise TomlDecodeError("Found invalid character in key name: '" +
+                                 item + "'. Try quoting the key name.",
+                                 original, i)
        toml.decoder.TomlDecodeError: Found invalid character in key name: '"'. Try quoting the key name. (line 7 column 11 char 166)
 
        Exit 1
@@ -510,7 +506,7 @@ toml version 65bab75
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 511, in loads
 <b> </b>        ret = decoder.load_line(line, currentlevel, multikey,
-<b> </b>              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>                                multibackslash)
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 781, in load_line
 <b> </b>        raise ValueError("Duplicate keys!")
 <b> </b>    ValueError: Duplicate keys!
@@ -520,7 +516,6 @@ toml version 65bab75
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
 <b> </b>        tdata = toml.loads(sys.stdin.read())
-<b> </b>                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 514, in loads
 <b> </b>        raise TomlDecodeError(str(err), original, pos)
 <b> </b>    toml.decoder.TomlDecodeError: Duplicate keys! (line 2 column 1 char 17)
@@ -537,7 +532,7 @@ toml version 65bab75
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 511, in loads
            ret = decoder.load_line(line, currentlevel, multikey,
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                   multibackslash)
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 781, in load_line
            raise ValueError("Duplicate keys!")
        ValueError: Duplicate keys!
@@ -547,7 +542,6 @@ toml version 65bab75
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
            tdata = toml.loads(sys.stdin.read())
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 514, in loads
            raise TomlDecodeError(str(err), original, pos)
        toml.decoder.TomlDecodeError: Duplicate keys! (line 2 column 1 char 17)
@@ -607,7 +601,7 @@ toml version 65bab75
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 511, in loads
 <b> </b>        ret = decoder.load_line(line, currentlevel, multikey,
-<b> </b>              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>                                multibackslash)
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 781, in load_line
 <b> </b>        raise ValueError("Duplicate keys!")
 <b> </b>    ValueError: Duplicate keys!
@@ -617,7 +611,6 @@ toml version 65bab75
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
 <b> </b>        tdata = toml.loads(sys.stdin.read())
-<b> </b>                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 514, in loads
 <b> </b>        raise TomlDecodeError(str(err), original, pos)
 <b> </b>    toml.decoder.TomlDecodeError: Duplicate keys! (line 3 column 1 char 19)
@@ -637,7 +630,7 @@ toml version 65bab75
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 511, in loads
            ret = decoder.load_line(line, currentlevel, multikey,
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                   multibackslash)
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 781, in load_line
            raise ValueError("Duplicate keys!")
        ValueError: Duplicate keys!
@@ -647,7 +640,6 @@ toml version 65bab75
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
            tdata = toml.loads(sys.stdin.read())
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 514, in loads
            raise TomlDecodeError(str(err), original, pos)
        toml.decoder.TomlDecodeError: Duplicate keys! (line 3 column 1 char 19)
@@ -661,16 +653,15 @@ toml version 65bab75
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
 <b> </b>        tdata = toml.loads(sys.stdin.read())
-<b> </b>                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 511, in loads
 <b> </b>        ret = decoder.load_line(line, currentlevel, multikey,
-<b> </b>              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>                                multibackslash)
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 778, in load_line
 <b> </b>        value, vtype = self.load_value(pair[1], strictly_valid)
-<b> </b>                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>                       ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 880, in load_value
 <b> </b>        return (self.load_array(v), "array")
-<b> </b>                ^^^^^^^^^^^^^^^^^^
+<b> </b>                ~~~~~~~~~~~~~~~^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 1001, in load_array
 <b> </b>        a[b] = a[b] + ',' + a[b + 1]
 <b> </b>                            ~^^^^^^^
@@ -696,16 +687,15 @@ toml version 65bab75
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
            tdata = toml.loads(sys.stdin.read())
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 511, in loads
            ret = decoder.load_line(line, currentlevel, multikey,
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                   multibackslash)
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 778, in load_line
            value, vtype = self.load_value(pair[1], strictly_valid)
-                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                          ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 880, in load_value
            return (self.load_array(v), "array")
-                   ^^^^^^^^^^^^^^^^^^
+                   ~~~~~~~~~~~~~~~^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 1001, in load_array
            a[b] = a[b] + ',' + a[b + 1]
                                ~^^^^^^^
@@ -720,9 +710,10 @@ toml version 65bab75
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
 <b> </b>        tdata = toml.loads(sys.stdin.read())
-<b> </b>                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 260, in loads
 <b> </b>        raise TomlDecodeError("Found invalid character in key name: '" +
+<b> </b>                              item + "'. Try quoting the key name.",
+<b> </b>                              original, i)
 <b> </b>    toml.decoder.TomlDecodeError: Found invalid character in key name: 'c'. Try quoting the key name. (line 2 column 8 char 57)
 <b> </b>
 <b> </b>    Exit 1
@@ -736,9 +727,10 @@ toml version 65bab75
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
            tdata = toml.loads(sys.stdin.read())
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 260, in loads
            raise TomlDecodeError("Found invalid character in key name: '" +
+                                 item + "'. Try quoting the key name.",
+                                 original, i)
        toml.decoder.TomlDecodeError: Found invalid character in key name: 'c'. Try quoting the key name. (line 2 column 8 char 57)
 
        Exit 1
@@ -750,7 +742,7 @@ toml version 65bab75
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 395, in loads
 <b> </b>        value, vtype = decoder.load_value(multilinestr)
-<b> </b>                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 866, in load_value
 <b> </b>        raise ValueError("Reserved escape sequence used")
 <b> </b>    ValueError: Reserved escape sequence used
@@ -760,7 +752,6 @@ toml version 65bab75
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
 <b> </b>        tdata = toml.loads(sys.stdin.read())
-<b> </b>                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 397, in loads
 <b> </b>        raise TomlDecodeError(str(err), original, pos)
 <b> </b>    toml.decoder.TomlDecodeError: Reserved escape sequence used (line 6 column 1 char 28)
@@ -779,7 +770,7 @@ toml version 65bab75
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 395, in loads
            value, vtype = decoder.load_value(multilinestr)
-                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                          ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 866, in load_value
            raise ValueError("Reserved escape sequence used")
        ValueError: Reserved escape sequence used
@@ -789,7 +780,6 @@ toml version 65bab75
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
            tdata = toml.loads(sys.stdin.read())
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 397, in loads
            raise TomlDecodeError(str(err), original, pos)
        toml.decoder.TomlDecodeError: Reserved escape sequence used (line 6 column 1 char 28)
@@ -803,9 +793,9 @@ toml version 65bab75
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
 <b> </b>        tdata = toml.loads(sys.stdin.read())
-<b> </b>                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 362, in loads
 <b> </b>        raise TomlDecodeError("Unterminated string found."
+<b> </b>                              " Reached end of file.", original, len(s))
 <b> </b>    toml.decoder.TomlDecodeError: Unterminated string found. Reached end of file. (line 27 column 1 char 664)
 <b> </b>
 <b> </b>    Exit 1
@@ -842,9 +832,9 @@ toml version 65bab75
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
            tdata = toml.loads(sys.stdin.read())
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 362, in loads
            raise TomlDecodeError("Unterminated string found."
+                                 " Reached end of file.", original, len(s))
        toml.decoder.TomlDecodeError: Unterminated string found. Reached end of file. (line 27 column 1 char 664)
 
        Exit 1
@@ -856,7 +846,6 @@ toml version 65bab75
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
 <b> </b>        tdata = toml.loads(sys.stdin.read())
-<b> </b>                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 340, in loads
 <b> </b>        raise TomlDecodeError("Unbalanced quotes", original, i)
 <b> </b>    toml.decoder.TomlDecodeError: Unbalanced quotes (line 20 column 50 char 532)
@@ -891,7 +880,6 @@ toml version 65bab75
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
            tdata = toml.loads(sys.stdin.read())
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 340, in loads
            raise TomlDecodeError("Unbalanced quotes", original, i)
        toml.decoder.TomlDecodeError: Unbalanced quotes (line 20 column 50 char 532)
@@ -905,9 +893,9 @@ toml version 65bab75
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
 <b> </b>        tdata = toml.loads(sys.stdin.read())
-<b> </b>                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 463, in loads
 <b> </b>        raise TomlDecodeError("Can't have a keygroup with an empty "
+<b> </b>                              "name", original, pos)
 <b> </b>    toml.decoder.TomlDecodeError: Can't have a keygroup with an empty name (line 1 column 1 char 0)
 <b> </b>
 <b> </b>    Exit 1
@@ -926,9 +914,9 @@ toml version 65bab75
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/decoding_test.py", line 37, in <module>
            tdata = toml.loads(sys.stdin.read())
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 463, in loads
            raise TomlDecodeError("Can't have a keygroup with an empty "
+                                 "name", original, pos)
        toml.decoder.TomlDecodeError: Can't have a keygroup with an empty name (line 1 column 1 char 0)
 
        Exit 1
@@ -2054,8 +2042,8 @@ toml version 65bab75
 <b>     want:</b>
        Exit code 1
 
-toml-test v2024-05-31 [./src/python-toml/tests/decoding_test.py]: using embedded tests
-  valid tests: 164 passed, 18 failed
+toml-test v2025-04-14 [./src/python-toml/tests/decoding_test.py]: using embedded tests
+  valid tests: 167 passed, 18 failed
 invalid tests: 298 passed, 73 failed
 
 ==> ENCODER TESTS
@@ -2063,13 +2051,13 @@ invalid tests: 298 passed, 73 failed
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/encoding_test.py", line 28, in <module>
 <b> </b>        print(toml.dumps({k: convert(v) for (k, v) in j.items()}))
-<b> </b>              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>              ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 60, in dumps
 <b> </b>        addtoretval, sections = encoder.dump_sections(o, "")
-<b> </b>                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>                                ~~~~~~~~~~~~~~~~~~~~~^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 203, in dump_sections
 <b> </b>        s, d = self.dump_sections(a, sup + qsection)
-<b> </b>               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 193, in dump_sections
 <b> </b>        if not isinstance(o[section], dict):
 <b> </b>                          ~^^^^^^^^^
@@ -2100,13 +2088,13 @@ invalid tests: 298 passed, 73 failed
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/encoding_test.py", line 28, in <module>
            print(toml.dumps({k: convert(v) for (k, v) in j.items()}))
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                 ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 60, in dumps
            addtoretval, sections = encoder.dump_sections(o, "")
-                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                   ~~~~~~~~~~~~~~~~~~~~~^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 203, in dump_sections
            s, d = self.dump_sections(a, sup + qsection)
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                  ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 193, in dump_sections
            if not isinstance(o[section], dict):
                              ~^^^^^^^^^
@@ -2156,13 +2144,13 @@ invalid tests: 298 passed, 73 failed
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/encoding_test.py", line 28, in <module>
 <b> </b>        print(toml.dumps({k: convert(v) for (k, v) in j.items()}))
-<b> </b>              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>              ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 60, in dumps
 <b> </b>        addtoretval, sections = encoder.dump_sections(o, "")
-<b> </b>                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>                                ~~~~~~~~~~~~~~~~~~~~~^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 203, in dump_sections
 <b> </b>        s, d = self.dump_sections(a, sup + qsection)
-<b> </b>               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 193, in dump_sections
 <b> </b>        if not isinstance(o[section], dict):
 <b> </b>                          ~^^^^^^^^^
@@ -2216,13 +2204,13 @@ invalid tests: 298 passed, 73 failed
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/encoding_test.py", line 28, in <module>
            print(toml.dumps({k: convert(v) for (k, v) in j.items()}))
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                 ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 60, in dumps
            addtoretval, sections = encoder.dump_sections(o, "")
-                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                   ~~~~~~~~~~~~~~~~~~~~~^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 203, in dump_sections
            s, d = self.dump_sections(a, sup + qsection)
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                  ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 193, in dump_sections
            if not isinstance(o[section], dict):
                              ~^^^^^^^^^
@@ -2304,13 +2292,12 @@ invalid tests: 298 passed, 73 failed
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/encoding_test.py", line 28, in <module>
 <b> </b>        print(toml.dumps({k: convert(v) for (k, v) in j.items()}))
-<b> </b>              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>              ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 60, in dumps
 <b> </b>        addtoretval, sections = encoder.dump_sections(o, "")
-<b> </b>                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>                                ~~~~~~~~~~~~~~~~~~~~~^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 192, in dump_sections
 <b> </b>        qsection = _dump_str(section)
-<b> </b>                   ^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 113, in _dump_str
 <b> </b>        v = [v[0] + joiner + v[1]] + v[2:]
 <b> </b>                             ~^^^
@@ -2337,13 +2324,12 @@ invalid tests: 298 passed, 73 failed
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/encoding_test.py", line 28, in <module>
            print(toml.dumps({k: convert(v) for (k, v) in j.items()}))
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                 ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 60, in dumps
            addtoretval, sections = encoder.dump_sections(o, "")
-                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                   ~~~~~~~~~~~~~~~~~~~~~^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 192, in dump_sections
            qsection = _dump_str(section)
-                      ^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 113, in _dump_str
            v = [v[0] + joiner + v[1]] + v[2:]
                                 ~^^^
@@ -2358,13 +2344,12 @@ invalid tests: 298 passed, 73 failed
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/encoding_test.py", line 28, in <module>
 <b> </b>        print(toml.dumps({k: convert(v) for (k, v) in j.items()}))
-<b> </b>              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>              ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 60, in dumps
 <b> </b>        addtoretval, sections = encoder.dump_sections(o, "")
-<b> </b>                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>                                ~~~~~~~~~~~~~~~~~~~~~^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 192, in dump_sections
 <b> </b>        qsection = _dump_str(section)
-<b> </b>                   ^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 113, in _dump_str
 <b> </b>        v = [v[0] + joiner + v[1]] + v[2:]
 <b> </b>                             ~^^^
@@ -2385,13 +2370,12 @@ invalid tests: 298 passed, 73 failed
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/encoding_test.py", line 28, in <module>
            print(toml.dumps({k: convert(v) for (k, v) in j.items()}))
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                 ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 60, in dumps
            addtoretval, sections = encoder.dump_sections(o, "")
-                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                   ~~~~~~~~~~~~~~~~~~~~~^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 192, in dump_sections
            qsection = _dump_str(section)
-                      ^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 113, in _dump_str
            v = [v[0] + joiner + v[1]] + v[2:]
                                 ~^^^
@@ -2406,13 +2390,13 @@ invalid tests: 298 passed, 73 failed
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/encoding_test.py", line 28, in <module>
 <b> </b>        print(toml.dumps({k: convert(v) for (k, v) in j.items()}))
-<b> </b>              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>              ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 60, in dumps
 <b> </b>        addtoretval, sections = encoder.dump_sections(o, "")
-<b> </b>                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>                                ~~~~~~~~~~~~~~~~~~~~~^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 203, in dump_sections
 <b> </b>        s, d = self.dump_sections(a, sup + qsection)
-<b> </b>               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 193, in dump_sections
 <b> </b>        if not isinstance(o[section], dict):
 <b> </b>                          ~^^^^^^^^^
@@ -2482,13 +2466,13 @@ invalid tests: 298 passed, 73 failed
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/encoding_test.py", line 28, in <module>
            print(toml.dumps({k: convert(v) for (k, v) in j.items()}))
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                 ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 60, in dumps
            addtoretval, sections = encoder.dump_sections(o, "")
-                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                   ~~~~~~~~~~~~~~~~~~~~~^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 203, in dump_sections
            s, d = self.dump_sections(a, sup + qsection)
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                  ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 193, in dump_sections
            if not isinstance(o[section], dict):
                              ~^^^^^^^^^
@@ -2522,16 +2506,16 @@ invalid tests: 298 passed, 73 failed
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/encoding_test.py", line 28, in <module>
 <b> </b>        print(toml.dumps({k: convert(v) for (k, v) in j.items()}))
-<b> </b>              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>              ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 60, in dumps
 <b> </b>        addtoretval, sections = encoder.dump_sections(o, "")
-<b> </b>                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>                                ~~~~~~~~~~~~~~~~~~~~~^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 226, in dump_sections
 <b> </b>        unicode(self.dump_value(o[section])) + '\n')
-<b> </b>                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>                ~~~~~~~~~~~~~~~^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 180, in dump_value
 <b> </b>        return dump_fn(v) if dump_fn is not None else self.dump_funcs[str](v)
-<b> </b>               ^^^^^^^^^^
+<b> </b>               ~~~~~~~^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 113, in _dump_str
 <b> </b>        v = [v[0] + joiner + v[1]] + v[2:]
 <b> </b>                             ~^^^
@@ -2554,16 +2538,16 @@ invalid tests: 298 passed, 73 failed
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/encoding_test.py", line 28, in <module>
            print(toml.dumps({k: convert(v) for (k, v) in j.items()}))
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                 ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 60, in dumps
            addtoretval, sections = encoder.dump_sections(o, "")
-                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                   ~~~~~~~~~~~~~~~~~~~~~^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 226, in dump_sections
            unicode(self.dump_value(o[section])) + '\n')
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                   ~~~~~~~~~~~~~~~^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 180, in dump_value
            return dump_fn(v) if dump_fn is not None else self.dump_funcs[str](v)
-                  ^^^^^^^^^^
+                  ~~~~~~~^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 113, in _dump_str
            v = [v[0] + joiner + v[1]] + v[2:]
                                 ~^^^
@@ -2678,16 +2662,16 @@ invalid tests: 298 passed, 73 failed
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/encoding_test.py", line 28, in <module>
 <b> </b>        print(toml.dumps({k: convert(v) for (k, v) in j.items()}))
-<b> </b>              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>              ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 60, in dumps
 <b> </b>        addtoretval, sections = encoder.dump_sections(o, "")
-<b> </b>                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>                                ~~~~~~~~~~~~~~~~~~~~~^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 226, in dump_sections
 <b> </b>        unicode(self.dump_value(o[section])) + '\n')
-<b> </b>                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<b> </b>                ~~~~~~~~~~~~~~~^^^^^^^^^^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 180, in dump_value
 <b> </b>        return dump_fn(v) if dump_fn is not None else self.dump_funcs[str](v)
-<b> </b>               ^^^^^^^^^^
+<b> </b>               ~~~~~~~^^^
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 113, in _dump_str
 <b> </b>        v = [v[0] + joiner + v[1]] + v[2:]
 <b> </b>                             ~^^^
@@ -2717,16 +2701,16 @@ invalid tests: 298 passed, 73 failed
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/./src/python-toml/tests/encoding_test.py", line 28, in <module>
            print(toml.dumps({k: convert(v) for (k, v) in j.items()}))
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                 ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 60, in dumps
            addtoretval, sections = encoder.dump_sections(o, "")
-                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                   ~~~~~~~~~~~~~~~~~~~~~^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 226, in dump_sections
            unicode(self.dump_value(o[section])) + '\n')
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                   ~~~~~~~~~~~~~~~^^^^^^^^^^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 180, in dump_value
            return dump_fn(v) if dump_fn is not None else self.dump_funcs[str](v)
-                  ^^^^^^^^^^
+                  ~~~~~~~^^^
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/encoder.py", line 113, in _dump_str
            v = [v[0] + joiner + v[1]] + v[2:]
                                 ~^^^
@@ -2737,7 +2721,7 @@ invalid tests: 298 passed, 73 failed
 <b>     want:</b>
           <empty>
 
-toml-test v2024-05-31 [./src/python-toml/tests/encoding_test.py]: using embedded tests
-encoder tests: 168 passed, 14 failed
+toml-test v2025-04-14 [./src/python-toml/tests/encoding_test.py]: using embedded tests
+encoder tests: 171 passed, 14 failed
 took 3.7 1.80
 </pre>

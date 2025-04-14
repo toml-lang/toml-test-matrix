@@ -3,6 +3,7 @@ export RUBYLIB=~/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib:./src/ruby-toml-rb/
 deps() { print 'ruby bundle' }
 
 setup() {
+	bundle config set --local path ~/.local/share/gem
 	bundle
 	cp ../../scripts/ruby-toml-rb-decoder .
 	cp ../../scripts/ruby-toml-rb-encoder .

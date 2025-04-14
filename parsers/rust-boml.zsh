@@ -8,7 +8,7 @@ setup() {
 typeset -A info=(
 	lang    'Rust'
 	toml    '1.0'
-	site    'https://github.com/Bright-Shard/boml/tree/main'
+	site    'https://github.com/Bright-Shard/boml'
 	src     '' # We use the Cargo.toml for now 'https://github.com/toml-rs/toml.git'
 	version '0.3.1'
 	decoder './scripts/target/release/boml-decoder'

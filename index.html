@@ -37,13 +37,14 @@ a:hover         { text-decoration:underline; }
 #langs          { gap:1em; margin-bottom:.5em; display:none; line-height:2.5em; }
 #langs >span:nth-child(1) { white-space:nowrap; }
 label           { white-space:nowrap; break-inside:avoid; margin-right:.4em; padding:.3em;
-                  box-shadow:2px 2px #000; border-radius:2px; border:1px solid #666; user-select:none; }
+                  box-shadow:2px 2px #000; border-radius:2px; border:1px solid #666;
+                  user-select:none; cursor:pointer; }
 label:hover     { background:#eee; }
 .on             { box-shadow:-1px -1px #000; background:#eee; }
 input[type="checkbox"] { vertical-align:text-top; }
 .good           { color:green; }
 .slow           {}
-.very-slow      { color:red; font-weight:bold; }
+.very-slow      { color:red; }
 </style>
 </head>
 <body>
@@ -105,19 +106,19 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <tr data-lang="C++">
 <td><span title="Compliant">✅</span></td>
 <td>C++</td>
-<td title="Version 1f7884e"><a href="https://github.com/marzer/tomlplusplus">toml++</a></td>
+<td title="Version fea1d90"><a href="https://github.com/marzer/tomlplusplus">toml++</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 182</small>
+<small class="pass">pass: 185</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 182</small>
+<small class="pass">pass: 185</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
@@ -134,15 +135,21 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <tr data-lang="C++">
 <td><span title="Compliant">✅</span></td>
 <td>C++</td>
-<td title="Version 85faca9"><a href="https://github.com/ToruNiina/toml11">toml11</a></td>
+<td title="Version a01fe3b"><a href="https://github.com/ToruNiina/toml11">toml11</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 182</small>
+<small class="pass">pass: 185</small>
 <span class="fail ">fail: 0</span>
 </td>
-<td style='width:30em'><em>(TODO)</em></td>
+<td style="width:30em">
+<div class="bars">
+<span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
+</div>
+<small class="pass">pass: 185</small>
+<span class="fail ">fail: 0</span>
+</td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
@@ -157,21 +164,21 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <tr data-lang="C">
 <td><span title="Compliant">✅</span></td>
 <td>C</td>
-<td title="Version 7e2c57b"><a href="https://github.com/arp242/toml-c">toml-c</a></td>
+<td title="Version 89a7769"><a href="https://github.com/arp242/toml-c">toml-c</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 182</small>
+<small class="pass">pass: 185</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style='width:30em'><em>(doesn't include encoder)</em></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:94.339623%"></span><span class="barf" style="width:5.660377%"></span>
+<span class="barp " style="width:94.878706%"></span><span class="barf" style="width:5.121294%"></span>
 </div>
-<small class="pass">pass: 350</small>
-<span class="fail didfail">fail: 21</span>
+<small class="pass">pass: 352</small>
+<span class="fail didfail">fail: 19</span>
 </td>
 <td class='good' title='0.3 milliseconds'>good</td>
 <td class='slow' title='4.75 seconds'>slow</td>
@@ -183,9 +190,9 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <td title="Version 5221b3d"><a href="https://github.com/cktan/tomlc99">tomlc99</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:96.153846%"></span><span class="barf" style="width:3.846154%"></span>
+<span class="barp " style="width:96.216216%"></span><span class="barf" style="width:3.783784%"></span>
 </div>
-<small class="pass">pass: 175</small>
+<small class="pass">pass: 178</small>
 <span class="fail didfail">fail: 7</span>
 </td>
 <td style='width:30em'><em>(doesn't include encoder)</em></td>
@@ -206,9 +213,9 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <td title="Version 0.16.2"><a href="https://github.com/xoofx/Tomlyn">tomlyn</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:98.351648%"></span><span class="barf" style="width:1.648352%"></span>
+<span class="barp " style="width:98.378378%"></span><span class="barf" style="width:1.621622%"></span>
 </div>
-<small class="pass">pass: 179</small>
+<small class="pass">pass: 182</small>
 <span class="fail didfail">fail: 3</span>
 </td>
 <td style='width:30em'><em>(TODO)</em></td>
@@ -219,34 +226,34 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <small class="pass">pass: 366</small>
 <span class="fail didfail">fail: 5</span>
 </td>
-<td class='slow' title='76.3 milliseconds'>slow</td>
-<td class='good' title='1.72 seconds'>good</td>
+<td><em>(TODO)</em></td>
+<td><em>(TODO)</em></td>
 <td><a href="output/cs-tomlyn.html" class="ui">output</a></td>
 </tr>
 <tr data-lang="Dart">
 <td><span title="Compliant">✅</span></td>
 <td>Dart</td>
-<td title="Version e9fe9b4"><a href="https://github.com/just95/toml.dart">toml.dart</a></td>
+<td title="Version 0deeebb"><a href="https://github.com/just95/toml.dart">toml.dart</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 182</small>
+<small class="pass">pass: 185</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 182</small>
+<small class="pass">pass: 185</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:89.487871%"></span><span class="barf" style="width:10.512129%"></span>
+<span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 332</small>
-<span class="fail didfail">fail: 39</span>
+<small class="pass">pass: 371</small>
+<span class="fail ">fail: 0</span>
 </td>
 <td class='good' title='4.2 milliseconds'>good</td>
 <td class='good' title='1.22 seconds'>good</td>
@@ -255,19 +262,19 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <tr data-lang="Fortran">
 <td><span title="Non-compliant">❌</span></td>
 <td>Fortran</td>
-<td title="Version 59a62ce"><a href="https://github.com/toml-f/toml-f">toml-f</a></td>
+<td title="Version 056d362"><a href="https://github.com/toml-f/toml-f">toml-f</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:93.956044%"></span><span class="barf" style="width:6.043956%"></span>
+<span class="barp " style="width:94.054054%"></span><span class="barf" style="width:5.945946%"></span>
 </div>
-<small class="pass">pass: 171</small>
+<small class="pass">pass: 174</small>
 <span class="fail didfail">fail: 11</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:93.406593%"></span><span class="barf" style="width:6.593407%"></span>
+<span class="barp " style="width:93.513514%"></span><span class="barf" style="width:6.486486%"></span>
 </div>
-<small class="pass">pass: 170</small>
+<small class="pass">pass: 173</small>
 <span class="fail didfail">fail: 12</span>
 </td>
 <td style="width:30em">
@@ -284,19 +291,19 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <tr data-lang="Go">
 <td><span title="Compliant">✅</span></td>
 <td>Go</td>
-<td title="Version bccd6e4"><a href="https://github.com/pelletier/go-toml">go-toml</a></td>
+<td title="Version ee07c92"><a href="https://github.com/pelletier/go-toml">go-toml</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 182</small>
+<small class="pass">pass: 185</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 182</small>
+<small class="pass">pass: 185</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
@@ -313,27 +320,27 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <tr data-lang="Go">
 <td><span title="Compliant">✅</span></td>
 <td>Go</td>
-<td title="Version a339e1f"><a href="https://github.com/BurntSushi/toml">toml</a></td>
+<td title="Version 3d3abc2"><a href="https://github.com/BurntSushi/toml">toml</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 182</small>
+<small class="pass">pass: 185</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 182</small>
+<small class="pass">pass: 185</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:95.956873%"></span><span class="barf" style="width:4.043127%"></span>
+<span class="barp " style="width:96.495957%"></span><span class="barf" style="width:3.504043%"></span>
 </div>
-<small class="pass">pass: 356</small>
-<span class="fail didfail">fail: 15</span>
+<small class="pass">pass: 358</small>
+<span class="fail didfail">fail: 13</span>
 </td>
 <td class='good' title='0.9 milliseconds'>good</td>
 <td class='good' title='0.36 seconds'>good</td>
@@ -345,24 +352,24 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <td title="Version ecb24de"><a href="https://github.com/hylophile/guile-toml">toml</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:97.252747%"></span><span class="barf" style="width:2.747253%"></span>
+<span class="barp " style="width:97.297297%"></span><span class="barf" style="width:2.702703%"></span>
 </div>
-<small class="pass">pass: 177</small>
+<small class="pass">pass: 180</small>
 <span class="fail didfail">fail: 5</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:97.802198%"></span><span class="barf" style="width:2.197802%"></span>
+<span class="barp " style="width:97.837838%"></span><span class="barf" style="width:2.162162%"></span>
 </div>
-<small class="pass">pass: 178</small>
+<small class="pass">pass: 181</small>
 <span class="fail didfail">fail: 4</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:95.956873%"></span><span class="barf" style="width:4.043127%"></span>
+<span class="barp " style="width:96.226415%"></span><span class="barf" style="width:3.773585%"></span>
 </div>
-<small class="pass">pass: 356</small>
-<span class="fail didfail">fail: 15</span>
+<small class="pass">pass: 357</small>
+<span class="fail didfail">fail: 14</span>
 </td>
 <td><em>(TODO)</em></td>
 <td><em>(TODO)</em></td>
@@ -371,19 +378,19 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <tr data-lang="Haskell">
 <td><span title="Non-compliant">❌</span></td>
 <td>Haskell</td>
-<td title="Version 91112d1"><a href="https://github.com/glguy/toml-parser">toml-parser</a></td>
+<td title="Version 9a47cf0"><a href="https://github.com/glguy/toml-parser">toml-parser</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:99.450549%"></span><span class="barf" style="width:0.549451%"></span>
+<span class="barp " style="width:99.459459%"></span><span class="barf" style="width:0.540541%"></span>
 </div>
-<small class="pass">pass: 181</small>
+<small class="pass">pass: 184</small>
 <span class="fail didfail">fail: 1</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 182</small>
+<small class="pass">pass: 185</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
@@ -397,29 +404,6 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <td class='good' title='0.97 seconds'>good</td>
 <td><a href="output/haskell-toml-parser.html" class="ui">output</a></td>
 </tr>
-<tr data-lang="Haskell">
-<td><span title="Non-compliant">❌</span></td>
-<td>Haskell</td>
-<td title="Version 03e9014"><a href="https://github.com/brandonchinn178/toml-reader">toml-reader</a></td>
-<td style="width:30em">
-<div class="bars">
-<span class="barp " style="width:98.882682%"></span><span class="barf" style="width:1.117318%"></span>
-</div>
-<small class="pass">pass: 177</small>
-<span class="fail didfail">fail: 2</span>
-</td>
-<td style='width:30em'><em>(doesn't include encoder)</em></td>
-<td style="width:30em">
-<div class="bars">
-<span class="barp " style="width:99.456522%"></span><span class="barf" style="width:0.543478%"></span>
-</div>
-<small class="pass">pass: 366</small>
-<span class="fail didfail">fail: 2</span>
-</td>
-<td class='good' title='6.6 milliseconds'>good</td>
-<td class='good' title='1.40 seconds'>good</td>
-<td><a href="output/haskell-toml-reader.html" class="ui">output</a></td>
-</tr>
 <tr data-lang="JS">
 <td><span title="Compliant">✅</span></td>
 <td>JS</td>
@@ -428,14 +412,14 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 182</small>
+<small class="pass">pass: 185</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 182</small>
+<small class="pass">pass: 185</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
@@ -452,19 +436,19 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <tr data-lang="JS">
 <td><span title="Non-compliant">❌</span></td>
 <td>JS</td>
-<td title="Version 7eac80f"><a href="https://github.com/squirrelchat/smol-toml">smol-toml</a></td>
+<td title="Version 5ed3ead"><a href="https://github.com/squirrelchat/smol-toml">smol-toml</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 181</small>
+<small class="pass">pass: 184</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:96.132597%"></span><span class="barf" style="width:3.867403%"></span>
+<span class="barp " style="width:96.195652%"></span><span class="barf" style="width:3.804348%"></span>
 </div>
-<small class="pass">pass: 174</small>
+<small class="pass">pass: 177</small>
 <span class="fail didfail">fail: 7</span>
 </td>
 <td style="width:30em">
@@ -481,12 +465,12 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <tr data-lang="JS">
 <td><span title="Compliant">✅</span></td>
 <td>JS</td>
-<td title="Version 7508c8a"><a href="https://github.com/ota-meshi/toml-eslint-parser">toml-eslint-parser</a></td>
+<td title="Version f323827"><a href="https://github.com/ota-meshi/toml-eslint-parser">toml-eslint-parser</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 182</small>
+<small class="pass">pass: 185</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style='width:30em'><em>(doesn't include encoder)</em></td>
@@ -507,10 +491,10 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <td title="Version c0c3fe7"><a href="https://github.com/sheepduke/clop">clop</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:98.351648%"></span><span class="barf" style="width:1.648352%"></span>
+<span class="barp " style="width:97.837838%"></span><span class="barf" style="width:2.162162%"></span>
 </div>
-<small class="pass">pass: 179</small>
-<span class="fail didfail">fail: 3</span>
+<small class="pass">pass: 181</small>
+<span class="fail didfail">fail: 4</span>
 </td>
 <td style='width:30em'><em>(doesn't include encoder)</em></td>
 <td style="width:30em">
@@ -530,16 +514,16 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <td title="Version 970e114"><a href="https://github.com/dmbaturin/otoml">otoml</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:99.450549%"></span><span class="barf" style="width:0.549451%"></span>
+<span class="barp " style="width:99.459459%"></span><span class="barf" style="width:0.540541%"></span>
 </div>
-<small class="pass">pass: 181</small>
+<small class="pass">pass: 184</small>
 <span class="fail didfail">fail: 1</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:95.604396%"></span><span class="barf" style="width:4.395604%"></span>
+<span class="barp " style="width:95.675676%"></span><span class="barf" style="width:4.324324%"></span>
 </div>
-<small class="pass">pass: 174</small>
+<small class="pass">pass: 177</small>
 <span class="fail didfail">fail: 8</span>
 </td>
 <td style="width:30em">
@@ -559,16 +543,16 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <td title="Version 65bab75"><a href="https://github.com/uiri/toml">toml</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:90.109890%"></span><span class="barf" style="width:9.890110%"></span>
+<span class="barp " style="width:90.270270%"></span><span class="barf" style="width:9.729730%"></span>
 </div>
-<small class="pass">pass: 164</small>
+<small class="pass">pass: 167</small>
 <span class="fail didfail">fail: 18</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:92.307692%"></span><span class="barf" style="width:7.692308%"></span>
+<span class="barp " style="width:92.432432%"></span><span class="barf" style="width:7.567568%"></span>
 </div>
-<small class="pass">pass: 168</small>
+<small class="pass">pass: 171</small>
 <span class="fail didfail">fail: 14</span>
 </td>
 <td style="width:30em">
@@ -585,19 +569,19 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <tr data-lang="Python">
 <td><span title="Compliant">✅</span></td>
 <td>Python</td>
-<td title="Version 9d939b5"><a href="https://github.com/hukkin/tomli-w">tomli</a></td>
+<td title="Version 33fea4c"><a href="https://github.com/hukkin/tomli-w">tomli</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 182</small>
+<small class="pass">pass: 185</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 182</small>
+<small class="pass">pass: 185</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
@@ -614,19 +598,19 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <tr data-lang="Python">
 <td><span title="Compliant">✅</span></td>
 <td>Python</td>
-<td title="Version 30a22f7"><a href="https://github.com/sdispater/tomlkit">tomlkit</a></td>
+<td title="Version 1a3085c"><a href="https://github.com/sdispater/tomlkit">tomlkit</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 182</small>
+<small class="pass">pass: 185</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 182</small>
+<small class="pass">pass: 185</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
@@ -643,12 +627,12 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <tr data-lang="Python">
 <td><span title="Compliant">✅</span></td>
 <td>Python</td>
-<td title="Version Python 3.12.3"><a href="https://docs.python.org/3/library/tomllib.html">tomllib</a></td>
+<td title="Version Python 3.13.3"><a href="https://docs.python.org/3/library/tomllib.html">tomllib</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 182</small>
+<small class="pass">pass: 185</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style='width:30em'><em>(doesn't include encoder)</em></td>
@@ -669,24 +653,24 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <td title="Version fe46aa2"><a href="https://github.com/toml-racket/toml-racket">toml-racket</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:0.000000%"></span><span class="barf" style="width:100.000000%"></span>
+<span class="barp " style="width:98.918919%"></span><span class="barf" style="width:1.081081%"></span>
 </div>
-<small class="pass">pass: 0</small>
-<span class="fail didfail">fail: 182</span>
+<small class="pass">pass: 183</small>
+<span class="fail didfail">fail: 2</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:96.153846%"></span><span class="barf" style="width:3.846154%"></span>
+<span class="barp " style="width:96.216216%"></span><span class="barf" style="width:3.783784%"></span>
 </div>
-<small class="pass">pass: 175</small>
+<small class="pass">pass: 178</small>
 <span class="fail didfail">fail: 7</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:0.000000%"></span><span class="barf" style="width:100.000000%"></span>
+<span class="barp " style="width:99.730458%"></span><span class="barf" style="width:0.269542%"></span>
 </div>
-<small class="pass">pass: 0</small>
-<span class="fail didfail">fail: 371</span>
+<small class="pass">pass: 370</small>
+<span class="fail didfail">fail: 1</span>
 </td>
 <td><em>(TODO)</em></td>
 <td><em>(TODO)</em></td>
@@ -695,19 +679,19 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <tr data-lang="Ruby">
 <td><span title="Non-compliant">❌</span></td>
 <td>Ruby</td>
-<td title="Version 6bdfc3b"><a href="https://github.com/mame/perfect_toml">perfect_toml</a></td>
+<td title="Version 6efc8bc"><a href="https://github.com/mame/perfect_toml">perfect_toml</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 182</small>
+<small class="pass">pass: 185</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:99.450549%"></span><span class="barf" style="width:0.549451%"></span>
+<span class="barp " style="width:99.459459%"></span><span class="barf" style="width:0.540541%"></span>
 </div>
-<small class="pass">pass: 181</small>
+<small class="pass">pass: 184</small>
 <span class="fail didfail">fail: 1</span>
 </td>
 <td style="width:30em">
@@ -724,27 +708,27 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <tr data-lang="Ruby">
 <td><span title="Non-compliant">❌</span></td>
 <td>Ruby</td>
-<td title="Version 28b2ebc"><a href="https://github.com/emancu/toml-rb">toml-rb</a></td>
+<td title="Version 36d9d5d"><a href="https://github.com/emancu/toml-rb">toml-rb</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:85.164835%"></span><span class="barf" style="width:14.835165%"></span>
+<span class="barp " style="width:89.189189%"></span><span class="barf" style="width:10.810811%"></span>
 </div>
-<small class="pass">pass: 155</small>
-<span class="fail didfail">fail: 27</span>
+<small class="pass">pass: 165</small>
+<span class="fail didfail">fail: 20</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:84.615385%"></span><span class="barf" style="width:15.384615%"></span>
+<span class="barp " style="width:84.864865%"></span><span class="barf" style="width:15.135135%"></span>
 </div>
-<small class="pass">pass: 154</small>
+<small class="pass">pass: 157</small>
 <span class="fail didfail">fail: 28</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:75.741240%"></span><span class="barf" style="width:24.258760%"></span>
+<span class="barp " style="width:81.132075%"></span><span class="barf" style="width:18.867925%"></span>
 </div>
-<small class="pass">pass: 281</small>
-<span class="fail didfail">fail: 90</span>
+<small class="pass">pass: 301</small>
+<span class="fail didfail">fail: 70</span>
 </td>
 <td><em>(TODO)</em></td>
 <td><em>(TODO)</em></td>
@@ -753,12 +737,12 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <tr data-lang="Ruby">
 <td><span title="Compliant">✅</span></td>
 <td>Ruby</td>
-<td title="Version a1eaa06"><a href="https://github.com/fbernier/tomlrb">tomlrb</a></td>
+<td title="Version 4edc50c"><a href="https://github.com/fbernier/tomlrb">tomlrb</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 182</small>
+<small class="pass">pass: 185</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style='width:30em'><em>(doesn't include encoder)</em></td>
@@ -779,9 +763,9 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <td title="Version 0.1.4"><a href="https://github.com/dtolnay/basic-toml">basic-toml</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:88.461538%"></span><span class="barf" style="width:11.538462%"></span>
+<span class="barp " style="width:88.648649%"></span><span class="barf" style="width:11.351351%"></span>
 </div>
-<small class="pass">pass: 161</small>
+<small class="pass">pass: 164</small>
 <span class="fail didfail">fail: 21</span>
 </td>
 <td style='width:30em'><em>(TODO)</em></td>
@@ -799,21 +783,50 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <tr data-lang="Rust">
 <td><span title="Non-compliant">❌</span></td>
 <td>Rust</td>
-<td title="Version 0.12.1"><a href="https://github.com/tamasfe/taplo/tree/master/crates/taplo">taplo</a></td>
+<td title="Version 0.3.1"><a href="https://github.com/Bright-Shard/boml">boml</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:97.802198%"></span><span class="barf" style="width:2.197802%"></span>
+<span class="barp " style="width:89.729730%"></span><span class="barf" style="width:10.270270%"></span>
 </div>
-<small class="pass">pass: 178</small>
-<span class="fail didfail">fail: 4</span>
+<small class="pass">pass: 166</small>
+<span class="fail didfail">fail: 19</span>
+</td>
+<td style="width:30em">
+<div class="bars">
+<span class="barp " style="width:0.000000%"></span><span class="barf" style="width:100.000000%"></span>
+</div>
+<small class="pass">pass: 0</small>
+<span class="fail didfail">fail: 185</span>
+</td>
+<td style="width:30em">
+<div class="bars">
+<span class="barp " style="width:55.525606%"></span><span class="barf" style="width:44.474394%"></span>
+</div>
+<small class="pass">pass: 206</small>
+<span class="fail didfail">fail: 165</span>
+</td>
+<td><em>(TODO)</em></td>
+<td><em>(TODO)</em></td>
+<td><a href="output/rust-boml.html" class="ui">output</a></td>
+</tr>
+<tr data-lang="Rust">
+<td><span title="Non-compliant">❌</span></td>
+<td>Rust</td>
+<td title="Version 0.12.1"><a href="https://github.com/tamasfe/taplo">taplo</a></td>
+<td style="width:30em">
+<div class="bars">
+<span class="barp " style="width:0.000000%"></span><span class="barf" style="width:100.000000%"></span>
+</div>
+<small class="pass">pass: 0</small>
+<span class="fail didfail">fail: 185</span>
 </td>
 <td style='width:30em'><em>(TODO)</em></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:99.191375%"></span><span class="barf" style="width:0.808625%"></span>
+<span class="barp " style="width:0.000000%"></span><span class="barf" style="width:100.000000%"></span>
 </div>
-<small class="pass">pass: 368</small>
-<span class="fail didfail">fail: 3</span>
+<small class="pass">pass: 0</small>
+<span class="fail didfail">fail: 371</span>
 </td>
 <td class='good' title='1.5 milliseconds'>good</td>
 <td class='very-slow' title='52.15 seconds'>very slow</td>
@@ -827,14 +840,14 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 182</small>
+<small class="pass">pass: 185</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 182</small>
+<small class="pass">pass: 185</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
@@ -856,14 +869,14 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 182</small>
+<small class="pass">pass: 185</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 182</small>
+<small class="pass">pass: 185</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
@@ -880,7 +893,7 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 </tbody></table>
 </div> <!-- page -->
 <footer><small>
-Generated on 2024-05-31;
+Generated on 2025-04-14;
 <a href="https://github.com/arp242/toml-test-matrix">https://github.com/arp242/toml-test-matrix</a>
 </small></footer>
 <script>

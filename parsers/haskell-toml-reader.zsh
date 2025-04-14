@@ -44,6 +44,9 @@ setup() {
 }
 
 typeset -A info=(
+	# Needs newer ghc than on my system (>= 9.8)
+	skip    1
+
 	lang    'Haskell'
 	toml    '1.0'
 	site    'https://github.com/brandonchinn178/toml-reader'

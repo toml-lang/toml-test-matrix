@@ -13,4 +13,5 @@ typeset -A info=(
 	decoder 'roswell/decoder'
 	encoder ''
 	perf    'TODO'
+	flags   '-timeout=3s'
 )

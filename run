@@ -399,13 +399,14 @@ do_gen() {
 			#langs          { gap:1em; margin-bottom:.5em; display:none; line-height:2.5em; }
 			#langs >span:nth-child(1) { white-space:nowrap; }
 			label           { white-space:nowrap; break-inside:avoid; margin-right:.4em; padding:.3em;
-			                  box-shadow:2px 2px #000; border-radius:2px; border:1px solid #666; user-select:none; }
+			                  box-shadow:2px 2px #000; border-radius:2px; border:1px solid #666;
+			                  user-select:none; cursor:pointer; }
 			label:hover     { background:#eee; }
 			.on             { box-shadow:-1px -1px #000; background:#eee; }
 			input[type="checkbox"] { vertical-align:text-top; }
 			.good           { color:green; }
 			.slow           {}
-			.very-slow      { color:red; font-weight:bold; }
+			.very-slow      { color:red; }
 		</style>
 		</head>
 		<body>

@@ -1,319 +1,5 @@
 <pre>
-toml-rb version 28b2ebc
-<b>FAIL</b> <b>valid/array/array</b>
-<b> </b>    /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 5 at offset 6 (TomlRB::ParseError)
-<b> </b>      1987-07-05T17:45:00Z,
-<b> </b>
-<b> </b>          ^
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-<b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-<b> </b>    /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 5 at offset 6 (Citrus::ParseError)
-<b> </b>      1987-07-05T17:45:00Z,
-<b> </b>
-<b> </b>          ^
-<b> </b>    	from /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-<b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-<b> </b>
-<b> </b>    Exit 1
-
-<b>     input sent to parser-cmd:</b>
-       ints = [1, 2, 3, ]
-       floats = [1.1, 2.1, 3.1]
-       strings = ["a", "b", "c"]
-       dates = [
-         1987-07-05T17:45:00Z,
-         1979-05-27T07:32:00Z,
-         2006-06-01T11:00:00Z,
-       ]
-       comments = [
-                1,
-                2, #this is ok
-       ]
-
-<b>     output from parser-cmd (stderr):</b>
-       /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 5 at offset 6 (TomlRB::ParseError)
-         1987-07-05T17:45:00Z,
-
-             ^
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-       	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-       /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 5 at offset 6 (Citrus::ParseError)
-         1987-07-05T17:45:00Z,
-
-             ^
-       	from /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-       	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-
-       Exit 1
-
-<b>     want:</b>
-          <empty>
-
-<b>FAIL</b> <b>valid/array/mixed-int-array</b>
-<b> </b>    /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 1 at offset 23 (TomlRB::ParseError)
-<b> </b>    arrays-and-ints =  [1, ["Arrays are not integers."]]
-<b> </b>
-<b> </b>                           ^
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-<b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-<b> </b>    /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 1 at offset 23 (Citrus::ParseError)
-<b> </b>    arrays-and-ints =  [1, ["Arrays are not integers."]]
-<b> </b>
-<b> </b>                           ^
-<b> </b>    	from /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-<b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-<b> </b>
-<b> </b>    Exit 1
-
-<b>     input sent to parser-cmd:</b>
-       arrays-and-ints =  [1, ["Arrays are not integers."]]
-
-<b>     output from parser-cmd (stderr):</b>
-       /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 1 at offset 23 (TomlRB::ParseError)
-       arrays-and-ints =  [1, ["Arrays are not integers."]]
-
-                              ^
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-       	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-       /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 1 at offset 23 (Citrus::ParseError)
-       arrays-and-ints =  [1, ["Arrays are not integers."]]
-
-                              ^
-       	from /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-       	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-
-       Exit 1
-
-<b>     want:</b>
-          <empty>
-
-<b>FAIL</b> <b>valid/array/mixed-int-float</b>
-<b> </b>    /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 1 at offset 23 (TomlRB::ParseError)
-<b> </b>    ints-and-floats = [1, 1.1]
-<b> </b>
-<b> </b>                           ^
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-<b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-<b> </b>    /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 1 at offset 23 (Citrus::ParseError)
-<b> </b>    ints-and-floats = [1, 1.1]
-<b> </b>
-<b> </b>                           ^
-<b> </b>    	from /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-<b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-<b> </b>
-<b> </b>    Exit 1
-
-<b>     input sent to parser-cmd:</b>
-       ints-and-floats = [1, 1.1]
-
-<b>     output from parser-cmd (stderr):</b>
-       /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 1 at offset 23 (TomlRB::ParseError)
-       ints-and-floats = [1, 1.1]
-
-                              ^
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-       	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-       /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 1 at offset 23 (Citrus::ParseError)
-       ints-and-floats = [1, 1.1]
-
-                              ^
-       	from /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-       	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-
-       Exit 1
-
-<b>     want:</b>
-          <empty>
-
-<b>FAIL</b> <b>valid/array/mixed-int-string</b>
-<b> </b>    /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 1 at offset 26 (TomlRB::ParseError)
-<b> </b>    strings-and-ints = ["hi", 42]
-<b> </b>
-<b> </b>                              ^
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-<b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-<b> </b>    /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 1 at offset 26 (Citrus::ParseError)
-<b> </b>    strings-and-ints = ["hi", 42]
-<b> </b>
-<b> </b>                              ^
-<b> </b>    	from /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-<b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-<b> </b>
-<b> </b>    Exit 1
-
-<b>     input sent to parser-cmd:</b>
-       strings-and-ints = ["hi", 42]
-
-<b>     output from parser-cmd (stderr):</b>
-       /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 1 at offset 26 (TomlRB::ParseError)
-       strings-and-ints = ["hi", 42]
-
-                                 ^
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-       	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-       /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 1 at offset 26 (Citrus::ParseError)
-       strings-and-ints = ["hi", 42]
-
-                                 ^
-       	from /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-       	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-
-       Exit 1
-
-<b>     want:</b>
-          <empty>
-
-<b>FAIL</b> <b>valid/array/mixed-string-table</b>
-<b> </b>    /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 3 at offset 2 (TomlRB::ParseError)
-<b> </b>      { name = "Baz Qux", email = "bazqux@example.com", url = "https://example.com/bazqux" }
-<b> </b>
-<b> </b>      ^
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-<b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-<b> </b>    /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 3 at offset 2 (Citrus::ParseError)
-<b> </b>      { name = "Baz Qux", email = "bazqux@example.com", url = "https://example.com/bazqux" }
-<b> </b>
-<b> </b>      ^
-<b> </b>    	from /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-<b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-<b> </b>
-<b> </b>    Exit 1
-
-<b>     input sent to parser-cmd:</b>
-       contributors = [
-         "Foo Bar <foo@example.com>",
-         { name = "Baz Qux", email = "bazqux@example.com", url = "https://example.com/bazqux" }
-       ]
-
-       # Start with a table as the first element. This tests a case that some libraries
-       # might have where they will check if the first entry is a table/map/hash/assoc
-       # array and then encode it as a table array. This was a reasonable thing to do
-       # before TOML 1.0 since arrays could only contain one type, but now it's no
-       # longer.
-       mixed = [{k="a"}, "b", 1]
-
-<b>     output from parser-cmd (stderr):</b>
-       /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 3 at offset 2 (TomlRB::ParseError)
-         { name = "Baz Qux", email = "bazqux@example.com", url = "https://example.com/bazqux" }
-
-         ^
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-       	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-       /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 3 at offset 2 (Citrus::ParseError)
-         { name = "Baz Qux", email = "bazqux@example.com", url = "https://example.com/bazqux" }
-
-         ^
-       	from /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-       	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-
-       Exit 1
-
-<b>     want:</b>
-          <empty>
-
-<b>FAIL</b> <b>valid/array/nested-double</b>
-<b> </b>    /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 4 at offset 9 (TomlRB::ParseError)
-<b> </b>    		[1, 2, [3]]
-<b> </b>
-<b> </b>             ^
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-<b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-<b> </b>    /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 4 at offset 9 (Citrus::ParseError)
-<b> </b>    		[1, 2, [3]]
-<b> </b>
-<b> </b>             ^
-<b> </b>    	from /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-<b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-<b> </b>
-<b> </b>    Exit 1
-
-<b>     input sent to parser-cmd:</b>
-       nest = [
-       	[
-       		["a"],
-       		[1, 2, [3]]
-       	]
-       ]
-
-<b>     output from parser-cmd (stderr):</b>
-       /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 4 at offset 9 (TomlRB::ParseError)
-       		[1, 2, [3]]
-
-                ^
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-       	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-       /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 4 at offset 9 (Citrus::ParseError)
-       		[1, 2, [3]]
-
-                ^
-       	from /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-       	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-
-       Exit 1
-
-<b>     want:</b>
-          <empty>
-
+toml-rb version 36d9d5d
 <b>FAIL</b> <b>valid/comment/everywhere</b>
 <b> </b>    Key "group.d" is not "date-local" but "datetime":
 <b> </b>      Expected:     map[string]any{"type":"date-local", "value":"1979-05-27"}
@@ -381,17 +67,17 @@ toml-rb version 28b2ebc
 <b> </b>
 <b> </b>         ^
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
 <b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-<b> </b>    /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 22 at offset 5 (Citrus::ParseError)
+<b> </b>    /home/martin/.local/share/gem/ruby/3.3.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 22 at offset 5 (Citrus::ParseError)
 <b> </b>    2#,9
 <b> </b>
 <b> </b>         ^
-<b> </b>    	from /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
+<b> </b>    	from /home/martin/.local/share/gem/ruby/3.3.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
 <b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
 <b> </b>
 <b> </b>    Exit 1
@@ -433,17 +119,17 @@ toml-rb version 28b2ebc
 
             ^
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
        	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-       /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 22 at offset 5 (Citrus::ParseError)
+       /home/martin/.local/share/gem/ruby/3.3.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 22 at offset 5 (Citrus::ParseError)
        2#,9
 
             ^
-       	from /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
+       	from /home/martin/.local/share/gem/ruby/3.3.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
        	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
 
        Exit 1
@@ -457,17 +143,17 @@ toml-rb version 28b2ebc
 <b> </b>
 <b> </b>                         ^
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
 <b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-<b> </b>    /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 4 at offset 21 (Citrus::ParseError)
+<b> </b>    /home/martin/.local/share/gem/ruby/3.3.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 4 at offset 21 (Citrus::ParseError)
 <b> </b>    lower = 1987-07-05t17:45:00z
 <b> </b>
 <b> </b>                         ^
-<b> </b>    	from /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
+<b> </b>    	from /home/martin/.local/share/gem/ruby/3.3.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
 <b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
 <b> </b>
 <b> </b>    Exit 1
@@ -484,17 +170,17 @@ toml-rb version 28b2ebc
 
                             ^
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
        	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-       /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 4 at offset 21 (Citrus::ParseError)
+       /home/martin/.local/share/gem/ruby/3.3.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 4 at offset 21 (Citrus::ParseError)
        lower = 1987-07-05t17:45:00z
 
                             ^
-       	from /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
+       	from /home/martin/.local/share/gem/ruby/3.3.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
        	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
 
        Exit 1
@@ -647,8 +333,8 @@ toml-rb version 28b2ebc
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `block in initialize'
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `each'
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
 <b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
 <b> </b>
 <b> </b>    Exit 1
@@ -670,119 +356,8 @@ toml-rb version 28b2ebc
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `block in initialize'
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `each'
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-       	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-
-       Exit 1
-
-<b>     want:</b>
-          <empty>
-
-<b>FAIL</b> <b>valid/inline-table/key-dotted-5</b>
-<b> </b>    /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 2 at offset 16 (TomlRB::ParseError)
-<b> </b>    arr-2 = ["str", {a.b = 1}]
-<b> </b>
-<b> </b>                    ^
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-<b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-<b> </b>    /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 2 at offset 16 (Citrus::ParseError)
-<b> </b>    arr-2 = ["str", {a.b = 1}]
-<b> </b>
-<b> </b>                    ^
-<b> </b>    	from /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-<b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-<b> </b>
-<b> </b>    Exit 1
-
-<b>     input sent to parser-cmd:</b>
-       arr-1 = [{a.b = 1}]
-       arr-2 = ["str", {a.b = 1}]
-
-       arr-3 = [{a.b = 1}, {a.b = 2}]
-       arr-4 = ["str", {a.b = 1}, {a.b = 2}]
-
-<b>     output from parser-cmd (stderr):</b>
-       /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 2 at offset 16 (TomlRB::ParseError)
-       arr-2 = ["str", {a.b = 1}]
-
-                       ^
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-       	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-       /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 2 at offset 16 (Citrus::ParseError)
-       arr-2 = ["str", {a.b = 1}]
-
-                       ^
-       	from /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-       	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-
-       Exit 1
-
-<b>     want:</b>
-          <empty>
-
-<b>FAIL</b> <b>valid/spec/array-0</b>
-<b> </b>    /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 8 at offset 28 (TomlRB::ParseError)
-<b> </b>    numbers = [ 0.1, 0.2, 0.5, 1, 2, 5 ]
-<b> </b>
-<b> </b>                                ^
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-<b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-<b> </b>    /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 8 at offset 28 (Citrus::ParseError)
-<b> </b>    numbers = [ 0.1, 0.2, 0.5, 1, 2, 5 ]
-<b> </b>
-<b> </b>                                ^
-<b> </b>    	from /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-<b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-<b> </b>
-<b> </b>    Exit 1
-
-<b>     input sent to parser-cmd:</b>
-       integers = [ 1, 2, 3 ]
-       colors = [ "red", "yellow", "green" ]
-       nested_arrays_of_ints = [ [ 1, 2 ], [3, 4, 5] ]
-       nested_mixed_array = [ [ 1, 2 ], ["a", "b", "c"] ]
-       string_array = [ "all", 'strings', """are the same""", '''type''' ]
-
-       # Mixed-type arrays are allowed
-       numbers = [ 0.1, 0.2, 0.5, 1, 2, 5 ]
-       contributors = [
-         "Foo Bar <foo@example.com>",
-         { name = "Baz Qux", email = "bazqux@example.com", url = "https://example.com/bazqux" }
-       ]
-
-<b>     output from parser-cmd (stderr):</b>
-       /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 8 at offset 28 (TomlRB::ParseError)
-       numbers = [ 0.1, 0.2, 0.5, 1, 2, 5 ]
-
-                                   ^
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
-       	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-       /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 8 at offset 28 (Citrus::ParseError)
-       numbers = [ 0.1, 0.2, 0.5, 1, 2, 5 ]
-
-                                   ^
-       	from /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
        	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
 
        Exit 1
@@ -856,17 +431,17 @@ toml-rb version 28b2ebc
 <b> </b>
 <b> </b>                                                      ^
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
 <b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-<b> </b>    /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 4 at offset 50 (Citrus::ParseError)
+<b> </b>    /home/martin/.local/share/gem/ruby/3.3.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 4 at offset 50 (Citrus::ParseError)
 <b> </b>    str6 = """Here are fifteen quotation marks: ""\"""\"""\"""\"""\"."""
 <b> </b>
 <b> </b>                                                      ^
-<b> </b>    	from /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
+<b> </b>    	from /home/martin/.local/share/gem/ruby/3.3.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
 <b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
 <b> </b>
 <b> </b>    Exit 1
@@ -886,17 +461,17 @@ toml-rb version 28b2ebc
 
                                                          ^
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
        	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-       /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 4 at offset 50 (Citrus::ParseError)
+       /home/martin/.local/share/gem/ruby/3.3.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 4 at offset 50 (Citrus::ParseError)
        str6 = """Here are fifteen quotation marks: ""\"""\"""\"""\"""\"."""
 
                                                          ^
-       	from /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
+       	from /home/martin/.local/share/gem/ruby/3.3.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
        	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
 
        Exit 1
@@ -948,8 +523,8 @@ toml-rb version 28b2ebc
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/keyvalue.rb:55:in `value'
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `map'
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
 <b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
 <b> </b>
 <b> </b>    Exit 1
@@ -971,8 +546,8 @@ toml-rb version 28b2ebc
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/keyvalue.rb:55:in `value'
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `map'
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
        	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
 
        Exit 1
@@ -986,17 +561,17 @@ toml-rb version 28b2ebc
 <b> </b>
 <b> </b>                                                 ^
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
 <b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-<b> </b>    /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 10 at offset 45 (Citrus::ParseError)
+<b> </b>    /home/martin/.local/share/gem/ruby/3.3.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 10 at offset 45 (Citrus::ParseError)
 <b> </b>    multiline_end_esc = """When will it end? \"""...""\" should be here\""""
 <b> </b>
 <b> </b>                                                 ^
-<b> </b>    	from /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
+<b> </b>    	from /home/martin/.local/share/gem/ruby/3.3.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
 <b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
 <b> </b>
 <b> </b>    Exit 1
@@ -1024,17 +599,17 @@ toml-rb version 28b2ebc
 
                                                     ^
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
        	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
-       /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 10 at offset 45 (Citrus::ParseError)
+       /home/martin/.local/share/gem/ruby/3.3.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 10 at offset 45 (Citrus::ParseError)
        multiline_end_esc = """When will it end? \"""...""\" should be here\""""
 
                                                     ^
-       	from /home/martin/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
+       	from /home/martin/.local/share/gem/ruby/3.3.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
        	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
 
        Exit 1
@@ -1051,8 +626,8 @@ toml-rb version 28b2ebc
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/keyvalue.rb:55:in `value'
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `map'
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
 <b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
 <b> </b>
 <b> </b>    Exit 1
@@ -1105,8 +680,8 @@ toml-rb version 28b2ebc
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/keyvalue.rb:55:in `value'
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `map'
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
        	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
 
        Exit 1
@@ -1123,8 +698,8 @@ toml-rb version 28b2ebc
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/keyvalue.rb:55:in `value'
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `map'
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
 <b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
 <b> </b>
 <b> </b>    Exit 1
@@ -1154,8 +729,8 @@ toml-rb version 28b2ebc
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/keyvalue.rb:55:in `value'
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `map'
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
        	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
 
        Exit 1
@@ -1171,8 +746,8 @@ toml-rb version 28b2ebc
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `block in initialize'
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `each'
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
 <b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
 <b> </b>
 <b> </b>    Exit 1
@@ -1196,8 +771,64 @@ toml-rb version 28b2ebc
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `block in initialize'
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `each'
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:47:in `parse'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
+       	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/table/names-with-values</b>
+<b> </b>    /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/table.rb:33:in `ensure_key_not_defined': Key "a.b.c" is defined more than once (TomlRB::ValueOverwriteError)
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/table.rb:8:in `navigate_keys'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:32:in `visit_table'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/table.rb:22:in `accept_visitor'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `block in initialize'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `each'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `initialize'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
+<b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       [a.b.c]
+       key = 1
+
+       [a."b.c"]
+       key = 2
+
+       [a.'d.e']
+       key = 3
+
+       [a.' x ']
+       key = 4
+
+       [ d.e.f ]
+       key = 5
+
+       [ g . h . i ]
+       key = 6
+
+       [ j . "ʞ" . 'l' ]
+       key = 7
+
+       [x.1.2]
+       key = 8
+
+<b>     output from parser-cmd (stderr):</b>
+       /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/table.rb:33:in `ensure_key_not_defined': Key "a.b.c" is defined more than once (TomlRB::ValueOverwriteError)
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/table.rb:8:in `navigate_keys'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:32:in `visit_table'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/table.rb:22:in `accept_visitor'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `block in initialize'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `each'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:14:in `initialize'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
        	from ./src/ruby-toml-rb/ruby-toml-rb-decoder:38:in `<main>'
 
        Exit 1
@@ -1681,90 +1312,6 @@ toml-rb version 28b2ebc
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/float/exp-double-us</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       exp-double-us = 1e__23
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "exp-double-us": {"type": "float", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/exp-leading-us</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       exp-leading-us = 1e_23
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "exp-leading-us": {"type": "float", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/exp-trailing-us</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       exp-trailing-us = 1e23_
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "exp-trailing-us": {"type": "float", "value": "1.0e+23"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/exp-trailing-us-1</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       exp-trailing-us-1 = 1_e2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "exp-trailing-us-1": {"type": "float", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/exp-trailing-us-2</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       exp-trailing-us-2 = 1.2_e2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "exp-trailing-us-2": {"type": "float", "value": "1.2"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/leading-us</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       leading-us = _1.2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "leading-us": {"type": "float", "value": "0"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
 <b>FAIL</b> <b>invalid/float/leading-zero</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -1807,76 +1354,6 @@ toml-rb version 28b2ebc
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/float/trailing-us</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       trailing-us = 1.2_
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "trailing-us": {"type": "float", "value": "1.2"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/trailing-us-exp-1</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       trailing-us-exp-1 = 1_e2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "trailing-us-exp-1": {"type": "float", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/trailing-us-exp-2</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       trailing-us-exp-2 = 1.2_e2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "trailing-us-exp-2": {"type": "float", "value": "1.2"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/us-after-point</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       us-after-point = 1._2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "us-after-point": {"type": "float", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/us-before-point</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       us-before-point = 1_.2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "us-before-point": {"type": "float", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
 <b>FAIL</b> <b>invalid/inline-table/overwrite-02</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -1908,34 +1385,6 @@ toml-rb version 28b2ebc
          "inline-t": {
            "nest": {}
          }
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/double-us</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       double-us = 1__23
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "double-us": {"type": "integer", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/leading-us</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       leading-us = _123
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "leading-us": {"type": "integer", "value": "0"}
        }
 
 <b>     want:</b>
@@ -2020,104 +1469,6 @@ toml-rb version 28b2ebc
 <b>     output from parser-cmd (stdout):</b>
        {
          "leading-zero-sign-3": {"type": "integer", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/trailing-us</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       trailing-us = 123_
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "trailing-us": {"type": "integer", "value": "123"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/trailing-us-bin</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       trailing-us-bin = 0b1_
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "trailing-us-bin": {"type": "integer", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/trailing-us-hex</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       trailing-us-hex = 0x1_
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "trailing-us-hex": {"type": "integer", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/trailing-us-oct</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       trailing-us-oct = 0o1_
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "trailing-us-oct": {"type": "integer", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/us-after-bin</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       us-after-bin = 0b_1
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "us-after-bin": {"type": "integer", "value": "0"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/us-after-hex</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       us-after-hex = 0x_1
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "us-after-hex": {"type": "integer", "value": "0"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/us-after-oct</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       us-after-oct = 0o_1
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "us-after-oct": {"type": "integer", "value": "0"}
        }
 
 <b>     want:</b>
@@ -2614,13 +1965,13 @@ toml-rb version 28b2ebc
 <b>     want:</b>
        Exit code 1
 
-toml-test v2024-05-31 [./src/ruby-toml-rb/ruby-toml-rb-decoder]: using embedded tests
-  valid tests: 155 passed, 27 failed
-invalid tests: 281 passed, 90 failed
+toml-test v2025-04-14 [./src/ruby-toml-rb/ruby-toml-rb-decoder]: using embedded tests
+  valid tests: 165 passed, 20 failed
+invalid tests: 301 passed, 70 failed
 
 ==> ENCODER TESTS
 <b>FAIL</b> <b>valid/array/array</b>
-<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for Time:Class (NoMethodError)
+<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 <b> </b>
 <b> </b>        when "datetime" then Time.iso8601(val)
 <b> </b>                                 ^^^^^^^^
@@ -2663,7 +2014,7 @@ invalid tests: 281 passed, 90 failed
        }
 
 <b>     output from parser-cmd (stderr):</b>
-       ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for Time:Class (NoMethodError)
+       ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 
            when "datetime" then Time.iso8601(val)
                                     ^^^^^^^^
@@ -2681,7 +2032,7 @@ invalid tests: 281 passed, 90 failed
           <empty>
 
 <b>FAIL</b> <b>valid/array/mixed-string-table</b>
-<b> </b>    /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/dumper.rb:32:in `sort_pairs': undefined method `keys' for "b":String (NoMethodError)
+<b> </b>    /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/dumper.rb:32:in `sort_pairs': undefined method `keys' for an instance of String (NoMethodError)
 <b> </b>
 <b> </b>          hash.keys.sort.each do |key|
 <b> </b>              ^^^^^
@@ -2693,8 +2044,8 @@ invalid tests: 281 passed, 90 failed
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/dumper.rb:52:in `dump_pairs'
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/dumper.rb:24:in `visit'
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/dumper.rb:12:in `initialize'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:98:in `new'
-<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:98:in `dump'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:97:in `new'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:97:in `dump'
 <b> </b>    	from ./src/ruby-toml-rb/ruby-toml-rb-encoder:43:in `<main>'
 <b> </b>
 <b> </b>    Exit 1
@@ -2719,7 +2070,7 @@ invalid tests: 281 passed, 90 failed
        }
 
 <b>     output from parser-cmd (stderr):</b>
-       /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/dumper.rb:32:in `sort_pairs': undefined method `keys' for "b":String (NoMethodError)
+       /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/dumper.rb:32:in `sort_pairs': undefined method `keys' for an instance of String (NoMethodError)
 
              hash.keys.sort.each do |key|
                  ^^^^^
@@ -2731,8 +2082,8 @@ invalid tests: 281 passed, 90 failed
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/dumper.rb:52:in `dump_pairs'
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/dumper.rb:24:in `visit'
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/dumper.rb:12:in `initialize'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:98:in `new'
-       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:98:in `dump'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:97:in `new'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:97:in `dump'
        	from ./src/ruby-toml-rb/ruby-toml-rb-encoder:43:in `<main>'
 
        Exit 1
@@ -2765,7 +2116,7 @@ invalid tests: 281 passed, 90 failed
        false=false#false
 
 <b>FAIL</b> <b>valid/comment/everywhere</b>
-<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for "date-local":String (NoMethodError)
+<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 <b> </b>
 <b> </b>      if json.key?("type")
 <b> </b>             ^^^^^
@@ -2796,7 +2147,7 @@ invalid tests: 281 passed, 90 failed
        }
 
 <b>     output from parser-cmd (stderr):</b>
-       ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for "date-local":String (NoMethodError)
+       ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 
          if json.key?("type")
                 ^^^^^
@@ -2817,7 +2168,7 @@ invalid tests: 281 passed, 90 failed
           <empty>
 
 <b>FAIL</b> <b>valid/datetime/datetime</b>
-<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for Time:Class (NoMethodError)
+<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 <b> </b>
 <b> </b>        when "datetime" then Time.iso8601(val)
 <b> </b>                                 ^^^^^^^^
@@ -2835,7 +2186,7 @@ invalid tests: 281 passed, 90 failed
        }
 
 <b>     output from parser-cmd (stderr):</b>
-       ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for Time:Class (NoMethodError)
+       ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 
            when "datetime" then Time.iso8601(val)
                                     ^^^^^^^^
@@ -2850,7 +2201,7 @@ invalid tests: 281 passed, 90 failed
           <empty>
 
 <b>FAIL</b> <b>valid/datetime/edge</b>
-<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for "date-local":String (NoMethodError)
+<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 <b> </b>
 <b> </b>      if json.key?("type")
 <b> </b>             ^^^^^
@@ -2875,7 +2226,7 @@ invalid tests: 281 passed, 90 failed
        }
 
 <b>     output from parser-cmd (stderr):</b>
-       ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for "date-local":String (NoMethodError)
+       ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 
          if json.key?("type")
                 ^^^^^
@@ -2893,7 +2244,7 @@ invalid tests: 281 passed, 90 failed
           <empty>
 
 <b>FAIL</b> <b>valid/datetime/leap-year</b>
-<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for "date-local":String (NoMethodError)
+<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 <b> </b>
 <b> </b>      if json.key?("type")
 <b> </b>             ^^^^^
@@ -2918,7 +2269,7 @@ invalid tests: 281 passed, 90 failed
        }
 
 <b>     output from parser-cmd (stderr):</b>
-       ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for "date-local":String (NoMethodError)
+       ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 
          if json.key?("type")
                 ^^^^^
@@ -2936,7 +2287,7 @@ invalid tests: 281 passed, 90 failed
           <empty>
 
 <b>FAIL</b> <b>valid/datetime/local</b>
-<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for "datetime-local":String (NoMethodError)
+<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 <b> </b>
 <b> </b>      if json.key?("type")
 <b> </b>             ^^^^^
@@ -2958,7 +2309,7 @@ invalid tests: 281 passed, 90 failed
        }
 
 <b>     output from parser-cmd (stderr):</b>
-       ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for "datetime-local":String (NoMethodError)
+       ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 
          if json.key?("type")
                 ^^^^^
@@ -2976,7 +2327,7 @@ invalid tests: 281 passed, 90 failed
           <empty>
 
 <b>FAIL</b> <b>valid/datetime/local-date</b>
-<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for "date-local":String (NoMethodError)
+<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 <b> </b>
 <b> </b>      if json.key?("type")
 <b> </b>             ^^^^^
@@ -2996,7 +2347,7 @@ invalid tests: 281 passed, 90 failed
        }
 
 <b>     output from parser-cmd (stderr):</b>
-       ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for "date-local":String (NoMethodError)
+       ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 
          if json.key?("type")
                 ^^^^^
@@ -3014,7 +2365,7 @@ invalid tests: 281 passed, 90 failed
           <empty>
 
 <b>FAIL</b> <b>valid/datetime/local-time</b>
-<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for "time-local":String (NoMethodError)
+<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 <b> </b>
 <b> </b>      if json.key?("type")
 <b> </b>             ^^^^^
@@ -3035,7 +2386,7 @@ invalid tests: 281 passed, 90 failed
        }
 
 <b>     output from parser-cmd (stderr):</b>
-       ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for "time-local":String (NoMethodError)
+       ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 
          if json.key?("type")
                 ^^^^^
@@ -3053,7 +2404,7 @@ invalid tests: 281 passed, 90 failed
           <empty>
 
 <b>FAIL</b> <b>valid/datetime/milliseconds</b>
-<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for Time:Class (NoMethodError)
+<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 <b> </b>
 <b> </b>        when "datetime" then Time.iso8601(val)
 <b> </b>                                 ^^^^^^^^
@@ -3073,7 +2424,7 @@ invalid tests: 281 passed, 90 failed
        }
 
 <b>     output from parser-cmd (stderr):</b>
-       ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for Time:Class (NoMethodError)
+       ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 
            when "datetime" then Time.iso8601(val)
                                     ^^^^^^^^
@@ -3088,7 +2439,7 @@ invalid tests: 281 passed, 90 failed
           <empty>
 
 <b>FAIL</b> <b>valid/datetime/timezone</b>
-<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for Time:Class (NoMethodError)
+<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 <b> </b>
 <b> </b>        when "datetime" then Time.iso8601(val)
 <b> </b>                                 ^^^^^^^^
@@ -3108,7 +2459,7 @@ invalid tests: 281 passed, 90 failed
        }
 
 <b>     output from parser-cmd (stderr):</b>
-       ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for Time:Class (NoMethodError)
+       ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 
            when "datetime" then Time.iso8601(val)
                                     ^^^^^^^^
@@ -3123,7 +2474,7 @@ invalid tests: 281 passed, 90 failed
           <empty>
 
 <b>FAIL</b> <b>valid/example</b>
-<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for Time:Class (NoMethodError)
+<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 <b> </b>
 <b> </b>        when "datetime" then Time.iso8601(val)
 <b> </b>                                 ^^^^^^^^
@@ -3148,7 +2499,7 @@ invalid tests: 281 passed, 90 failed
        }
 
 <b>     output from parser-cmd (stderr):</b>
-       ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for Time:Class (NoMethodError)
+       ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 
            when "datetime" then Time.iso8601(val)
                                     ^^^^^^^^
@@ -3351,7 +2702,7 @@ invalid tests: 281 passed, 90 failed
        'l ~  ÿ ퟿  ￿ 𐀀 􏿿' = "literal key"
 
 <b>FAIL</b> <b>valid/spec-example-1</b>
-<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for Time:Class (NoMethodError)
+<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 <b> </b>
 <b> </b>        when "datetime" then Time.iso8601(val)
 <b> </b>                                 ^^^^^^^^
@@ -3411,7 +2762,7 @@ invalid tests: 281 passed, 90 failed
        }
 
 <b>     output from parser-cmd (stderr):</b>
-       ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for Time:Class (NoMethodError)
+       ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 
            when "datetime" then Time.iso8601(val)
                                     ^^^^^^^^
@@ -3429,7 +2780,7 @@ invalid tests: 281 passed, 90 failed
           <empty>
 
 <b>FAIL</b> <b>valid/spec-example-1-compact</b>
-<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for Time:Class (NoMethodError)
+<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 <b> </b>
 <b> </b>        when "datetime" then Time.iso8601(val)
 <b> </b>                                 ^^^^^^^^
@@ -3489,7 +2840,7 @@ invalid tests: 281 passed, 90 failed
        }
 
 <b>     output from parser-cmd (stderr):</b>
-       ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for Time:Class (NoMethodError)
+       ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 
            when "datetime" then Time.iso8601(val)
                                     ^^^^^^^^
@@ -3625,7 +2976,7 @@ invalid tests: 281 passed, 90 failed
        sf6 = -nan # valid, actual encoding is implementation-specific
 
 <b>FAIL</b> <b>valid/spec/local-date-0</b>
-<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for "date-local":String (NoMethodError)
+<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 <b> </b>
 <b> </b>      if json.key?("type")
 <b> </b>             ^^^^^
@@ -3645,7 +2996,7 @@ invalid tests: 281 passed, 90 failed
        }
 
 <b>     output from parser-cmd (stderr):</b>
-       ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for "date-local":String (NoMethodError)
+       ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 
          if json.key?("type")
                 ^^^^^
@@ -3663,7 +3014,7 @@ invalid tests: 281 passed, 90 failed
           <empty>
 
 <b>FAIL</b> <b>valid/spec/local-date-time-0</b>
-<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for "datetime-local":String (NoMethodError)
+<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 <b> </b>
 <b> </b>      if json.key?("type")
 <b> </b>             ^^^^^
@@ -3684,7 +3035,7 @@ invalid tests: 281 passed, 90 failed
        }
 
 <b>     output from parser-cmd (stderr):</b>
-       ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for "datetime-local":String (NoMethodError)
+       ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 
          if json.key?("type")
                 ^^^^^
@@ -3702,7 +3053,7 @@ invalid tests: 281 passed, 90 failed
           <empty>
 
 <b>FAIL</b> <b>valid/spec/local-time-0</b>
-<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for "time-local":String (NoMethodError)
+<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 <b> </b>
 <b> </b>      if json.key?("type")
 <b> </b>             ^^^^^
@@ -3723,7 +3074,7 @@ invalid tests: 281 passed, 90 failed
        }
 
 <b>     output from parser-cmd (stderr):</b>
-       ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for "time-local":String (NoMethodError)
+       ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 
          if json.key?("type")
                 ^^^^^
@@ -3741,7 +3092,7 @@ invalid tests: 281 passed, 90 failed
           <empty>
 
 <b>FAIL</b> <b>valid/spec/offset-date-time-0</b>
-<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for Time:Class (NoMethodError)
+<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 <b> </b>
 <b> </b>        when "datetime" then Time.iso8601(val)
 <b> </b>                                 ^^^^^^^^
@@ -3760,7 +3111,7 @@ invalid tests: 281 passed, 90 failed
        }
 
 <b>     output from parser-cmd (stderr):</b>
-       ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for Time:Class (NoMethodError)
+       ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 
            when "datetime" then Time.iso8601(val)
                                     ^^^^^^^^
@@ -3775,7 +3126,7 @@ invalid tests: 281 passed, 90 failed
           <empty>
 
 <b>FAIL</b> <b>valid/spec/offset-date-time-1</b>
-<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for Time:Class (NoMethodError)
+<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 <b> </b>
 <b> </b>        when "datetime" then Time.iso8601(val)
 <b> </b>                                 ^^^^^^^^
@@ -3792,7 +3143,7 @@ invalid tests: 281 passed, 90 failed
        }
 
 <b>     output from parser-cmd (stderr):</b>
-       ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for Time:Class (NoMethodError)
+       ./src/ruby-toml-rb/ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 
            when "datetime" then Time.iso8601(val)
                                     ^^^^^^^^
@@ -3807,7 +3158,7 @@ invalid tests: 281 passed, 90 failed
           <empty>
 
 <b>FAIL</b> <b>valid/spec/table-7</b>
-<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for "date-local":String (NoMethodError)
+<b> </b>    ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 <b> </b>
 <b> </b>      if json.key?("type")
 <b> </b>             ^^^^^
@@ -3835,7 +3186,7 @@ invalid tests: 281 passed, 90 failed
        }
 
 <b>     output from parser-cmd (stderr):</b>
-       ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for "date-local":String (NoMethodError)
+       ./src/ruby-toml-rb/ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 
          if json.key?("type")
                 ^^^^^
@@ -3884,7 +3235,7 @@ invalid tests: 281 passed, 90 failed
        basic_string = "~  ÿ ퟿  ￿ 𐀀 􏿿"
        literal_string = '~  ÿ ퟿  ￿ 𐀀 􏿿'
 
-toml-test v2024-05-31 [./src/ruby-toml-rb/ruby-toml-rb-encoder]: using embedded tests
-encoder tests: 154 passed, 28 failed
+toml-test v2025-04-14 [./src/ruby-toml-rb/ruby-toml-rb-encoder]: using embedded tests
+encoder tests: 157 passed, 28 failed
 took 0.0 0.0
 </pre>

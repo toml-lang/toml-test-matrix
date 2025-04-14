@@ -1,5 +1,5 @@
 <pre>
-toml version a339e1f
+toml version 3d3abc2
 <b>FAIL</b> <b>invalid/array/extend-defined-aot</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -13,37 +13,6 @@ toml version a339e1f
          "tab": {"arr": [{
            "val1": {"type": "integer", "value": "1"}
          }]}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/datetime/offset-overflow-hour</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       # Hour must be 00-24
-       d = 1985-06-18 17:04:07+25:00
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "d": {"type": "datetime", "value": "1985-06-18T17:04:07+25:00"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/datetime/offset-overflow-minute</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       # Minute must be 00-59; we allow 60 too because some people do write offsets of
-       # 60 minutes
-       d = 1985-06-18 17:04:07+12:61
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "d": {"type": "datetime", "value": "1985-06-18T17:04:07+13:01"}
        }
 
 <b>     want:</b>
@@ -344,12 +313,12 @@ toml version a339e1f
 <b>     want:</b>
        Exit code 1
 
-toml-test v2024-05-31 [./src/go-toml/toml-test-decoder]: using embedded tests
-  valid tests: 182 passed,  0 failed
-invalid tests: 356 passed, 15 failed
+toml-test v2025-04-14 [./src/go-toml/toml-test-decoder]: using embedded tests
+  valid tests: 185 passed,  0 failed
+invalid tests: 358 passed, 13 failed
 
 ==> ENCODER TESTS
-toml-test v2024-05-31 [./src/go-toml/toml-test-encoder]: using embedded tests
-encoder tests: 182 passed,  0 failed
+toml-test v2025-04-14 [./src/go-toml/toml-test-encoder]: using embedded tests
+encoder tests: 185 passed,  0 failed
 took 0.9 0.36
 </pre>

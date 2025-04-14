@@ -30,6 +30,47 @@ clop version c0c3fe7
 <b>     want:</b>
           <empty>
 
+<b>FAIL</b> <b>valid/spec/float-0</b>
+<b> </b>    Values for key "flt4" don't match:
+<b> </b>      Expected:     5e+22
+<b> </b>      Your encoder: 5.0000000000000004e+22
+
+<b>     input sent to parser-cmd:</b>
+       # fractional
+       flt1 = +1.0
+       flt2 = 3.1415
+       flt3 = -0.01
+
+       # exponent
+       flt4 = 5e+22
+       flt5 = 1e06
+       flt6 = -2E-2
+
+       # both
+       flt7 = 6.626e-34
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "flt1": {"type": "float", "value": "1.0"},
+         "flt2": {"type": "float", "value": "3.1415"},
+         "flt3": {"type": "float", "value": "-0.01"},
+         "flt4": {"type": "float", "value": "50000000000000004000000.0"},
+         "flt5": {"type": "float", "value": "1000000.0"},
+         "flt6": {"type": "float", "value": "-0.02"},
+         "flt7": {"type": "float", "value": "0.0000000000000000000000000000000006626"}
+       }
+
+<b>     want:</b>
+       {
+           "flt1": {"type": "float", "value": "1"},
+           "flt2": {"type": "float", "value": "3.1415"},
+           "flt3": {"type": "float", "value": "-0.01"},
+           "flt4": {"type": "float", "value": "5e+22"},
+           "flt5": {"type": "float", "value": "1e+06"},
+           "flt6": {"type": "float", "value": "-0.02"},
+           "flt7": {"type": "float", "value": "6.626e-34"}
+       }
+
 <b>FAIL</b> <b>valid/string/quoted-unicode</b>
 <b> </b>    Exit 1
 
@@ -47,8 +88,8 @@ clop version c0c3fe7
 <b>     want:</b>
           <empty>
 
-toml-test v2024-05-31 [./src/lisp-clop/roswell/decoder]: using embedded tests
-  valid tests: 179 passed,  3 failed
+toml-test v2025-04-14 [./src/lisp-clop/roswell/decoder]: using embedded tests
+  valid tests: 181 passed,  4 failed
 invalid tests: 371 passed,  0 failed
 
 ==> ENCODER TESTS
