@@ -6,6 +6,7 @@ setup() {
 }
 
 typeset -A info=(
+skip 1
 	lang    'Rust'
 	toml    '1.0'
 	site    'https://github.com/toml-rs/toml/tree/main/crates/toml'

@@ -1,58 +1,58 @@
-# name: 'test'
-# on:
-#   push:
-#   #schedule:
-#   #  - cron: 0 1 * * MON
-#
-# jobs:
-#   test:
-#     runs-on: 'ubuntu-latest'
-#     steps:
-#     - uses: 'actions/cache@v3'
-#       with: {path: 'src'}
-#
-#     - uses: 'actions/checkout@v3'
-#
-#     - uses: 'Bogdanp/setup-racket@v1.11'
-#       with: {version: 'stable'}
-#
-#     - uses: 'ocaml/setup-ocaml@v2'
-#       with: {ocaml-compiler: '4.14'}
-#
-#     - uses: 'ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1'
-#       with: {ruby-version: '3.2'}
-#
-#     - uses: 'actions/setup-python@v5'
-#       with: {python-version: '3.12'}
-#
-#     - uses: 'guenchi/setup-scheme@master'
-#       with: {implementation: 'guile'}
-#
-#     - uses: 'dart-lang/setup-dart@v1'
-#
-#     - run: |
-#         go install github.com/toml-lang/toml-test/cmd/toml-test@master
-#
-#     - name: 'install'
-#       run: |
-#         sudo apt-get update
-#         sudo apt-get install zsh ninja-build
-#         pip3 install --user meson # Meson from Ubuntu is too old.
-#
-#         # Roswell
-#         (
-#           cd $HOME
-#           curl -Ls https://github.com/roswell/roswell/releases/download/v23.10.14.114/roswell-23.10.14.114-linux-x86_64.tar.bz2 |
-#             tar xjf -
-#         )
-#
-#     - name: 'setup'
-#       run: |
-#         export PATH=$PATH:"$HOME/roswell":"$(go env GOPATH)/bin"
-#         ./run check || exit 1
-#         ./run setup || exit 1
-#
-#     - name: 'run'
-#       run: |
-#         export PATH=$PATH:"$HOME/roswell":"$(go env GOPATH)/bin"
-#         ./run run
+name: 'build'
+on:
+  push:
+  #schedule:
+  #  - cron: 0 1 * * MON
+
+jobs:
+  build:
+    runs-on: 'ubuntu-latest'
+    steps:
+    - {uses: 'actions/checkout@v4'}
+    - {uses: 'actions/cache@v4', with: {path: 'src', key: 'cache'}}
+
+    # Setup languages
+    - {uses: 'actions/setup-go@v5',         with: {go-version: '1.24'}}
+    - {uses: 'Bogdanp/setup-racket@v1.12',  with: {version: 'stable'}}
+    - {uses: 'ocaml/setup-ocaml@v3',        with: {ocaml-compiler: '5'}}
+    - {uses: 'ruby/setup-ruby@v1',          with: {ruby-version: '3.4'}}
+    - {uses: 'actions/setup-python@v5',     with: {python-version: '3.13'}}
+    - {uses: 'guenchi/setup-scheme@master', with: {implementation: 'guile'}}
+    - {uses: 'pnpm/action-setup@v4',        with: {version: '10'}}
+    - {uses: 'haskell-actions/setup@v2'}
+    - {uses: 'dart-lang/setup-dart@v1'}
+
+    - name: 'install packages'
+      run: |
+        sudo apt-get update
+        sudo apt-get install zsh ninja-build
+        pip3 install --user meson # Meson from Ubuntu is too old.
+
+        ( # Roswell
+          cd $HOME
+          curl -Ls https://github.com/roswell/roswell/releases/download/v24.10.115/roswell-24.10.115-linux-x86_64.tar.bz2 |
+            tar xjf -
+        )
+
+    # Install toml-test
+    - run: 'go install github.com/toml-lang/toml-test/cmd/toml-test@master'
+
+    # Build
+    - name: 'build'
+      run: |
+        export PATH=$PATH:"$HOME/roswell":"$(go env GOPATH)/bin"
+        ./run check || exit 1
+        ./run setup || exit 1
+
+    # Run
+    - name: 'run'
+      run: |
+        export PATH=$PATH:"$HOME/roswell":"$(go env GOPATH)/bin"
+        ./run run
+        ./run gen
+
+  # Deploy
+  # TODO: using GitHub pages seems hard; maybe use netlify?
+  #deploy:
+  #  needs:   'build'
+  #  runs-on: 'ubuntu-latest'
