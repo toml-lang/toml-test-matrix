@@ -4,7 +4,7 @@ fn main() {
     let path = std::path::PathBuf::from(args.next().expect("Missing TOML path argument"));
     let raw = std::fs::read_to_string(&path).unwrap();
     let timer = std::time::Instant::now();
-    let value = raw.parse::<toml_edit::Document>();
+    let value = raw.parse::<toml_edit::DocumentMut>();
     let delta = timer.elapsed().as_secs_f32();
     value.unwrap();
     println!("{delta}");

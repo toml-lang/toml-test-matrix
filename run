@@ -413,14 +413,9 @@ do_gen() {
 
 		<p>The benchmarks are a simple decode of a 15k and 5M file. Results are
 		displayed as "good", "slow", and "very slow" only. Doing a fully fair
-		comparison is not straight-forward as some implementations will parse
-		numbers, dates, etc. when reading the file, and others delay this
-		parsing until the data is used.
-
-		It's also not a contest on who can write the fastest parser – it's just
-		to establish that performance is within reasonable bounds. Some parsers
-		seem to be O(n²) or thereabouts and scale very poorly to large files.
-		</p>
+		comparison is not straight-forward, and it's not a contest on who can
+		write the fastest parser – it's just to establish that performance is
+		within reasonable bounds.</p>
 		</div>
 
 		<div class="page">

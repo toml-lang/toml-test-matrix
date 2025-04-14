@@ -64,14 +64,9 @@ almost all failing "invalid" tests are uncommon edge cases.</p>
 
 <p>The benchmarks are a simple decode of a 15k and 5M file. Results are
 displayed as "good", "slow", and "very slow" only. Doing a fully fair
-comparison is not straight-forward as some implementations will parse
-numbers, dates, etc. when reading the file, and others delay this
-parsing until the data is used.
-
-It's also not a contest on who can write the fastest parser – it's just
-to establish that performance is within reasonable bounds. Some parsers
-seem to be O(n²) or thereabouts and scale very poorly to large files.
-</p>
+comparison is not straight-forward, and it's not a contest on who can
+write the fastest parser – it's just to establish that performance is
+within reasonable bounds.</p>
 </div>
 
 <div class="page">
@@ -785,50 +780,21 @@ seem to be O(n²) or thereabouts and scale very poorly to large files.
 <tr data-lang="Rust">
 <td><span title="Non-compliant">❌</span></td>
 <td>Rust</td>
-<td title="Version 0.3.1"><a href="https://github.com/Bright-Shard/boml">boml</a></td>
-<td style="width:30em">
-<div class="bars">
-<span class="barp " style="width:89.729730%"></span><span class="barf" style="width:10.270270%"></span>
-</div>
-<small class="pass">pass: 166</small>
-<span class="fail didfail">fail: 19</span>
-</td>
-<td style="width:30em">
-<div class="bars">
-<span class="barp " style="width:0.000000%"></span><span class="barf" style="width:100.000000%"></span>
-</div>
-<small class="pass">pass: 0</small>
-<span class="fail didfail">fail: 185</span>
-</td>
-<td style="width:30em">
-<div class="bars">
-<span class="barp " style="width:55.525606%"></span><span class="barf barf-mute" style="width:44.474394%"></span>
-</div>
-<small class="pass">pass: 206</small>
-<span class="fail didfail-mute">fail: 165</span>
-</td>
-<td><em>(TODO)</em></td>
-<td><em>(TODO)</em></td>
-<td><a href="output/rust-boml.html" class="ui">output</a></td>
-</tr>
-<tr data-lang="Rust">
-<td><span title="Non-compliant">❌</span></td>
-<td>Rust</td>
 <td title="Version 0.12.1"><a href="https://github.com/tamasfe/taplo">taplo</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:0.000000%"></span><span class="barf" style="width:100.000000%"></span>
+<span class="barp " style="width:97.837838%"></span><span class="barf" style="width:2.162162%"></span>
 </div>
-<small class="pass">pass: 0</small>
-<span class="fail didfail">fail: 185</span>
+<small class="pass">pass: 181</small>
+<span class="fail didfail">fail: 4</span>
 </td>
 <td style='width:30em'><em>(TODO)</em></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:0.000000%"></span><span class="barf barf-mute" style="width:100.000000%"></span>
+<span class="barp " style="width:99.191375%"></span><span class="barf barf-mute" style="width:0.808625%"></span>
 </div>
-<small class="pass">pass: 0</small>
-<span class="fail didfail-mute">fail: 371</span>
+<small class="pass">pass: 368</small>
+<span class="fail didfail-mute">fail: 3</span>
 </td>
 <td class='good' title='1.5 milliseconds'>good</td>
 <td class='very-slow' title='52.15 seconds'>very slow</td>
