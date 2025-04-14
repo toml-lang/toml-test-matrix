@@ -1,4 +1,4 @@
-A test matrix of TOML implementations: https://arp242.github.io/toml-test-matrix
+A test matrix of TOML implementations: https://toml-lang.github.io/toml-test-matrix
 
 Rather incomplete at the moment, should add more parsers from
 https://github.com/toml-lang/toml/wiki

@@ -595,7 +595,7 @@ do_gen() {
 		</div> <!-- page -->
 		<footer><small>
 			Generated on $(strftime %Y-%m-%d);
-			<a href="https://github.com/arp242/toml-test-matrix">https://github.com/arp242/toml-test-matrix</a>
+			<a href="https://github.com/toml-lang/toml-test-matrix">https://github.com/toml-lang/toml-test-matrix</a>
 		</small></footer>
 		<script>
 			window.langs.style.display = 'flex'
