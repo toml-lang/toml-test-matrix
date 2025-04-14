@@ -1,28 +1,28 @@
 <pre>
-toml-reader version d37c53f
+toml-reader version 9105699
 <b>FAIL</b> <b>valid/spec/table-9</b>
 <b> </b>    Invalid table key: "fruit.apple.texture"
 <b> </b>      Table already statically defined at "fruit.apple.texture"
-<b> </b>    
-<b> </b>    
+<b> </b>
+<b> </b>
 <b> </b>    Exit 1
 
 <b>     input sent to parser-cmd:</b>
        [fruit]
        apple.color = "red"
        apple.taste.sweet = true
-       
+
        # [fruit.apple]  # INVALID
        # [fruit.apple.taste]  # INVALID
-       
+
        [fruit.apple.texture]  # you can add sub-tables
        smooth = true
 
 <b>     output from parser-cmd (stderr):</b>
        Invalid table key: "fruit.apple.texture"
          Table already statically defined at "fruit.apple.texture"
-       
-       
+
+
        Exit 1
 
 <b>     want:</b>
@@ -31,22 +31,22 @@ toml-reader version d37c53f
 <b>FAIL</b> <b>valid/table/array-within-dotted</b>
 <b> </b>    Invalid table key: "fruit.apple.seeds"
 <b> </b>      Table already statically defined at "fruit.apple.seeds"
-<b> </b>    
-<b> </b>    
+<b> </b>
+<b> </b>
 <b> </b>    Exit 1
 
 <b>     input sent to parser-cmd:</b>
        [fruit]
        apple.color = "red"
-       
+
        [[fruit.apple.seeds]]
        size = 2
 
 <b>     output from parser-cmd (stderr):</b>
        Invalid table key: "fruit.apple.seeds"
          Table already statically defined at "fruit.apple.seeds"
-       
-       
+
+
        Exit 1
 
 <b>     want:</b>
@@ -62,16 +62,9 @@ toml-reader version d37c53f
 
 <b>     output from parser-cmd (stdout):</b>
        {
-         "tab": {
-           "arr": [
-             {
-               "val1": {
-                 "type": "integer",
-                 "value": "1"
-               }
-             }
-           ]
-         }
+         "tab": {"arr": [{
+           "val1": {"type": "integer", "value": "1"}
+         }]}
        }
 
 <b>     want:</b>
@@ -82,30 +75,23 @@ toml-reader version d37c53f
 
 <b>     input sent to parser-cmd:</b>
        [[a.b]]
-       
+
        [a]
        b.y = 2
 
 <b>     output from parser-cmd (stdout):</b>
        {
-         "a": {
-           "b": [
-             {
-               "y": {
-                 "type": "integer",
-                 "value": "2"
-               }
-             }
-           ]
-         }
+         "a": {"b": [{
+           "y": {"type": "integer", "value": "2"}
+         }]}
        }
 
 <b>     want:</b>
        Exit code 1
 
-toml-test v2023-12-07 [./src/haskell-toml-reader/parser-validator --check]: using embedded tests
-  valid tests: 177 passed,  2 failed
-invalid tests: 366 passed,  2 failed
+toml-test v2025-04-14 [./src/haskell-toml-reader/parser-validator --check]: using embedded tests
+  valid tests: 183 passed,  2 failed
+invalid tests: 369 passed,  2 failed
 
 ==> ENCODER TESTS
 (not supported)
