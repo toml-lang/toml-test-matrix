@@ -337,24 +337,11 @@ do_report() {
 		order[$#x-$k]=$k
 	done
 
-	integer width=$(tput cols || print 80)
-	width=$(( $width - 56 ))
 	for k in ${(kon)order}; do
 		n=${k%%-*}
 		kk=${k#$n-}
 		parsers=($=all[$kk])
-		pr_parse=
-		integer w=0
-		for p in ${(o)parsers}; do
-			w+=$#p
-			if (( $w > $width )); then
-				w=0
-				pr_parse+=$(print -f '\n%51s' '')
-			fi
-			pr_parse+=" $p"
-		done
-
-		print -f '%2d %-48s%s\n' $n $order[$k] $pr_parse
+		print -f '%2d %-48s%s\n' $n $order[$k] ${(oj: :)parsers}
 	done
 }
 
