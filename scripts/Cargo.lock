@@ -102,6 +102,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3a8241f3ebb85c056b509d4327ad0358fbbba6ffb340bf388f26350aeda225b1"
 
 [[package]]
+name = "boml"
+version = "1.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ddd269308a2e151db5ed03aa9d792450f355f33083be0c9d961977edfe1dd224"
+
+[[package]]
 name = "bstr"
 version = "1.12.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -516,6 +522,23 @@ version = "0.0.0"
 dependencies = [
  "basic-toml",
  "toml",
+]
+
+[[package]]
+name = "rust-boml"
+version = "0.0.0"
+dependencies = [
+ "boml",
+ "serde_json",
+ "toml-test",
+ "toml-test-harness",
+]
+
+[[package]]
+name = "rust-boml-perf"
+version = "0.0.0"
+dependencies = [
+ "boml",
 ]
 
 [[package]]
