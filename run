@@ -121,6 +121,7 @@ do_run() {
 	for f in ./parsers/*.zsh; do
 		name=$f:t:r
 		out=output/$name.html
+		out=$out:a
 		[[ -n $only && $name != $only ]] && continue
 
 		(
@@ -141,18 +142,32 @@ do_run() {
 			print '<pre>' >|$out
 			print "${name#*-} version $info[version]" >>$out
 
+			integer cd_dec=0
 			dec=$info[decoder]
-			[[ $dec[1] != '.' && ! $dec =~ ' ' ]] && dec=./src/$name/$dec
+			if [[ $dec[1] != '.' && ! $dec =~ ' ' ]]; then
+				cd_dec=1
+				dec=./$dec
+			fi
+			integer cd_enc=0
 			enc=$info[encoder]
-			[[ $enc[1] != '.' && ! $enc =~ ' ' ]] && enc=./src/$name/$enc
+			if [[ $enc[1] != '.' && ! $enc =~ ' ' ]];then 
+				cd_enc=1
+				enc=./$enc
+			fi
 
 			start=$EPOCHREALTIME
-			toml-test -color bold ${=info[flags]:-} -- $=dec |&
-				sed $'s!\x1b\\[1m!<b>!g; s!\x1b\\[0m!</b>!g' >>$out
+			(
+				(( $cd_dec )) && cd src/$name
+				toml-test -color bold ${=info[flags]:-} -- $=dec |&
+					sed $'s!\x1b\\[1m!<b>!g; s!\x1b\\[0m!</b>!g' >>$out
+			)
 			print $'\n==> ENCODER TESTS' >>$out
 			if [[ -n $info[encoder] ]] && [[ $info[encoder] != 'TODO' ]]; then
-				toml-test -color bold -encoder ${=info[flags]:-} -- $=enc |&
-					sed $'s!\x1b\\[1m!<b>!g; s!\x1b\\[0m!</b>!g' >>$out
+				(
+					(( $cd_enc )) && cd src/$name
+					toml-test -color bold -encoder ${=info[flags]:-} -- $=enc |&
+						sed $'s!\x1b\\[1m!<b>!g; s!\x1b\\[0m!</b>!g' >>$out
+				)
 			else
 				print '(not supported)' >>$out
 			fi
