@@ -13,6 +13,11 @@ setup() {
 	GUILE_LOAD_PATH=.:guile-json ./test/test-encoder.scm <<<'{}'
 }
 
+# Remove the memory address of the backtraces so output is stable.
+after-run() {
+	sed -Ei 's/[0-9a-f]{12}>/…>/' output/guile-toml.html
+}
+
 typeset -A info=(
 	lang    'Guile'
 	toml    '1.0'

@@ -197,7 +197,7 @@ smol-toml version 5ed3ead
 <b>     want:</b>
        Exit code 1
 
-toml-test v2025-04-14 [./src/js-smol-toml/toml-test-parse.mjs]: using embedded tests,  1 skipped
+toml-test v2025-04-15 [./src/js-smol-toml/toml-test-parse.mjs]: using embedded tests,  1 skipped
   valid tests: 184 passed,  0 failed
 invalid tests: 357 passed, 14 failed
 
@@ -331,7 +331,7 @@ invalid tests: 357 passed, 14 failed
 
 <b>FAIL</b> <b>valid/float/max-int</b>
 <b> </b>    Values for key "max_float" differ:
-<b> </b>      Expected:     9007199254740991 (float64)
+<b> </b>      Expected:     9.007199254740991e+15 (float64)
 <b> </b>      Your encoder: 9007199254740991 (int64)
 
 <b>     input sent to parser-cmd:</b>
@@ -351,7 +351,7 @@ invalid tests: 357 passed, 14 failed
 
 <b>FAIL</b> <b>valid/float/underscore</b>
 <b> </b>    Values for key "exponent" differ:
-<b> </b>      Expected:     300000000000000 (float64)
+<b> </b>      Expected:     3e+14 (float64)
 <b> </b>      Your encoder: 300000000000000 (int64)
 
 <b>     input sent to parser-cmd:</b>
@@ -494,7 +494,7 @@ invalid tests: 357 passed, 14 failed
        # both
        flt7 = 6.626e-34
 
-toml-test v2025-04-14 [./src/js-smol-toml/toml-test-encode.mjs]: using embedded tests,  1 skipped
+toml-test v2025-04-15 [./src/js-smol-toml/toml-test-encode.mjs]: using embedded tests,  1 skipped
 encoder tests: 177 passed,  7 failed
-took (error) (error)
+took 3.7 0.25
 </pre>

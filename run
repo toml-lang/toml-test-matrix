@@ -195,7 +195,8 @@ do_perf() {
 
 			skip=($(sed '/==> ENCODER TESTS/q; /FAIL/p; d;' $out | grep -Eo '>valid/.*?<' | sed 's/>/-skip /; s/</.toml/'))
 			skip+=(-skip valid/datetime/edge.toml)
-			[[ $name = 'c-tomlc99' ]] && skip+=(-skip valid/string/multiline-quotes.toml)
+			[[ $name = 'c-tomlc99'    ]] && skip+=(-skip 'valid/string/multiline-quotes.toml')
+			[[ $name = 'js-smol-toml' ]] && skip+=(-skip 'valid/integer/long.toml')
 			tmp5M=$(mktemp)
 			tmp10k=$(mktemp)
 			toml-test -cat 10              $skip >|$tmp10k

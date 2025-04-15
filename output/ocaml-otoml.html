@@ -926,14 +926,14 @@ otoml version 970e114
 <b>     want:</b>
        Exit code 1
 
-toml-test v2025-04-14 [./src/ocaml-otoml/decoder]: using embedded tests
+toml-test v2025-04-15 [./src/ocaml-otoml/decoder]: using embedded tests
   valid tests: 184 passed,  1 failed
 invalid tests: 319 passed, 52 failed
 
 ==> ENCODER TESTS
 <b>FAIL</b> <b>valid/float/max-int</b>
 <b> </b>    Values for key "max_float" differ:
-<b> </b>      Expected:     9007199254740991 (float64)
+<b> </b>      Expected:     9.007199254740991e+15 (float64)
 <b> </b>      Your encoder: 9007199254740991 (int64)
 
 <b>     input sent to parser-cmd:</b>
@@ -1253,7 +1253,7 @@ invalid tests: 319 passed, 52 failed
        [a]
        y = 2
 
-toml-test v2025-04-14 [./src/ocaml-otoml/encoder]: using embedded tests
+toml-test v2025-04-15 [./src/ocaml-otoml/encoder]: using embedded tests
 encoder tests: 177 passed,  8 failed
 took 0.0 0.0
 </pre>
