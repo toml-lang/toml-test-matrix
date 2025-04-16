@@ -38,6 +38,62 @@ taplo version 0.13.2
 <b>     want:</b>
           <empty>
 
+<b>FAIL</b> <b>valid/key/like-date</b>
+<b> </b>    Error: Error { message: "expected identifier (361..371)\nexpected identifier (371..372)\nexpected new line (372..382)\nexpected new line (383..384)\nexpected new line (385..386)\nexpected identifier (387..397)\nexpected identifier (397..398)\nexpected new line (398..399)\nexpected new line (399..400)\nexpected new line (400..410)\nexpected new line (411..412)\nexpected new line (413..414)\nexpected identifier (431..441)\nexpected identifier (441..442)\nexpected identifier (452..462)\nexpected identifier (462..463)\nexpected new line (463..473)\nexpected new line (473..474)\nexpected identifier (485..495)\nexpected identifier (495..496)\n" }
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       # '-' is a valid character in keys: make a key that looks like a date.
+       2001-02-03   = 1
+       "2001-02-04" = 2
+       '2001-02-05' = 3
+
+       # Also include datetime and time for good measure; these need to be quoted as
+       # ':' isn't a valid bare key.
+       "2001-02-06T15:16:17+01:00" = 4
+       "2001-02-07T15:16:17"       = 5
+       "15:16:17"                  = 6
+
+       # Dotted keys
+       a.2001-02-08 = 7
+       a.2001-02-09.2001-02-10 = 8
+       2001-02-11.a.2001-02-12 = 9
+
+       # Table names
+       [2002-01-02]
+       k = 10
+
+       [2002-01-02.2024-01-03]
+       k = 11
+
+       [[2002-01-04]]
+       k = 12
+
+<b>     output from parser-cmd (stderr):</b>
+       Error: Error { message: "expected identifier (361..371)\nexpected identifier (371..372)\nexpected new line (372..382)\nexpected new line (383..384)\nexpected new line (385..386)\nexpected identifier (387..397)\nexpected identifier (397..398)\nexpected new line (398..399)\nexpected new line (399..400)\nexpected new line (400..410)\nexpected new line (411..412)\nexpected new line (413..414)\nexpected identifier (431..441)\nexpected identifier (441..442)\nexpected identifier (452..462)\nexpected identifier (462..463)\nexpected new line (463..473)\nexpected new line (473..474)\nexpected identifier (485..495)\nexpected identifier (495..496)\n" }
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/key/numeric-04</b>
+<b> </b>    Error: Error { message: "zero-padded numbers are not allowed (0..5)\nexpected identifier (6..7)\nexpected new line (8..12)\n" }
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       01.23 = true
+
+<b>     output from parser-cmd (stderr):</b>
+       Error: Error { message: "zero-padded numbers are not allowed (0..5)\nexpected identifier (6..7)\nexpected new line (8..12)\n" }
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
 <b>FAIL</b> <b>valid/key/quoted-unicode</b>
 <b> </b>    Error: Error { message: "invalid control character in string literal (205..205)\n" }
 <b> </b>
@@ -127,8 +183,8 @@ taplo version 0.13.2
 <b>     want:</b>
        Exit code 1
 
-toml-test v2025-04-15 [./scripts/target/release/taplo-decoder]: using embedded tests
-  valid tests: 181 passed,  4 failed
+toml-test v2025-04-16 [./scripts/target/release/taplo-decoder]: using embedded tests
+  valid tests: 185 passed,  6 failed
 invalid tests: 368 passed,  3 failed
 
 ==> ENCODER TESTS

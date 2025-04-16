@@ -1,4 +1,4 @@
-export GUILE_LOAD_PATH=src/guile-toml:src/guile-toml/guile-json
+export GUILE_LOAD_PATH=$PWD/src/guile-toml:$PWD/src/guile-toml/guile-json
 
 deps() { print 'guile git' }
 

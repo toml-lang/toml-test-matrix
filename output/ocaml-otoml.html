@@ -30,6 +30,58 @@ otoml version 970e114
            }
        }
 
+<b>FAIL</b> <b>valid/key/like-date</b>
+<b> </b>    Syntax error on line 2, character 1: Unexpected ']'
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       # '-' is a valid character in keys: make a key that looks like a date.
+       2001-02-03   = 1
+       "2001-02-04" = 2
+       '2001-02-05' = 3
+
+       # Also include datetime and time for good measure; these need to be quoted as
+       # ':' isn't a valid bare key.
+       "2001-02-06T15:16:17+01:00" = 4
+       "2001-02-07T15:16:17"       = 5
+       "15:16:17"                  = 6
+
+       # Dotted keys
+       a.2001-02-08 = 7
+       a.2001-02-09.2001-02-10 = 8
+       2001-02-11.a.2001-02-12 = 9
+
+       # Table names
+       [2002-01-02]
+       k = 10
+
+       [2002-01-02.2024-01-03]
+       k = 11
+
+       [[2002-01-04]]
+       k = 12
+
+<b>     output from parser-cmd (stderr):</b>
+       Syntax error on line 2, character 1: Unexpected ']'
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/key/numeric-06</b>
+<b> </b>    Syntax error on line 1, character 1: "-1" is not a valid key
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       -1    = true
+
+<b>     output from parser-cmd (stderr):</b>
+       Syntax error on line 1, character 1: "-1" is not a valid key
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
 <b>FAIL</b> <b>invalid/array/extend-defined-aot</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -926,8 +978,8 @@ otoml version 970e114
 <b>     want:</b>
        Exit code 1
 
-toml-test v2025-04-15 [./src/ocaml-otoml/decoder]: using embedded tests
-  valid tests: 184 passed,  1 failed
+toml-test v2025-04-16 [./decoder]: using embedded tests
+  valid tests: 188 passed,  3 failed
 invalid tests: 319 passed, 52 failed
 
 ==> ENCODER TESTS
@@ -1253,7 +1305,7 @@ invalid tests: 319 passed, 52 failed
        [a]
        y = 2
 
-toml-test v2025-04-15 [./src/ocaml-otoml/encoder]: using embedded tests
-encoder tests: 177 passed,  8 failed
+toml-test v2025-04-16 [./encoder]: using embedded tests
+encoder tests: 183 passed,  8 failed
 took 0.0 0.0
 </pre>

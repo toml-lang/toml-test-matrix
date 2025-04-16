@@ -1,4 +1,4 @@
-export PYTHONPATH=./src/python-toml
+export PYTHONPATH=$PWD/src/python-toml
 
 deps() { print 'python' }
 

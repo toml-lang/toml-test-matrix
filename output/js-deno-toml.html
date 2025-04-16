@@ -7,7 +7,6 @@ deno-toml version eb08f750
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:817:15
 <b> </b>        at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/deno-toml-decoder.ts:38:9
-<b> </b>        at eventLoopTick (ext:core/01_core.js:178:7)
 <b> </b>
 <b> </b>    Exit 1
 
@@ -24,7 +23,6 @@ deno-toml version eb08f750
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:817:15
            at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/deno-toml-decoder.ts:38:9
-           at eventLoopTick (ext:core/01_core.js:178:7)
 
        Exit 1
 
@@ -389,7 +387,6 @@ deno-toml version eb08f750
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:817:15
 <b> </b>        at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/deno-toml-decoder.ts:38:9
-<b> </b>        at eventLoopTick (ext:core/01_core.js:178:7)
 <b> </b>
 <b> </b>    Exit 1
 
@@ -409,7 +406,6 @@ deno-toml version eb08f750
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:817:15
            at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/deno-toml-decoder.ts:38:9
-           at eventLoopTick (ext:core/01_core.js:178:7)
 
        Exit 1
 
@@ -513,6 +509,7 @@ deno-toml version eb08f750
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:817:15
 <b> </b>        at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/deno-toml-decoder.ts:38:9
+<b> </b>        at eventLoopTick (ext:core/01_core.js:178:7)
 <b> </b>
 <b> </b>    Exit 1
 
@@ -531,6 +528,7 @@ deno-toml version eb08f750
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:817:15
            at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/deno-toml-decoder.ts:38:9
+           at eventLoopTick (ext:core/01_core.js:178:7)
 
        Exit 1
 
@@ -2869,8 +2867,8 @@ deno-toml version eb08f750
 <b>     want:</b>
        Exit code 1
 
-toml-test v2025-04-15 [./deno-toml-decoder.ts]: using embedded tests,  1 skipped
-  valid tests: 156 passed, 28 failed
+toml-test v2025-04-16 [./deno-toml-decoder.ts]: using embedded tests,  1 skipped
+  valid tests: 162 passed, 28 failed
 invalid tests: 246 passed, 125 failed
 
 ==> ENCODER TESTS
@@ -4848,35 +4846,74 @@ invalid tests: 246 passed, 125 failed
 <b>     want:</b>
        answer=42
 
-<b>FAIL</b> <b>valid/key/numeric</b>
-<b> </b>    Could not find key "1" in encoder output
+<b>FAIL</b> <b>valid/key/like-date</b>
+<b> </b>    Could not find key "15:16:17" in encoder output
 
 <b>     input sent to parser-cmd:</b>
        {
-           "1": {"type": "integer", "value": "1"}
-       }
-
-<b>     output from parser-cmd (stdout):</b>
-
-
-<b>     want:</b>
-       1 = 1
-
-<b>FAIL</b> <b>valid/key/numeric-dotted</b>
-<b> </b>    Could not find key "1.2" in encoder output
-
-<b>     input sent to parser-cmd:</b>
-       {
-           "1": {
-               "2": {"type": "integer", "value": "3"}
+           "15:16:17":                  {"type": "integer", "value": "6"},
+           "2001-02-03":                {"type": "integer", "value": "1"},
+           "2001-02-04":                {"type": "integer", "value": "2"},
+           "2001-02-05":                {"type": "integer", "value": "3"},
+           "2001-02-06T15:16:17+01:00": {"type": "integer", "value": "4"},
+           "2001-02-07T15:16:17":       {"type": "integer", "value": "5"},
+           "2002-01-04":                [{
+               "k": {"type": "integer", "value": "12"}
+           }],
+           "2001-02-11": {
+               "a": {
+                   "2001-02-12": {"type": "integer", "value": "9"}
+               }
+           },
+           "2002-01-02": {
+               "k": {"type": "integer", "value": "10"},
+               "2024-01-03": {
+                   "k": {"type": "integer", "value": "11"}
+               }
+           },
+           "a": {
+               "2001-02-08": {"type": "integer", "value": "7"},
+               "2001-02-09": {
+                   "2001-02-10": {"type": "integer", "value": "8"}
+               }
            }
        }
 
 <b>     output from parser-cmd (stdout):</b>
-       [1]
+       [[2002-01-04]]
+
+       [2001-02-11.a]
+
+       [2002-01-02.2024-01-03]
+
+       [a.2001-02-09]
 
 <b>     want:</b>
-       1.2 = 3
+       # '-' is a valid character in keys: make a key that looks like a date.
+       2001-02-03   = 1
+       "2001-02-04" = 2
+       '2001-02-05' = 3
+
+       # Also include datetime and time for good measure; these need to be quoted as
+       # ':' isn't a valid bare key.
+       "2001-02-06T15:16:17+01:00" = 4
+       "2001-02-07T15:16:17"       = 5
+       "15:16:17"                  = 6
+
+       # Dotted keys
+       a.2001-02-08 = 7
+       a.2001-02-09.2001-02-10 = 8
+       2001-02-11.a.2001-02-12 = 9
+
+       # Table names
+       [2002-01-02]
+       k = 10
+
+       [2002-01-02.2024-01-03]
+       k = 11
+
+       [[2002-01-04]]
+       k = 12
 
 <b>FAIL</b> <b>valid/key/quoted-dots</b>
 <b> </b>    Could not find key "plain" in encoder output
@@ -6201,7 +6238,7 @@ invalid tests: 246 passed, 125 failed
        c = 3
        d = 4
 
-toml-test v2025-04-15 [./deno-toml-encoder.ts]: using embedded tests,  1 skipped
-encoder tests:  95 passed, 89 failed
+toml-test v2025-04-16 [./deno-toml-encoder.ts]: using embedded tests,  1 skipped
+encoder tests: 102 passed, 88 failed
 took 0.0 0.0
 </pre>

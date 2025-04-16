@@ -1,4 +1,4 @@
-export RUBYLIB=~/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib:./src/ruby-toml-rb/lib
+export RUBYLIB=~/.cache/gem/ruby/3.2.0/gems/citrus-3.0.2/lib:$PWD/src/ruby-toml-rb/lib
 
 deps() { print 'ruby bundle' }
 

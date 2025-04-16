@@ -307,9 +307,10 @@ do_test() {
 			check-deps || exit 1
 
 			dec=$info[decoder]
-			[[ $dec[1] != '.' && ! $dec =~ ' ' ]] && dec=./src/$name/$dec
-			enc=$info[encoder]
-			[[ $enc[1] != '.' && ! $enc =~ ' ' ]] && enc=./src/$name/$enc
+			if [[ $dec[1] != '.' && ! $dec =~ ' ' ]]; then
+				[[ -d src/$name ]] && cd src/$name
+				dec=./$dec
+			fi
 
 			out=$($=dec </dev/stdin 2>&1 ||:)
 			out=${out//$'\n'/}

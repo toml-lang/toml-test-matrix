@@ -1,4 +1,4 @@
-export RUBYLIB=./src/ruby-tomlrb/lib
+export RUBYLIB=$PWD/src/ruby-tomlrb/lib
 
 deps() { print 'ruby bundle' }
 

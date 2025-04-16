@@ -1,7 +1,9 @@
 <pre>
 toml-parser version 9a47cf0
 <b>FAIL</b> <b>valid/string/start-mb</b>
-<b> </b>    TomlDecoder: user error (12:1: lexical error: unexpected '\167')
+<b> </b>    TomlDecoder: Uncaught exception ghc-internal:GHC.Internal.IO.Exception.IOException:
+<b> </b>
+<b> </b>    user error (12:1: lexical error: unexpected '\167')
 <b> </b>
 <b> </b>    Exit 1
 
@@ -21,7 +23,9 @@ toml-parser version 9a47cf0
        s7 = '''§'''
 
 <b>     output from parser-cmd (stderr):</b>
-       TomlDecoder: user error (12:1: lexical error: unexpected '\167')
+       TomlDecoder: Uncaught exception ghc-internal:GHC.Internal.IO.Exception.IOException:
+
+       user error (12:1: lexical error: unexpected '\167')
 
        Exit 1
 
@@ -59,12 +63,12 @@ toml-parser version 9a47cf0
 <b>     want:</b>
        Exit code 1
 
-toml-test v2025-04-15 [./src/haskell-toml-parser/TomlDecoder]: using embedded tests
-  valid tests: 184 passed,  1 failed
+toml-test v2025-04-16 [./TomlDecoder]: using embedded tests
+  valid tests: 190 passed,  1 failed
 invalid tests: 369 passed,  2 failed
 
 ==> ENCODER TESTS
-toml-test v2025-04-15 [./src/haskell-toml-parser/TomlEncoder]: using embedded tests
-encoder tests: 185 passed,  0 failed
+toml-test v2025-04-16 [./TomlEncoder]: using embedded tests
+encoder tests: 191 passed,  0 failed
 took 3.9 0.67
 </pre>

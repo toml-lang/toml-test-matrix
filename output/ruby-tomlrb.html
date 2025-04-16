@@ -1,5 +1,61 @@
 <pre>
 tomlrb version 4edc50c
+<b>FAIL</b> <b>valid/key/like-date</b>
+<b> </b>    /home/martin/code/Toml/toml-test-matrix/src/ruby-tomlrb/lib/tomlrb.rb:28:in `rescue in parse': parse error on value ["2001", "02", "03", nil, nil, nil, nil] (DATETIME) (Tomlrb::ParseError)
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-tomlrb/lib/tomlrb.rb:25:in `parse'
+<b> </b>    	from ./ruby-tomlrb-decoder:35:in `<main>'
+<b> </b>    /home/martin/.local/share/gem/ruby/3.3.0/gems/racc-1.8.1/lib/racc/parser.rb:536:in `on_error': parse error on value ["2001", "02", "03", nil, nil, nil, nil] (DATETIME) (Racc::ParseError)
+<b> </b>    	from /home/martin/.local/share/gem/ruby/3.3.0/gems/racc-1.8.1/lib/racc/parser.rb:263:in `_racc_do_parse_c'
+<b> </b>    	from /home/martin/.local/share/gem/ruby/3.3.0/gems/racc-1.8.1/lib/racc/parser.rb:263:in `do_parse'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-tomlrb/lib/tomlrb/parser.rb:16:in `parse'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-tomlrb/lib/tomlrb.rb:26:in `parse'
+<b> </b>    	from ./ruby-tomlrb-decoder:35:in `<main>'
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       # '-' is a valid character in keys: make a key that looks like a date.
+       2001-02-03   = 1
+       "2001-02-04" = 2
+       '2001-02-05' = 3
+
+       # Also include datetime and time for good measure; these need to be quoted as
+       # ':' isn't a valid bare key.
+       "2001-02-06T15:16:17+01:00" = 4
+       "2001-02-07T15:16:17"       = 5
+       "15:16:17"                  = 6
+
+       # Dotted keys
+       a.2001-02-08 = 7
+       a.2001-02-09.2001-02-10 = 8
+       2001-02-11.a.2001-02-12 = 9
+
+       # Table names
+       [2002-01-02]
+       k = 10
+
+       [2002-01-02.2024-01-03]
+       k = 11
+
+       [[2002-01-04]]
+       k = 12
+
+<b>     output from parser-cmd (stderr):</b>
+       /home/martin/code/Toml/toml-test-matrix/src/ruby-tomlrb/lib/tomlrb.rb:28:in `rescue in parse': parse error on value ["2001", "02", "03", nil, nil, nil, nil] (DATETIME) (Tomlrb::ParseError)
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-tomlrb/lib/tomlrb.rb:25:in `parse'
+       	from ./ruby-tomlrb-decoder:35:in `<main>'
+       /home/martin/.local/share/gem/ruby/3.3.0/gems/racc-1.8.1/lib/racc/parser.rb:536:in `on_error': parse error on value ["2001", "02", "03", nil, nil, nil, nil] (DATETIME) (Racc::ParseError)
+       	from /home/martin/.local/share/gem/ruby/3.3.0/gems/racc-1.8.1/lib/racc/parser.rb:263:in `_racc_do_parse_c'
+       	from /home/martin/.local/share/gem/ruby/3.3.0/gems/racc-1.8.1/lib/racc/parser.rb:263:in `do_parse'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-tomlrb/lib/tomlrb/parser.rb:16:in `parse'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-tomlrb/lib/tomlrb.rb:26:in `parse'
+       	from ./ruby-tomlrb-decoder:35:in `<main>'
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
 <b>FAIL</b> <b>invalid/array/double-comma-1</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -312,8 +368,8 @@ tomlrb version 4edc50c
 <b>     want:</b>
        Exit code 1
 
-toml-test v2025-04-15 [./src/ruby-tomlrb/ruby-tomlrb-decoder]: using embedded tests
-  valid tests: 185 passed,  0 failed
+toml-test v2025-04-16 [./ruby-tomlrb-decoder]: using embedded tests
+  valid tests: 190 passed,  1 failed
 invalid tests: 351 passed, 20 failed
 
 ==> ENCODER TESTS
