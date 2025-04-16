@@ -1,0 +1,25 @@
+<pre>
+nullptr-toml version a0b7baf
+<b>FAIL</b> <b>valid/string/multiline-escaped-crlf</b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       # The following line should be an unescaped backslash followed by a Windows
+       # newline sequence ("\r\n")
+       0="""\
+       """
+
+<b>     output from parser-cmd (stderr):</b>
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+toml-test v2025-04-15 [./c++-nullptr-toml-decoder]: using embedded tests
+  valid tests: 184 passed,  1 failed
+invalid tests: 371 passed,  0 failed
+
+==> ENCODER TESTS
+(not supported)
+took 0.0 0.0
+</pre>
