@@ -1,6 +1,6 @@
 A test matrix of TOML implementations: https://toml-lang.github.io/toml-test-matrix
 
-Rather incomplete at the moment, should add more parsers from
+For the full list of implementations, see:
 https://github.com/toml-lang/toml/wiki
 
 Adding a parser
