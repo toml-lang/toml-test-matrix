@@ -109,106 +109,6 @@ tinytoml version bb76d06
            }
        }
 
-<b>FAIL</b> <b>valid/integer/float64-max</b>
-<b> </b>    Values for key "max_int" don't match:
-<b> </b>      Expected:     9007199254740991
-<b> </b>      Your encoder: 9.007199254741e+15
-
-<b>     input sent to parser-cmd:</b>
-       # Maximum and minimum safe float64 natural numbers. Mainly here for
-       # -int-as-float.
-       max_int =  9_007_199_254_740_991
-       min_int = -9_007_199_254_740_991
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "max_int": {"type": "integer", "value": "9.007199254741e+15"},
-         "min_int": {"type": "integer", "value": "-9.007199254741e+15"}
-       }
-
-<b>     want:</b>
-       {
-           "max_int": {"type": "integer", "value": "9007199254740991"},
-           "min_int": {"type": "integer", "value": "-9007199254740991"}
-       }
-
-<b>FAIL</b> <b>valid/integer/long</b>
-<b> </b>    Values for key "int64-max" don't match:
-<b> </b>      Expected:     9223372036854775807
-<b> </b>      Your encoder: 9.2233720368548e+18
-
-<b>     input sent to parser-cmd:</b>
-       # int64 "should" be supported, but is not mandatory. It's fine to skip this
-       # test.
-       int64-max     = 9223372036854775807
-       int64-max-neg = -9223372036854775808
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "int64-max":     {"type": "integer", "value": "9.2233720368548e+18"},
-         "int64-max-neg": {"type": "integer", "value": "-9.2233720368548e+18"}
-       }
-
-<b>     want:</b>
-       {
-           "int64-max":     {"type": "integer", "value": "9223372036854775807"},
-           "int64-max-neg": {"type": "integer", "value": "-9223372036854775808"}
-       }
-
-<b>FAIL</b> <b>valid/integer/zero</b>
-<b> </b>    Values for key "d3" don't match:
-<b> </b>      Expected:     0
-<b> </b>      Your encoder: -0
-
-<b>     input sent to parser-cmd:</b>
-       d1 = 0
-       d2 = +0
-       d3 = -0
-
-       h1 = 0x0
-       h2 = 0x00
-       h3 = 0x00000
-
-       o1 = 0o0
-       a2 = 0o00
-       a3 = 0o00000
-
-       b1 = 0b0
-       b2 = 0b00
-       b3 = 0b00000
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "a2": {"type": "integer", "value": "0"},
-         "a3": {"type": "integer", "value": "0"},
-         "b1": {"type": "integer", "value": "0"},
-         "b2": {"type": "integer", "value": "0"},
-         "b3": {"type": "integer", "value": "0"},
-         "d1": {"type": "integer", "value": "0"},
-         "d2": {"type": "integer", "value": "0"},
-         "d3": {"type": "integer", "value": "-0"},
-         "h1": {"type": "integer", "value": "0"},
-         "h2": {"type": "integer", "value": "0"},
-         "h3": {"type": "integer", "value": "0"},
-         "o1": {"type": "integer", "value": "0"}
-       }
-
-<b>     want:</b>
-       {
-           "a2": {"type": "integer", "value": "0"},
-           "a3": {"type": "integer", "value": "0"},
-           "b1": {"type": "integer", "value": "0"},
-           "b2": {"type": "integer", "value": "0"},
-           "b3": {"type": "integer", "value": "0"},
-           "d1": {"type": "integer", "value": "0"},
-           "d2": {"type": "integer", "value": "0"},
-           "d3": {"type": "integer", "value": "0"},
-           "h1": {"type": "integer", "value": "0"},
-           "h2": {"type": "integer", "value": "0"},
-           "h3": {"type": "integer", "value": "0"},
-           "o1": {"type": "integer", "value": "0"}
-       }
-
 <b>FAIL</b> <b>valid/spec/float-1</b>
 <b> </b>    Values for key "flt8" don't match:
 <b> </b>      Expected:     224617.445991228
@@ -245,8 +145,8 @@ tinytoml version bb76d06
 <b>     want:</b>
        Exit code 1
 
-toml-test v0001-01-01 [./lua-tinytoml-decoder]: using embedded tests
-  valid tests: 174 passed,  8 failed
+toml-test v2025-04-15 [./lua-tinytoml-decoder]: using embedded tests
+  valid tests: 180 passed,  5 failed
 invalid tests: 370 passed,  1 failed
 
 ==> ENCODER TESTS

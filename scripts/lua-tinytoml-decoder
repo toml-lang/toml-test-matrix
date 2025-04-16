@@ -1,2 +1,7 @@
-#!/bin/sh
-exec lua ./spec/toml-test.lua
+#!/usr/bin/env zsh
+lua=lua
+(( $+commands[lua53] ))   && lua=lua53
+(( $+commands[lua-53] ))  && lua=lua-53
+(( $+commands[lua5.3] ))  && lua=lua5.3
+(( $+commands[lua-5.3] )) && lua=lua-5.3
+exec $lua ./spec/toml-test.lua
