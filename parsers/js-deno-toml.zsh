@@ -9,7 +9,7 @@ setup() {
 }
 
 typeset -A info=(
-	lang    'Deno'
+	lang    'JS'
 	toml    '1.0'
 	site    'https://jsr.io/@std/toml'
 	src     'https://github.com/denoland/std'
