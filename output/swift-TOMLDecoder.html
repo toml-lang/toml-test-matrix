@@ -50,15 +50,15 @@ TOMLDecoder version 7dd5603
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/control/rawmulti-cd</b>
+<b>FAIL</b> <b>invalid/control/rawmulti-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
 <b>     input sent to parser-cmd:</b>
-       rawmulti-cd   = '''null'''
+       rawmulti-cr   = '''null'''
 
 <b>     output from parser-cmd (stdout):</b>
        {
-         "rawmulti-cd": {"type": "string", "value": "null\r"}
+         "rawmulti-cr": {"type": "string", "value": "null\r"}
        }
 
 <b>     want:</b>
@@ -101,8 +101,8 @@ TOMLDecoder version 7dd5603
 <b>     want:</b>
        Exit code 1
 
-toml-test v0001-01-01 [./compliance]: using embedded tests
-  valid tests: 181 passed,  1 failed
+toml-test v2025-04-15 [./compliance]: using embedded tests
+  valid tests: 184 passed,  1 failed
 invalid tests: 366 passed,  5 failed
 
 ==> ENCODER TESTS

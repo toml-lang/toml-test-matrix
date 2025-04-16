@@ -10,7 +10,7 @@ typeset -A info=(
 	toml    '1.0'
 	site    'https://github.com/dtolnay/basic-toml'
 	src     '' # We use the Cargo.toml for now 'https://github.com/dtolnay/basic-toml.git'
-	version '0.1.4'
+	version $(awk '$1 == "basic-toml" {print gensub(/"/, "", "g", $3)}' scripts/Cargo.toml)
 	decoder './scripts/target/release/basic-toml-decoder'
 	# TODO: doesn't encode at least dates correctly; e.g. for
 	#   lower = 1987-07-05t17:45:00z
