@@ -8,6 +8,7 @@ only=
 
 do_setup() {
 	# Get source.
+	print -n 'Fetching sources... '
 	job=()
 	for f in ./parsers/*.zsh; do
 		name=$f:t:r
@@ -33,11 +34,11 @@ do_setup() {
 	done
 	# Explicitly wait so we can exit on errors; just "wait" won't return 1 if
 	# one of the jobs failed.
-	for j in $job; do
-		wait $j
-	done
+	for j in $job; wait $j
+	print 'Okay'
 
 	# Compile
+	print 'Building...'
 	for f in ./parsers/*.zsh; do
 		name=$f:t:r
 		[[ -n $only && $name != $only ]] && continue
@@ -46,22 +47,12 @@ do_setup() {
 			source $f
 			(( ${info[skip]:-0} )) && continue
 
-			print -n "== $name: "
+			print "\x1b[1m  == $name \x1b[0m"
 			check-deps || exit 1
 
-			if [[ -n $info[src] ]]; then
-				(
-					cd src
-					if [[ ! -d $name ]]; then
-						git clone $info[src] $name
-					else
-						(cd $name && git pull ||:)
-					fi
-				)
-				cd src/$name
-			fi
-
+			[[ -n $info[src] ]] && cd src/$name
 			setup
+			print
 		)
 	done
 }
