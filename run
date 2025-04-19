@@ -149,14 +149,14 @@ do_run() {
 			start=$EPOCHREALTIME
 			(
 				(( $cd_dec )) && cd src/$name
-				toml-test -color bold ${=info[flags]:-} -- $=dec |&
+				toml-test -no-number -color bold ${=info[flags]:-} -- $=dec |&
 					sed $'s!\x1b\\[1m!<b>!g; s!\x1b\\[0m!</b>!g' >>$out
 			)
 			print $'\n==> ENCODER TESTS' >>$out
 			if [[ -n $info[encoder] ]] && [[ $info[encoder] != 'TODO' ]]; then
 				(
 					(( $cd_enc )) && cd src/$name
-					toml-test -color bold -encoder ${=info[flags]:-} -- $=enc |&
+					toml-test -no-number -color bold -encoder ${=info[flags]:-} -- $=enc |&
 						sed $'s!\x1b\\[1m!<b>!g; s!\x1b\\[0m!</b>!g' >>$out
 				)
 			else
@@ -379,7 +379,7 @@ do_gen() {
 			th              { position:sticky; top:0; padding:0 .5em; white-space:nowrap; text-align:left;
 			                  background:#f3f3f3; font-weight:normal; font-size:.9em; border-bottom:2px solid #000; }
 			th.noborder     { border-left:none; border-right:none; }
-			tr:hover        { background-color:#fffef1; }
+			tr:hover        { background-color:#fffde7; }
 			.pass           { }
 			.fail           { float:right; }
 			.didfail        { font-weight:bold; color:red; }
@@ -400,7 +400,7 @@ do_gen() {
 			                  user-select:none; cursor:pointer; }
 			label:hover     { background:#eee; }
 			.on             { box-shadow:-1px -1px #000; background:#eee; }
-			input[type="checkbox"] { vertical-align:text-top; }
+			input[type="checkbox"] { vertical-align:text-top; cursor:pointer; }
 			.good           { color:green; }
 			.slow           {}
 			.very-slow      { color:red; }

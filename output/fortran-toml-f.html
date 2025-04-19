@@ -590,26 +590,28 @@ toml-f version 056d362
        #4  0x… in __GI_raise
        	at ../sysdeps/posix/raise.c:26
        #5  0x… in __GI_abort
-       	at ./stdlib/abort.c:79
+       	at ./stdlib/abort.c:73
        #6  0x… in __libc_message_impl
-       	at ../sysdeps/posix/libc_fatal.c:132
+       	at ../sysdeps/posix/libc_fatal.c:134
        #7  0x… in malloc_printerr
-       	at ./malloc/malloc.c:5772
+       	at ./malloc/malloc.c:5829
        #8  0x… in _int_free_merge_chunk
-       	at ./malloc/malloc.c:4676
-       #9  0x… in __GI___libc_free
-       	at ./malloc/malloc.c:3398
-       #10  0x… in __tomlf_diagnostic_MOD_render_diagnostic
+       	at ./malloc/malloc.c:4718
+       #9  0x… in _int_free
+       	at ./malloc/malloc.c:4699
+       #10  0x… in __GI___libc_free
+       	at ./malloc/malloc.c:3476
+       #11  0x… in __tomlf_diagnostic_MOD_render_diagnostic
        	at ../src/tomlf/diagnostic.f90:160
-       #11  0x… in make_error
+       #12  0x… in make_error
        	at ../src/tomlf/de/parser.f90:751
-       #12  0x… in __tomlf_de_parser_MOD_parse
+       #13  0x… in __tomlf_de_parser_MOD_parse
        	at ../src/tomlf/de/parser.f90:107
-       #13  0x… in __tomlf_de_MOD_toml_load_unit
+       #14  0x… in __tomlf_de_MOD_toml_load_unit
        	at ../src/tomlf/de.f90:124
-       #14  0x… in toml2json
+       #15  0x… in toml2json
        	at ../test/compliance/toml2json.f90:55
-       #15  0x… in main
+       #16  0x… in main
        	at ../test/compliance/toml2json.f90:17
 
 <b>     want:</b>
@@ -1225,9 +1227,9 @@ toml-f version 056d362
 <b>     want:</b>
        Exit code 1
 
-toml-test v2025-04-16 [./_build/test/compliance/toml2json]: using embedded tests
-  valid tests: 180 passed, 11 failed
-invalid tests: 339 passed, 32 failed
+toml-test v2025-04-19 [./_build/test/compliance/toml2json]: using embedded tests
+  valid tests: 183 passed, 11 failed
+invalid tests: 345 passed, 32 failed
 
 ==> ENCODER TESTS
 <b>FAIL</b> <b>valid/array/mixed-string-table</b>
@@ -1813,7 +1815,7 @@ invalid tests: 339 passed, 32 failed
 <b>     want:</b>
           <empty>
 
-toml-test v2025-04-16 [./_build/test/compliance/json2toml]: using embedded tests
-encoder tests: 179 passed, 12 failed
+toml-test v2025-04-19 [./_build/test/compliance/json2toml]: using embedded tests
+encoder tests: 182 passed, 12 failed
 took 0.9 43.05
 </pre>

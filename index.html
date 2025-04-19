@@ -22,7 +22,7 @@ td:nth-child(8) { white-space:nowrap; } /* 5M file */
 th              { position:sticky; top:0; padding:0 .5em; white-space:nowrap; text-align:left;
                   background:#f3f3f3; font-weight:normal; font-size:.9em; border-bottom:2px solid #000; }
 th.noborder     { border-left:none; border-right:none; }
-tr:hover        { background-color:#fffef1; }
+tr:hover        { background-color:#fffde7; }
 .pass           { }
 .fail           { float:right; }
 .didfail        { font-weight:bold; color:red; }
@@ -43,7 +43,7 @@ label           { white-space:nowrap; break-inside:avoid; margin-right:.4em; pad
                   user-select:none; cursor:pointer; }
 label:hover     { background:#eee; }
 .on             { box-shadow:-1px -1px #000; background:#eee; }
-input[type="checkbox"] { vertical-align:text-top; }
+input[type="checkbox"] { vertical-align:text-top; cursor:pointer; }
 .good           { color:green; }
 .slow           {}
 .very-slow      { color:red; }
@@ -106,12 +106,12 @@ within reasonable bounds.</p>
 <tr data-lang="C++">
 <td><span title="Non-compliant">❌</span></td>
 <td>C++</td>
-<td title="Version a0b7baf"><a href="https://github.com/nullptr-0/toml">nullptr-toml</a></td>
+<td title="Version 43b31ab"><a href="https://github.com/nullptr-0/toml">nullptr-toml</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:98.429319%"></span><span class="barf" style="width:1.570681%"></span>
+<span class="barp " style="width:98.453608%"></span><span class="barf" style="width:1.546392%"></span>
 </div>
-<small class="pass">pass: 188</small>
+<small class="pass">pass: 191</small>
 <span class="fail didfail">fail: 3</span>
 </td>
 <td style='width:30em'><em>(doesn't include encoder)</em></td>
@@ -119,7 +119,7 @@ within reasonable bounds.</p>
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf barf-mute" style="width:0%"></span>
 </div>
-<small class="pass">pass: 371</small>
+<small class="pass">pass: 377</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td><em>(TODO)</em></td>
@@ -134,21 +134,21 @@ within reasonable bounds.</p>
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 191</small>
+<small class="pass">pass: 194</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 191</small>
+<small class="pass">pass: 194</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf barf-mute" style="width:0%"></span>
 </div>
-<small class="pass">pass: 371</small>
+<small class="pass">pass: 377</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td class='good' title='0.3 milliseconds'>good</td>
@@ -163,21 +163,21 @@ within reasonable bounds.</p>
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 191</small>
+<small class="pass">pass: 194</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 191</small>
+<small class="pass">pass: 194</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf barf-mute" style="width:0%"></span>
 </div>
-<small class="pass">pass: 371</small>
+<small class="pass">pass: 377</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td class='good' title='3.8 milliseconds'>good</td>
@@ -187,20 +187,20 @@ within reasonable bounds.</p>
 <tr data-lang="C">
 <td><span title="Compliant">✅</span></td>
 <td>C</td>
-<td title="Version f62b216"><a href="https://github.com/arp242/toml-c">toml-c</a></td>
+<td title="Version 9807761"><a href="https://github.com/arp242/toml-c">toml-c</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 191</small>
+<small class="pass">pass: 194</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style='width:30em'><em>(doesn't include encoder)</em></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:96.226415%"></span><span class="barf barf-mute" style="width:3.773585%"></span>
+<span class="barp " style="width:96.286472%"></span><span class="barf barf-mute" style="width:3.713528%"></span>
 </div>
-<small class="pass">pass: 357</small>
+<small class="pass">pass: 363</small>
 <span class="fail didfail-mute">fail: 14</span>
 </td>
 <td class='good' title='0.2 milliseconds'>good</td>
@@ -213,17 +213,17 @@ within reasonable bounds.</p>
 <td title="Version 5221b3d"><a href="https://github.com/cktan/tomlc99">tomlc99</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:95.811518%"></span><span class="barf" style="width:4.188482%"></span>
+<span class="barp " style="width:95.876289%"></span><span class="barf" style="width:4.123711%"></span>
 </div>
-<small class="pass">pass: 183</small>
+<small class="pass">pass: 186</small>
 <span class="fail didfail">fail: 8</span>
 </td>
 <td style='width:30em'><em>(doesn't include encoder)</em></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:78.975741%"></span><span class="barf barf-mute" style="width:21.024259%"></span>
+<span class="barp " style="width:79.310345%"></span><span class="barf barf-mute" style="width:20.689655%"></span>
 </div>
-<small class="pass">pass: 293</small>
+<small class="pass">pass: 299</small>
 <span class="fail didfail-mute">fail: 78</span>
 </td>
 <td class='good' title='0.2 milliseconds'>good</td>
@@ -236,17 +236,17 @@ within reasonable bounds.</p>
 <td title="Version 0.16.2"><a href="https://github.com/xoofx/Tomlyn">tomlyn</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:98.429319%"></span><span class="barf" style="width:1.570681%"></span>
+<span class="barp " style="width:98.453608%"></span><span class="barf" style="width:1.546392%"></span>
 </div>
-<small class="pass">pass: 188</small>
+<small class="pass">pass: 191</small>
 <span class="fail didfail">fail: 3</span>
 </td>
 <td style='width:30em'><em>(TODO)</em></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:98.652291%"></span><span class="barf barf-mute" style="width:1.347709%"></span>
+<span class="barp " style="width:98.673740%"></span><span class="barf barf-mute" style="width:1.326260%"></span>
 </div>
-<small class="pass">pass: 366</small>
+<small class="pass">pass: 372</small>
 <span class="fail didfail-mute">fail: 5</span>
 </td>
 <td class='slow' title='42.9 milliseconds'>slow</td>
@@ -261,21 +261,21 @@ within reasonable bounds.</p>
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 191</small>
+<small class="pass">pass: 194</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 191</small>
+<small class="pass">pass: 194</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf barf-mute" style="width:0%"></span>
 </div>
-<small class="pass">pass: 371</small>
+<small class="pass">pass: 377</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td class='good' title='2.9 milliseconds'>good</td>
@@ -288,23 +288,23 @@ within reasonable bounds.</p>
 <td title="Version 056d362"><a href="https://github.com/toml-f/toml-f">toml-f</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:94.240838%"></span><span class="barf" style="width:5.759162%"></span>
+<span class="barp " style="width:94.329897%"></span><span class="barf" style="width:5.670103%"></span>
 </div>
-<small class="pass">pass: 180</small>
+<small class="pass">pass: 183</small>
 <span class="fail didfail">fail: 11</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:93.717277%"></span><span class="barf" style="width:6.282723%"></span>
+<span class="barp " style="width:93.814433%"></span><span class="barf" style="width:6.185567%"></span>
 </div>
-<small class="pass">pass: 179</small>
+<small class="pass">pass: 182</small>
 <span class="fail didfail">fail: 12</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:91.374663%"></span><span class="barf barf-mute" style="width:8.625337%"></span>
+<span class="barp " style="width:91.511936%"></span><span class="barf barf-mute" style="width:8.488064%"></span>
 </div>
-<small class="pass">pass: 339</small>
+<small class="pass">pass: 345</small>
 <span class="fail didfail-mute">fail: 32</span>
 </td>
 <td class='good' title='0.9 milliseconds'>good</td>
@@ -319,21 +319,21 @@ within reasonable bounds.</p>
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 191</small>
+<small class="pass">pass: 194</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 191</small>
+<small class="pass">pass: 194</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf barf-mute" style="width:0%"></span>
 </div>
-<small class="pass">pass: 371</small>
+<small class="pass">pass: 377</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td class='good' title='0.4 milliseconds'>good</td>
@@ -348,21 +348,21 @@ within reasonable bounds.</p>
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 191</small>
+<small class="pass">pass: 194</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 191</small>
+<small class="pass">pass: 194</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:96.495957%"></span><span class="barf barf-mute" style="width:3.504043%"></span>
+<span class="barp " style="width:96.551724%"></span><span class="barf barf-mute" style="width:3.448276%"></span>
 </div>
-<small class="pass">pass: 358</small>
+<small class="pass">pass: 364</small>
 <span class="fail didfail-mute">fail: 13</span>
 </td>
 <td class='good' title='0.7 milliseconds'>good</td>
@@ -375,23 +375,23 @@ within reasonable bounds.</p>
 <td title="Version ecb24de"><a href="https://github.com/hylophile/guile-toml">toml</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:97.382199%"></span><span class="barf" style="width:2.617801%"></span>
+<span class="barp " style="width:97.422680%"></span><span class="barf" style="width:2.577320%"></span>
 </div>
-<small class="pass">pass: 186</small>
+<small class="pass">pass: 189</small>
 <span class="fail didfail">fail: 5</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:97.905759%"></span><span class="barf" style="width:2.094241%"></span>
+<span class="barp " style="width:97.938144%"></span><span class="barf" style="width:2.061856%"></span>
 </div>
-<small class="pass">pass: 187</small>
+<small class="pass">pass: 190</small>
 <span class="fail didfail">fail: 4</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:96.226415%"></span><span class="barf barf-mute" style="width:3.773585%"></span>
+<span class="barp " style="width:96.286472%"></span><span class="barf barf-mute" style="width:3.713528%"></span>
 </div>
-<small class="pass">pass: 357</small>
+<small class="pass">pass: 363</small>
 <span class="fail didfail-mute">fail: 14</span>
 </td>
 <td><em>(TODO)</em></td>
@@ -404,23 +404,23 @@ within reasonable bounds.</p>
 <td title="Version 9a47cf0"><a href="https://github.com/glguy/toml-parser">toml-parser</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:99.476440%"></span><span class="barf" style="width:0.523560%"></span>
+<span class="barp " style="width:99.484536%"></span><span class="barf" style="width:0.515464%"></span>
 </div>
-<small class="pass">pass: 190</small>
+<small class="pass">pass: 193</small>
 <span class="fail didfail">fail: 1</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 191</small>
+<small class="pass">pass: 194</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:99.460916%"></span><span class="barf barf-mute" style="width:0.539084%"></span>
+<span class="barp " style="width:99.469496%"></span><span class="barf barf-mute" style="width:0.530504%"></span>
 </div>
-<small class="pass">pass: 369</small>
+<small class="pass">pass: 375</small>
 <span class="fail didfail-mute">fail: 2</span>
 </td>
 <td class='good' title='3.9 milliseconds'>good</td>
@@ -433,17 +433,17 @@ within reasonable bounds.</p>
 <td title="Version 9105699"><a href="https://github.com/brandonchinn178/toml-reader">toml-reader</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:98.952880%"></span><span class="barf" style="width:1.047120%"></span>
+<span class="barp " style="width:98.969072%"></span><span class="barf" style="width:1.030928%"></span>
 </div>
-<small class="pass">pass: 189</small>
+<small class="pass">pass: 192</small>
 <span class="fail didfail">fail: 2</span>
 </td>
 <td style='width:30em'><em>(doesn't include encoder)</em></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:99.460916%"></span><span class="barf barf-mute" style="width:0.539084%"></span>
+<span class="barp " style="width:99.469496%"></span><span class="barf barf-mute" style="width:0.530504%"></span>
 </div>
-<small class="pass">pass: 369</small>
+<small class="pass">pass: 375</small>
 <span class="fail didfail-mute">fail: 2</span>
 </td>
 <td class='good' title='4.2 milliseconds'>good</td>
@@ -453,27 +453,27 @@ within reasonable bounds.</p>
 <tr data-lang="JS">
 <td><span title="Non-compliant">❌</span></td>
 <td>JS</td>
-<td title="Version eb08f750"><a href="https://jsr.io/@std/toml">deno-toml</a></td>
+<td title="Version 390845e7"><a href="https://jsr.io/@std/toml">deno-toml</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:85.263158%"></span><span class="barf" style="width:14.736842%"></span>
+<span class="barp " style="width:85.492228%"></span><span class="barf" style="width:14.507772%"></span>
 </div>
-<small class="pass">pass: 162</small>
+<small class="pass">pass: 165</small>
 <span class="fail didfail">fail: 28</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:53.684211%"></span><span class="barf" style="width:46.315789%"></span>
+<span class="barp " style="width:54.404145%"></span><span class="barf" style="width:45.595855%"></span>
 </div>
-<small class="pass">pass: 102</small>
+<small class="pass">pass: 105</small>
 <span class="fail didfail">fail: 88</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:66.307278%"></span><span class="barf barf-mute" style="width:33.692722%"></span>
+<span class="barp " style="width:71.618037%"></span><span class="barf barf-mute" style="width:28.381963%"></span>
 </div>
-<small class="pass">pass: 246</small>
-<span class="fail didfail-mute">fail: 125</span>
+<small class="pass">pass: 270</small>
+<span class="fail didfail-mute">fail: 107</span>
 </td>
 <td><em>(TODO)</em></td>
 <td><em>(TODO)</em></td>
@@ -487,21 +487,21 @@ within reasonable bounds.</p>
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 191</small>
+<small class="pass">pass: 194</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 191</small>
+<small class="pass">pass: 194</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:96.226415%"></span><span class="barf barf-mute" style="width:3.773585%"></span>
+<span class="barp " style="width:96.286472%"></span><span class="barf barf-mute" style="width:3.713528%"></span>
 </div>
-<small class="pass">pass: 357</small>
+<small class="pass">pass: 363</small>
 <span class="fail didfail-mute">fail: 14</span>
 </td>
 <td class='good' title='7.2 milliseconds'>good</td>
@@ -511,26 +511,26 @@ within reasonable bounds.</p>
 <tr data-lang="JS">
 <td><span title="Compliant">✅</span></td>
 <td>JS</td>
-<td title="Version cfdc386"><a href="https://github.com/squirrelchat/smol-toml">smol-toml</a></td>
+<td title="Version 427e7ba"><a href="https://github.com/squirrelchat/smol-toml">smol-toml</a></td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 190</small>
+<small class="pass">pass: 193</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 190</small>
+<small class="pass">pass: 193</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:96.226415%"></span><span class="barf barf-mute" style="width:3.773585%"></span>
+<span class="barp " style="width:96.286472%"></span><span class="barf barf-mute" style="width:3.713528%"></span>
 </div>
-<small class="pass">pass: 357</small>
+<small class="pass">pass: 363</small>
 <span class="fail didfail-mute">fail: 14</span>
 </td>
 <td class='good' title='3.7 milliseconds'>good</td>
@@ -545,15 +545,15 @@ within reasonable bounds.</p>
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 191</small>
+<small class="pass">pass: 194</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style='width:30em'><em>(doesn't include encoder)</em></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:97.574124%"></span><span class="barf barf-mute" style="width:2.425876%"></span>
+<span class="barp " style="width:97.612732%"></span><span class="barf barf-mute" style="width:2.387268%"></span>
 </div>
-<small class="pass">pass: 362</small>
+<small class="pass">pass: 368</small>
 <span class="fail didfail-mute">fail: 9</span>
 </td>
 <td class='good' title='11.9 milliseconds'>good</td>
@@ -566,9 +566,9 @@ within reasonable bounds.</p>
 <td title="Version c0c3fe7"><a href="https://github.com/sheepduke/clop">clop</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:97.905759%"></span><span class="barf" style="width:2.094241%"></span>
+<span class="barp " style="width:97.938144%"></span><span class="barf" style="width:2.061856%"></span>
 </div>
-<small class="pass">pass: 187</small>
+<small class="pass">pass: 190</small>
 <span class="fail didfail">fail: 4</span>
 </td>
 <td style='width:30em'><em>(doesn't include encoder)</em></td>
@@ -576,7 +576,7 @@ within reasonable bounds.</p>
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf barf-mute" style="width:0%"></span>
 </div>
-<small class="pass">pass: 371</small>
+<small class="pass">pass: 377</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td><em>(TODO)</em></td>
@@ -589,17 +589,17 @@ within reasonable bounds.</p>
 <td title="Version bb76d06"><a href="https://github.com/FourierTransformer/tinytoml">tinytoml</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:97.894737%"></span><span class="barf" style="width:2.105263%"></span>
+<span class="barp " style="width:97.927461%"></span><span class="barf" style="width:2.072539%"></span>
 </div>
-<small class="pass">pass: 186</small>
+<small class="pass">pass: 189</small>
 <span class="fail didfail">fail: 4</span>
 </td>
 <td style='width:30em'><em>(doesn't include encoder)</em></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:99.730458%"></span><span class="barf barf-mute" style="width:0.269542%"></span>
+<span class="barp " style="width:99.734748%"></span><span class="barf barf-mute" style="width:0.265252%"></span>
 </div>
-<small class="pass">pass: 370</small>
+<small class="pass">pass: 376</small>
 <span class="fail didfail-mute">fail: 1</span>
 </td>
 <td><em>(TODO)</em></td>
@@ -612,23 +612,23 @@ within reasonable bounds.</p>
 <td title="Version 970e114"><a href="https://github.com/dmbaturin/otoml">otoml</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:98.429319%"></span><span class="barf" style="width:1.570681%"></span>
+<span class="barp " style="width:98.453608%"></span><span class="barf" style="width:1.546392%"></span>
 </div>
-<small class="pass">pass: 188</small>
+<small class="pass">pass: 191</small>
 <span class="fail didfail">fail: 3</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:95.811518%"></span><span class="barf" style="width:4.188482%"></span>
+<span class="barp " style="width:95.876289%"></span><span class="barf" style="width:4.123711%"></span>
 </div>
-<small class="pass">pass: 183</small>
+<small class="pass">pass: 186</small>
 <span class="fail didfail">fail: 8</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:85.983827%"></span><span class="barf barf-mute" style="width:14.016173%"></span>
+<span class="barp " style="width:86.206897%"></span><span class="barf barf-mute" style="width:13.793103%"></span>
 </div>
-<small class="pass">pass: 319</small>
+<small class="pass">pass: 325</small>
 <span class="fail didfail-mute">fail: 52</span>
 </td>
 <td><em>(TODO)</em></td>
@@ -641,18 +641,18 @@ within reasonable bounds.</p>
 <td title="Version 86291a3"><a href="https://github.com/Up05/toml_parser">toml_parser</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:94.764398%"></span><span class="barf" style="width:5.235602%"></span>
+<span class="barp " style="width:94.845361%"></span><span class="barf" style="width:5.154639%"></span>
 </div>
-<small class="pass">pass: 181</small>
+<small class="pass">pass: 184</small>
 <span class="fail didfail">fail: 10</span>
 </td>
 <td style='width:30em'><em>(doesn't include encoder)</em></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:44.743935%"></span><span class="barf barf-mute" style="width:55.256065%"></span>
+<span class="barp " style="width:45.092838%"></span><span class="barf barf-mute" style="width:54.907162%"></span>
 </div>
-<small class="pass">pass: 166</small>
-<span class="fail didfail-mute">fail: 205</span>
+<small class="pass">pass: 170</small>
+<span class="fail didfail-mute">fail: 207</span>
 </td>
 <td><em>(TODO)</em></td>
 <td><em>(TODO)</em></td>
@@ -664,23 +664,23 @@ within reasonable bounds.</p>
 <td title="Version 65bab75"><a href="https://github.com/uiri/toml">toml</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:90.575916%"></span><span class="barf" style="width:9.424084%"></span>
+<span class="barp " style="width:90.721649%"></span><span class="barf" style="width:9.278351%"></span>
 </div>
-<small class="pass">pass: 173</small>
+<small class="pass">pass: 176</small>
 <span class="fail didfail">fail: 18</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:92.670157%"></span><span class="barf" style="width:7.329843%"></span>
+<span class="barp " style="width:92.783505%"></span><span class="barf" style="width:7.216495%"></span>
 </div>
-<small class="pass">pass: 177</small>
+<small class="pass">pass: 180</small>
 <span class="fail didfail">fail: 14</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:80.323450%"></span><span class="barf barf-mute" style="width:19.676550%"></span>
+<span class="barp " style="width:80.636605%"></span><span class="barf barf-mute" style="width:19.363395%"></span>
 </div>
-<small class="pass">pass: 298</small>
+<small class="pass">pass: 304</small>
 <span class="fail didfail-mute">fail: 73</span>
 </td>
 <td class='good' title='2.4 milliseconds'>good</td>
@@ -695,21 +695,21 @@ within reasonable bounds.</p>
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 191</small>
+<small class="pass">pass: 194</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 191</small>
+<small class="pass">pass: 194</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf barf-mute" style="width:0%"></span>
 </div>
-<small class="pass">pass: 371</small>
+<small class="pass">pass: 377</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td class='good' title='1.6 milliseconds'>good</td>
@@ -724,21 +724,21 @@ within reasonable bounds.</p>
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 191</small>
+<small class="pass">pass: 194</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 191</small>
+<small class="pass">pass: 194</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:98.382749%"></span><span class="barf barf-mute" style="width:1.617251%"></span>
+<span class="barp " style="width:98.408488%"></span><span class="barf barf-mute" style="width:1.591512%"></span>
 </div>
-<small class="pass">pass: 365</small>
+<small class="pass">pass: 371</small>
 <span class="fail didfail-mute">fail: 6</span>
 </td>
 <td class='slow' title='49.1 milliseconds'>slow</td>
@@ -753,7 +753,7 @@ within reasonable bounds.</p>
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 191</small>
+<small class="pass">pass: 194</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style='width:30em'><em>(doesn't include encoder)</em></td>
@@ -761,7 +761,7 @@ within reasonable bounds.</p>
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf barf-mute" style="width:0%"></span>
 </div>
-<small class="pass">pass: 371</small>
+<small class="pass">pass: 377</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td class='good' title='1.6 milliseconds'>good</td>
@@ -774,23 +774,23 @@ within reasonable bounds.</p>
 <td title="Version fe46aa2"><a href="https://github.com/toml-racket/toml-racket">toml-racket</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:98.952880%"></span><span class="barf" style="width:1.047120%"></span>
+<span class="barp " style="width:98.969072%"></span><span class="barf" style="width:1.030928%"></span>
 </div>
-<small class="pass">pass: 189</small>
+<small class="pass">pass: 192</small>
 <span class="fail didfail">fail: 2</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:96.335079%"></span><span class="barf" style="width:3.664921%"></span>
+<span class="barp " style="width:96.391753%"></span><span class="barf" style="width:3.608247%"></span>
 </div>
-<small class="pass">pass: 184</small>
+<small class="pass">pass: 187</small>
 <span class="fail didfail">fail: 7</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:99.730458%"></span><span class="barf barf-mute" style="width:0.269542%"></span>
+<span class="barp " style="width:99.734748%"></span><span class="barf barf-mute" style="width:0.265252%"></span>
 </div>
-<small class="pass">pass: 370</small>
+<small class="pass">pass: 376</small>
 <span class="fail didfail-mute">fail: 1</span>
 </td>
 <td><em>(TODO)</em></td>
@@ -805,21 +805,21 @@ within reasonable bounds.</p>
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 191</small>
+<small class="pass">pass: 194</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:99.476440%"></span><span class="barf" style="width:0.523560%"></span>
+<span class="barp " style="width:99.484536%"></span><span class="barf" style="width:0.515464%"></span>
 </div>
-<small class="pass">pass: 190</small>
+<small class="pass">pass: 193</small>
 <span class="fail didfail">fail: 1</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:97.574124%"></span><span class="barf barf-mute" style="width:2.425876%"></span>
+<span class="barp " style="width:97.612732%"></span><span class="barf barf-mute" style="width:2.387268%"></span>
 </div>
-<small class="pass">pass: 362</small>
+<small class="pass">pass: 368</small>
 <span class="fail didfail-mute">fail: 9</span>
 </td>
 <td class='good' title='1.5 milliseconds'>good</td>
@@ -832,23 +832,23 @@ within reasonable bounds.</p>
 <td title="Version 36d9d5d"><a href="https://github.com/emancu/toml-rb">toml-rb</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:89.528796%"></span><span class="barf" style="width:10.471204%"></span>
+<span class="barp " style="width:89.690722%"></span><span class="barf" style="width:10.309278%"></span>
 </div>
-<small class="pass">pass: 171</small>
+<small class="pass">pass: 174</small>
 <span class="fail didfail">fail: 20</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:85.340314%"></span><span class="barf" style="width:14.659686%"></span>
+<span class="barp " style="width:85.567010%"></span><span class="barf" style="width:14.432990%"></span>
 </div>
-<small class="pass">pass: 163</small>
+<small class="pass">pass: 166</small>
 <span class="fail didfail">fail: 28</span>
 </td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:81.132075%"></span><span class="barf barf-mute" style="width:18.867925%"></span>
+<span class="barp " style="width:81.432361%"></span><span class="barf barf-mute" style="width:18.567639%"></span>
 </div>
-<small class="pass">pass: 301</small>
+<small class="pass">pass: 307</small>
 <span class="fail didfail-mute">fail: 70</span>
 </td>
 <td class='slow' title='46.9 milliseconds'>slow</td>
@@ -861,17 +861,17 @@ within reasonable bounds.</p>
 <td title="Version 4edc50c"><a href="https://github.com/fbernier/tomlrb">tomlrb</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:99.476440%"></span><span class="barf" style="width:0.523560%"></span>
+<span class="barp " style="width:99.484536%"></span><span class="barf" style="width:0.515464%"></span>
 </div>
-<small class="pass">pass: 190</small>
+<small class="pass">pass: 193</small>
 <span class="fail didfail">fail: 1</span>
 </td>
 <td style='width:30em'><em>(doesn't include encoder)</em></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:94.609164%"></span><span class="barf barf-mute" style="width:5.390836%"></span>
+<span class="barp " style="width:94.694960%"></span><span class="barf barf-mute" style="width:5.305040%"></span>
 </div>
-<small class="pass">pass: 351</small>
+<small class="pass">pass: 357</small>
 <span class="fail didfail-mute">fail: 20</span>
 </td>
 <td class='good' title='4.8 milliseconds'>good</td>
@@ -884,17 +884,17 @@ within reasonable bounds.</p>
 <td title="Version 0.1.10"><a href="https://github.com/dtolnay/basic-toml">basic-toml</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:89.005236%"></span><span class="barf" style="width:10.994764%"></span>
+<span class="barp " style="width:89.175258%"></span><span class="barf" style="width:10.824742%"></span>
 </div>
-<small class="pass">pass: 170</small>
+<small class="pass">pass: 173</small>
 <span class="fail didfail">fail: 21</span>
 </td>
 <td style='width:30em'><em>(TODO)</em></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:98.921833%"></span><span class="barf barf-mute" style="width:1.078167%"></span>
+<span class="barp " style="width:98.938992%"></span><span class="barf barf-mute" style="width:1.061008%"></span>
 </div>
-<small class="pass">pass: 367</small>
+<small class="pass">pass: 373</small>
 <span class="fail didfail-mute">fail: 4</span>
 </td>
 <td class='good' title='0.5 milliseconds'>good</td>
@@ -909,15 +909,15 @@ within reasonable bounds.</p>
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 191</small>
+<small class="pass">pass: 194</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style='width:30em'><em>(doesn't include encoder)</em></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:63.881402%"></span><span class="barf barf-mute" style="width:36.118598%"></span>
+<span class="barp " style="width:64.456233%"></span><span class="barf barf-mute" style="width:35.543767%"></span>
 </div>
-<small class="pass">pass: 237</small>
+<small class="pass">pass: 243</small>
 <span class="fail didfail-mute">fail: 134</span>
 </td>
 <td class='good' title='0.1 milliseconds'>good</td>
@@ -930,17 +930,17 @@ within reasonable bounds.</p>
 <td title="Version 0.13.2"><a href="https://github.com/tamasfe/taplo">taplo</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:96.858639%"></span><span class="barf" style="width:3.141361%"></span>
+<span class="barp " style="width:96.907216%"></span><span class="barf" style="width:3.092784%"></span>
 </div>
-<small class="pass">pass: 185</small>
+<small class="pass">pass: 188</small>
 <span class="fail didfail">fail: 6</span>
 </td>
 <td style='width:30em'><em>(TODO)</em></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:99.191375%"></span><span class="barf barf-mute" style="width:0.808625%"></span>
+<span class="barp " style="width:99.204244%"></span><span class="barf barf-mute" style="width:0.795756%"></span>
 </div>
-<small class="pass">pass: 368</small>
+<small class="pass">pass: 374</small>
 <span class="fail didfail-mute">fail: 3</span>
 </td>
 <td class='good' title='0.7 milliseconds'>good</td>
@@ -955,21 +955,21 @@ within reasonable bounds.</p>
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 191</small>
+<small class="pass">pass: 194</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 191</small>
+<small class="pass">pass: 194</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf barf-mute" style="width:0%"></span>
 </div>
-<small class="pass">pass: 371</small>
+<small class="pass">pass: 377</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td class='good' title='0.4 milliseconds'>good</td>
@@ -984,21 +984,21 @@ within reasonable bounds.</p>
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 191</small>
+<small class="pass">pass: 194</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf" style="width:0%"></span>
 </div>
-<small class="pass">pass: 191</small>
+<small class="pass">pass: 194</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td style="width:30em">
 <div class="bars">
 <span class="barp allpass" style="width:100%"></span><span class="barf barf-mute" style="width:0%"></span>
 </div>
-<small class="pass">pass: 371</small>
+<small class="pass">pass: 377</small>
 <span class="fail ">fail: 0</span>
 </td>
 <td class='good' title='0.4 milliseconds'>good</td>
@@ -1011,17 +1011,17 @@ within reasonable bounds.</p>
 <td title="Version 7dd5603"><a href="https://github.com/dduan/TOMLDecoder">TOMLDecoder</a></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:99.476440%"></span><span class="barf" style="width:0.523560%"></span>
+<span class="barp " style="width:99.484536%"></span><span class="barf" style="width:0.515464%"></span>
 </div>
-<small class="pass">pass: 190</small>
+<small class="pass">pass: 193</small>
 <span class="fail didfail">fail: 1</span>
 </td>
 <td style='width:30em'><em>(doesn't include encoder)</em></td>
 <td style="width:30em">
 <div class="bars">
-<span class="barp " style="width:98.652291%"></span><span class="barf barf-mute" style="width:1.347709%"></span>
+<span class="barp " style="width:98.673740%"></span><span class="barf barf-mute" style="width:1.326260%"></span>
 </div>
-<small class="pass">pass: 366</small>
+<small class="pass">pass: 372</small>
 <span class="fail didfail-mute">fail: 5</span>
 </td>
 <td><em>(TODO)</em></td>
@@ -1031,7 +1031,7 @@ within reasonable bounds.</p>
 </tbody></table>
 </div> <!-- page -->
 <footer><small>
-Generated on 2025-04-16;
+Generated on 2025-04-19;
 <a href="https://github.com/toml-lang/toml-test-matrix">https://github.com/toml-lang/toml-test-matrix</a>
 </small></footer>
 <script>

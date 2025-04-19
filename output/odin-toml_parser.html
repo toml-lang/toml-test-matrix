@@ -2,7 +2,7 @@
 toml_parser version 86291a3
 <b>FAIL</b> <b>valid/key/quoted-unicode</b>
 <b> </b>    decode JSON output from parser:
-<b> </b>      invalid character 'U' in string escape code
+<b> </b>      invalid character 'x' in string escape code
 
 <b>     input sent to parser-cmd:</b>
 
@@ -14,7 +14,7 @@ toml_parser version 86291a3
        'l ~  ÿ ퟿  ￿ 𐀀 􏿿' = "literal key"
 
 <b>     output from parser-cmd (stdout):</b>
-       {"l ~ \u0080 ÿ \ud7ff \ue000 \uffff \U00010000 \U0010ffff":{"type":"string","value":"literal key"},"~ \u0080 ÿ \ud7ff \ue000 \uffff \U00010000 \U0010ffff":{"type":"string","value":"basic key"},"\\u0000":{"type":"string","value":"different key"},"\b \f A \u007f \u0080 ÿ \ud7ff \ue000 \uffff \x00 \uffff":{"type":"string","value":"escaped key"},"\x00":{"type":"string","value":"null"}}
+       {"\b \f A \u007f \u0080 ÿ \ud7ff \ue000 \uffff \x00 \uffff":{"type":"string","value":"escaped key"},"~ \u0080 ÿ \ud7ff \ue000 \uffff \U00010000 \U0010ffff":{"type":"string","value":"basic key"},"\\u0000":{"type":"string","value":"different key"},"\x00":{"type":"string","value":"null"},"l ~ \u0080 ÿ \ud7ff \ue000 \uffff \U00010000 \U0010ffff":{"type":"string","value":"literal key"}}
 
 <b>     want:</b>
        {
@@ -154,7 +154,7 @@ toml_parser version 86291a3
        notunicode4   = "|\\\u0075."
 
 <b>     output from parser-cmd (stdout):</b>
-       {"notunicode3":{"type":"string","value":"|\\u0075."},"backspace":{"type":"string","value":"|\b."},"delete":{"type":"string","value":"|\u007f."},"newline":{"type":"string","value":"|\n."},"backslash":{"type":"string","value":"|\\."},"quote":{"type":"string","value":"|\"."},"tab":{"type":"string","value":"|\t."},"notunicode2":{"type":"string","value":"|\\u."},"formfeed":{"type":"string","value":"|."},"notunicode4":{"type":"string","value":"|\\u."},"unitseparator":{"type":"string","value":"|\x1f."},"carriage":{"type":"string","value":"|\r."},"notunicode1":{"type":"string","value":"|\\u."}}
+       {"notunicode2":{"type":"string","value":"|\\u."},"carriage":{"type":"string","value":"|\r."},"unitseparator":{"type":"string","value":"|\x1f."},"delete":{"type":"string","value":"|\u007f."},"quote":{"type":"string","value":"|\"."},"formfeed":{"type":"string","value":"|."},"tab":{"type":"string","value":"|\t."},"backspace":{"type":"string","value":"|\b."},"notunicode4":{"type":"string","value":"|\\u."},"notunicode3":{"type":"string","value":"|\\u0075."},"backslash":{"type":"string","value":"|\\."},"notunicode1":{"type":"string","value":"|\\u."},"newline":{"type":"string","value":"|\n."}}
 
 <b>     want:</b>
        {
@@ -320,7 +320,7 @@ toml_parser version 86291a3
        literal_string = '~  ÿ ퟿  ￿ 𐀀 􏿿'
 
 <b>     output from parser-cmd (stdout):</b>
-       {"literal_string":{"type":"string","value":"~ \u0080 ÿ \ud7ff \ue000 \uffff \ud800\udc00 \udbff\udfff"},"not_escaped_string":{"type":"string","value":"\\u0000 \\u0008 \\u000c \\U00000041 \\u007f \\u0080 \\u00ff \\ud7ff \\ue000 \\uffff \\U00010000 \\U0010ffff"},"basic_string":{"type":"string","value":"~ \u0080 ÿ \ud7ff \ue000 \uffff \ud800\udc00 \udbff\udfff"},"escaped_string":{"type":"string","value":"\x00 \b \f A \u007f \u0080 ÿ \ud7ff \ue000 \uffff \x00 \uffff"}}
+       {"basic_string":{"type":"string","value":"~ \u0080 ÿ \ud7ff \ue000 \uffff \ud800\udc00 \udbff\udfff"},"literal_string":{"type":"string","value":"~ \u0080 ÿ \ud7ff \ue000 \uffff \ud800\udc00 \udbff\udfff"},"escaped_string":{"type":"string","value":"\x00 \b \f A \u007f \u0080 ÿ \ud7ff \ue000 \uffff \x00 \uffff"},"not_escaped_string":{"type":"string","value":"\\u0000 \\u0008 \\u000c \\U00000041 \\u007f \\u0080 \\u00ff \\ud7ff \\ue000 \\uffff \\U00010000 \\U0010ffff"}}
 
 <b>     want:</b>
        {
@@ -355,7 +355,7 @@ toml_parser version 86291a3
        ml-null-2  = """\U00000000"""
 
 <b>     output from parser-cmd (stdout):</b>
-       {"null-2":{"type":"string","value":"\x00"},"ml-b":{"type":"string","value":"b"},"a":{"type":"string","value":"a"},"ml-null-1":{"type":"string","value":"\x00"},"delta-1":{"type":"string","value":"\u03b4"},"ml-null-2":{"type":"string","value":"\x00"},"b":{"type":"string","value":"b"},"ml-delta-2":{"type":"string","value":"\u03b4"},"ml-c":{"type":"string","value":"c"},"delta-2":{"type":"string","value":"\u03b4"},"null-1":{"type":"string","value":"\x00"},"ml-a":{"type":"string","value":"a"},"c":{"type":"string","value":"c"},"ml-delta-1":{"type":"string","value":"\u03b4"}}
+       {"ml-null-1":{"type":"string","value":"\x00"},"c":{"type":"string","value":"c"},"ml-b":{"type":"string","value":"b"},"null-2":{"type":"string","value":"\x00"},"ml-c":{"type":"string","value":"c"},"ml-delta-1":{"type":"string","value":"\u03b4"},"delta-2":{"type":"string","value":"\u03b4"},"b":{"type":"string","value":"b"},"ml-a":{"type":"string","value":"a"},"ml-delta-2":{"type":"string","value":"\u03b4"},"ml-null-2":{"type":"string","value":"\x00"},"a":{"type":"string","value":"a"},"null-1":{"type":"string","value":"\x00"},"delta-1":{"type":"string","value":"\u03b4"}}
 
 <b>     want:</b>
        {
@@ -2909,6 +2909,34 @@ toml_parser version 86291a3
 <b>     want:</b>
        Exit code 1
 
+<b>FAIL</b> <b>invalid/string/bad-escape-4</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       a = "a \\\ b"
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "a": {"type": "string", "value": "a \\b"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/string/bad-escape-5</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       a = "a \\\\\ b"
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "a": {"type": "string", "value": "a \\\\b"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
 <b>FAIL</b> <b>invalid/string/bad-multiline</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -3548,9 +3576,9 @@ toml_parser version 86291a3
 <b>     want:</b>
        Exit code 1
 
-toml-test v2025-04-16 [./toml_parser]: using embedded tests
-  valid tests: 181 passed, 10 failed
-invalid tests: 166 passed, 205 failed
+toml-test v2025-04-19 [./toml_parser]: using embedded tests
+  valid tests: 184 passed, 10 failed
+invalid tests: 170 passed, 207 failed
 
 ==> ENCODER TESTS
 (not supported)
