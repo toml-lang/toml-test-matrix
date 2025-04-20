@@ -1,0 +1,1794 @@
+<pre>
+tomlet version cc91daa
+<b>FAIL</b> <b>valid/array/open-parent-table</b>
+<b> </b>    Tomlet.Exceptions.MissingIntermediateInTomlTableArraySpecException: Missing intermediate definition for parent-table.arr in table-array specification on line 1. This is undefined behavior, and I chose to define it as an error.
+<b> </b>       at Tomlet.TomlParser.ReadTableArrayStatement(TomletStringReader reader, TomlDocument document) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 948
+<b> </b>       at Tomlet.TomlParser.Parse(String input) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 65
+<b> </b>       at TomlTestEncoder.Program.Main(String[] args) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/TomlTestDecoder/Program.cs:line 21
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       [[parent-table.arr]]
+       [[parent-table.arr]]
+       [parent-table]
+       not-arr = 1
+
+<b>     output from parser-cmd (stderr):</b>
+       Tomlet.Exceptions.MissingIntermediateInTomlTableArraySpecException: Missing intermediate definition for parent-table.arr in table-array specification on line 1. This is undefined behavior, and I chose to define it as an error.
+          at Tomlet.TomlParser.ReadTableArrayStatement(TomletStringReader reader, TomlDocument document) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 948
+          at Tomlet.TomlParser.Parse(String input) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 65
+          at TomlTestEncoder.Program.Main(String[] args) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/TomlTestDecoder/Program.cs:line 21
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/inline-table/key-dotted-1</b>
+<b> </b>    Tomlet.Exceptions.InvalidTomlInlineTableException: Found an invalid inline TOML table on line 2. See further down for cause.
+<b> </b>     ---> Tomlet.Exceptions.TomlMissingEqualsException: Expecting an equals sign ('=') on line 2, but found '.'
+<b> </b>       at Tomlet.TomlParser.ReadKeyValuePair(TomletStringReader reader, String& key, TomlValue& value) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 117
+<b> </b>       at Tomlet.TomlParser.ReadInlineTable(TomletStringReader reader) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 826
+<b> </b>       --- End of inner exception stack trace ---
+<b> </b>       at Tomlet.TomlParser.ReadInlineTable(TomletStringReader reader) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 833
+<b> </b>       at Tomlet.TomlParser.ReadValue(TomletStringReader reader) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 259
+<b> </b>       at Tomlet.TomlParser.ReadKeyValuePair(TomletStringReader reader, String& key, TomlValue& value) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 125
+<b> </b>       at Tomlet.TomlParser.Parse(String input) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 73
+<b> </b>       at TomlTestEncoder.Program.Main(String[] args) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/TomlTestDecoder/Program.cs:line 21
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       a = {   a.b  =  1   }
+       b = {   "a"."b"  =  1   }
+       c = {   a   .   b  =  1   }
+       d = {   'a'   .   "b"  =  1   }
+       e = {a.b=1}
+
+<b>     output from parser-cmd (stderr):</b>
+       Tomlet.Exceptions.InvalidTomlInlineTableException: Found an invalid inline TOML table on line 2. See further down for cause.
+        ---> Tomlet.Exceptions.TomlMissingEqualsException: Expecting an equals sign ('=') on line 2, but found '.'
+          at Tomlet.TomlParser.ReadKeyValuePair(TomletStringReader reader, String& key, TomlValue& value) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 117
+          at Tomlet.TomlParser.ReadInlineTable(TomletStringReader reader) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 826
+          --- End of inner exception stack trace ---
+          at Tomlet.TomlParser.ReadInlineTable(TomletStringReader reader) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 833
+          at Tomlet.TomlParser.ReadValue(TomletStringReader reader) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 259
+          at Tomlet.TomlParser.ReadKeyValuePair(TomletStringReader reader, String& key, TomlValue& value) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 125
+          at Tomlet.TomlParser.Parse(String input) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 73
+          at TomlTestEncoder.Program.Main(String[] args) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/TomlTestDecoder/Program.cs:line 21
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/key/dotted-1</b>
+<b> </b>    Tomlet.Exceptions.TomlMissingEqualsException: Expecting an equals sign ('=') on line 2, but found '.'
+<b> </b>       at Tomlet.TomlParser.ReadKeyValuePair(TomletStringReader reader, String& key, TomlValue& value) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 117
+<b> </b>       at Tomlet.TomlParser.Parse(String input) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 73
+<b> </b>       at TomlTestEncoder.Program.Main(String[] args) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/TomlTestDecoder/Program.cs:line 21
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       name.first = "Arthur"
+       "name".'last' = "Dent"
+
+       many.dots.dot.dot.dot = 42
+
+<b>     output from parser-cmd (stderr):</b>
+       Tomlet.Exceptions.TomlMissingEqualsException: Expecting an equals sign ('=') on line 2, but found '.'
+          at Tomlet.TomlParser.ReadKeyValuePair(TomletStringReader reader, String& key, TomlValue& value) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 117
+          at Tomlet.TomlParser.Parse(String input) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 73
+          at TomlTestEncoder.Program.Main(String[] args) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/TomlTestDecoder/Program.cs:line 21
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/key/dotted-2</b>
+<b> </b>    Tomlet.Exceptions.TomlMissingEqualsException: Expecting an equals sign ('=') on line 6, but found '.'
+<b> </b>       at Tomlet.TomlParser.ReadKeyValuePair(TomletStringReader reader, String& key, TomlValue& value) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 117
+<b> </b>       at Tomlet.TomlParser.Parse(String input) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 73
+<b> </b>       at TomlTestEncoder.Program.Main(String[] args) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/TomlTestDecoder/Program.cs:line 21
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       # Note: this file contains literal tab characters.
+
+       # Space are ignored, and key parts can be quoted.
+       count.a       = 1
+       count . b     = 2
+       "count"."c"   = 3
+       "count" . "d" = 4
+       'count'.'e'   = 5
+       'count' . 'f' = 6
+       "count".'g'   = 7
+       "count" . 'h' = 8
+       count.'i'     = 9
+       count 	.	 'j'	   = 10
+       "count".k     = 11
+       "count" . l   = 12
+
+<b>     output from parser-cmd (stderr):</b>
+       Tomlet.Exceptions.TomlMissingEqualsException: Expecting an equals sign ('=') on line 6, but found '.'
+          at Tomlet.TomlParser.ReadKeyValuePair(TomletStringReader reader, String& key, TomlValue& value) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 117
+          at Tomlet.TomlParser.Parse(String input) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 73
+          at TomlTestEncoder.Program.Main(String[] args) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/TomlTestDecoder/Program.cs:line 21
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/key/dotted-empty</b>
+<b> </b>    Tomlet.Exceptions.TomlMissingEqualsException: Expecting an equals sign ('=') on line 1, but found '.'
+<b> </b>       at Tomlet.TomlParser.ReadKeyValuePair(TomletStringReader reader, String& key, TomlValue& value) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 117
+<b> </b>       at Tomlet.TomlParser.Parse(String input) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 73
+<b> </b>       at TomlTestEncoder.Program.Main(String[] args) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/TomlTestDecoder/Program.cs:line 21
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       ''.x = "empty.x"
+       x."" = "x.empty"
+       [a]
+       "".'' = "empty.empty"
+
+<b>     output from parser-cmd (stderr):</b>
+       Tomlet.Exceptions.TomlMissingEqualsException: Expecting an equals sign ('=') on line 1, but found '.'
+          at Tomlet.TomlParser.ReadKeyValuePair(TomletStringReader reader, String& key, TomlValue& value) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 117
+          at Tomlet.TomlParser.Parse(String input) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 73
+          at TomlTestEncoder.Program.Main(String[] args) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/TomlTestDecoder/Program.cs:line 21
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/key/escapes</b>
+<b> </b>    Could not find key "\"quoted\"" in parser output.
+
+<b>     input sent to parser-cmd:</b>
+       "\n" = "newline"
+       "\b" = "bell"
+       "\u00c0" = "latin capital letter A with grave"
+       "\"" = "just a quote"
+
+       ["backsp\b\b"]
+
+       ["\"quoted\""]
+       quote = true
+
+       ["a.b"."\u00c0"]
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "\b":           {"type": "string", "value": "bell"},
+         "\n":           {"type": "string", "value": "newline"},
+         "\"":           {"type": "string", "value": "just a quote"},
+         "a.b\".\"\\u00c0": {},
+         "backsp\\b\\b": {},
+         "Ã€":            {"type": "string", "value": "latin capital letter A with grave"},
+         "\\\"quoted\\\"": {
+           "quote": {"type": "bool", "value": "true"}
+         }
+       }
+
+<b>     want:</b>
+       {
+           "\b":         {"type": "string", "value": "bell"},
+           "\n":         {"type": "string", "value": "newline"},
+           "\"":         {"type": "string", "value": "just a quote"},
+           "backsp\b\b": {},
+           "Ã€":          {"type": "string", "value": "latin capital letter A with grave"},
+           "\"quoted\"": {
+               "quote": {"type": "bool", "value": "true"}
+           },
+           "a.b": {
+               "Ã€": {}
+           }
+       }
+
+<b>FAIL</b> <b>valid/spec/table-3</b>
+<b> </b>    Could not find key "j.Êž.l" in parser output.
+
+<b>     input sent to parser-cmd:</b>
+       [a.b.c]            # this is best practice
+       [ d.e.f ]          # same as [d.e.f]
+       [ g .  h  . i ]    # same as [g.h.i]
+       [ j . "Êž" . 'l' ]  # same as [j."Êž".'l']
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "a": {
+           "b": {
+             "c": {}
+           }
+         },
+         "d": {
+           "e": {
+             "f": {}
+           }
+         },
+         "g": {
+           "h": {
+             "i": {}
+           }
+         },
+         "j": {
+           "Êž": {
+             "": {
+               "l": {}
+             }
+           }
+         }
+       }
+
+<b>     want:</b>
+       {
+           "a": {
+               "b": {
+                   "c": {}
+               }
+           },
+           "d": {
+               "e": {
+                   "f": {}
+               }
+           },
+           "g": {
+               "h": {
+                   "i": {}
+               }
+           },
+           "j": {
+               "Êž": {
+                   "l": {}
+               }
+           }
+       }
+
+<b>FAIL</b> <b>valid/table/array-implicit</b>
+<b> </b>    Tomlet.Exceptions.MissingIntermediateInTomlTableArraySpecException: Missing intermediate definition for albums.songs in table-array specification on line 1. This is undefined behavior, and I chose to define it as an error.
+<b> </b>       at Tomlet.TomlParser.ReadTableArrayStatement(TomletStringReader reader, TomlDocument document) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 948
+<b> </b>       at Tomlet.TomlParser.Parse(String input) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 65
+<b> </b>       at TomlTestEncoder.Program.Main(String[] args) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/TomlTestDecoder/Program.cs:line 21
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       [[albums.songs]]
+       name = "Glory Days"
+
+<b>     output from parser-cmd (stderr):</b>
+       Tomlet.Exceptions.MissingIntermediateInTomlTableArraySpecException: Missing intermediate definition for albums.songs in table-array specification on line 1. This is undefined behavior, and I chose to define it as an error.
+          at Tomlet.TomlParser.ReadTableArrayStatement(TomletStringReader reader, TomlDocument document) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 948
+          at Tomlet.TomlParser.Parse(String input) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 65
+          at TomlTestEncoder.Program.Main(String[] args) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/TomlTestDecoder/Program.cs:line 21
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/table/array-implicit-and-explicit-after</b>
+<b> </b>    Tomlet.Exceptions.MissingIntermediateInTomlTableArraySpecException: Missing intermediate definition for a.b in table-array specification on line 1. This is undefined behavior, and I chose to define it as an error.
+<b> </b>       at Tomlet.TomlParser.ReadTableArrayStatement(TomletStringReader reader, TomlDocument document) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 948
+<b> </b>       at Tomlet.TomlParser.Parse(String input) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 65
+<b> </b>       at TomlTestEncoder.Program.Main(String[] args) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/TomlTestDecoder/Program.cs:line 21
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       [[a.b]]
+       x = 1
+
+       [a]
+       y = 2
+
+<b>     output from parser-cmd (stderr):</b>
+       Tomlet.Exceptions.MissingIntermediateInTomlTableArraySpecException: Missing intermediate definition for a.b in table-array specification on line 1. This is undefined behavior, and I chose to define it as an error.
+          at Tomlet.TomlParser.ReadTableArrayStatement(TomletStringReader reader, TomlDocument document) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 948
+          at Tomlet.TomlParser.Parse(String input) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/Tomlet/TomlParser.cs:line 65
+          at TomlTestEncoder.Program.Main(String[] args) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlet/TomlTestDecoder/Program.cs:line 21
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/table/names</b>
+<b> </b>    Could not find key "j.Êž.l" in parser output.
+
+<b>     input sent to parser-cmd:</b>
+       [a.b.c]
+       [a."b.c"]
+       [a.'d.e']
+       [a.' x ']
+       [ d.e.f ]
+       [ g . h . i ]
+       [ j . "Êž" . 'l' ]
+
+       [x.1.2]
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "a": {
+           " x ": {},
+           "b.c": {},
+           "d.e": {},
+           "b": {
+             "c": {}
+           }
+         },
+         "d": {
+           "e": {
+             "f": {}
+           }
+         },
+         "g": {
+           "h": {
+             "i": {}
+           }
+         },
+         "j": {
+           "Êž": {
+             "": {
+               "l": {}
+             }
+           }
+         },
+         "x": {
+           "1": {
+             "2": {}
+           }
+         }
+       }
+
+<b>     want:</b>
+       {
+           "a": {
+               " x ": {},
+               "b.c": {},
+               "d.e": {},
+               "b": {
+                   "c": {}
+               }
+           },
+           "d": {
+               "e": {
+                   "f": {}
+               }
+           },
+           "g": {
+               "h": {
+                   "i": {}
+               }
+           },
+           "j": {
+               "Êž": {
+                   "l": {}
+               }
+           },
+           "x": {
+               "1": {
+                   "2": {}
+               }
+           }
+       }
+
+<b>FAIL</b> <b>valid/table/names-with-values</b>
+<b> </b>    Could not find key "j.Êž.l" in parser output.
+
+<b>     input sent to parser-cmd:</b>
+       [a.b.c]
+       key = 1
+
+       [a."b.c"]
+       key = 2
+
+       [a.'d.e']
+       key = 3
+
+       [a.' x ']
+       key = 4
+
+       [ d.e.f ]
+       key = 5
+
+       [ g . h . i ]
+       key = 6
+
+       [ j . "Êž" . 'l' ]
+       key = 7
+
+       [x.1.2]
+       key = 8
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "a": {
+           " x ": {
+             "key": {"type": "integer", "value": "4"}
+           },
+           "b": {
+             "c": {
+               "key": {"type": "integer", "value": "1"}
+             }
+           },
+           "b.c": {
+             "key": {"type": "integer", "value": "2"}
+           },
+           "d.e": {
+             "key": {"type": "integer", "value": "3"}
+           }
+         },
+         "d": {
+           "e": {
+             "f": {
+               "key": {"type": "integer", "value": "5"}
+             }
+           }
+         },
+         "g": {
+           "h": {
+             "i": {
+               "key": {"type": "integer", "value": "6"}
+             }
+           }
+         },
+         "j": {
+           "Êž": {
+             "": {
+               "l": {
+                 "key": {"type": "integer", "value": "7"}
+               }
+             }
+           }
+         },
+         "x": {
+           "1": {
+             "2": {
+               "key": {"type": "integer", "value": "8"}
+             }
+           }
+         }
+       }
+
+<b>     want:</b>
+       {
+           "a": {
+               " x ": {
+                   "key": {"type": "integer", "value": "4"}
+               },
+               "b": {
+                   "c": {
+                       "key": {"type": "integer", "value": "1"}
+                   }
+               },
+               "b.c": {
+                   "key": {"type": "integer", "value": "2"}
+               },
+               "d.e": {
+                   "key": {"type": "integer", "value": "3"}
+               }
+           },
+           "d": {
+               "e": {
+                   "f": {
+                       "key": {"type": "integer", "value": "5"}
+                   }
+               }
+           },
+           "g": {
+               "h": {
+                   "i": {
+                       "key": {"type": "integer", "value": "6"}
+                   }
+               }
+           },
+           "j": {
+               "Êž": {
+                   "l": {
+                       "key": {"type": "integer", "value": "7"}
+                   }
+               }
+           },
+           "x": {
+               "1": {
+                   "2": {
+                       "key": {"type": "integer", "value": "8"}
+                   }
+               }
+           }
+       }
+
+<b>FAIL</b> <b>invalid/array/no-close-8</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       no-close-8 = [
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "no-close-8": []
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/control/bare-cr</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       # The following line contains a single carriage return control character
+       
+
+<b>     output from parser-cmd (stdout):</b>
+       {}
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/control/comment-ff</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       comment-ff   = "0x7f"   # 
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "comment-ff": {"type": "string", "value": "0x7f"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/control/multi-cr</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       multi-cr   = """null"""
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "multi-cr": {"type": "string", "value": "null\r"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/control/rawmulti-cr</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       rawmulti-cr   = '''null'''
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "rawmulti-cr": {"type": "string", "value": "null\r"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/encoding/bad-codepoint</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       # Invalid codepoint U+D800 : í €
+
+<b>     output from parser-cmd (stdout):</b>
+       {}
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/encoding/bad-utf8-in-comment</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       # Ã
+
+<b>     output from parser-cmd (stdout):</b>
+       {}
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/encoding/bad-utf8-in-multiline</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       # The following line contains an invalid UTF-8 sequence.
+       bad = """Ã"""
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "bad": {"type": "string", "value": "ï¿½"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/encoding/bad-utf8-in-multiline-literal</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       # The following line contains an invalid UTF-8 sequence.
+       bad = '''Ã'''
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "bad": {"type": "string", "value": "ï¿½"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/encoding/bad-utf8-in-string</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       # The following line contains an invalid UTF-8 sequence.
+       bad = "Ã"
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "bad": {"type": "string", "value": "ï¿½"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/encoding/bad-utf8-in-string-literal</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       # The following line contains an invalid UTF-8 sequence.
+       bad = 'Ã'
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "bad": {"type": "string", "value": "ï¿½"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/encoding/utf16-bom</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       þÿ #   U T F - 1 6   w i t h   B O M 
+
+<b>     output from parser-cmd (stdout):</b>
+       {}
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/float/exp-leading-us</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       exp-leading-us = 1e_23
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "exp-leading-us": {"type": "float", "value": "1E+23"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/float/exp-trailing-us-1</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       exp-trailing-us-1 = 1_e2
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "exp-trailing-us-1": {"type": "float", "value": "100"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/float/exp-trailing-us-2</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       exp-trailing-us-2 = 1.2_e2
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "exp-trailing-us-2": {"type": "float", "value": "120"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/float/leading-point-neg</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       leading-point-neg = -.12345
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "leading-point-neg": {"type": "float", "value": "-0.12345"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/float/leading-point-plus</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       leading-point-plus = +.12345
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "leading-point-plus": {"type": "float", "value": "0.12345"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/float/leading-zero</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       leading-zero = 03.14
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "leading-zero": {"type": "float", "value": "3.14"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/float/leading-zero-neg</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       leading-zero-neg = -03.14
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "leading-zero-neg": {"type": "float", "value": "-3.14"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/float/leading-zero-plus</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       leading-zero-plus = +03.14
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "leading-zero-plus": {"type": "float", "value": "3.14"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/float/trailing-point</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       trailing-point = 1.
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "trailing-point": {"type": "float", "value": "1"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/float/trailing-point-min</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       trailing-point-min = -1.
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "trailing-point-min": {"type": "float", "value": "-1"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/float/trailing-point-plus</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       trailing-point-plus = +1.
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "trailing-point-plus": {"type": "float", "value": "1"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/float/trailing-us-exp-1</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       trailing-us-exp-1 = 1_e2
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "trailing-us-exp-1": {"type": "float", "value": "100"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/float/trailing-us-exp-2</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       trailing-us-exp-2 = 1.2_e2
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "trailing-us-exp-2": {"type": "float", "value": "120"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/float/us-after-point</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       us-after-point = 1._2
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "us-after-point": {"type": "float", "value": "1.2"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/float/us-before-point</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       us-before-point = 1_.2
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "us-before-point": {"type": "float", "value": "1.2"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/inline-table/double-comma</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       t = {x=3,,y=4}
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "t": {
+           ",y": {"type": "integer", "value": "4"},
+           "x":  {"type": "integer", "value": "3"}
+         }
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/inline-table/no-close-1</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       a={
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "a": {}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/inline-table/trailing-comma</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       # A terminating comma (also called trailing comma) is not permitted after the
+       # last key/value pair in an inline table
+       abc = { abc = 123, }
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "abc": {
+           "abc": {"type": "integer", "value": "123"}
+         }
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/integer/capital-bin</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       capital-bin = 0B0
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "capital-bin": {"type": "integer", "value": "0"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/integer/capital-hex</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       capital-hex = 0X1
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "capital-hex": {"type": "integer", "value": "1"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/integer/capital-oct</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       capital-oct = 0O0
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "capital-oct": {"type": "integer", "value": "0"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/integer/leading-zero-1</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       leading-zero-1 = 01
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "leading-zero-1": {"type": "integer", "value": "1"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/integer/leading-zero-2</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       leading-zero-2 = 00
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "leading-zero-2": {"type": "integer", "value": "0"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/integer/leading-zero-3</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       leading-zero-3 = 0_0
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "leading-zero-3": {"type": "integer", "value": "0"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/integer/leading-zero-sign-1</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       leading-zero-sign-1 = -01
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "leading-zero-sign-1": {"type": "integer", "value": "-1"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/integer/leading-zero-sign-2</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       leading-zero-sign-2 = +01
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "leading-zero-sign-2": {"type": "integer", "value": "1"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/integer/leading-zero-sign-3</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       leading-zero-sign-3 = +0_1
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "leading-zero-sign-3": {"type": "integer", "value": "1"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/key/after-array</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       [[agencies]] owner = "S Cjelli"
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "agencies": [{
+           "owner": {"type": "string", "value": "S Cjelli"}
+         }]
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/key/bare-invalid-character</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       bare!key = 123
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "bare!key": {"type": "integer", "value": "123"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/key/escape</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       \u00c0 = "latin capital letter A with grave"
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "\\u00c0": {"type": "string", "value": "latin capital letter A with grave"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/key/newline-1</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       barekey
+          = 1
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "barekey": {"type": "integer", "value": "1"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/key/partial-quoted</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       partial"quoted" = 5
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "partial\"quoted\"": {"type": "integer", "value": "5"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/key/special-character</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       Î¼ = "greek small letter mu"
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "Î¼": {"type": "string", "value": "greek small letter mu"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/local-time/hour-over</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       # time-hour       = 2DIGIT  ; 00-23
+       d = 24:00:00
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "d": {"type": "time-local", "value": "00:00:00"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/local-time/no-secs</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       # No seconds in time.
+       no-secs = 17:45
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "no-secs": {"type": "time-local", "value": "17:45:00"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/local-time/time-no-leads</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       # Leading 0 is always required.
+       d = 1:32:00
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "d": {"type": "time-local", "value": "01:32:00"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/local-time/time-no-leads-2</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       # Leading 0 is always required.
+       d = 01:32:0
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "d": {"type": "time-local", "value": "01:32:00"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/spec/table-9-0</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       [fruit]
+       apple.color = "red"
+       apple.taste.sweet = true
+
+       [fruit.apple]  # INVALID
+       # [fruit.apple.taste]  # INVALID
+
+       [fruit.apple.texture]  # you can add sub-tables
+       smooth = true
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "fruit": {
+           "apple": {
+             "color": {"type": "string", "value": "red"},
+             "taste": {
+               "sweet": {"type": "bool", "value": "true"}
+             },
+             "texture": {
+               "smooth": {"type": "bool", "value": "true"}
+             }
+           }
+         }
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/spec/table-9-1</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       [fruit]
+       apple.color = "red"
+       apple.taste.sweet = true
+
+       # [fruit.apple]  # INVALID
+       [fruit.apple.taste]  # INVALID
+
+       [fruit.apple.texture]  # you can add sub-tables
+       smooth = true
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "fruit": {
+           "apple": {
+             "color": {"type": "string", "value": "red"},
+             "taste": {
+               "sweet": {"type": "bool", "value": "true"}
+             },
+             "texture": {
+               "smooth": {"type": "bool", "value": "true"}
+             }
+           }
+         }
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/string/bad-uni-esc-1</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       bad-uni-esc-1 = "val\ue"
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "bad-uni-esc-1": {"type": "string", "value": "val"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/string/bad-uni-esc-2</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       bad-uni-esc-2 = "val\Ux"
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "bad-uni-esc-2": {"type": "string", "value": "val"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/string/bad-uni-esc-3</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       bad-uni-esc-3 = "val\U0000000"
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "bad-uni-esc-3": {"type": "string", "value": "val"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/string/bad-uni-esc-4</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       bad-uni-esc-4 = "val\U0000"
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "bad-uni-esc-4": {"type": "string", "value": "val"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/string/bad-uni-esc-6</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       bad-uni-esc-6 = "This string contains a non scalar unicode codepoint \uD801"
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "bad-uni-esc-6": {"type": "string", "value": "This string contains a non scalar unicode codepoint ï¿½"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/string/multiline-bad-escape-4</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       backslash = """\"""
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "backslash": {"type": "string", "value": "\"\"\"\n"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/string/multiline-lit-no-close-1</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       invalid = '''
+           this will fail
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "invalid": {"type": "string", "value": "    this will fail\n"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/string/multiline-lit-no-close-2</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       x='''
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "x": {"type": "string", "value": ""}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/string/multiline-lit-no-close-3</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       not-closed= '''
+       diibaa
+       blibae ete
+       eteta
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "not-closed": {"type": "string", "value": "diibaa\nblibae ete\neteta\n"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/string/multiline-lit-no-close-4</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       bee = '''
+       hee
+       gee ''
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "bee": {"type": "string", "value": "hee\ngee ''\n"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/string/multiline-no-close-1</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       invalid = """
+           this will fail
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "invalid": {"type": "string", "value": "    this will fail\n"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/string/multiline-no-close-2</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       x="""
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "x": {"type": "string", "value": ""}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/string/multiline-no-close-3</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       not-closed= """
+       diibaa
+       blibae ete
+       eteta
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "not-closed": {"type": "string", "value": "diibaa\nblibae ete\neteta\n"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/string/multiline-no-close-4</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       bee = """
+       hee
+       gee ""
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "bee": {"type": "string", "value": "hee\ngee \"\"\n"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/string/multiline-no-close-5</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       bee = """
+       hee
+       gee\
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "bee": {"type": "string", "value": "hee\ngee"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/append-with-dotted-keys-1</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       # First a.b.c defines a table: a.b.c = {z=9}
+       #
+       # Then we define a.b.c.t = "str" to add a str to the above table, making it:
+       #
+       #   a.b.c = {z=9, t="..."}
+       #
+       # While this makes sense, logically, it was decided this is not valid TOML as
+       # it's too confusing/convoluted.
+       #
+       # See: https://github.com/toml-lang/toml/issues/846
+       #      https://github.com/toml-lang/toml/pull/859
+
+       [a.b.c]
+         z = 9
+
+       [a]
+         b.c.t = "Using dotted keys to add to [a.b.c] after explicitly defining it above is not allowed"
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "a": {
+           "b": {
+             "c": {
+               "z": {"type": "integer", "value": "9"},
+               "t": {
+                 "type":  "string",
+                 "value": "Using dotted keys to add to [a.b.c] after explicitly defining it above is not allowed"
+               }
+             }
+           }
+         }
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/append-with-dotted-keys-2</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       # This is the same issue as in injection-1.toml, except that nests one level
+       # deeper. See that file for a more complete description.
+
+       [a.b.c.d]
+         z = 9
+
+       [a]
+         b.c.d.k.t = "Using dotted keys to add to [a.b.c.d] after explicitly defining it above is not allowed"
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "a": {
+           "b": {
+             "c": {
+               "d": {
+                 "z": {"type": "integer", "value": "9"},
+                 "k": {
+                   "t": {
+                     "type":  "string",
+                     "value": "Using dotted keys to add to [a.b.c.d] after explicitly defining it above is not allowed"
+                   }
+                 }
+               }
+             }
+           }
+         }
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/array-empty</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       [[]]
+       name = "Born to Run"
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "": [{
+           "name": {"type": "string", "value": "Born to Run"}
+         }]
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/duplicate-key-dotted-table</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       [fruit]
+       apple.color = "red"
+
+       [fruit.apple] # INVALID
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "fruit": {
+           "apple": {
+             "color": {"type": "string", "value": "red"}
+           }
+         }
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/duplicate-key-dotted-table2</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       [fruit]
+       apple.taste.sweet = true
+
+       [fruit.apple.taste] # INVALID
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "fruit": {
+           "apple": {
+             "taste": {
+               "sweet": {"type": "bool", "value": "true"}
+             }
+           }
+         }
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/empty</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       []
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "": {}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/empty-implicit-table</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       [naughty..naughty]
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "naughty": {
+           "": {
+             "naughty": {}
+           }
+         }
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/equals-sign</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       [name=bad]
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "name=bad": {}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/nested-brackets-open</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       [a[b]
+       zyx = 42
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "a[b": {
+           "zyx": {"type": "integer", "value": "42"}
+         }
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/redefine-2</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       [t1]
+       t2.t3.v = 0
+       [t1.t2]
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "t1": {
+           "t2": {
+             "t3": {
+               "v": {"type": "integer", "value": "0"}
+             }
+           }
+         }
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/redefine-3</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       [t1]
+       t2.t3.v = 0
+       [t1.t2.t3]
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "t1": {
+           "t2": {
+             "t3": {
+               "v": {"type": "integer", "value": "0"}
+             }
+           }
+         }
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/super-twice</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       [a.b]
+       [a]
+       [a]
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "a": {
+           "b": {}
+         }
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/whitespace</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       [invalid key]
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "invalid key": {}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/with-pound</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       [key#group]
+       answer = 42
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "key#group": {
+           "answer": {"type": "integer", "value": "42"}
+         }
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+toml-test v2025-04-19 [./TomlTestDecoder/bin/Release/net9.0/TomlTestDecoder]: using embedded tests
+  valid tests: 183 passed, 11 failed
+invalid tests: 297 passed, 80 failed
+
+==> ENCODER TESTS
+(not supported)
+took 0.0 0.0
+</pre>

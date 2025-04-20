@@ -1,5 +1,5 @@
-if [[ -f ./toolchain/dotnet/dotnet ]]; then
-	export DOTNET_ROOT=$PWD/toolchain/dotnet
+if [[ -f ./toolchain/dotnet8/dotnet ]]; then
+	export DOTNET_ROOT=$PWD/toolchain/dotnet8
 	path+=($DOTNET_ROOT)
 fi
 
