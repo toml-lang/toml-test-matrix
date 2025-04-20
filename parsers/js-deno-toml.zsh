@@ -8,6 +8,11 @@ setup() {
 	cp ../../scripts/deno-toml-* .
 }
 
+# These lines are added inconsistently to the stack traces.
+after-run() {
+	sed -Ei '/ at eventLoopTick /d' output/js-deno-toml.html
+}
+
 typeset -A info=(
 	lang    'JS'
 	toml    '1.0'

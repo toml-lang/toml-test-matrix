@@ -1,5 +1,5 @@
 <pre>
-toml_parser version 86291a3
+toml_parser version 74b4a91
 <b>FAIL</b> <b>valid/key/quoted-unicode</b>
 <b> </b>    decode JSON output from parser:
 <b> </b>      invalid character 'x' in string escape code
@@ -66,72 +66,6 @@ toml_parser version 86291a3
            "flt7": {"type": "float", "value": "6.626e-34"}
        }
 
-<b>FAIL</b> <b>valid/spec/string-3</b>
-<b> </b>    Values for key "str2" don't match:
-<b> </b>      Expected:     The quick brown fox jumps over the lazy dog.
-<b> </b>      Your encoder: The quick brown
-<b> </b>
-<b> </b>      fox jumps over     the lazy dog.
-
-<b>     input sent to parser-cmd:</b>
-       # The following strings are byte-for-byte equivalent:
-       str1 = "The quick brown fox jumps over the lazy dog."
-
-       str2 = """
-       The quick brown \
-
-
-         fox jumps over \
-           the lazy dog."""
-
-       str3 = """\
-              The quick brown \
-              fox jumps over \
-              the lazy dog.\
-              """
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "str1": {"type": "string", "value": "The quick brown fox jumps over the lazy dog."},
-         "str2": {"type": "string", "value": "The quick brown \n\n  fox jumps over     the lazy dog."},
-         "str3": {
-           "type":  "string",
-           "value": "       The quick brown        fox jumps over        the lazy dog.       "
-         }
-       }
-
-<b>     want:</b>
-       {
-           "str1": {"type": "string", "value": "The quick brown fox jumps over the lazy dog."},
-           "str2": {"type": "string", "value": "The quick brown fox jumps over the lazy dog."},
-           "str3": {"type": "string", "value": "The quick brown fox jumps over the lazy dog."}
-       }
-
-<b>FAIL</b> <b>valid/string/ends-in-whitespace-escape</b>
-<b> </b>    Values for key "beee" don't match:
-<b> </b>      Expected:     heeee
-<b> </b>    geeee
-<b> </b>      Your encoder: heeee
-<b> </b>    geeee
-
-<b>     input sent to parser-cmd:</b>
-       beee = """
-       heeee
-       geeee\
-
-
-             """
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "beee": {"type": "string", "value": "heeee\ngeeee \n\n\n      "}
-       }
-
-<b>     want:</b>
-       {
-           "beee": {"type": "string", "value": "heeee\ngeeee"}
-       }
-
 <b>FAIL</b> <b>valid/string/escapes</b>
 <b> </b>    decode JSON output from parser:
 <b> </b>      invalid character 'x' in string escape code
@@ -154,7 +88,7 @@ toml_parser version 86291a3
        notunicode4   = "|\\\u0075."
 
 <b>     output from parser-cmd (stdout):</b>
-       {"notunicode2":{"type":"string","value":"|\\u."},"carriage":{"type":"string","value":"|\r."},"unitseparator":{"type":"string","value":"|\x1f."},"delete":{"type":"string","value":"|\u007f."},"quote":{"type":"string","value":"|\"."},"formfeed":{"type":"string","value":"|."},"tab":{"type":"string","value":"|\t."},"backspace":{"type":"string","value":"|\b."},"notunicode4":{"type":"string","value":"|\\u."},"notunicode3":{"type":"string","value":"|\\u0075."},"backslash":{"type":"string","value":"|\\."},"notunicode1":{"type":"string","value":"|\\u."},"newline":{"type":"string","value":"|\n."}}
+       {"notunicode4":{"type":"string","value":"|\\u."},"newline":{"type":"string","value":"|\n."},"tab":{"type":"string","value":"|\t."},"notunicode2":{"type":"string","value":"|\\u."},"delete":{"type":"string","value":"|\u007f."},"formfeed":{"type":"string","value":"|\f."},"backspace":{"type":"string","value":"|\b."},"backslash":{"type":"string","value":"|\\."},"notunicode3":{"type":"string","value":"|\\u0075."},"unitseparator":{"type":"string","value":"|\x1f."},"carriage":{"type":"string","value":"|\r."},"notunicode1":{"type":"string","value":"|\\u."},"quote":{"type":"string","value":"|\"."}}
 
 <b>     want:</b>
        {
@@ -173,140 +107,6 @@ toml_parser version 86291a3
            "unitseparator": {"type": "string", "value": "|\u001f."}
        }
 
-<b>FAIL</b> <b>valid/string/multiline</b>
-<b> </b>    Values for key "equivalent_three" don't match:
-<b> </b>      Expected:     The quick brown fox jumps over the lazy dog.
-<b> </b>      Your encoder:        The quick brown        fox jumps over        the lazy dog.
-
-<b>     input sent to parser-cmd:</b>
-       # NOTE: this file includes some literal tab characters.
-
-       equivalent_one = "The quick brown fox jumps over the lazy dog."
-       equivalent_two = """
-       The quick brown \
-
-
-         fox jumps over \
-           the lazy dog."""
-
-       equivalent_three = """\
-              The quick brown \
-              fox jumps over \
-              the lazy dog.\
-              """
-
-       whitespace-after-bs = """\
-              The quick brown \
-              fox jumps over \
-              the lazy dog.\
-              """
-
-       no-space = """a\
-           b"""
-
-       # Has tab character.
-       keep-ws-before = """a   	\
-          b"""
-
-       escape-bs-1 = """a \\
-       b"""
-
-       escape-bs-2 = """a \\\
-       b"""
-
-       escape-bs-3 = """a \\\\
-         b"""
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "equivalent_one": {"type": "string", "value": "The quick brown fox jumps over the lazy dog."},
-         "equivalent_two": {"type": "string", "value": "The quick brown \n\n  fox jumps over     the lazy dog."},
-         "escape-bs-1":    {"type": "string", "value": "a \\\nb"},
-         "escape-bs-2":    {"type": "string", "value": "a \\b"},
-         "escape-bs-3":    {"type": "string", "value": "a \\\\\n  b"},
-         "keep-ws-before": {"type": "string", "value": "a   \t   b"},
-         "no-space":       {"type": "string", "value": "a    b"},
-         "equivalent_three": {
-           "type":  "string",
-           "value": "       The quick brown        fox jumps over        the lazy dog.       "
-         },
-         "whitespace-after-bs": {
-           "type":  "string",
-           "value": "       The quick brown        fox jumps over   \n       the lazy dog.\n       "
-         }
-       }
-
-<b>     want:</b>
-       {
-           "equivalent_one":      {"type": "string", "value": "The quick brown fox jumps over the lazy dog."},
-           "equivalent_three":    {"type": "string", "value": "The quick brown fox jumps over the lazy dog."},
-           "equivalent_two":      {"type": "string", "value": "The quick brown fox jumps over the lazy dog."},
-           "escape-bs-1":         {"type": "string", "value": "a \\\nb"},
-           "escape-bs-2":         {"type": "string", "value": "a \\b"},
-           "escape-bs-3":         {"type": "string", "value": "a \\\\\n  b"},
-           "keep-ws-before":      {"type": "string", "value": "a   \tb"},
-           "no-space":            {"type": "string", "value": "ab"},
-           "whitespace-after-bs": {"type": "string", "value": "The quick brown fox jumps over the lazy dog."}
-       }
-
-<b>FAIL</b> <b>valid/string/multiline-empty</b>
-<b> </b>    Values for key "empty-3" don't match:
-<b> </b>      Expected:
-<b> </b>      Your encoder:
-
-<b>     input sent to parser-cmd:</b>
-       empty-1 = """"""
-
-       # A newline immediately following the opening delimiter will be trimmed.
-       empty-2 = """
-       """
-
-       # \ at the end of line trims newlines as well; note that last \ is followed by
-       # two spaces, which are ignored.
-       empty-3 = """\
-           """
-       empty-4 = """\
-          \
-          \
-          """
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "empty-1": {"type": "string", "value": ""},
-         "empty-2": {"type": "string", "value": ""},
-         "empty-3": {"type": "string", "value": "    "},
-         "empty-4": {"type": "string", "value": "       \n   "}
-       }
-
-<b>     want:</b>
-       {
-           "empty-1": {"type": "string", "value": ""},
-           "empty-2": {"type": "string", "value": ""},
-           "empty-3": {"type": "string", "value": ""},
-           "empty-4": {"type": "string", "value": ""}
-       }
-
-<b>FAIL</b> <b>valid/string/multiline-escaped-crlf</b>
-<b> </b>    Values for key "0" don't match:
-<b> </b>      Expected:
-<b> </b>      Your encoder:
-
-<b>     input sent to parser-cmd:</b>
-       # The following line should be an unescaped backslash followed by a Windows
-       # newline sequence ("\r\n")
-       0="""\
-       """
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "0": {"type": "string", "value": "\n"}
-       }
-
-<b>     want:</b>
-       {
-           "0": {"type": "string", "value": ""}
-       }
-
 <b>FAIL</b> <b>valid/string/quoted-unicode</b>
 <b> </b>    decode JSON output from parser:
 <b> </b>      invalid character 'x' in string escape code
@@ -320,7 +120,7 @@ toml_parser version 86291a3
        literal_string = '~  ÿ ퟿  ￿ 𐀀 􏿿'
 
 <b>     output from parser-cmd (stdout):</b>
-       {"basic_string":{"type":"string","value":"~ \u0080 ÿ \ud7ff \ue000 \uffff \ud800\udc00 \udbff\udfff"},"literal_string":{"type":"string","value":"~ \u0080 ÿ \ud7ff \ue000 \uffff \ud800\udc00 \udbff\udfff"},"escaped_string":{"type":"string","value":"\x00 \b \f A \u007f \u0080 ÿ \ud7ff \ue000 \uffff \x00 \uffff"},"not_escaped_string":{"type":"string","value":"\\u0000 \\u0008 \\u000c \\U00000041 \\u007f \\u0080 \\u00ff \\ud7ff \\ue000 \\uffff \\U00010000 \\U0010ffff"}}
+       {"escaped_string":{"type":"string","value":"\x00 \b \f A \u007f \u0080 ÿ \ud7ff \ue000 \uffff \x00 \uffff"},"not_escaped_string":{"type":"string","value":"\\u0000 \\u0008 \\u000c \\U00000041 \\u007f \\u0080 \\u00ff \\ud7ff \\ue000 \\uffff \\U00010000 \\U0010ffff"},"basic_string":{"type":"string","value":"~ \u0080 ÿ \ud7ff \ue000 \uffff \ud800\udc00 \udbff\udfff"},"literal_string":{"type":"string","value":"~ \u0080 ÿ \ud7ff \ue000 \uffff \ud800\udc00 \udbff\udfff"}}
 
 <b>     want:</b>
        {
@@ -355,7 +155,7 @@ toml_parser version 86291a3
        ml-null-2  = """\U00000000"""
 
 <b>     output from parser-cmd (stdout):</b>
-       {"ml-null-1":{"type":"string","value":"\x00"},"c":{"type":"string","value":"c"},"ml-b":{"type":"string","value":"b"},"null-2":{"type":"string","value":"\x00"},"ml-c":{"type":"string","value":"c"},"ml-delta-1":{"type":"string","value":"\u03b4"},"delta-2":{"type":"string","value":"\u03b4"},"b":{"type":"string","value":"b"},"ml-a":{"type":"string","value":"a"},"ml-delta-2":{"type":"string","value":"\u03b4"},"ml-null-2":{"type":"string","value":"\x00"},"a":{"type":"string","value":"a"},"null-1":{"type":"string","value":"\x00"},"delta-1":{"type":"string","value":"\u03b4"}}
+       {"a":{"type":"string","value":"a"},"null-1":{"type":"string","value":"\x00"},"ml-null-1":{"type":"string","value":"\x00"},"ml-c":{"type":"string","value":"c"},"c":{"type":"string","value":"c"},"ml-a":{"type":"string","value":"a"},"ml-delta-1":{"type":"string","value":"\u03b4"},"delta-2":{"type":"string","value":"\u03b4"},"null-2":{"type":"string","value":"\x00"},"ml-delta-2":{"type":"string","value":"\u03b4"},"ml-b":{"type":"string","value":"b"},"b":{"type":"string","value":"b"},"delta-1":{"type":"string","value":"\u03b4"},"ml-null-2":{"type":"string","value":"\x00"}}
 
 <b>     want:</b>
        {
@@ -374,40 +174,6 @@ toml_parser version 86291a3
            "null-1":     {"type": "string", "value": "\u0000"},
            "null-2":     {"type": "string", "value": "\u0000"}
        }
-
-<b>FAIL</b> <b>invalid/array/double-comma-1</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       double-comma-1 = [1,,2]
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "double-comma-1": [
-           {"type": "integer", "value": "1"},
-           {"type": "integer", "value": "2"}
-         ]
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/array/double-comma-2</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       double-comma-2 = [1,2,,]
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "double-comma-2": [
-           {"type": "integer", "value": "1"},
-           {"type": "integer", "value": "2"}
-         ]
-       }
-
-<b>     want:</b>
-       Exit code 1
 
 <b>FAIL</b> <b>invalid/array/extend-defined-aot</b>
 <b> </b>    Expected an error, but no error was reported.
@@ -446,104 +212,6 @@ toml_parser version 86291a3
              "foo": {"type": "integer", "value": "1"}
            }
          }]
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/array/missing-separator-1</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       arrr = [true false]
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "arrr": [
-           {"type": "bool", "value": "true"},
-           {"type": "bool", "value": "false"}
-         ]
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/array/missing-separator-2</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       wrong = [ 1 2 3 ]
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "wrong": [
-           {"type": "integer", "value": "1"},
-           {"type": "integer", "value": "2"},
-           {"type": "integer", "value": "3"}
-         ]
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/array/no-comma-1</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       no-comma-1 = [true false]
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "no-comma-1": [
-           {"type": "bool", "value": "true"},
-           {"type": "bool", "value": "false"}
-         ]
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/array/no-comma-2</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       no-comma-2 = [ 1 2 3 ]
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "no-comma-2": [
-           {"type": "integer", "value": "1"},
-           {"type": "integer", "value": "2"},
-           {"type": "integer", "value": "3"}
-         ]
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/array/only-comma-1</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       only-comma-1 = [,]
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "only-comma-1": []
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/array/only-comma-2</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       only-comma-2 = [,,]
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "only-comma-2": []
        }
 
 <b>     want:</b>
@@ -599,114 +267,6 @@ toml_parser version 86291a3
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/bool/capitalized-false</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       capitalized-false        = False
-
-<b>     output from parser-cmd (stdout):</b>
-       {}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/bool/capitalized-true</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       capitalized-true         = True
-
-<b>     output from parser-cmd (stdout):</b>
-       {}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/bool/mixed-case</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       mixed-case              = valid   = False
-
-<b>     output from parser-cmd (stdout):</b>
-       {}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/bool/mixed-case-false</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       mixed-case-false        = falsE
-
-<b>     output from parser-cmd (stdout):</b>
-       {}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/bool/mixed-case-true</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       mixed-case-true         = trUe
-
-<b>     output from parser-cmd (stdout):</b>
-       {}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/bool/starting-same-false</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       starting-same-false     = falsey
-
-<b>     output from parser-cmd (stdout):</b>
-       {}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/bool/starting-same-true</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       starting-same-true      = truer
-
-<b>     output from parser-cmd (stdout):</b>
-       {}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/bool/wrong-case-false</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       wrong-case-false        = FALSE
-
-<b>     output from parser-cmd (stdout):</b>
-       {}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/bool/wrong-case-true</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       wrong-case-true         = TRUE
-
-<b>     output from parser-cmd (stdout):</b>
-       {}
-
-<b>     want:</b>
-       Exit code 1
-
 <b>FAIL</b> <b>invalid/control/bare-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -720,21 +280,6 @@ toml_parser version 86291a3
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/control/comment-cr</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       comment-cr   = "Carriage return in comment" # a=1
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "a":          {"type": "integer", "value": "1"},
-         "comment-cr": {"type": "string", "value": "Carriage return in comment"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
 <b>FAIL</b> <b>invalid/control/comment-del</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -744,76 +289,6 @@ toml_parser version 86291a3
 <b>     output from parser-cmd (stdout):</b>
        {
          "comment-del": {"type": "string", "value": "0x7f"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/control/comment-ff</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       comment-ff   = "0x7f"   # 
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "comment-ff": {"type": "string", "value": "0x7f"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/control/comment-lf</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       comment-lf   = "ctrl-P" # 
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "comment-lf": {"type": "string", "value": "ctrl-P"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/control/comment-null</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       comment-null = "null"   #  
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "comment-null": {"type": "string", "value": "null"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/control/comment-us</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       comment-us   = "ctrl-_" # 
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "comment-us": {"type": "string", "value": "ctrl-_"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/control/multi-cr</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       multi-cr   = """null"""
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "multi-cr": {"type": "string", "value": "null\r"}
        }
 
 <b>     want:</b>
@@ -833,56 +308,6 @@ toml_parser version 86291a3
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/control/multi-lf</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       multi-lf   = """null"""
-
-<b>     output from parser-cmd (stdout):</b>
-       {"multi-lf":{"type":"string","value":"null\x10"}}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/control/multi-null</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       multi-null = """null """
-
-<b>     output from parser-cmd (stdout):</b>
-       {"multi-null":{"type":"string","value":"null\x00"}}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/control/multi-us</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       multi-us   = """null"""
-
-<b>     output from parser-cmd (stdout):</b>
-       {"multi-us":{"type":"string","value":"null\x1f"}}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/control/rawmulti-cr</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       rawmulti-cr   = '''null'''
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "rawmulti-cr": {"type": "string", "value": "null\r"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
 <b>FAIL</b> <b>invalid/control/rawmulti-del</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -892,56 +317,6 @@ toml_parser version 86291a3
 <b>     output from parser-cmd (stdout):</b>
        {
          "rawmulti-del": {"type": "string", "value": "null"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/control/rawmulti-lf</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       rawmulti-lf   = '''null'''
-
-<b>     output from parser-cmd (stdout):</b>
-       {"rawmulti-lf":{"type":"string","value":"null\x10"}}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/control/rawmulti-null</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       rawmulti-null = '''null '''
-
-<b>     output from parser-cmd (stdout):</b>
-       {"rawmulti-null":{"type":"string","value":"null\x00"}}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/control/rawmulti-us</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       rawmulti-us   = '''null'''
-
-<b>     output from parser-cmd (stdout):</b>
-       {"rawmulti-us":{"type":"string","value":"null\x1f"}}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/control/rawstring-cr</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       rawstring-cr   = 'null'
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "rawstring-cr": {"type": "string", "value": "null\r"}
        }
 
 <b>     want:</b>
@@ -961,70 +336,6 @@ toml_parser version 86291a3
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/control/rawstring-lf</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       rawstring-lf   = 'null'
-
-<b>     output from parser-cmd (stdout):</b>
-       {"rawstring-lf":{"type":"string","value":"null\x10"}}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/control/rawstring-null</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       rawstring-null = 'null '
-
-<b>     output from parser-cmd (stdout):</b>
-       {"rawstring-null":{"type":"string","value":"null\x00"}}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/control/rawstring-us</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       rawstring-us   = 'null'
-
-<b>     output from parser-cmd (stdout):</b>
-       {"rawstring-us":{"type":"string","value":"null\x1f"}}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/control/string-bs</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       string-bs   = "backspace"
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "string-bs": {"type": "string", "value": "backspace\b"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/control/string-cr</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       string-cr   = "null"
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "string-cr": {"type": "string", "value": "null\r"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
 <b>FAIL</b> <b>invalid/control/string-del</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -1039,116 +350,6 @@ toml_parser version 86291a3
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/control/string-lf</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       string-lf   = "null"
-
-<b>     output from parser-cmd (stdout):</b>
-       {"string-lf":{"type":"string","value":"null\x10"}}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/control/string-null</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       string-null = "null "
-
-<b>     output from parser-cmd (stdout):</b>
-       {"string-null":{"type":"string","value":"null\x00"}}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/control/string-us</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       string-us   = "null"
-
-<b>     output from parser-cmd (stdout):</b>
-       {"string-us":{"type":"string","value":"null\x1f"}}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/datetime/mday-under</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       # date-mday       = 2DIGIT  ; 01-28, 01-29, 01-30, 01-31 based on
-       #                           ; month/year
-       d = 2006-01-00T00:00:00-00:00
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "d": {"type": "datetime", "value": "2006-01-00TZ"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/datetime/month-under</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       # date-month      = 2DIGIT  ; 01-12
-       d = 2007-00-01T00:00:00-00:00
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "d": {"type": "datetime", "value": "2007-00-01TZ"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/datetime/no-leads-with-milli</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       # Day "5" instead of "05"; the leading zero is required.
-       with-milli = 1987-07-5T17:45:00.12Z
-
-<b>     output from parser-cmd (stdout):</b>
-       {}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/datetime/no-secs</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       # No seconds in time.
-       no-secs = 1987-07-05T17:45Z
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "no-secs": {"type": "date-local", "value": "1987-07-05TZ"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/datetime/time-no-leads</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       # Leading 0 is always required.
-       d = 2023-10-01T1:32:00Z
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "d": {"type": "date-local", "value": "2023-10-01TZ"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
 <b>FAIL</b> <b>invalid/encoding/bad-codepoint</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -1157,6 +358,24 @@ toml_parser version 86291a3
 
 <b>     output from parser-cmd (stdout):</b>
        {}
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/encoding/bad-utf8-at-end</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       # There is a 0xda at after the quotes, and no EOL at the end of the file.
+       #
+       # This is a bit of an edge case: This indicates there should be two bytes
+       # (0b1101_1010) but there is no byte to follow because it's the end of the file.
+       x = """"""�
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "x": {"type": "string", "value": ""}
+       }
 
 <b>     want:</b>
        Exit code 1
@@ -1229,72 +448,6 @@ toml_parser version 86291a3
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/float/double-point-1</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       double-point-1 = 0..1
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "double-point-1": {"type": "integer", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/exp-double-e-1</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       exp-double-e-1 = 1ee2
-
-<b>     output from parser-cmd (stdout):</b>
-       {}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/exp-double-e-2</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       exp-double-e-2 = 1e2e3
-
-<b>     output from parser-cmd (stdout):</b>
-       {}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/exp-double-us</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       exp-double-us = 1e__23
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "exp-double-us": {"type": "float", "value": "9.999999999999999e+22"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/exp-leading-us</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       exp-leading-us = 1e_23
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "exp-leading-us": {"type": "float", "value": "9.999999999999999e+22"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
 <b>FAIL</b> <b>invalid/float/exp-point-1</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -1303,90 +456,6 @@ toml_parser version 86291a3
 
 <b>     output from parser-cmd (stdout):</b>
        {}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/exp-point-2</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       exp-point-2 = 1.e2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "exp-point-2": {"type": "float", "value": "100"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/exp-point-3</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       exp-point-3 = 3.e+20
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "exp-point-3": {"type": "float", "value": "3e+20"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/exp-trailing-us</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       exp-trailing-us = 1e23_
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "exp-trailing-us": {"type": "float", "value": "9.999999999999999e+22"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/exp-trailing-us-1</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       exp-trailing-us-1 = 1_e2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "exp-trailing-us-1": {"type": "float", "value": "100"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/exp-trailing-us-2</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       exp-trailing-us-2 = 1.2_e2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "exp-trailing-us-2": {"type": "float", "value": "120"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/inf-capital</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       v = Inf
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "v": {"type": "float", "value": "+Inf"}
-       }
 
 <b>     want:</b>
        Exit code 1
@@ -1414,234 +483,6 @@ toml_parser version 86291a3
 <b>     output from parser-cmd (stdout):</b>
        {
          "leading-point-plus": {"type": "float", "value": "0.12345"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/leading-us</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       leading-us = _1.2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "leading-us": {"type": "float", "value": "1.2"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/leading-zero</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       leading-zero = 03.14
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "leading-zero": {"type": "float", "value": "3.14"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/leading-zero-neg</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       leading-zero-neg = -03.14
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "leading-zero-neg": {"type": "float", "value": "-3.14"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/leading-zero-plus</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       leading-zero-plus = +03.14
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "leading-zero-plus": {"type": "float", "value": "3.14"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/nan-capital</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       v = NaN
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "v": {"type": "float", "value": "NaN"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/trailing-point</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       trailing-point = 1.
-
-<b>     output from parser-cmd (stdout):</b>
-       {}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/trailing-point-min</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       trailing-point-min = -1.
-
-<b>     output from parser-cmd (stdout):</b>
-       {}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/trailing-point-plus</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       trailing-point-plus = +1.
-
-<b>     output from parser-cmd (stdout):</b>
-       {}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/trailing-us</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       trailing-us = 1.2_
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "trailing-us": {"type": "float", "value": "1.2"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/trailing-us-exp-1</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       trailing-us-exp-1 = 1_e2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "trailing-us-exp-1": {"type": "float", "value": "100"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/trailing-us-exp-2</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       trailing-us-exp-2 = 1.2_e2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "trailing-us-exp-2": {"type": "float", "value": "120"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/us-after-point</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       us-after-point = 1._2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "us-after-point": {"type": "float", "value": "1.2"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/us-before-point</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       us-before-point = 1_.2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "us-before-point": {"type": "float", "value": "1.2"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/inline-table/double-comma</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       t = {x=3,,y=4}
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "t": {
-           "x": {"type": "integer", "value": "3"},
-           "y": {"type": "integer", "value": "4"}
-         }
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/inline-table/duplicate-key-1</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       # Duplicate keys within an inline table are invalid
-       a={b=1, b=2}
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "a": {
-           "b": {"type": "integer", "value": "2"}
-         }
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/inline-table/duplicate-key-2</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       table1 = { table2.dupe = 1, table2.dupe = 2 }
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "table1": {
-           "table2": {
-             "dupe": {"type": "integer", "value": "2"}
-           }
-         }
        }
 
 <b>     want:</b>
@@ -1684,51 +525,6 @@ toml_parser version 86291a3
              "c": {"type": "string", "value": "a_b_c"}
            }
          }
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/inline-table/empty-1</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       t = {,}
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "t": {}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/inline-table/empty-2</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       t = {,
-       }
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "t": {}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/inline-table/empty-3</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       t = {
-       ,
-       }
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "t": {}
        }
 
 <b>     want:</b>
@@ -1809,47 +605,11 @@ toml_parser version 86291a3
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/inline-table/no-comma-1</b>
+<b>FAIL</b> <b>invalid/inline-table/no-close-1</b>
 <b> </b>    Expected an error, but no error was reported.
 
 <b>     input sent to parser-cmd:</b>
-       t = {x = 3 y = 4}
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "t": {
-           "x": {"type": "integer", "value": "3"},
-           "y": {"type": "integer", "value": "4"}
-         }
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/inline-table/no-comma-2</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       arrr = { comma-missing = true valid-toml = false }
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "arrr": {
-           "comma-missing": {"type": "bool", "value": "true"},
-           "valid-toml":    {"type": "bool", "value": "false"}
-         }
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/inline-table/overwrite-01</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       a.b=0
-       # Since table "a" is already defined, it can't be replaced by an inline table.
-       a={}
+       a={
 
 <b>     output from parser-cmd (stdout):</b>
        {
@@ -1871,23 +631,6 @@ toml_parser version 86291a3
        {
          "a": {
            "b": {}
-         }
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/inline-table/overwrite-03</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       a = { b = 1 }
-       a.b = 2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "a": {
-           "b": {"type": "integer", "value": "2"}
          }
        }
 
@@ -1966,30 +709,6 @@ toml_parser version 86291a3
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/inline-table/overwrite-09</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       [tab.nested]
-       inline-t = { nest = {} }
-
-       [tab]
-       nested.inline-t.nest = 2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "tab": {
-           "nested": {
-             "inline-t": {
-               "nest": {"type": "integer", "value": "2"}
-             }
-           }
-         }
-       }
-
-<b>     want:</b>
-       Exit code 1
-
 <b>FAIL</b> <b>invalid/inline-table/overwrite-10</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -2023,118 +742,6 @@ toml_parser version 86291a3
          "abc": {
            "abc": {"type": "integer", "value": "123"}
          }
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/double-us</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       double-us = 1__23
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "double-us": {"type": "integer", "value": "123"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/leading-us</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       leading-us = _123
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "leading-us": {"type": "integer", "value": "123"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/leading-zero-1</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       leading-zero-1 = 01
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "leading-zero-1": {"type": "integer", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/leading-zero-2</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       leading-zero-2 = 00
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "leading-zero-2": {"type": "integer", "value": "0"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/leading-zero-3</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       leading-zero-3 = 0_0
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "leading-zero-3": {"type": "integer", "value": "0"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/leading-zero-sign-1</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       leading-zero-sign-1 = -01
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "leading-zero-sign-1": {"type": "integer", "value": "-1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/leading-zero-sign-2</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       leading-zero-sign-2 = +01
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "leading-zero-sign-2": {"type": "integer", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/leading-zero-sign-3</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       leading-zero-sign-3 = +0_1
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "leading-zero-sign-3": {"type": "integer", "value": "1"}
        }
 
 <b>     want:</b>
@@ -2224,160 +831,15 @@ toml_parser version 86291a3
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/integer/text-after-integer</b>
+<b>FAIL</b> <b>invalid/key/bare-invalid-character</b>
 <b> </b>    Expected an error, but no error was reported.
 
 <b>     input sent to parser-cmd:</b>
-       answer = 42 the ultimate answer?
+       bare!key = 123
 
 <b>     output from parser-cmd (stdout):</b>
        {
-         "answer": {"type": "integer", "value": "42"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/trailing-us</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       trailing-us = 123_
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "trailing-us": {"type": "integer", "value": "123"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/trailing-us-bin</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       trailing-us-bin = 0b1_
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "trailing-us-bin": {"type": "integer", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/trailing-us-hex</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       trailing-us-hex = 0x1_
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "trailing-us-hex": {"type": "integer", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/trailing-us-oct</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       trailing-us-oct = 0o1_
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "trailing-us-oct": {"type": "integer", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/us-after-bin</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       us-after-bin = 0b_1
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "us-after-bin": {"type": "integer", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/us-after-hex</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       us-after-hex = 0x_1
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "us-after-hex": {"type": "integer", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/us-after-oct</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       us-after-oct = 0o_1
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "us-after-oct": {"type": "integer", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/key/after-array</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       [[agencies]] owner = "S Cjelli"
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "agencies": [{
-           "owner": {"type": "string", "value": "S Cjelli"}
-         }]
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/key/after-table</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       [error] this = "should not be here"
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "error": {
-           "this": {"type": "string", "value": "should not be here"}
-         }
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/key/after-value</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       first = "Tom" last = "Preston-Werner" # INVALID
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "first": {"type": "string", "value": "Tom"},
-         "last":  {"type": "string", "value": "Preston-Werner"}
+         "bare!key": {"type": "integer", "value": "123"}
        }
 
 <b>     want:</b>
@@ -2419,233 +881,43 @@ toml_parser version 86291a3
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/key/duplicate-keys-1</b>
+<b>FAIL</b> <b>invalid/key/escape</b>
 <b> </b>    Expected an error, but no error was reported.
 
 <b>     input sent to parser-cmd:</b>
-       name = "Tom"
-       name = "Pradyun"
+       \u00c0 = "latin capital letter A with grave"
 
 <b>     output from parser-cmd (stdout):</b>
        {
-         "name": {"type": "string", "value": "Pradyun"}
+         "À": {"type": "string", "value": "latin capital letter A with grave"}
        }
 
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/key/duplicate-keys-2</b>
+<b>FAIL</b> <b>invalid/key/partial-quoted</b>
 <b> </b>    Expected an error, but no error was reported.
 
 <b>     input sent to parser-cmd:</b>
-       dupe = false
-       dupe = true
+       partial"quoted" = 5
 
 <b>     output from parser-cmd (stdout):</b>
        {
-         "dupe": {"type": "bool", "value": "true"}
+         "partial\"quoted\"": {"type": "integer", "value": "5"}
        }
 
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/key/duplicate-keys-3</b>
+<b>FAIL</b> <b>invalid/key/special-character</b>
 <b> </b>    Expected an error, but no error was reported.
 
 <b>     input sent to parser-cmd:</b>
-       spelling   = "favorite"
-       "spelling" = "favourite"
+       μ = "greek small letter mu"
 
 <b>     output from parser-cmd (stdout):</b>
        {
-         "spelling": {"type": "string", "value": "favourite"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/key/duplicate-keys-4</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       spelling   = "favorite"
-       'spelling' = "favourite"
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "spelling": {"type": "string", "value": "favourite"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/key/newline-2</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       "quoted
-       key" = 1
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "quoted\nkey": {"type": "integer", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/key/newline-3</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       'quoted
-       key' = 1
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "quoted\nkey": {"type": "integer", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/key/newline-4</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       """long
-       key""" = 1
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "long\nkey": {"type": "integer", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/key/newline-5</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       '''long
-       key''' = 1
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "long\nkey": {"type": "integer", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/key/no-eol</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       a = 1 b = 2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "a": {"type": "integer", "value": "1"},
-         "b": {"type": "integer", "value": "2"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/key/two-equals-3</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       a=b=1
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "b": {"type": "integer", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/key/without-value-1</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       key
-
-<b>     output from parser-cmd (stdout):</b>
-       {}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/key/without-value-3</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       "key"
-
-<b>     output from parser-cmd (stdout):</b>
-       {}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/key/without-value-5</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       fs.fw
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "fs": {}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/key/without-value-7</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       fs.
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "fs": {}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/local-date/mday-under</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       # date-mday       = 2DIGIT  ; 01-28, 01-29, 01-30, 01-31 based on
-       #                           ; month/year
-       d = 2006-01-00
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "d": {"type": "date-local", "value": "2006-01-00TZ"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/local-date/month-under</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       # date-month      = 2DIGIT  ; 01-12
-       d = 2007-00-01
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "d": {"type": "date-local", "value": "2007-00-01TZ"}
+         "μ": {"type": "string", "value": "greek small letter mu"}
        }
 
 <b>     want:</b>
@@ -2661,80 +933,6 @@ toml_parser version 86291a3
 <b>     output from parser-cmd (stdout):</b>
        {
          "d": {"type": "date-local", "value": "2006-01-30TZ"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/local-datetime/mday-under</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       # date-mday       = 2DIGIT  ; 01-28, 01-29, 01-30, 01-31 based on
-       #                           ; month/year
-       d = 2006-01-00T00:00:00
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "d": {"type": "datetime-local", "value": "2006-01-00T"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/local-datetime/month-under</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       # date-month      = 2DIGIT  ; 01-12
-       d = 2007-00-01T00:00:00
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "d": {"type": "datetime-local", "value": "2007-00-01T"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/local-datetime/no-leads-with-milli</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       # Day "5" instead of "05"; the leading zero is required.
-       with-milli = 1987-07-5T17:45:00.12
-
-<b>     output from parser-cmd (stdout):</b>
-       {}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/local-datetime/no-secs</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       # No seconds in time.
-       no-secs = 1987-07-05T17:45
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "no-secs": {"type": "date-local", "value": "1987-07-05TZ"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/local-datetime/time-no-leads</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       # Leading 0 is always required.
-       d = 2023-10-01T1:32:00Z
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "d": {"type": "date-local", "value": "2023-10-01TZ"}
        }
 
 <b>     want:</b>
@@ -2756,48 +954,6 @@ toml_parser version 86291a3
              "name":   {"type": "string", "value": "Nail"}
            }
          }
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/spec/inline-table-3-0</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       [product]
-       type.name = "Nail"
-       type = { edible = false }  # INVALID
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "product": {
-           "type": {
-             "edible": {"type": "bool", "value": "false"}
-           }
-         }
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/spec/string-7-0</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       quot15 = '''Here are fifteen quotation marks: """""""""""""""'''
-
-       apos15 = '''Here are fifteen apostrophes: ''''''''''''''''''  # INVALID
-       apos15 = "Here are fifteen apostrophes: '''''''''''''''"
-
-       # 'That,' she said, 'is still pointless.'
-       str = ''''That,' she said, 'is still pointless.''''
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "apos15": {"type": "string", "value": "Here are fifteen apostrophes: '''''''''''''''"},
-         "quot15": {"type": "string", "value": "Here are fifteen quotation marks: \"\"\"\"\"\"\"\"\"\"\"\"\"\"\""},
-         "str":    {"type": "string", "value": "'That,' she said, 'is still pointless.'"}
        }
 
 <b>     want:</b>
@@ -2867,34 +1023,6 @@ toml_parser version 86291a3
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/string/bad-concat</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       no_concat = "first" "second"
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "no_concat": {"type": "string", "value": "first"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/string/bad-escape-1</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       invalid-escape = "This string has a bad \a escape character."
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "invalid-escape": {"type": "string", "value": "This string has a bad  escape character."}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
 <b>FAIL</b> <b>invalid/string/bad-escape-2</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -2903,7 +1031,7 @@ toml_parser version 86291a3
 
 <b>     output from parser-cmd (stdout):</b>
        {
-         "invalid-escape": {"type": "string", "value": "This string has a bad  escape character."}
+         "invalid-escape": {"type": "string", "value": "This string has a bad escape character."}
        }
 
 <b>     want:</b>
@@ -2947,168 +1075,6 @@ toml_parser version 86291a3
 <b>     output from parser-cmd (stdout):</b>
        {
          "multi": {"type": "string", "value": "first line\nsecond line"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/string/bad-slash-escape</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       invalid-escape = "This string has a bad \/ escape character."
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "invalid-escape": {"type": "string", "value": "This string has a bad  escape character."}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/string/bad-uni-esc-6</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       bad-uni-esc-6 = "This string contains a non scalar unicode codepoint \uD801"
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "bad-uni-esc-6": {"type": "string", "value": "This string contains a non scalar unicode codepoint �"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/string/basic-multiline-out-of-range-unicode-escape-1</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       a = """\UFFFFFFFF"""
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "a": {"type": "string", "value": "￿"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/string/basic-multiline-out-of-range-unicode-escape-2</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       a = """\U00D80000"""
-
-<b>     output from parser-cmd (stdout):</b>
-       {"a":{"type":"string","value":"\x00"}}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/string/basic-multiline-unknown-escape</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       a = """\@"""
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "a": {"type": "string", "value": ""}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/string/basic-out-of-range-unicode-escape-1</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       a = "\UFFFFFFFF"
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "a": {"type": "string", "value": "￿"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/string/basic-out-of-range-unicode-escape-2</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       a = "\U00D80000"
-
-<b>     output from parser-cmd (stdout):</b>
-       {"a":{"type":"string","value":"\x00"}}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/string/basic-unknown-escape</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       a = "\@"
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "a": {"type": "string", "value": ""}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/string/literal-multiline-quotes-1</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       a = '''6 apostrophes: ''''''
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "a": {"type": "string", "value": "6 apostrophes: '''"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/string/literal-multiline-quotes-2</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       a = '''15 apostrophes: ''''''''''''''''''
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "a": {"type": "string", "value": "15 apostrophes: '''''''''''''''"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/string/missing-quotes</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       name = value
-
-<b>     output from parser-cmd (stdout):</b>
-       {}
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/string/multiline-bad-escape-1</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       k = """t\a"""
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "k": {"type": "string", "value": "t"}
        }
 
 <b>     want:</b>
@@ -3171,36 +1137,7 @@ toml_parser version 86291a3
 
 <b>     output from parser-cmd (stdout):</b>
        {
-         "bee": {"type": "string", "value": "hee \ngee   "}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/string/multiline-quotes-1</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       a = """6 quotes: """"""
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "a": {"type": "string", "value": "6 quotes: \"\"\""}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/string/text-after-string</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       string = "Is there life after strings?" No.
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "No":     {},
-         "string": {"type": "string", "value": "Is there life after strings?"}
+         "bee": {"type": "string", "value": "hee gee "}
        }
 
 <b>     want:</b>
@@ -3300,57 +1237,6 @@ toml_parser version 86291a3
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/table/array-empty</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       [[]]
-       name = "Born to Run"
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "]": [{
-           "name": {"type": "string", "value": "Born to Run"}
-         }]
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/table/array-no-close-1</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       [[albums]
-       name = "Born to Run"
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "albums": [{
-           "name": {"type": "string", "value": "Born to Run"}
-         }]
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/table/array-no-close-2</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       [[closing-bracket.missing]
-       blaa=2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "closing-bracket": {"missing": [{
-           "blaa": {"type": "integer", "value": "2"}
-         }]}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
 <b>FAIL</b> <b>invalid/table/duplicate</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -3434,54 +1320,6 @@ toml_parser version 86291a3
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/table/empty</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       []
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "]": {}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/table/llbrace</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       [ [table]]
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "table": [{}]
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/table/overwrite-array-in-parent</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       [[parent-table.arr]]
-       [parent-table]
-       not-arr = 1
-       arr = 2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "parent-table": {
-           "arr":     {"type": "integer", "value": "2"},
-           "not-arr": {"type": "integer", "value": "1"}
-         }
-       }
-
-<b>     want:</b>
-       Exit code 1
-
 <b>FAIL</b> <b>invalid/table/overwrite-with-deep-table</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -3544,20 +1382,6 @@ toml_parser version 86291a3
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/table/rrbrace</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       [[table] ]
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "table": [{}]
-       }
-
-<b>     want:</b>
-       Exit code 1
-
 <b>FAIL</b> <b>invalid/table/super-twice</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -3577,8 +1401,8 @@ toml_parser version 86291a3
        Exit code 1
 
 toml-test v2025-04-19 [./toml_parser]: using embedded tests
-  valid tests: 184 passed, 10 failed
-invalid tests: 170 passed, 207 failed
+  valid tests: 189 passed,  5 failed
+invalid tests: 308 passed, 69 failed
 
 ==> ENCODER TESTS
 (not supported)
