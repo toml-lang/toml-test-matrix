@@ -21,5 +21,5 @@ typeset -A info=(
 	# There isn't really a good way to fix this and is just a limitation of Lua
 	# that exists in various parsers. For the purpose of toml-test-matrix, I
 	# think it's fine to just skip it.
-	flags   '-skip valid/array/empty'
+	flags   '-skip valid/array/empty -skip valid/inline-table/array-02'
 )

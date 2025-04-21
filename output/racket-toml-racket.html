@@ -87,8 +87,8 @@ toml-racket version fe46aa2
 <b>     want:</b>
        Exit code 1
 
-toml-test v2025-04-19 [./toml-compliance/compliance/decoder]: using embedded tests
-  valid tests: 192 passed,  2 failed
+toml-test v2025-04-21 [./toml-compliance/compliance/decoder]: using embedded tests
+  valid tests: 193 passed,  2 failed
 invalid tests: 376 passed,  1 failed
 
 ==> ENCODER TESTS
@@ -146,36 +146,16 @@ invalid tests: 376 passed,  1 failed
        exponent-signed-pos = +0e0
        exponent-signed-neg = -0e0
 
-<b>FAIL</b> <b>valid/inline-table/array-values</b>
+<b>FAIL</b> <b>valid/inline-table/array-02</b>
 <b> </b>    Could not find key "a.a" in encoder output
 
 <b>     input sent to parser-cmd:</b>
        {
-           "a": {"a": []},
-           "b": {
-               "a": [
-                   {"type": "integer", "value": "1"},
-                   {"type": "integer", "value": "2"}
-               ],
-               "b": [
-                   {"type": "integer", "value": "3"},
-                   {"type": "integer", "value": "4"}
-               ]
-           }
+           "a": {"a": []}
        }
 
 <b>     output from parser-cmd (stdout):</b>
        [a]
-
-       [b]
-       a = [
-         1,
-         2,
-       ]
-       b = [
-         3,
-         4,
-       ]
 
 <b>     want:</b>
        # "No newlines are allowed between the curly braces unless they are valid within
@@ -183,14 +163,6 @@ invalid tests: 376 passed,  1 failed
 
        a = { a = [
        ]}
-
-       b = { a = [
-       		1,
-       		2,
-       	], b = [
-       		3,
-       		4,
-       	]}
 
 <b>FAIL</b> <b>valid/inline-table/key-dotted-5</b>
 <b> </b>    Could not find key "arr-2.a" in encoder output
@@ -397,7 +369,7 @@ invalid tests: 376 passed,  1 failed
        # both
        flt7 = 6.626e-34
 
-toml-test v2025-04-19 [./toml-compliance/compliance/encoder]: using embedded tests
-encoder tests: 187 passed,  7 failed
+toml-test v2025-04-21 [./toml-compliance/compliance/encoder]: using embedded tests
+encoder tests: 188 passed,  7 failed
 took 0.0 0.0
 </pre>

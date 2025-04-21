@@ -334,8 +334,8 @@ deno-toml version 390845e7
 <b>     want:</b>
           <empty>
 
-<b>FAIL</b> <b>valid/inline-table/array-values</b>
-<b> </b>    error: Uncaught (in promise) SyntaxError: Parse error on line 7, column 0: Array is not closed
+<b>FAIL</b> <b>valid/inline-table/array-02</b>
+<b> </b>    error: Uncaught (in promise) SyntaxError: Parse error on line 6, column 0: Array is not closed
 <b> </b>            throw new SyntaxError(createParseErrorMessage(scanner, error.message));
 <b> </b>                  ^
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
@@ -351,6 +351,30 @@ deno-toml version 390845e7
        a = { a = [
        ]}
 
+<b>     output from parser-cmd (stderr):</b>
+       error: Uncaught (in promise) SyntaxError: Parse error on line 6, column 0: Array is not closed
+               throw new SyntaxError(createParseErrorMessage(scanner, error.message));
+                     ^
+           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+           at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
+           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/deno-toml-decoder.ts:38:9
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/inline-table/array-03</b>
+<b> </b>    error: Uncaught (in promise) SyntaxError: Parse error on line 8, column 0: Array is not closed
+<b> </b>            throw new SyntaxError(createParseErrorMessage(scanner, error.message));
+<b> </b>                  ^
+<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+<b> </b>        at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
+<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/deno-toml-decoder.ts:38:9
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
        b = { a = [
        		1,
        		2,
@@ -360,7 +384,7 @@ deno-toml version 390845e7
        	]}
 
 <b>     output from parser-cmd (stderr):</b>
-       error: Uncaught (in promise) SyntaxError: Parse error on line 7, column 0: Array is not closed
+       error: Uncaught (in promise) SyntaxError: Parse error on line 8, column 0: Array is not closed
                throw new SyntaxError(createParseErrorMessage(scanner, error.message));
                      ^
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
@@ -2586,8 +2610,8 @@ deno-toml version 390845e7
 <b>     want:</b>
        Exit code 1
 
-toml-test v2025-04-19 [./deno-toml-decoder.ts]: using embedded tests,  1 skipped
-  valid tests: 165 passed, 28 failed
+toml-test v2025-04-21 [./deno-toml-decoder.ts]: using embedded tests,  1 skipped
+  valid tests: 165 passed, 29 failed
 invalid tests: 270 passed, 107 failed
 
 ==> ENCODER TESTS
@@ -3546,7 +3570,7 @@ invalid tests: 270 passed, 107 failed
        [a.b.c]
        answer = 42
 
-<b>FAIL</b> <b>valid/inline-table/array</b>
+<b>FAIL</b> <b>valid/inline-table/array-01</b>
 <b> </b>    Could not find key "arr.a" in encoder output
 
 <b>     input sent to parser-cmd:</b>
@@ -3599,14 +3623,13 @@ invalid tests: 270 passed, 107 failed
                  {first_name = "Eric", last_name = "Clapton"},
                  {first_name = "Bob", last_name = "Seger"}]
 
-<b>FAIL</b> <b>valid/inline-table/array-values</b>
+<b>FAIL</b> <b>valid/inline-table/array-03</b>
 <b> </b>    Type for key "b.a" differs:
 <b> </b>      Expected:     1 (int64)
 <b> </b>      Your encoder: map[] (map[string]any)
 
 <b>     input sent to parser-cmd:</b>
        {
-           "a": {"a": []},
            "b": {
                "a": [
                    {"type": "integer", "value": "1"},
@@ -3620,9 +3643,6 @@ invalid tests: 270 passed, 107 failed
        }
 
 <b>     output from parser-cmd (stdout):</b>
-       [a]
-       a = []
-
        [b]
 
        [[b.a]]
@@ -3634,12 +3654,6 @@ invalid tests: 270 passed, 107 failed
        [[b.b]]
 
 <b>     want:</b>
-       # "No newlines are allowed between the curly braces unless they are valid within
-       # a value"
-
-       a = { a = [
-       ]}
-
        b = { a = [
        		1,
        		2,
@@ -5949,7 +5963,7 @@ invalid tests: 270 passed, 107 failed
        c = 3
        d = 4
 
-toml-test v2025-04-19 [./deno-toml-encoder.ts]: using embedded tests,  1 skipped
-encoder tests: 105 passed, 88 failed
+toml-test v2025-04-21 [./deno-toml-encoder.ts]: using embedded tests,  1 skipped
+encoder tests: 106 passed, 88 failed
 took 0.0 0.0
 </pre>

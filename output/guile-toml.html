@@ -1,6 +1,6 @@
 <pre>
 toml version ecb24de
-<b>FAIL</b> <b>valid/inline-table/array-values</b>
+<b>FAIL</b> <b>valid/inline-table/array-02</b>
 <b> </b>    Backtrace:
 <b> </b>    In ice-9/boot-9.scm:
 <b> </b>      1755:12 13 (with-exception-handler _ _ #:unwind? _ #:unwind-for-type _)
@@ -36,14 +36,6 @@ toml version ecb24de
 
        a = { a = [
        ]}
-
-       b = { a = [
-       		1,
-       		2,
-       	], b = [
-       		3,
-       		4,
-       	]}
 
 <b>     output from parser-cmd (stderr):</b>
        Backtrace:
@@ -567,34 +559,20 @@ toml version ecb24de
 <b>     want:</b>
        Exit code 1
 
-toml-test v2025-04-19 [./test/test-decoder.scm]: using embedded tests
-  valid tests: 189 passed,  5 failed
+toml-test v2025-04-21 [./test/test-decoder.scm]: using embedded tests
+  valid tests: 190 passed,  5 failed
 invalid tests: 363 passed, 14 failed
 
 ==> ENCODER TESTS
-<b>FAIL</b> <b>valid/inline-table/array-values</b>
+<b>FAIL</b> <b>valid/inline-table/array-02</b>
 <b> </b>    Could not find key "a.a" in encoder output
 
 <b>     input sent to parser-cmd:</b>
        {
-           "a": {"a": []},
-           "b": {
-               "a": [
-                   {"type": "integer", "value": "1"},
-                   {"type": "integer", "value": "2"}
-               ],
-               "b": [
-                   {"type": "integer", "value": "3"},
-                   {"type": "integer", "value": "4"}
-               ]
-           }
+           "a": {"a": []}
        }
 
 <b>     output from parser-cmd (stdout):</b>
-       ["b"]
-       "b" = [3, 4]
-       "a" = [1, 2]
-
        ["a"]
 
 <b>     want:</b>
@@ -603,14 +581,6 @@ invalid tests: 363 passed, 14 failed
 
        a = { a = [
        ]}
-
-       b = { a = [
-       		1,
-       		2,
-       	], b = [
-       		3,
-       		4,
-       	]}
 
 <b>FAIL</b> <b>valid/spec/float-0</b>
 <b> </b>    decode TOML from encoder:
@@ -696,7 +666,7 @@ invalid tests: 363 passed, 14 failed
           is preserved.
        '''
 
-toml-test v2025-04-19 [./test/test-encoder.scm]: using embedded tests
-encoder tests: 190 passed,  4 failed
+toml-test v2025-04-21 [./test/test-encoder.scm]: using embedded tests
+encoder tests: 191 passed,  4 failed
 took 0.0 0.0
 </pre>
