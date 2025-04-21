@@ -597,6 +597,56 @@ toml version 65bab75
            }
        }
 
+<b>FAIL</b> <b>valid/key/quoted-dots</b>
+<b> </b>    Could not find key "table.withdot.escaped.dot" in parser output.
+
+<b>     input sent to parser-cmd:</b>
+       plain = 1
+       "with.dot" = 2
+
+       [plain_table]
+       plain = 3
+       "with.dot" = 4
+
+       [table.withdot]
+       plain = 5
+       "key.with.dots" = 6
+       "escaped\u002edot" = 7
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "plain":    {"type": "integer", "value": "1"},
+         "with.dot": {"type": "integer", "value": "2"},
+         "plain_table": {
+           "plain":    {"type": "integer", "value": "3"},
+           "with.dot": {"type": "integer", "value": "4"}
+         },
+         "table": {
+           "withdot": {
+             "escaped\\u002edot": {"type": "integer", "value": "7"},
+             "key.with.dots":    {"type": "integer", "value": "6"},
+             "plain":            {"type": "integer", "value": "5"}
+           }
+         }
+       }
+
+<b>     want:</b>
+       {
+           "plain":    {"type": "integer", "value": "1"},
+           "with.dot": {"type": "integer", "value": "2"},
+           "plain_table": {
+               "plain":    {"type": "integer", "value": "3"},
+               "with.dot": {"type": "integer", "value": "4"}
+           },
+           "table": {
+               "withdot": {
+                   "escaped.dot":   {"type": "integer", "value": "7"},
+                   "key.with.dots": {"type": "integer", "value": "6"},
+                   "plain":         {"type": "integer", "value": "5"}
+               }
+           }
+       }
+
 <b>FAIL</b> <b>valid/key/quoted-unicode</b>
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 511, in loads
@@ -649,7 +699,7 @@ toml version 65bab75
 <b>     want:</b>
           <empty>
 
-<b>FAIL</b> <b>valid/spec/array-0</b>
+<b>FAIL</b> <b>valid/spec-1.0.0/array-0</b>
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/./tests/decoding_test.py", line 37, in <module>
 <b> </b>        tdata = toml.loads(sys.stdin.read())
@@ -706,7 +756,7 @@ toml version 65bab75
 <b>     want:</b>
           <empty>
 
-<b>FAIL</b> <b>valid/spec/keys-4</b>
+<b>FAIL</b> <b>valid/spec-1.0.0/keys-4</b>
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/./tests/decoding_test.py", line 37, in <module>
 <b> </b>        tdata = toml.loads(sys.stdin.read())
@@ -883,6 +933,39 @@ toml version 65bab75
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 340, in loads
            raise TomlDecodeError("Unbalanced quotes", original, i)
        toml.decoder.TomlDecodeError: Unbalanced quotes (line 20 column 50 char 532)
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/table/array-empty-name</b>
+<b> </b>    Traceback (most recent call last):
+<b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/./tests/decoding_test.py", line 37, in <module>
+<b> </b>        tdata = toml.loads(sys.stdin.read())
+<b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 463, in loads
+<b> </b>        raise TomlDecodeError("Can't have a keygroup with an empty "
+<b> </b>                              "name", original, pos)
+<b> </b>    toml.decoder.TomlDecodeError: Can't have a keygroup with an empty name (line 3 column 1 char 33)
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       # Silly thing to do, but valid.
+
+       [['']]
+       a = 1
+       [['']]
+       a = 2
+
+<b>     output from parser-cmd (stderr):</b>
+       Traceback (most recent call last):
+         File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/./tests/decoding_test.py", line 37, in <module>
+           tdata = toml.loads(sys.stdin.read())
+         File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 463, in loads
+           raise TomlDecodeError("Can't have a keygroup with an empty "
+                                 "name", original, pos)
+       toml.decoder.TomlDecodeError: Can't have a keygroup with an empty name (line 3 column 1 char 33)
 
        Exit 1
 
@@ -1578,6 +1661,21 @@ toml version 65bab75
 <b>     want:</b>
        Exit code 1
 
+<b>FAIL</b> <b>invalid/encoding/ideographic-space</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       # First on next line is U+3000 IDEOGRAPHIC SPACE
+       　foo = "bar"
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "foo": {"type": "string", "value": "bar"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
 <b>FAIL</b> <b>invalid/float/exp-leading-us</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -1876,6 +1974,38 @@ toml version 65bab75
 <b>     want:</b>
        Exit code 1
 
+<b>FAIL</b> <b>invalid/key/duplicate-keys-5</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       a        = 1
+       "\u0061" = 1
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "\\u0061": {"type": "integer", "value": "1"},
+         "a":      {"type": "integer", "value": "1"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/key/duplicate-keys-6</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       "a'b"      = 1
+       "a\u0027b" = 2
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "a'b":      {"type": "integer", "value": "1"},
+         "a\\u0027b": {"type": "integer", "value": "2"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
 <b>FAIL</b> <b>invalid/key/escape</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -1946,7 +2076,7 @@ toml version 65bab75
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/spec/inline-table-2-0</b>
+<b>FAIL</b> <b>invalid/spec-1.0.0/inline-table-2-0</b>
 <b> </b>    Expected an error, but no error was reported.
 
 <b>     input sent to parser-cmd:</b>
@@ -2043,8 +2173,8 @@ toml version 65bab75
        Exit code 1
 
 toml-test v2025-04-21 [./tests/decoding_test.py]: using embedded tests
-  valid tests: 177 passed, 18 failed
-invalid tests: 304 passed, 73 failed
+  valid tests: 184 passed, 20 failed
+invalid tests: 322 passed, 76 failed
 
 ==> ENCODER TESTS
 <b>FAIL</b> <b>valid/array/mixed-string-table</b>
@@ -2386,7 +2516,7 @@ invalid tests: 304 passed, 73 failed
 <b>     want:</b>
           <empty>
 
-<b>FAIL</b> <b>valid/spec/array-0</b>
+<b>FAIL</b> <b>valid/spec-1.0.0/array-0</b>
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/./tests/encoding_test.py", line 28, in <module>
 <b> </b>        print(toml.dumps({k: convert(v) for (k, v) in j.items()}))
@@ -2483,7 +2613,7 @@ invalid tests: 304 passed, 73 failed
 <b>     want:</b>
           <empty>
 
-<b>FAIL</b> <b>valid/spec/local-time-0</b>
+<b>FAIL</b> <b>valid/spec-1.0.0/local-time-0</b>
 <b> </b>    Values for key "lt2" differ:
 <b> </b>      Expected:     0000-01-01 00:32:00.999 +0100 time-local (time.Time)
 <b> </b>      Your encoder: 0000-01-01 00:32:00.000999 +0100 time-local (time.Time)
@@ -2722,6 +2852,6 @@ invalid tests: 304 passed, 73 failed
           <empty>
 
 toml-test v2025-04-21 [./tests/encoding_test.py]: using embedded tests
-encoder tests: 181 passed, 14 failed
+encoder tests: 190 passed, 14 failed
 took 2.4 1.20
 </pre>

@@ -193,7 +193,7 @@ tomlet version cc91daa
            }
        }
 
-<b>FAIL</b> <b>valid/spec/table-3</b>
+<b>FAIL</b> <b>valid/spec-1.0.0/table-3</b>
 <b> </b>    Could not find key "j.ʞ.l" in parser output.
 
 <b>     input sent to parser-cmd:</b>
@@ -562,6 +562,30 @@ tomlet version cc91daa
 <b>     want:</b>
        Exit code 1
 
+<b>FAIL</b> <b>invalid/control/only-ff</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       
+
+<b>     output from parser-cmd (stdout):</b>
+       {}
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/control/only-vt</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       
+
+<b>     output from parser-cmd (stdout):</b>
+       {}
+
+<b>     want:</b>
+       Exit code 1
+
 <b>FAIL</b> <b>invalid/control/rawmulti-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -655,6 +679,21 @@ tomlet version cc91daa
 <b>     output from parser-cmd (stdout):</b>
        {
          "bad": {"type": "string", "value": "�"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/encoding/ideographic-space</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       # First on next line is U+3000 IDEOGRAPHIC SPACE
+       　foo = "bar"
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "foo": {"type": "string", "value": "bar"}
        }
 
 <b>     want:</b>
@@ -821,6 +860,22 @@ tomlet version cc91daa
 <b>     output from parser-cmd (stdout):</b>
        {
          "trailing-point-plus": {"type": "float", "value": "1"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/float/trailing-point-two</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       a = 1.
+       b = 2
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "a": {"type": "float", "value": "1"},
+         "b": {"type": "integer", "value": "2"}
        }
 
 <b>     want:</b>
@@ -1204,7 +1259,7 @@ tomlet version cc91daa
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/spec/table-9-0</b>
+<b>FAIL</b> <b>invalid/spec-1.0.0/table-9-0</b>
 <b> </b>    Expected an error, but no error was reported.
 
 <b>     input sent to parser-cmd:</b>
@@ -1236,7 +1291,7 @@ tomlet version cc91daa
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/spec/table-9-1</b>
+<b>FAIL</b> <b>invalid/spec-1.0.0/table-9-1</b>
 <b> </b>    Expected an error, but no error was reported.
 
 <b>     input sent to parser-cmd:</b>
@@ -1785,8 +1840,8 @@ tomlet version cc91daa
        Exit code 1
 
 toml-test v2025-04-21 [./TomlTestDecoder/bin/Release/net9.0/TomlTestDecoder]: using embedded tests
-  valid tests: 184 passed, 11 failed
-invalid tests: 297 passed, 80 failed
+  valid tests: 193 passed, 11 failed
+invalid tests: 314 passed, 84 failed
 
 ==> ENCODER TESTS
 (not supported)

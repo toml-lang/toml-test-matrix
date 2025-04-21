@@ -1,5 +1,99 @@
 <pre>
 tinytoml version 4e0ac22
+<b>FAIL</b> <b>valid/empty-space</b>
+<b> </b>    lua5.3: ./tinytoml.lua:1087: attempt to compare nil with number
+<b> </b>    stack traceback:
+<b> </b>    	./tinytoml.lua:1087: in function 'tinytoml.parse'
+<b> </b>    	./spec/toml-test.lua:37: in main chunk
+<b> </b>    	[C]: in ?
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+
+
+<b>     output from parser-cmd (stderr):</b>
+       lua5.3: ./tinytoml.lua:1087: attempt to compare nil with number
+       stack traceback:
+       	./tinytoml.lua:1087: in function 'tinytoml.parse'
+       	./spec/toml-test.lua:37: in main chunk
+       	[C]: in ?
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/empty-tab</b>
+<b> </b>    lua5.3: ./tinytoml.lua:1087: attempt to compare nil with number
+<b> </b>    stack traceback:
+<b> </b>    	./tinytoml.lua:1087: in function 'tinytoml.parse'
+<b> </b>    	./spec/toml-test.lua:37: in main chunk
+<b> </b>    	[C]: in ?
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+
+
+<b>     output from parser-cmd (stderr):</b>
+       lua5.3: ./tinytoml.lua:1087: attempt to compare nil with number
+       stack traceback:
+       	./tinytoml.lua:1087: in function 'tinytoml.parse'
+       	./spec/toml-test.lua:37: in main chunk
+       	[C]: in ?
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/key/quoted-dots</b>
+<b> </b>    lua5.3: ./tinytoml.lua:147: in string input line 11: TOML only allows specific escape sequences. Invalid escape sequence found: \u002edot"
+<b> </b>
+<b> </b>    	 See https://toml.io/en/v1.0.0#string for more details
+<b> </b>
+<b> </b>    stack traceback:
+<b> </b>    	[C]: in function 'error'
+<b> </b>    	./tinytoml.lua:147: in upvalue '_error'
+<b> </b>    	./tinytoml.lua:354: in field '?'
+<b> </b>    	./tinytoml.lua:1099: in function 'tinytoml.parse'
+<b> </b>    	./spec/toml-test.lua:37: in main chunk
+<b> </b>    	[C]: in ?
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       plain = 1
+       "with.dot" = 2
+
+       [plain_table]
+       plain = 3
+       "with.dot" = 4
+
+       [table.withdot]
+       plain = 5
+       "key.with.dots" = 6
+       "escaped\u002edot" = 7
+
+<b>     output from parser-cmd (stderr):</b>
+       lua5.3: ./tinytoml.lua:147: in string input line 11: TOML only allows specific escape sequences. Invalid escape sequence found: \u002edot"
+
+       	 See https://toml.io/en/v1.0.0#string for more details
+
+       stack traceback:
+       	[C]: in function 'error'
+       	./tinytoml.lua:147: in upvalue '_error'
+       	./tinytoml.lua:354: in field '?'
+       	./tinytoml.lua:1099: in function 'tinytoml.parse'
+       	./spec/toml-test.lua:37: in main chunk
+       	[C]: in ?
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
 <b>FAIL</b> <b>invalid/inline-table/trailing-comma</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -19,8 +113,8 @@ tinytoml version 4e0ac22
        Exit code 1
 
 toml-test v2025-04-21 [./lua-tinytoml-decoder]: using embedded tests,  2 skipped
-  valid tests: 193 passed,  0 failed
-invalid tests: 376 passed,  1 failed
+  valid tests: 199 passed,  3 failed
+invalid tests: 397 passed,  1 failed
 
 ==> ENCODER TESTS
 (not supported)

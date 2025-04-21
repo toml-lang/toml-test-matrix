@@ -82,6 +82,24 @@ otoml version 970e114
 <b>     want:</b>
           <empty>
 
+<b>FAIL</b> <b>valid/table/array-empty</b>
+<b> </b>    Array lengths differ for key "a":
+<b> </b>      Expected:     1
+<b> </b>      Your encoder: 0
+
+<b>     input sent to parser-cmd:</b>
+       [[a]]
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "a": []
+       }
+
+<b>     want:</b>
+       {
+           "a": [{}]
+       }
+
 <b>FAIL</b> <b>invalid/array/extend-defined-aot</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -490,6 +508,45 @@ otoml version 970e114
 <b>     want:</b>
        Exit code 1
 
+<b>FAIL</b> <b>invalid/key/duplicate-keys-5</b>
+<b> </b>    exit status 2
+
+<b>     input sent to parser-cmd:</b>
+       a        = 1
+       "\u0061" = 1
+
+<b>     output from parser-cmd (stderr):</b>
+       Fatal error: exception Otoml__Common.Duplicate_key("duplicate key \"a\" overrides a value of type integer with a value of type integer")
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/key/duplicate-keys-6</b>
+<b> </b>    exit status 2
+
+<b>     input sent to parser-cmd:</b>
+       "a'b"      = 1
+       "a\u0027b" = 2
+
+<b>     output from parser-cmd (stderr):</b>
+       Fatal error: exception Otoml__Common.Duplicate_key("duplicate key \"a'b\" overrides a value of type integer with a value of type integer")
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/key/duplicate-keys-7</b>
+<b> </b>    exit status 2
+
+<b>     input sent to parser-cmd:</b>
+       "" = 1
+       "" = 2
+
+<b>     output from parser-cmd (stderr):</b>
+       Fatal error: exception Otoml__Common.Duplicate_key("duplicate key \"\" overrides a value of type integer with a value of type integer")
+
+<b>     want:</b>
+       Exit code 1
+
 <b>FAIL</b> <b>invalid/local-date/feb-29</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -518,7 +575,7 @@ otoml version 970e114
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/spec/inline-table-2-0</b>
+<b>FAIL</b> <b>invalid/spec-1.0.0/inline-table-2-0</b>
 <b> </b>    Expected an error, but no error was reported.
 
 <b>     input sent to parser-cmd:</b>
@@ -539,7 +596,7 @@ otoml version 970e114
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/spec/inline-table-3-0</b>
+<b>FAIL</b> <b>invalid/spec-1.0.0/inline-table-3-0</b>
 <b> </b>    exit status 2
 
 <b>     input sent to parser-cmd:</b>
@@ -553,7 +610,7 @@ otoml version 970e114
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/spec/table-9-0</b>
+<b>FAIL</b> <b>invalid/spec-1.0.0/table-9-0</b>
 <b> </b>    Expected an error, but no error was reported.
 
 <b>     input sent to parser-cmd:</b>
@@ -585,7 +642,7 @@ otoml version 970e114
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/spec/table-9-1</b>
+<b>FAIL</b> <b>invalid/spec-1.0.0/table-9-1</b>
 <b> </b>    Expected an error, but no error was reported.
 
 <b>     input sent to parser-cmd:</b>
@@ -979,8 +1036,8 @@ otoml version 970e114
        Exit code 1
 
 toml-test v2025-04-21 [./decoder]: using embedded tests
-  valid tests: 192 passed,  3 failed
-invalid tests: 325 passed, 52 failed
+  valid tests: 200 passed,  4 failed
+invalid tests: 343 passed, 55 failed
 
 ==> ENCODER TESTS
 <b>FAIL</b> <b>valid/float/max-int</b>
@@ -1171,7 +1228,7 @@ invalid tests: 325 passed, 52 failed
        # Contains some literal tabs!
        clap-2 = { version = "4"	   	,	  	features = [   "derive" 	  ,  	  "cargo"   ]   , nest   =   {  	  "a"   =   'x'  , 	  'b'   = [ 1.5    ,   9.0  ]  }  }
 
-<b>FAIL</b> <b>valid/spec/array-of-tables-1</b>
+<b>FAIL</b> <b>valid/spec-1.0.0/array-of-tables-1</b>
 <b> </b>    Could not find key "fruits.physical" in encoder output
 
 <b>     input sent to parser-cmd:</b>
@@ -1239,7 +1296,7 @@ invalid tests: 325 passed, 52 failed
        [[fruits.varieties]]
        name = "plantain"
 
-<b>FAIL</b> <b>valid/spec/float-0</b>
+<b>FAIL</b> <b>valid/spec-1.0.0/float-0</b>
 <b> </b>    Values for key "flt1" differ:
 <b> </b>      Expected:     1 (float64)
 <b> </b>      Your encoder: 1 (int64)
@@ -1306,6 +1363,6 @@ invalid tests: 325 passed, 52 failed
        y = 2
 
 toml-test v2025-04-21 [./encoder]: using embedded tests
-encoder tests: 187 passed,  8 failed
+encoder tests: 196 passed,  8 failed
 took 0.0 0.0
 </pre>

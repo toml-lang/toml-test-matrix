@@ -1,6 +1,6 @@
 <pre>
 toml-reader version 9105699
-<b>FAIL</b> <b>valid/spec/table-9</b>
+<b>FAIL</b> <b>valid/spec-1.0.0/table-9</b>
 <b> </b>    Invalid table key: "fruit.apple.texture"
 <b> </b>      Table already statically defined at "fruit.apple.texture"
 <b> </b>
@@ -70,6 +70,45 @@ toml-reader version 9105699
 <b>     want:</b>
        Exit code 1
 
+<b>FAIL</b> <b>invalid/control/only-ff</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       
+
+<b>     output from parser-cmd (stdout):</b>
+       {}
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/control/only-vt</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       
+
+<b>     output from parser-cmd (stdout):</b>
+       {}
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/encoding/ideographic-space</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       # First on next line is U+3000 IDEOGRAPHIC SPACE
+       　foo = "bar"
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "foo": {"type": "string", "value": "bar"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
 <b>FAIL</b> <b>invalid/table/append-to-array-with-dotted-keys</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -90,8 +129,8 @@ toml-reader version 9105699
        Exit code 1
 
 toml-test v2025-04-21 [./src/haskell-toml-reader/parser-validator --check]: using embedded tests
-  valid tests: 193 passed,  2 failed
-invalid tests: 375 passed,  2 failed
+  valid tests: 202 passed,  2 failed
+invalid tests: 393 passed,  5 failed
 
 ==> ENCODER TESTS
 (not supported)

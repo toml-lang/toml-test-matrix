@@ -316,10 +316,10 @@ do_test() {
 			out=${out//$'\n'/}
 			c=$(tput cols || print 80)
 			if [[ $out[1] = '{' ]]; then
-				out=${out// /}
+				out="OKAY: ${out// /}"
 				# TODO: encode it back too
 			else
-				out="ERROR: ${out[1,$(( $c - 37 ))]}"
+				out="FAIL: ${out[1,$(( $c - 37 ))]}"
 			fi
 			print -r -- '    ' ${out}
 		)

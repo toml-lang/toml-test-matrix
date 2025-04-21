@@ -2,7 +2,7 @@ deps() { print 'ros' }
 
 setup() {
 	cd roswell
-	ros build decoder.ros
+	ros build decoder.ros --disable-compression
 }
 
 typeset -A info=(
@@ -13,5 +13,4 @@ typeset -A info=(
 	decoder 'roswell/decoder'
 	encoder ''
 	perf    'TODO'
-	flags   '-timeout=3s'
 )

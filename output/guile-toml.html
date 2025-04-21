@@ -1,5 +1,87 @@
 <pre>
 toml version ecb24de
+<b>FAIL</b> <b>valid/array/array</b>
+<b> </b>    Backtrace:
+<b> </b>    In ice-9/boot-9.scm:
+<b> </b>      1755:12 13 (with-exception-handler _ _ #:unwind? _ #:unwind-for-type _)
+<b> </b>    In unknown file:
+<b> </b>              12 (apply-smob/0 #<thunk …>)
+<b> </b>    In ice-9/boot-9.scm:
+<b> </b>        724:2 11 (call-with-prompt _ _ #<procedure default-prompt-handler (k proc)>)
+<b> </b>    In ice-9/eval.scm:
+<b> </b>        619:8 10 (_ #(#(#<directory (guile-user) …>)))
+<b> </b>    In ice-9/boot-9.scm:
+<b> </b>       2858:4  9 (save-module-excursion _)
+<b> </b>      4408:12  8 (_)
+<b> </b>    In test/test-decoder.scm:
+<b> </b>        58:14  7 (_)
+<b> </b>    In toml/parser.scm:
+<b> </b>        190:6  6 (peg-tree->scm _)
+<b> </b>       280:18  5 (add-kv-to-tree (("strings" . #((("value" . "a") ("type" . "string")) (("value" . "b") ("type" . "string")) (("value" . "c") ("type" . "string")))) ("floats" . #((("value" . "1.1") ("type" . "float")) (("value" . "2.1") ("type" . "float")) (("value" . "3.1") ("type" . "float")))) ("ints" . #((("value" . "1") ("type" . "integer")) (("value" . "2") ("type" . "integer")) (("value" . "3") ("type" . "integer"))))) _ _)
+<b> </b>       167:23  4 (loop _)
+<b> </b>    In test/test-decoder.scm:
+<b> </b>        14:21  3 (test-value->scm _)
+<b> </b>    In ice-9/boot-9.scm:
+<b> </b>       222:29  2 (map1 ((datetime "1987-07-05T17:45:00Z") datetime-local "1979-05-27T07:32:00" date-local "2006-06-01" time-local "11:00:00"))
+<b> </b>       222:17  1 (map1 (datetime-local "1979-05-27T07:32:00" date-local "2006-06-01" time-local "11:00:00"))
+<b> </b>    In test/test-decoder.scm:
+<b> </b>         41:9  0 (test-value->scm datetime-local)
+<b> </b>
+<b> </b>    test/test-decoder.scm:41:9: In procedure test-value->scm:
+<b> </b>    err: ~a datetime-local
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       ints = [1, 2, 3, ]
+       floats = [1.1, 2.1, 3.1]
+       strings = ["a", "b", "c"]
+       dates = [
+       	1987-07-05T17:45:00Z,
+       	1979-05-27T07:32:00,
+       	2006-06-01,
+       	11:00:00,
+       ]
+       comments = [
+                1,
+                2, #this is ok
+       ]
+
+<b>     output from parser-cmd (stderr):</b>
+       Backtrace:
+       In ice-9/boot-9.scm:
+         1755:12 13 (with-exception-handler _ _ #:unwind? _ #:unwind-for-type _)
+       In unknown file:
+                 12 (apply-smob/0 #<thunk …>)
+       In ice-9/boot-9.scm:
+           724:2 11 (call-with-prompt _ _ #<procedure default-prompt-handler (k proc)>)
+       In ice-9/eval.scm:
+           619:8 10 (_ #(#(#<directory (guile-user) …>)))
+       In ice-9/boot-9.scm:
+          2858:4  9 (save-module-excursion _)
+         4408:12  8 (_)
+       In test/test-decoder.scm:
+           58:14  7 (_)
+       In toml/parser.scm:
+           190:6  6 (peg-tree->scm _)
+          280:18  5 (add-kv-to-tree (("strings" . #((("value" . "a") ("type" . "string")) (("value" . "b") ("type" . "string")) (("value" . "c") ("type" . "string")))) ("floats" . #((("value" . "1.1") ("type" . "float")) (("value" . "2.1") ("type" . "float")) (("value" . "3.1") ("type" . "float")))) ("ints" . #((("value" . "1") ("type" . "integer")) (("value" . "2") ("type" . "integer")) (("value" . "3") ("type" . "integer"))))) _ _)
+          167:23  4 (loop _)
+       In test/test-decoder.scm:
+           14:21  3 (test-value->scm _)
+       In ice-9/boot-9.scm:
+          222:29  2 (map1 ((datetime "1987-07-05T17:45:00Z") datetime-local "1979-05-27T07:32:00" date-local "2006-06-01" time-local "11:00:00"))
+          222:17  1 (map1 (datetime-local "1979-05-27T07:32:00" date-local "2006-06-01" time-local "11:00:00"))
+       In test/test-decoder.scm:
+            41:9  0 (test-value->scm datetime-local)
+
+       test/test-decoder.scm:41:9: In procedure test-value->scm:
+       err: ~a datetime-local
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
 <b>FAIL</b> <b>valid/inline-table/array-02</b>
 <b> </b>    Backtrace:
 <b> </b>    In ice-9/boot-9.scm:
@@ -133,7 +215,7 @@ toml version ecb24de
 <b>     want:</b>
           <empty>
 
-<b>FAIL</b> <b>valid/spec/table-9</b>
+<b>FAIL</b> <b>valid/spec-1.0.0/table-9</b>
 <b> </b>    Backtrace:
 <b> </b>    In ice-9/boot-9.scm:
 <b> </b>      1755:12  8 (with-exception-handler _ _ #:unwind? _ #:unwind-for-type _)
@@ -497,7 +579,7 @@ toml version ecb24de
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/spec/inline-table-2-0</b>
+<b>FAIL</b> <b>invalid/spec-1.0.0/inline-table-2-0</b>
 <b> </b>    Expected an error, but no error was reported.
 
 <b>     input sent to parser-cmd:</b>
@@ -560,8 +642,8 @@ toml version ecb24de
        Exit code 1
 
 toml-test v2025-04-21 [./test/test-decoder.scm]: using embedded tests
-  valid tests: 190 passed,  5 failed
-invalid tests: 363 passed, 14 failed
+  valid tests: 198 passed,  6 failed
+invalid tests: 384 passed, 14 failed
 
 ==> ENCODER TESTS
 <b>FAIL</b> <b>valid/inline-table/array-02</b>
@@ -582,7 +664,68 @@ invalid tests: 363 passed, 14 failed
        a = { a = [
        ]}
 
-<b>FAIL</b> <b>valid/spec/float-0</b>
+<b>FAIL</b> <b>valid/multibyte</b>
+<b> </b>    decode TOML from encoder:
+<b> </b>      toml: line 6 (last key "\"𝐭𝐛𝐥\".sub"): expected a top-level item to end with a newline, comment, or EOF, but got 'ƨ' instead
+
+<b>     input sent to parser-cmd:</b>
+       {
+           "𝐭𝐛𝐥": {
+               "string": {"type": "string", "value": "𝓼𝓽𝓻𝓲𝓷𝓰 - #"},
+               "sub": {
+                   "another_test_string": {"type": "string", "value": "§á₥è ƭλïñϱ, βúƭ ωïƭλ á ƨƭřïñϱ #"},
+                   "escapes":             {"type": "string", "value": " Âñδ ωλèñ \"'ƨ ářè ïñ ƭλè ƨƭřïñϱ, áℓôñϱ ωïƭλ # \""},
+                   "βïƭ#": {
+                       "multi_line_array": [{"type": "string", "value": "]"}],
+                       "ωλáƭ?":            {"type": "string", "value": "Ýôú δôñ'ƭ ƭλïñƙ ƨô₥è úƨèř ωôñ'ƭ δô ƭλáƭ?"}
+                   },
+                   "𝕒𝕣𝕣𝕒𝕪": [
+                       {"type": "string", "value": "] "},
+                       {"type": "string", "value": " # "}
+                   ],
+                   "𝕒𝕣𝕣𝕒𝕪𝟚": [
+                       {"type": "string", "value": "Tèƨƭ #11 ]ƥřôƲèδ ƭλáƭ"},
+                       {"type": "string", "value": "Éжƥèřï₥èñƭ #9 ωáƨ á ƨúççèƨƨ"}
+                   ]
+               }
+           }
+       }
+
+<b>     output from parser-cmd (stdout):</b>
+       ["𝐭𝐛𝐥"]
+       "string" = "𝓼𝓽𝓻𝓲𝓷𝓰 - #"
+       ["𝐭𝐛𝐥"."sub"]
+       "𝕒𝕣𝕣𝕒𝕪𝟚" = ["Tèƨƭ #11 ]ƥřôƲèδ ƭλáƭ", "Éжƥèřï₥èñƭ #9 ωáƨ á ƨúççèƨƨ"]
+       "𝕒𝕣𝕣𝕒𝕪" = ["] ", " # "]
+       "escapes" = ' Âñδ ωλèñ "'ƨ ářè ïñ ƭλè ƨƭřïñϱ, áℓôñϱ ωïƭλ # "'
+       "another_test_string" = "§á₥è ƭλïñϱ, βúƭ ωïƭλ á ƨƭřïñϱ #"
+       ["𝐭𝐛𝐥"."sub"."βïƭ#"]
+       "ωλáƭ?" = "Ýôú δôñ'ƭ ƭλïñƙ ƨô₥è úƨèř ωôñ'ƭ δô ƭλáƭ?"
+       "multi_line_array" = ["]"]
+
+<b>     want:</b>
+       # Test multibyte throughout
+
+       # Tèƨƭ ƒïℓè ƒôř TÓM£
+       # Óñℓ¥ ƭλïƨ ôñè ƭřïèƨ ƭô è₥úℓáƭè á TÓM£ ƒïℓè ωřïƭƭèñ β¥ á úƨèř ôƒ ƭλè ƙïñδ ôƒ ƥářƨèř ωřïƭèřƨ ƥřôβáβℓ¥ λáƭè
+
+       ['𝐭𝐛𝐥']
+       string = "𝓼𝓽𝓻𝓲𝓷𝓰 - #"          # " 𝓼𝓽𝓻𝓲𝓷𝓰
+       	['𝐭𝐛𝐥'.sub]
+       	'𝕒𝕣𝕣𝕒𝕪' = [ "] ", " # "]      # ] 𝓪𝓻𝓻𝓪𝔂
+       	'𝕒𝕣𝕣𝕒𝕪𝟚' = [ "Tèƨƭ #11 ]ƥřôƲèδ ƭλáƭ", "Éжƥèřï₥èñƭ #9 ωáƨ á ƨúççèƨƨ" ]
+       	# Ýôú δïδñ'ƭ ƭλïñƙ ïƭ'δ áƨ èáƨ¥ áƨ çλúçƙïñϱ ôúƭ ƭλè ℓáƨƭ #, δïδ ¥ôú?
+       	another_test_string = "§á₥è ƭλïñϱ, βúƭ ωïƭλ á ƨƭřïñϱ #"
+       	escapes = " Âñδ ωλèñ \"'ƨ ářè ïñ ƭλè ƨƭřïñϱ, áℓôñϱ ωïƭλ # \""   # "áñδ çô₥₥èñƭƨ ářè ƭλèřè ƭôô"
+       	# Tλïñϱƨ ωïℓℓ ϱèƭ λářδèř
+       		['𝐭𝐛𝐥'.sub."βïƭ#"]
+       		"ωλáƭ?" = "Ýôú δôñ'ƭ ƭλïñƙ ƨô₥è úƨèř ωôñ'ƭ δô ƭλáƭ?"
+       		multi_line_array = [
+       			"]",
+       			# ] Óλ ¥èƨ Ì δïδ
+       			]
+
+<b>FAIL</b> <b>valid/spec-1.0.0/float-0</b>
 <b> </b>    decode TOML from encoder:
 <b> </b>      toml: line 3 (last key "flt5"): Invalid float value: "1e+06.0"
 
@@ -620,7 +763,7 @@ invalid tests: 363 passed, 14 failed
        # both
        flt7 = 6.626e-34
 
-<b>FAIL</b> <b>valid/spec/string-0</b>
+<b>FAIL</b> <b>valid/spec-1.0.0/string-0</b>
 <b> </b>    Values for key "str" differ:
 <b> </b>      Expected:     I'm a string. "You can quote me". Name	José
 <b> </b>    Location	SF. (string)
@@ -639,7 +782,7 @@ invalid tests: 363 passed, 14 failed
 <b>     want:</b>
        str = "I'm a string. \"You can quote me\". Name\tJos\u00E9\nLocation\tSF."
 
-<b>FAIL</b> <b>valid/spec/string-6</b>
+<b>FAIL</b> <b>valid/spec-1.0.0/string-6</b>
 <b> </b>    decode TOML from encoder:
 <b> </b>      toml: line 1: expected a top-level item to end with a newline, comment, or EOF, but got 't' instead
 
@@ -667,6 +810,6 @@ invalid tests: 363 passed, 14 failed
        '''
 
 toml-test v2025-04-21 [./test/test-encoder.scm]: using embedded tests
-encoder tests: 191 passed,  4 failed
+encoder tests: 199 passed,  5 failed
 took 0.0 0.0
 </pre>

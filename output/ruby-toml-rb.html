@@ -1,5 +1,83 @@
 <pre>
 toml-rb version 36d9d5d
+<b>FAIL</b> <b>valid/array/array</b>
+<b> </b>    Key "dates" is not "datetime-local" but "datetime":
+<b> </b>      Expected:     map[string]any{"type":"datetime-local", "value":"1979-05-27T07:32:00"}
+<b> </b>      Your encoder: map[string]any{"type":"datetime", "value":"1979-05-27T07:32:00+01:00"}
+
+<b>     input sent to parser-cmd:</b>
+       ints = [1, 2, 3, ]
+       floats = [1.1, 2.1, 3.1]
+       strings = ["a", "b", "c"]
+       dates = [
+       	1987-07-05T17:45:00Z,
+       	1979-05-27T07:32:00,
+       	2006-06-01,
+       	11:00:00,
+       ]
+       comments = [
+                1,
+                2, #this is ok
+       ]
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "comments": [
+           {"type": "integer", "value": "1"},
+           {"type": "integer", "value": "2"}
+         ],
+         "dates": [
+           {"type": "datetime", "value": "1987-07-05T17:45:00Z"},
+           {"type": "datetime", "value": "1979-05-27T07:32:00+01:00"},
+           {"type": "datetime", "value": "2006-06-01T00:00:00+01:00"},
+           {"type": "datetime", "value": "1970-01-01T12:00:00+01:00"}
+         ],
+         "floats": [
+           {"type": "float", "value": "1.1"},
+           {"type": "float", "value": "2.1"},
+           {"type": "float", "value": "3.1"}
+         ],
+         "ints": [
+           {"type": "integer", "value": "1"},
+           {"type": "integer", "value": "2"},
+           {"type": "integer", "value": "3"}
+         ],
+         "strings": [
+           {"type": "string", "value": "a"},
+           {"type": "string", "value": "b"},
+           {"type": "string", "value": "c"}
+         ]
+       }
+
+<b>     want:</b>
+       {
+           "comments": [
+               {"type": "integer", "value": "1"},
+               {"type": "integer", "value": "2"}
+           ],
+           "dates": [
+               {"type": "datetime", "value": "1987-07-05T17:45:00Z"},
+               {"type": "datetime-local", "value": "1979-05-27T07:32:00"},
+               {"type": "date-local", "value": "2006-06-01"},
+               {"type": "time-local", "value": "11:00:00"}
+           ],
+           "floats": [
+               {"type": "float", "value": "1.1"},
+               {"type": "float", "value": "2.1"},
+               {"type": "float", "value": "3.1"}
+           ],
+           "ints": [
+               {"type": "integer", "value": "1"},
+               {"type": "integer", "value": "2"},
+               {"type": "integer", "value": "3"}
+           ],
+           "strings": [
+               {"type": "string", "value": "a"},
+               {"type": "string", "value": "b"},
+               {"type": "string", "value": "c"}
+           ]
+       }
+
 <b>FAIL</b> <b>valid/comment/everywhere</b>
 <b> </b>    Key "group.d" is not "date-local" but "datetime":
 <b> </b>      Expected:     map[string]any{"type":"date-local", "value":"1979-05-27"}
@@ -35,8 +113,21 @@ toml-rb version 36d9d5d
        dt = 1979-05-27T07:32:12-07:00  # c
        d = 1979-05-27 # Comment
 
+       [[aot]] # Comment
+       k = 98 # Comment
+       [[aot]]# Comment
+       k = 99# Comment
+
 <b>     output from parser-cmd (stdout):</b>
        {
+         "aot": [
+           {
+             "k": {"type": "integer", "value": "98"}
+           },
+           {
+             "k": {"type": "integer", "value": "99"}
+           }
+         ],
          "group": {
            "answer": {"type": "integer", "value": "42"},
            "d":      {"type": "datetime", "value": "1979-05-27T00:00:00+01:00"},
@@ -50,6 +141,14 @@ toml-rb version 36d9d5d
 
 <b>     want:</b>
        {
+           "aot": [
+               {
+                   "k": {"type": "integer", "value": "98"}
+               },
+               {
+                   "k": {"type": "integer", "value": "99"}
+               }
+           ],
            "group": {
                "answer": {"type": "integer", "value": "42"},
                "d":      {"type": "date-local", "value": "1979-05-27"},
@@ -319,6 +418,94 @@ toml-rb version 36d9d5d
            "milliseconds": {"type": "time-local", "value": "10:32:00.555"}
        }
 
+<b>FAIL</b> <b>valid/empty-space</b>
+<b> </b>    /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 1 at offset 1 (TomlRB::ParseError)
+<b> </b>
+<b> </b>     ^
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
+<b> </b>    	from ./ruby-toml-rb-decoder:38:in `<main>'
+<b> </b>    /home/martin/.local/share/gem/ruby/3.3.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 1 at offset 1 (Citrus::ParseError)
+<b> </b>
+<b> </b>     ^
+<b> </b>    	from /home/martin/.local/share/gem/ruby/3.3.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
+<b> </b>    	from ./ruby-toml-rb-decoder:38:in `<main>'
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+
+
+<b>     output from parser-cmd (stderr):</b>
+       /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 1 at offset 1 (TomlRB::ParseError)
+
+        ^
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
+       	from ./ruby-toml-rb-decoder:38:in `<main>'
+       /home/martin/.local/share/gem/ruby/3.3.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 1 at offset 1 (Citrus::ParseError)
+
+        ^
+       	from /home/martin/.local/share/gem/ruby/3.3.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
+       	from ./ruby-toml-rb-decoder:38:in `<main>'
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/empty-tab</b>
+<b> </b>    /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 1 at offset 1 (TomlRB::ParseError)
+<b> </b>
+<b> </b>     ^
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
+<b> </b>    	from ./ruby-toml-rb-decoder:38:in `<main>'
+<b> </b>    /home/martin/.local/share/gem/ruby/3.3.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 1 at offset 1 (Citrus::ParseError)
+<b> </b>
+<b> </b>     ^
+<b> </b>    	from /home/martin/.local/share/gem/ruby/3.3.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+<b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
+<b> </b>    	from ./ruby-toml-rb-decoder:38:in `<main>'
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+
+
+<b>     output from parser-cmd (stderr):</b>
+       /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 1 at offset 1 (TomlRB::ParseError)
+
+        ^
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:12:in `initialize'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
+       	from ./ruby-toml-rb-decoder:38:in `<main>'
+       /home/martin/.local/share/gem/ruby/3.3.0/gems/citrus-3.0.2/lib/citrus.rb:669:in `parse': Failed to parse input on line 1 at offset 1 (Citrus::ParseError)
+
+        ^
+       	from /home/martin/.local/share/gem/ruby/3.3.0/gems/citrus-3.0.2/lib/citrus.rb:392:in `parse'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:13:in `initialize'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `new'
+       	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb.rb:46:in `parse'
+       	from ./ruby-toml-rb-decoder:38:in `<main>'
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
 <b>FAIL</b> <b>valid/inline-table/key-dotted-2</b>
 <b> </b>    /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/inline_table.rb:15:in `block (2 levels) in value': Key "a" is defined more than once (TomlRB::ValueOverwriteError)
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/inline_table.rb:15:in `merge!'
@@ -365,7 +552,7 @@ toml-rb version 36d9d5d
 <b>     want:</b>
           <empty>
 
-<b>FAIL</b> <b>valid/spec/local-date-0</b>
+<b>FAIL</b> <b>valid/spec-1.0.0/local-date-0</b>
 <b> </b>    Key "ld1" is not "date-local" but "datetime":
 <b> </b>      Expected:     map[string]any{"type":"date-local", "value":"1979-05-27"}
 <b> </b>      Your encoder: map[string]any{"type":"datetime", "value":"1979-05-27T00:00:00+01:00"}
@@ -383,7 +570,7 @@ toml-rb version 36d9d5d
            "ld1": {"type": "date-local", "value": "1979-05-27"}
        }
 
-<b>FAIL</b> <b>valid/spec/local-date-time-0</b>
+<b>FAIL</b> <b>valid/spec-1.0.0/local-date-time-0</b>
 <b> </b>    Key "ldt1" is not "datetime-local" but "datetime":
 <b> </b>      Expected:     map[string]any{"type":"datetime-local", "value":"1979-05-27T07:32:00"}
 <b> </b>      Your encoder: map[string]any{"type":"datetime", "value":"1979-05-27T07:32:00+01:00"}
@@ -404,7 +591,7 @@ toml-rb version 36d9d5d
            "ldt2": {"type": "datetime-local", "value": "1979-05-27T00:32:00.999"}
        }
 
-<b>FAIL</b> <b>valid/spec/local-time-0</b>
+<b>FAIL</b> <b>valid/spec-1.0.0/local-time-0</b>
 <b> </b>    Key "lt1" is not "time-local" but "datetime":
 <b> </b>      Expected:     map[string]any{"type":"time-local", "value":"07:32:00"}
 <b> </b>      Your encoder: map[string]any{"type":"datetime", "value":"1970-01-01T08:32:00+01:00"}
@@ -425,7 +612,7 @@ toml-rb version 36d9d5d
            "lt2": {"type": "time-local", "value": "00:32:00.999"}
        }
 
-<b>FAIL</b> <b>valid/spec/string-4</b>
+<b>FAIL</b> <b>valid/spec-1.0.0/string-4</b>
 <b> </b>    /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 4 at offset 50 (TomlRB::ParseError)
 <b> </b>    str6 = """Here are fifteen quotation marks: ""\"""\"""\"""\"""\"."""
 <b> </b>
@@ -479,7 +666,7 @@ toml-rb version 36d9d5d
 <b>     want:</b>
           <empty>
 
-<b>FAIL</b> <b>valid/spec/table-7</b>
+<b>FAIL</b> <b>valid/spec-1.0.0/table-7</b>
 <b> </b>    Key "owner.member_since" is not "date-local" but "datetime":
 <b> </b>      Expected:     map[string]any{"type":"date-local", "value":"1999-08-04"}
 <b> </b>      Your encoder: map[string]any{"type":"datetime", "value":"1999-08-04T00:00:00+01:00"}
@@ -1653,7 +1840,7 @@ toml-rb version 36d9d5d
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/spec/table-9-0</b>
+<b>FAIL</b> <b>invalid/spec-1.0.0/table-9-0</b>
 <b> </b>    Expected an error, but no error was reported.
 
 <b>     input sent to parser-cmd:</b>
@@ -1685,7 +1872,7 @@ toml-rb version 36d9d5d
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/spec/table-9-1</b>
+<b>FAIL</b> <b>invalid/spec-1.0.0/table-9-1</b>
 <b> </b>    Expected an error, but no error was reported.
 
 <b>     input sent to parser-cmd:</b>
@@ -1966,8 +2153,8 @@ toml-rb version 36d9d5d
        Exit code 1
 
 toml-test v2025-04-21 [./ruby-toml-rb-decoder]: using embedded tests
-  valid tests: 175 passed, 20 failed
-invalid tests: 307 passed, 70 failed
+  valid tests: 181 passed, 23 failed
+invalid tests: 328 passed, 70 failed
 
 ==> ENCODER TESTS
 <b>FAIL</b> <b>valid/array/array</b>
@@ -1993,8 +2180,9 @@ invalid tests: 307 passed, 70 failed
            ],
            "dates": [
                {"type": "datetime", "value": "1987-07-05T17:45:00Z"},
-               {"type": "datetime", "value": "1979-05-27T07:32:00Z"},
-               {"type": "datetime", "value": "2006-06-01T11:00:00Z"}
+               {"type": "datetime-local", "value": "1979-05-27T07:32:00"},
+               {"type": "date-local", "value": "2006-06-01"},
+               {"type": "time-local", "value": "11:00:00"}
            ],
            "floats": [
                {"type": "float", "value": "1.1"},
@@ -2135,6 +2323,14 @@ invalid tests: 307 passed, 70 failed
 
 <b>     input sent to parser-cmd:</b>
        {
+           "aot": [
+               {
+                   "k": {"type": "integer", "value": "98"}
+               },
+               {
+                   "k": {"type": "integer", "value": "99"}
+               }
+           ],
            "group": {
                "answer": {"type": "integer", "value": "42"},
                "d":      {"type": "date-local", "value": "1979-05-27"},
@@ -2701,6 +2897,355 @@ invalid tests: 307 passed, 70 failed
        "~  ÿ ퟿  ￿ 𐀀 􏿿" = "basic key"
        'l ~  ÿ ퟿  ￿ 𐀀 􏿿' = "literal key"
 
+<b>FAIL</b> <b>valid/spec-1.0.0/array-0</b>
+<b> </b>    decode TOML from encoder:
+<b> </b>      toml: line 2 (last key "contributors.email"): expected value but found '>' instead
+
+<b>     input sent to parser-cmd:</b>
+       {
+           "colors": [
+               {"type": "string", "value": "red"},
+               {"type": "string", "value": "yellow"},
+               {"type": "string", "value": "green"}
+           ],
+           "contributors": [
+               {"type": "string", "value": "Foo Bar \u003cfoo@example.com\u003e"},
+               {
+                   "email": {"type": "string", "value": "bazqux@example.com"},
+                   "name":  {"type": "string", "value": "Baz Qux"},
+                   "url":   {"type": "string", "value": "https://example.com/bazqux"}
+               }
+           ],
+           "integers": [
+               {"type": "integer", "value": "1"},
+               {"type": "integer", "value": "2"},
+               {"type": "integer", "value": "3"}
+           ],
+           "nested_arrays_of_ints": [
+               [
+                   {"type": "integer", "value": "1"},
+                   {"type": "integer", "value": "2"}
+               ],
+               [
+                   {"type": "integer", "value": "3"},
+                   {"type": "integer", "value": "4"},
+                   {"type": "integer", "value": "5"}
+               ]
+           ],
+           "nested_mixed_array": [
+               [
+                   {"type": "integer", "value": "1"},
+                   {"type": "integer", "value": "2"}
+               ],
+               [
+                   {"type": "string", "value": "a"},
+                   {"type": "string", "value": "b"},
+                   {"type": "string", "value": "c"}
+               ]
+           ],
+           "numbers": [
+               {"type": "float", "value": "0.1"},
+               {"type": "float", "value": "0.2"},
+               {"type": "float", "value": "0.5"},
+               {"type": "integer", "value": "1"},
+               {"type": "integer", "value": "2"},
+               {"type": "integer", "value": "5"}
+           ],
+           "string_array": [
+               {"type": "string", "value": "all"},
+               {"type": "string", "value": "strings"},
+               {"type": "string", "value": "are the same"},
+               {"type": "string", "value": "type"}
+           ]
+       }
+
+<b>     output from parser-cmd (stdout):</b>
+       colors = ["red", "yellow", "green"]
+       contributors = ["Foo Bar <foo@example.com>", {"email"=>"bazqux@example.com", "name"=>"Baz Qux", "url"=>"https://example.com/bazqux"}]
+       integers = [1, 2, 3]
+       nested_arrays_of_ints = [[1, 2], [3, 4, 5]]
+       nested_mixed_array = [[1, 2], ["a", "b", "c"]]
+       numbers = [0.1, 0.2, 0.5, 1, 2, 5]
+       string_array = ["all", "strings", "are the same", "type"]
+
+<b>     want:</b>
+       integers = [ 1, 2, 3 ]
+       colors = [ "red", "yellow", "green" ]
+       nested_arrays_of_ints = [ [ 1, 2 ], [3, 4, 5] ]
+       nested_mixed_array = [ [ 1, 2 ], ["a", "b", "c"] ]
+       string_array = [ "all", 'strings', """are the same""", '''type''' ]
+
+       # Mixed-type arrays are allowed
+       numbers = [ 0.1, 0.2, 0.5, 1, 2, 5 ]
+       contributors = [
+         "Foo Bar <foo@example.com>",
+         { name = "Baz Qux", email = "bazqux@example.com", url = "https://example.com/bazqux" }
+       ]
+
+<b>FAIL</b> <b>valid/spec-1.0.0/float-2</b>
+<b> </b>    decode TOML from encoder:
+<b> </b>      toml: line 1 (last key "sf1"): expected value but found "Infinity" instead
+
+<b>     input sent to parser-cmd:</b>
+       {
+           "sf1": {"type": "float", "value": "inf"},
+           "sf2": {"type": "float", "value": "inf"},
+           "sf3": {"type": "float", "value": "-inf"},
+           "sf4": {"type": "float", "value": "nan"},
+           "sf5": {"type": "float", "value": "nan"},
+           "sf6": {"type": "float", "value": "nan"}
+       }
+
+<b>     output from parser-cmd (stdout):</b>
+       sf1 = Infinity
+       sf2 = Infinity
+       sf3 = -Infinity
+       sf4 = NaN
+       sf5 = NaN
+       sf6 = NaN
+
+<b>     want:</b>
+       # infinity
+       sf1 = inf  # positive infinity
+       sf2 = +inf # positive infinity
+       sf3 = -inf # negative infinity
+
+       # not a number
+       sf4 = nan  # actual sNaN/qNaN encoding is implementation-specific
+       sf5 = +nan # same as `nan`
+       sf6 = -nan # valid, actual encoding is implementation-specific
+
+<b>FAIL</b> <b>valid/spec-1.0.0/local-date-0</b>
+<b> </b>    ./ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
+<b> </b>
+<b> </b>      if json.key?("type")
+<b> </b>             ^^^^^
+<b> </b>    	from ./ruby-toml-rb-encoder:36:in `block in convert'
+<b> </b>    	from ./ruby-toml-rb-encoder:36:in `to_h'
+<b> </b>    	from ./ruby-toml-rb-encoder:36:in `convert'
+<b> </b>    	from ./ruby-toml-rb-encoder:39:in `block in convert'
+<b> </b>    	from ./ruby-toml-rb-encoder:39:in `to_h'
+<b> </b>    	from ./ruby-toml-rb-encoder:39:in `convert'
+<b> </b>    	from ./ruby-toml-rb-encoder:43:in `<main>'
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       {
+           "ld1": {"type": "date-local", "value": "1979-05-27"}
+       }
+
+<b>     output from parser-cmd (stderr):</b>
+       ./ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
+
+         if json.key?("type")
+                ^^^^^
+       	from ./ruby-toml-rb-encoder:36:in `block in convert'
+       	from ./ruby-toml-rb-encoder:36:in `to_h'
+       	from ./ruby-toml-rb-encoder:36:in `convert'
+       	from ./ruby-toml-rb-encoder:39:in `block in convert'
+       	from ./ruby-toml-rb-encoder:39:in `to_h'
+       	from ./ruby-toml-rb-encoder:39:in `convert'
+       	from ./ruby-toml-rb-encoder:43:in `<main>'
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/spec-1.0.0/local-date-time-0</b>
+<b> </b>    ./ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
+<b> </b>
+<b> </b>      if json.key?("type")
+<b> </b>             ^^^^^
+<b> </b>    	from ./ruby-toml-rb-encoder:36:in `block in convert'
+<b> </b>    	from ./ruby-toml-rb-encoder:36:in `to_h'
+<b> </b>    	from ./ruby-toml-rb-encoder:36:in `convert'
+<b> </b>    	from ./ruby-toml-rb-encoder:39:in `block in convert'
+<b> </b>    	from ./ruby-toml-rb-encoder:39:in `to_h'
+<b> </b>    	from ./ruby-toml-rb-encoder:39:in `convert'
+<b> </b>    	from ./ruby-toml-rb-encoder:43:in `<main>'
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       {
+           "ldt1": {"type": "datetime-local", "value": "1979-05-27T07:32:00"},
+           "ldt2": {"type": "datetime-local", "value": "1979-05-27T00:32:00.999"}
+       }
+
+<b>     output from parser-cmd (stderr):</b>
+       ./ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
+
+         if json.key?("type")
+                ^^^^^
+       	from ./ruby-toml-rb-encoder:36:in `block in convert'
+       	from ./ruby-toml-rb-encoder:36:in `to_h'
+       	from ./ruby-toml-rb-encoder:36:in `convert'
+       	from ./ruby-toml-rb-encoder:39:in `block in convert'
+       	from ./ruby-toml-rb-encoder:39:in `to_h'
+       	from ./ruby-toml-rb-encoder:39:in `convert'
+       	from ./ruby-toml-rb-encoder:43:in `<main>'
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/spec-1.0.0/local-time-0</b>
+<b> </b>    ./ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
+<b> </b>
+<b> </b>      if json.key?("type")
+<b> </b>             ^^^^^
+<b> </b>    	from ./ruby-toml-rb-encoder:36:in `block in convert'
+<b> </b>    	from ./ruby-toml-rb-encoder:36:in `to_h'
+<b> </b>    	from ./ruby-toml-rb-encoder:36:in `convert'
+<b> </b>    	from ./ruby-toml-rb-encoder:39:in `block in convert'
+<b> </b>    	from ./ruby-toml-rb-encoder:39:in `to_h'
+<b> </b>    	from ./ruby-toml-rb-encoder:39:in `convert'
+<b> </b>    	from ./ruby-toml-rb-encoder:43:in `<main>'
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       {
+           "lt1": {"type": "time-local", "value": "07:32:00"},
+           "lt2": {"type": "time-local", "value": "00:32:00.999"}
+       }
+
+<b>     output from parser-cmd (stderr):</b>
+       ./ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
+
+         if json.key?("type")
+                ^^^^^
+       	from ./ruby-toml-rb-encoder:36:in `block in convert'
+       	from ./ruby-toml-rb-encoder:36:in `to_h'
+       	from ./ruby-toml-rb-encoder:36:in `convert'
+       	from ./ruby-toml-rb-encoder:39:in `block in convert'
+       	from ./ruby-toml-rb-encoder:39:in `to_h'
+       	from ./ruby-toml-rb-encoder:39:in `convert'
+       	from ./ruby-toml-rb-encoder:43:in `<main>'
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/spec-1.0.0/offset-date-time-0</b>
+<b> </b>    ./ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
+<b> </b>
+<b> </b>        when "datetime" then Time.iso8601(val)
+<b> </b>                                 ^^^^^^^^
+<b> </b>    	from ./ruby-toml-rb-encoder:39:in `block in convert'
+<b> </b>    	from ./ruby-toml-rb-encoder:39:in `to_h'
+<b> </b>    	from ./ruby-toml-rb-encoder:39:in `convert'
+<b> </b>    	from ./ruby-toml-rb-encoder:43:in `<main>'
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       {
+           "odt1": {"type": "datetime", "value": "1979-05-27T07:32:00Z"},
+           "odt2": {"type": "datetime", "value": "1979-05-27T00:32:00-07:00"},
+           "odt3": {"type": "datetime", "value": "1979-05-27T00:32:00.999-07:00"}
+       }
+
+<b>     output from parser-cmd (stderr):</b>
+       ./ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
+
+           when "datetime" then Time.iso8601(val)
+                                    ^^^^^^^^
+       	from ./ruby-toml-rb-encoder:39:in `block in convert'
+       	from ./ruby-toml-rb-encoder:39:in `to_h'
+       	from ./ruby-toml-rb-encoder:39:in `convert'
+       	from ./ruby-toml-rb-encoder:43:in `<main>'
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/spec-1.0.0/offset-date-time-1</b>
+<b> </b>    ./ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
+<b> </b>
+<b> </b>        when "datetime" then Time.iso8601(val)
+<b> </b>                                 ^^^^^^^^
+<b> </b>    	from ./ruby-toml-rb-encoder:39:in `block in convert'
+<b> </b>    	from ./ruby-toml-rb-encoder:39:in `to_h'
+<b> </b>    	from ./ruby-toml-rb-encoder:39:in `convert'
+<b> </b>    	from ./ruby-toml-rb-encoder:43:in `<main>'
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       {
+           "odt4": {"type": "datetime", "value": "1979-05-27T07:32:00Z"}
+       }
+
+<b>     output from parser-cmd (stderr):</b>
+       ./ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
+
+           when "datetime" then Time.iso8601(val)
+                                    ^^^^^^^^
+       	from ./ruby-toml-rb-encoder:39:in `block in convert'
+       	from ./ruby-toml-rb-encoder:39:in `to_h'
+       	from ./ruby-toml-rb-encoder:39:in `convert'
+       	from ./ruby-toml-rb-encoder:43:in `<main>'
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/spec-1.0.0/table-7</b>
+<b> </b>    ./ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
+<b> </b>
+<b> </b>      if json.key?("type")
+<b> </b>             ^^^^^
+<b> </b>    	from ./ruby-toml-rb-encoder:36:in `block in convert'
+<b> </b>    	from ./ruby-toml-rb-encoder:36:in `to_h'
+<b> </b>    	from ./ruby-toml-rb-encoder:36:in `convert'
+<b> </b>    	from ./ruby-toml-rb-encoder:39:in `block in convert'
+<b> </b>    	from ./ruby-toml-rb-encoder:39:in `to_h'
+<b> </b>    	from ./ruby-toml-rb-encoder:39:in `convert'
+<b> </b>    	from ./ruby-toml-rb-encoder:39:in `block in convert'
+<b> </b>    	from ./ruby-toml-rb-encoder:39:in `to_h'
+<b> </b>    	from ./ruby-toml-rb-encoder:39:in `convert'
+<b> </b>    	from ./ruby-toml-rb-encoder:43:in `<main>'
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       {
+           "breed": {"type": "string", "value": "pug"},
+           "name":  {"type": "string", "value": "Fido"},
+           "owner": {
+               "member_since": {"type": "date-local", "value": "1999-08-04"},
+               "name":         {"type": "string", "value": "Regina Dogman"}
+           }
+       }
+
+<b>     output from parser-cmd (stderr):</b>
+       ./ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
+
+         if json.key?("type")
+                ^^^^^
+       	from ./ruby-toml-rb-encoder:36:in `block in convert'
+       	from ./ruby-toml-rb-encoder:36:in `to_h'
+       	from ./ruby-toml-rb-encoder:36:in `convert'
+       	from ./ruby-toml-rb-encoder:39:in `block in convert'
+       	from ./ruby-toml-rb-encoder:39:in `to_h'
+       	from ./ruby-toml-rb-encoder:39:in `convert'
+       	from ./ruby-toml-rb-encoder:39:in `block in convert'
+       	from ./ruby-toml-rb-encoder:39:in `to_h'
+       	from ./ruby-toml-rb-encoder:39:in `convert'
+       	from ./ruby-toml-rb-encoder:43:in `<main>'
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
 <b>FAIL</b> <b>valid/spec-example-1</b>
 <b> </b>    ./ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 <b> </b>
@@ -2857,355 +3402,6 @@ invalid tests: 307 passed, 70 failed
 <b>     want:</b>
           <empty>
 
-<b>FAIL</b> <b>valid/spec/array-0</b>
-<b> </b>    decode TOML from encoder:
-<b> </b>      toml: line 2 (last key "contributors.email"): expected value but found '>' instead
-
-<b>     input sent to parser-cmd:</b>
-       {
-           "colors": [
-               {"type": "string", "value": "red"},
-               {"type": "string", "value": "yellow"},
-               {"type": "string", "value": "green"}
-           ],
-           "contributors": [
-               {"type": "string", "value": "Foo Bar \u003cfoo@example.com\u003e"},
-               {
-                   "email": {"type": "string", "value": "bazqux@example.com"},
-                   "name":  {"type": "string", "value": "Baz Qux"},
-                   "url":   {"type": "string", "value": "https://example.com/bazqux"}
-               }
-           ],
-           "integers": [
-               {"type": "integer", "value": "1"},
-               {"type": "integer", "value": "2"},
-               {"type": "integer", "value": "3"}
-           ],
-           "nested_arrays_of_ints": [
-               [
-                   {"type": "integer", "value": "1"},
-                   {"type": "integer", "value": "2"}
-               ],
-               [
-                   {"type": "integer", "value": "3"},
-                   {"type": "integer", "value": "4"},
-                   {"type": "integer", "value": "5"}
-               ]
-           ],
-           "nested_mixed_array": [
-               [
-                   {"type": "integer", "value": "1"},
-                   {"type": "integer", "value": "2"}
-               ],
-               [
-                   {"type": "string", "value": "a"},
-                   {"type": "string", "value": "b"},
-                   {"type": "string", "value": "c"}
-               ]
-           ],
-           "numbers": [
-               {"type": "float", "value": "0.1"},
-               {"type": "float", "value": "0.2"},
-               {"type": "float", "value": "0.5"},
-               {"type": "integer", "value": "1"},
-               {"type": "integer", "value": "2"},
-               {"type": "integer", "value": "5"}
-           ],
-           "string_array": [
-               {"type": "string", "value": "all"},
-               {"type": "string", "value": "strings"},
-               {"type": "string", "value": "are the same"},
-               {"type": "string", "value": "type"}
-           ]
-       }
-
-<b>     output from parser-cmd (stdout):</b>
-       colors = ["red", "yellow", "green"]
-       contributors = ["Foo Bar <foo@example.com>", {"email"=>"bazqux@example.com", "name"=>"Baz Qux", "url"=>"https://example.com/bazqux"}]
-       integers = [1, 2, 3]
-       nested_arrays_of_ints = [[1, 2], [3, 4, 5]]
-       nested_mixed_array = [[1, 2], ["a", "b", "c"]]
-       numbers = [0.1, 0.2, 0.5, 1, 2, 5]
-       string_array = ["all", "strings", "are the same", "type"]
-
-<b>     want:</b>
-       integers = [ 1, 2, 3 ]
-       colors = [ "red", "yellow", "green" ]
-       nested_arrays_of_ints = [ [ 1, 2 ], [3, 4, 5] ]
-       nested_mixed_array = [ [ 1, 2 ], ["a", "b", "c"] ]
-       string_array = [ "all", 'strings', """are the same""", '''type''' ]
-
-       # Mixed-type arrays are allowed
-       numbers = [ 0.1, 0.2, 0.5, 1, 2, 5 ]
-       contributors = [
-         "Foo Bar <foo@example.com>",
-         { name = "Baz Qux", email = "bazqux@example.com", url = "https://example.com/bazqux" }
-       ]
-
-<b>FAIL</b> <b>valid/spec/float-2</b>
-<b> </b>    decode TOML from encoder:
-<b> </b>      toml: line 1 (last key "sf1"): expected value but found "Infinity" instead
-
-<b>     input sent to parser-cmd:</b>
-       {
-           "sf1": {"type": "float", "value": "inf"},
-           "sf2": {"type": "float", "value": "inf"},
-           "sf3": {"type": "float", "value": "-inf"},
-           "sf4": {"type": "float", "value": "nan"},
-           "sf5": {"type": "float", "value": "nan"},
-           "sf6": {"type": "float", "value": "nan"}
-       }
-
-<b>     output from parser-cmd (stdout):</b>
-       sf1 = Infinity
-       sf2 = Infinity
-       sf3 = -Infinity
-       sf4 = NaN
-       sf5 = NaN
-       sf6 = NaN
-
-<b>     want:</b>
-       # infinity
-       sf1 = inf  # positive infinity
-       sf2 = +inf # positive infinity
-       sf3 = -inf # negative infinity
-
-       # not a number
-       sf4 = nan  # actual sNaN/qNaN encoding is implementation-specific
-       sf5 = +nan # same as `nan`
-       sf6 = -nan # valid, actual encoding is implementation-specific
-
-<b>FAIL</b> <b>valid/spec/local-date-0</b>
-<b> </b>    ./ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
-<b> </b>
-<b> </b>      if json.key?("type")
-<b> </b>             ^^^^^
-<b> </b>    	from ./ruby-toml-rb-encoder:36:in `block in convert'
-<b> </b>    	from ./ruby-toml-rb-encoder:36:in `to_h'
-<b> </b>    	from ./ruby-toml-rb-encoder:36:in `convert'
-<b> </b>    	from ./ruby-toml-rb-encoder:39:in `block in convert'
-<b> </b>    	from ./ruby-toml-rb-encoder:39:in `to_h'
-<b> </b>    	from ./ruby-toml-rb-encoder:39:in `convert'
-<b> </b>    	from ./ruby-toml-rb-encoder:43:in `<main>'
-<b> </b>
-<b> </b>    Exit 1
-
-<b>     input sent to parser-cmd:</b>
-       {
-           "ld1": {"type": "date-local", "value": "1979-05-27"}
-       }
-
-<b>     output from parser-cmd (stderr):</b>
-       ./ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
-
-         if json.key?("type")
-                ^^^^^
-       	from ./ruby-toml-rb-encoder:36:in `block in convert'
-       	from ./ruby-toml-rb-encoder:36:in `to_h'
-       	from ./ruby-toml-rb-encoder:36:in `convert'
-       	from ./ruby-toml-rb-encoder:39:in `block in convert'
-       	from ./ruby-toml-rb-encoder:39:in `to_h'
-       	from ./ruby-toml-rb-encoder:39:in `convert'
-       	from ./ruby-toml-rb-encoder:43:in `<main>'
-
-       Exit 1
-
-<b>     want:</b>
-          <empty>
-
-<b>FAIL</b> <b>valid/spec/local-date-time-0</b>
-<b> </b>    ./ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
-<b> </b>
-<b> </b>      if json.key?("type")
-<b> </b>             ^^^^^
-<b> </b>    	from ./ruby-toml-rb-encoder:36:in `block in convert'
-<b> </b>    	from ./ruby-toml-rb-encoder:36:in `to_h'
-<b> </b>    	from ./ruby-toml-rb-encoder:36:in `convert'
-<b> </b>    	from ./ruby-toml-rb-encoder:39:in `block in convert'
-<b> </b>    	from ./ruby-toml-rb-encoder:39:in `to_h'
-<b> </b>    	from ./ruby-toml-rb-encoder:39:in `convert'
-<b> </b>    	from ./ruby-toml-rb-encoder:43:in `<main>'
-<b> </b>
-<b> </b>    Exit 1
-
-<b>     input sent to parser-cmd:</b>
-       {
-           "ldt1": {"type": "datetime-local", "value": "1979-05-27T07:32:00"},
-           "ldt2": {"type": "datetime-local", "value": "1979-05-27T00:32:00.999"}
-       }
-
-<b>     output from parser-cmd (stderr):</b>
-       ./ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
-
-         if json.key?("type")
-                ^^^^^
-       	from ./ruby-toml-rb-encoder:36:in `block in convert'
-       	from ./ruby-toml-rb-encoder:36:in `to_h'
-       	from ./ruby-toml-rb-encoder:36:in `convert'
-       	from ./ruby-toml-rb-encoder:39:in `block in convert'
-       	from ./ruby-toml-rb-encoder:39:in `to_h'
-       	from ./ruby-toml-rb-encoder:39:in `convert'
-       	from ./ruby-toml-rb-encoder:43:in `<main>'
-
-       Exit 1
-
-<b>     want:</b>
-          <empty>
-
-<b>FAIL</b> <b>valid/spec/local-time-0</b>
-<b> </b>    ./ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
-<b> </b>
-<b> </b>      if json.key?("type")
-<b> </b>             ^^^^^
-<b> </b>    	from ./ruby-toml-rb-encoder:36:in `block in convert'
-<b> </b>    	from ./ruby-toml-rb-encoder:36:in `to_h'
-<b> </b>    	from ./ruby-toml-rb-encoder:36:in `convert'
-<b> </b>    	from ./ruby-toml-rb-encoder:39:in `block in convert'
-<b> </b>    	from ./ruby-toml-rb-encoder:39:in `to_h'
-<b> </b>    	from ./ruby-toml-rb-encoder:39:in `convert'
-<b> </b>    	from ./ruby-toml-rb-encoder:43:in `<main>'
-<b> </b>
-<b> </b>    Exit 1
-
-<b>     input sent to parser-cmd:</b>
-       {
-           "lt1": {"type": "time-local", "value": "07:32:00"},
-           "lt2": {"type": "time-local", "value": "00:32:00.999"}
-       }
-
-<b>     output from parser-cmd (stderr):</b>
-       ./ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
-
-         if json.key?("type")
-                ^^^^^
-       	from ./ruby-toml-rb-encoder:36:in `block in convert'
-       	from ./ruby-toml-rb-encoder:36:in `to_h'
-       	from ./ruby-toml-rb-encoder:36:in `convert'
-       	from ./ruby-toml-rb-encoder:39:in `block in convert'
-       	from ./ruby-toml-rb-encoder:39:in `to_h'
-       	from ./ruby-toml-rb-encoder:39:in `convert'
-       	from ./ruby-toml-rb-encoder:43:in `<main>'
-
-       Exit 1
-
-<b>     want:</b>
-          <empty>
-
-<b>FAIL</b> <b>valid/spec/offset-date-time-0</b>
-<b> </b>    ./ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
-<b> </b>
-<b> </b>        when "datetime" then Time.iso8601(val)
-<b> </b>                                 ^^^^^^^^
-<b> </b>    	from ./ruby-toml-rb-encoder:39:in `block in convert'
-<b> </b>    	from ./ruby-toml-rb-encoder:39:in `to_h'
-<b> </b>    	from ./ruby-toml-rb-encoder:39:in `convert'
-<b> </b>    	from ./ruby-toml-rb-encoder:43:in `<main>'
-<b> </b>
-<b> </b>    Exit 1
-
-<b>     input sent to parser-cmd:</b>
-       {
-           "odt1": {"type": "datetime", "value": "1979-05-27T07:32:00Z"},
-           "odt2": {"type": "datetime", "value": "1979-05-27T00:32:00-07:00"},
-           "odt3": {"type": "datetime", "value": "1979-05-27T00:32:00.999-07:00"}
-       }
-
-<b>     output from parser-cmd (stderr):</b>
-       ./ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
-
-           when "datetime" then Time.iso8601(val)
-                                    ^^^^^^^^
-       	from ./ruby-toml-rb-encoder:39:in `block in convert'
-       	from ./ruby-toml-rb-encoder:39:in `to_h'
-       	from ./ruby-toml-rb-encoder:39:in `convert'
-       	from ./ruby-toml-rb-encoder:43:in `<main>'
-
-       Exit 1
-
-<b>     want:</b>
-          <empty>
-
-<b>FAIL</b> <b>valid/spec/offset-date-time-1</b>
-<b> </b>    ./ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
-<b> </b>
-<b> </b>        when "datetime" then Time.iso8601(val)
-<b> </b>                                 ^^^^^^^^
-<b> </b>    	from ./ruby-toml-rb-encoder:39:in `block in convert'
-<b> </b>    	from ./ruby-toml-rb-encoder:39:in `to_h'
-<b> </b>    	from ./ruby-toml-rb-encoder:39:in `convert'
-<b> </b>    	from ./ruby-toml-rb-encoder:43:in `<main>'
-<b> </b>
-<b> </b>    Exit 1
-
-<b>     input sent to parser-cmd:</b>
-       {
-           "odt4": {"type": "datetime", "value": "1979-05-27T07:32:00Z"}
-       }
-
-<b>     output from parser-cmd (stderr):</b>
-       ./ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
-
-           when "datetime" then Time.iso8601(val)
-                                    ^^^^^^^^
-       	from ./ruby-toml-rb-encoder:39:in `block in convert'
-       	from ./ruby-toml-rb-encoder:39:in `to_h'
-       	from ./ruby-toml-rb-encoder:39:in `convert'
-       	from ./ruby-toml-rb-encoder:43:in `<main>'
-
-       Exit 1
-
-<b>     want:</b>
-          <empty>
-
-<b>FAIL</b> <b>valid/spec/table-7</b>
-<b> </b>    ./ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
-<b> </b>
-<b> </b>      if json.key?("type")
-<b> </b>             ^^^^^
-<b> </b>    	from ./ruby-toml-rb-encoder:36:in `block in convert'
-<b> </b>    	from ./ruby-toml-rb-encoder:36:in `to_h'
-<b> </b>    	from ./ruby-toml-rb-encoder:36:in `convert'
-<b> </b>    	from ./ruby-toml-rb-encoder:39:in `block in convert'
-<b> </b>    	from ./ruby-toml-rb-encoder:39:in `to_h'
-<b> </b>    	from ./ruby-toml-rb-encoder:39:in `convert'
-<b> </b>    	from ./ruby-toml-rb-encoder:39:in `block in convert'
-<b> </b>    	from ./ruby-toml-rb-encoder:39:in `to_h'
-<b> </b>    	from ./ruby-toml-rb-encoder:39:in `convert'
-<b> </b>    	from ./ruby-toml-rb-encoder:43:in `<main>'
-<b> </b>
-<b> </b>    Exit 1
-
-<b>     input sent to parser-cmd:</b>
-       {
-           "breed": {"type": "string", "value": "pug"},
-           "name":  {"type": "string", "value": "Fido"},
-           "owner": {
-               "member_since": {"type": "date-local", "value": "1999-08-04"},
-               "name":         {"type": "string", "value": "Regina Dogman"}
-           }
-       }
-
-<b>     output from parser-cmd (stderr):</b>
-       ./ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
-
-         if json.key?("type")
-                ^^^^^
-       	from ./ruby-toml-rb-encoder:36:in `block in convert'
-       	from ./ruby-toml-rb-encoder:36:in `to_h'
-       	from ./ruby-toml-rb-encoder:36:in `convert'
-       	from ./ruby-toml-rb-encoder:39:in `block in convert'
-       	from ./ruby-toml-rb-encoder:39:in `to_h'
-       	from ./ruby-toml-rb-encoder:39:in `convert'
-       	from ./ruby-toml-rb-encoder:39:in `block in convert'
-       	from ./ruby-toml-rb-encoder:39:in `to_h'
-       	from ./ruby-toml-rb-encoder:39:in `convert'
-       	from ./ruby-toml-rb-encoder:43:in `<main>'
-
-       Exit 1
-
-<b>     want:</b>
-          <empty>
-
 <b>FAIL</b> <b>valid/string/quoted-unicode</b>
 <b> </b>    decode TOML from encoder:
 <b> </b>      toml: line 1 (last key "basic_string"): expected four hexadecimal digits after '\u', but got "~ \\u0080 ÿ \\uD7FF \ue000 \\uFFFF 𐀀 \\u{" instead
@@ -3236,6 +3432,6 @@ invalid tests: 307 passed, 70 failed
        literal_string = '~  ÿ ퟿  ￿ 𐀀 􏿿'
 
 toml-test v2025-04-21 [./ruby-toml-rb-encoder]: using embedded tests
-encoder tests: 167 passed, 28 failed
+encoder tests: 176 passed, 28 failed
 took 46.0 126.60
 </pre>

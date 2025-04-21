@@ -1,7 +1,7 @@
 <pre>
 basic-toml version 0.1.10
 <b>FAIL</b> <b>valid/array/array</b>
-<b> </b>    Error: Error { message: "invalid number at line 5 column 3" }
+<b> </b>    Error: Error { message: "invalid number at line 5 column 2" }
 <b> </b>
 <b> </b>    Exit 1
 
@@ -10,9 +10,10 @@ basic-toml version 0.1.10
        floats = [1.1, 2.1, 3.1]
        strings = ["a", "b", "c"]
        dates = [
-         1987-07-05T17:45:00Z,
-         1979-05-27T07:32:00Z,
-         2006-06-01T11:00:00Z,
+       	1987-07-05T17:45:00Z,
+       	1979-05-27T07:32:00,
+       	2006-06-01,
+       	11:00:00,
        ]
        comments = [
                 1,
@@ -20,7 +21,7 @@ basic-toml version 0.1.10
        ]
 
 <b>     output from parser-cmd (stderr):</b>
-       Error: Error { message: "invalid number at line 5 column 3" }
+       Error: Error { message: "invalid number at line 5 column 2" }
 
        Exit 1
 
@@ -61,6 +62,11 @@ basic-toml version 0.1.10
        # Make sure the space between the datetime and "#" isn't lexed.
        dt = 1979-05-27T07:32:12-07:00  # c
        d = 1979-05-27 # Comment
+
+       [[aot]] # Comment
+       k = 98 # Comment
+       [[aot]]# Comment
+       k = 99# Comment
 
 <b>     output from parser-cmd (stderr):</b>
        Error: Error { message: "invalid number at line 27 column 6" }
@@ -242,6 +248,137 @@ basic-toml version 0.1.10
 <b>     want:</b>
           <empty>
 
+<b>FAIL</b> <b>valid/spec-1.0.0/local-date-0</b>
+<b> </b>    Error: Error { message: "invalid number at line 1 column 7" }
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       ld1 = 1979-05-27
+
+<b>     output from parser-cmd (stderr):</b>
+       Error: Error { message: "invalid number at line 1 column 7" }
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/spec-1.0.0/local-date-time-0</b>
+<b> </b>    Error: Error { message: "invalid number at line 1 column 8" }
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       ldt1 = 1979-05-27T07:32:00
+       ldt2 = 1979-05-27T00:32:00.999
+
+<b>     output from parser-cmd (stderr):</b>
+       Error: Error { message: "invalid number at line 1 column 8" }
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/spec-1.0.0/local-time-0</b>
+<b> </b>    Error: Error { message: "invalid number at line 1 column 8" }
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       lt1 = 07:32:00
+       lt2 = 00:32:00.999
+
+<b>     output from parser-cmd (stderr):</b>
+       Error: Error { message: "invalid number at line 1 column 8" }
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/spec-1.0.0/offset-date-time-0</b>
+<b> </b>    Error: Error { message: "invalid number at line 1 column 8" }
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       odt1 = 1979-05-27T07:32:00Z
+       odt2 = 1979-05-27T00:32:00-07:00
+       odt3 = 1979-05-27T00:32:00.999-07:00
+
+<b>     output from parser-cmd (stderr):</b>
+       Error: Error { message: "invalid number at line 1 column 8" }
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/spec-1.0.0/offset-date-time-1</b>
+<b> </b>    Error: Error { message: "invalid number at line 1 column 8" }
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       odt4 = 1979-05-27 07:32:00Z
+
+<b>     output from parser-cmd (stderr):</b>
+       Error: Error { message: "invalid number at line 1 column 8" }
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/spec-1.0.0/table-7</b>
+<b> </b>    Error: Error { message: "invalid number at line 8 column 16" }
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       # Top-level table begins.
+       name = "Fido"
+       breed = "pug"
+
+       # Top-level table ends.
+       [owner]
+       name = "Regina Dogman"
+       member_since = 1999-08-04
+
+<b>     output from parser-cmd (stderr):</b>
+       Error: Error { message: "invalid number at line 8 column 16" }
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/spec-1.0.0/table-9</b>
+<b> </b>    Error: Error { message: "duplicate key: `apple` for key `fruit` at line 8 column 8" }
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       [fruit]
+       apple.color = "red"
+       apple.taste.sweet = true
+
+       # [fruit.apple]  # INVALID
+       # [fruit.apple.taste]  # INVALID
+
+       [fruit.apple.texture]  # you can add sub-tables
+       smooth = true
+
+<b>     output from parser-cmd (stderr):</b>
+       Error: Error { message: "duplicate key: `apple` for key `fruit` at line 8 column 8" }
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
 <b>FAIL</b> <b>valid/spec-example-1</b>
 <b> </b>    Error: Error { message: "invalid number at line 7 column 7" }
 <b> </b>
@@ -328,137 +465,6 @@ basic-toml version 0.1.10
 <b>     want:</b>
           <empty>
 
-<b>FAIL</b> <b>valid/spec/local-date-0</b>
-<b> </b>    Error: Error { message: "invalid number at line 1 column 7" }
-<b> </b>
-<b> </b>    Exit 1
-
-<b>     input sent to parser-cmd:</b>
-       ld1 = 1979-05-27
-
-<b>     output from parser-cmd (stderr):</b>
-       Error: Error { message: "invalid number at line 1 column 7" }
-
-       Exit 1
-
-<b>     want:</b>
-          <empty>
-
-<b>FAIL</b> <b>valid/spec/local-date-time-0</b>
-<b> </b>    Error: Error { message: "invalid number at line 1 column 8" }
-<b> </b>
-<b> </b>    Exit 1
-
-<b>     input sent to parser-cmd:</b>
-       ldt1 = 1979-05-27T07:32:00
-       ldt2 = 1979-05-27T00:32:00.999
-
-<b>     output from parser-cmd (stderr):</b>
-       Error: Error { message: "invalid number at line 1 column 8" }
-
-       Exit 1
-
-<b>     want:</b>
-          <empty>
-
-<b>FAIL</b> <b>valid/spec/local-time-0</b>
-<b> </b>    Error: Error { message: "invalid number at line 1 column 8" }
-<b> </b>
-<b> </b>    Exit 1
-
-<b>     input sent to parser-cmd:</b>
-       lt1 = 07:32:00
-       lt2 = 00:32:00.999
-
-<b>     output from parser-cmd (stderr):</b>
-       Error: Error { message: "invalid number at line 1 column 8" }
-
-       Exit 1
-
-<b>     want:</b>
-          <empty>
-
-<b>FAIL</b> <b>valid/spec/offset-date-time-0</b>
-<b> </b>    Error: Error { message: "invalid number at line 1 column 8" }
-<b> </b>
-<b> </b>    Exit 1
-
-<b>     input sent to parser-cmd:</b>
-       odt1 = 1979-05-27T07:32:00Z
-       odt2 = 1979-05-27T00:32:00-07:00
-       odt3 = 1979-05-27T00:32:00.999-07:00
-
-<b>     output from parser-cmd (stderr):</b>
-       Error: Error { message: "invalid number at line 1 column 8" }
-
-       Exit 1
-
-<b>     want:</b>
-          <empty>
-
-<b>FAIL</b> <b>valid/spec/offset-date-time-1</b>
-<b> </b>    Error: Error { message: "invalid number at line 1 column 8" }
-<b> </b>
-<b> </b>    Exit 1
-
-<b>     input sent to parser-cmd:</b>
-       odt4 = 1979-05-27 07:32:00Z
-
-<b>     output from parser-cmd (stderr):</b>
-       Error: Error { message: "invalid number at line 1 column 8" }
-
-       Exit 1
-
-<b>     want:</b>
-          <empty>
-
-<b>FAIL</b> <b>valid/spec/table-7</b>
-<b> </b>    Error: Error { message: "invalid number at line 8 column 16" }
-<b> </b>
-<b> </b>    Exit 1
-
-<b>     input sent to parser-cmd:</b>
-       # Top-level table begins.
-       name = "Fido"
-       breed = "pug"
-
-       # Top-level table ends.
-       [owner]
-       name = "Regina Dogman"
-       member_since = 1999-08-04
-
-<b>     output from parser-cmd (stderr):</b>
-       Error: Error { message: "invalid number at line 8 column 16" }
-
-       Exit 1
-
-<b>     want:</b>
-          <empty>
-
-<b>FAIL</b> <b>valid/spec/table-9</b>
-<b> </b>    Error: Error { message: "duplicate key: `apple` for key `fruit` at line 8 column 8" }
-<b> </b>
-<b> </b>    Exit 1
-
-<b>     input sent to parser-cmd:</b>
-       [fruit]
-       apple.color = "red"
-       apple.taste.sweet = true
-
-       # [fruit.apple]  # INVALID
-       # [fruit.apple.taste]  # INVALID
-
-       [fruit.apple.texture]  # you can add sub-tables
-       smooth = true
-
-<b>     output from parser-cmd (stderr):</b>
-       Error: Error { message: "duplicate key: `apple` for key `fruit` at line 8 column 8" }
-
-       Exit 1
-
-<b>     want:</b>
-          <empty>
-
 <b>FAIL</b> <b>valid/table/array-within-dotted</b>
 <b> </b>    Error: Error { message: "duplicate key: `apple` for key `fruit` at line 4 column 9" }
 <b> </b>
@@ -536,8 +542,8 @@ basic-toml version 0.1.10
        Exit code 1
 
 toml-test v2025-04-21 [./scripts/target/release/basic-toml-decoder]: using embedded tests
-  valid tests: 174 passed, 21 failed
-invalid tests: 373 passed,  4 failed
+  valid tests: 183 passed, 21 failed
+invalid tests: 394 passed,  4 failed
 
 ==> ENCODER TESTS
 (not supported)

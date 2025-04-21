@@ -56,6 +56,62 @@ toml-f version 056d362
 <b>     want:</b>
           <empty>
 
+<b>FAIL</b> <b>valid/key/quoted-dots</b>
+<b> </b>    error: Invalid syntax
+<b> </b>      --> stdin:11:1-18
+<b> </b>       |
+<b> </b>    11 | "escaped\u002edot" = 7
+<b> </b>       | ^^^^^^^^^^^^^^^^^^ unexpected invalid sequence
+<b> </b>       |
+<b> </b>    ERROR STOP
+<b> </b>
+<b> </b>    Error termination. Backtrace:
+<b> </b>    #0  0x… in ???
+<b> </b>    #1  0x… in ???
+<b> </b>    #2  0x… in ???
+<b> </b>    #3  0x… in toml2json
+<b> </b>    	at ../test/compliance/toml2json.f90:63
+<b> </b>    #4  0x… in main
+<b> </b>    	at ../test/compliance/toml2json.f90:17
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       plain = 1
+       "with.dot" = 2
+
+       [plain_table]
+       plain = 3
+       "with.dot" = 4
+
+       [table.withdot]
+       plain = 5
+       "key.with.dots" = 6
+       "escaped\u002edot" = 7
+
+<b>     output from parser-cmd (stderr):</b>
+       error: Invalid syntax
+         --> stdin:11:1-18
+          |
+       11 | "escaped\u002edot" = 7
+          | ^^^^^^^^^^^^^^^^^^ unexpected invalid sequence
+          |
+       ERROR STOP
+
+       Error termination. Backtrace:
+       #0  0x… in ???
+       #1  0x… in ???
+       #2  0x… in ???
+       #3  0x… in toml2json
+       	at ../test/compliance/toml2json.f90:63
+       #4  0x… in main
+       	at ../test/compliance/toml2json.f90:17
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
 <b>FAIL</b> <b>valid/key/quoted-unicode</b>
 <b> </b>    error: Invalid syntax
 <b> </b>     --> stdin:2:1-8
@@ -108,7 +164,59 @@ toml-f version 056d362
 <b>     want:</b>
           <empty>
 
-<b>FAIL</b> <b>valid/spec/string-0</b>
+<b>FAIL</b> <b>valid/key/space</b>
+<b> </b>    error: Invalid character in key
+<b> </b>     --> stdin:4:1-36
+<b> </b>      |
+<b> </b>    4 | "  much 		  whitespace  	\n  \r\n  " = 3
+<b> </b>      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ key cannot contain newline
+<b> </b>      |
+<b> </b>    ERROR STOP
+<b> </b>
+<b> </b>    Error termination. Backtrace:
+<b> </b>    #0  0x… in ???
+<b> </b>    #1  0x… in ???
+<b> </b>    #2  0x… in ???
+<b> </b>    #3  0x… in toml2json
+<b> </b>    	at ../test/compliance/toml2json.f90:63
+<b> </b>    #4  0x… in main
+<b> </b>    	at ../test/compliance/toml2json.f90:17
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       # Keep whitespace inside quotes keys at all positions.
+       "a b"   = 1
+       " c d " = 2
+       "  much 		  whitespace  	\n  \r\n  " = 3
+
+       [ " tbl " ]
+       "\ttab\ttab\t" = "tab"
+
+<b>     output from parser-cmd (stderr):</b>
+       error: Invalid character in key
+        --> stdin:4:1-36
+         |
+       4 | "  much 		  whitespace  	\n  \r\n  " = 3
+         | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ key cannot contain newline
+         |
+       ERROR STOP
+
+       Error termination. Backtrace:
+       #0  0x… in ???
+       #1  0x… in ???
+       #2  0x… in ???
+       #3  0x… in toml2json
+       	at ../test/compliance/toml2json.f90:63
+       #4  0x… in main
+       	at ../test/compliance/toml2json.f90:17
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
+<b>FAIL</b> <b>valid/spec-1.0.0/string-0</b>
 <b> </b>    Values for key "str" don't match:
 <b> </b>      Expected:     I'm a string. "You can quote me". Name	José
 <b> </b>    Location	SF.
@@ -127,7 +235,7 @@ toml-f version 056d362
            "str": {"type": "string", "value": "I'm a string. \"You can quote me\". Name\tJosé\nLocation\tSF."}
        }
 
-<b>FAIL</b> <b>valid/spec/string-3</b>
+<b>FAIL</b> <b>valid/spec-1.0.0/string-3</b>
 <b> </b>    Values for key "str2" don't match:
 <b> </b>      Expected:     The quick brown fox jumps over the lazy dog.
 <b> </b>      Your encoder: The quick brown
@@ -1020,6 +1128,22 @@ toml-f version 056d362
 <b>     want:</b>
        Exit code 1
 
+<b>FAIL</b> <b>invalid/key/duplicate-keys-6</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       "a'b"      = 1
+       "a\u0027b" = 2
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "a'":  {"type": "integer", "value": "2"},
+         "a'b": {"type": "integer", "value": "1"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
 <b>FAIL</b> <b>invalid/local-datetime/hour-over</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -1228,8 +1352,8 @@ toml-f version 056d362
        Exit code 1
 
 toml-test v2025-04-21 [./_build/test/compliance/toml2json]: using embedded tests
-  valid tests: 184 passed, 11 failed
-invalid tests: 345 passed, 32 failed
+  valid tests: 191 passed, 13 failed
+invalid tests: 365 passed, 33 failed
 
 ==> ENCODER TESTS
 <b>FAIL</b> <b>valid/array/mixed-string-table</b>
@@ -1473,6 +1597,47 @@ invalid tests: 345 passed, 32 failed
 <b>     want:</b>
           <empty>
 
+<b>FAIL</b> <b>valid/key/space</b>
+<b> </b>    ERROR STOP
+<b> </b>
+<b> </b>    Error termination. Backtrace:
+<b> </b>    #0  0x… in ???
+<b> </b>    #1  0x… in ???
+<b> </b>    #2  0x… in ???
+<b> </b>    #3  0x… in json2toml
+<b> </b>    	at ../test/compliance/json2toml.f90:53
+<b> </b>    #4  0x… in main
+<b> </b>    	at ../test/compliance/json2toml.f90:17
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       {
+           "  much \t\t  whitespace  \t\n  \r\n  ": {"type": "integer", "value": "3"},
+           " c d ":                             {"type": "integer", "value": "2"},
+           "a b":                               {"type": "integer", "value": "1"},
+           " tbl ": {
+               "\ttab\ttab\t": {"type": "string", "value": "tab"}
+           }
+       }
+
+<b>     output from parser-cmd (stderr):</b>
+       ERROR STOP
+
+       Error termination. Backtrace:
+       #0  0x… in ???
+       #1  0x… in ???
+       #2  0x… in ???
+       #3  0x… in json2toml
+       	at ../test/compliance/json2toml.f90:53
+       #4  0x… in main
+       	at ../test/compliance/json2toml.f90:17
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
 <b>FAIL</b> <b>valid/key/special-chars</b>
 <b> </b>    ERROR STOP
 <b> </b>
@@ -1509,7 +1674,7 @@ invalid tests: 345 passed, 32 failed
 <b>     want:</b>
           <empty>
 
-<b>FAIL</b> <b>valid/spec/array-0</b>
+<b>FAIL</b> <b>valid/spec-1.0.0/array-0</b>
 <b> </b>    ERROR STOP
 <b> </b>
 <b> </b>    Error termination. Backtrace:
@@ -1598,7 +1763,7 @@ invalid tests: 345 passed, 32 failed
 <b>     want:</b>
           <empty>
 
-<b>FAIL</b> <b>valid/spec/float-0</b>
+<b>FAIL</b> <b>valid/spec-1.0.0/float-0</b>
 <b> </b>    Values for key "flt7" differ:
 <b> </b>      Expected:     6.626e-34 (float64)
 <b> </b>      Your encoder: 0 (float64)
@@ -1637,7 +1802,7 @@ invalid tests: 345 passed, 32 failed
        # both
        flt7 = 6.626e-34
 
-<b>FAIL</b> <b>valid/spec/string-5</b>
+<b>FAIL</b> <b>valid/spec-1.0.0/string-5</b>
 <b> </b>    ERROR STOP
 <b> </b>
 <b> </b>    Error termination. Backtrace:
@@ -1816,6 +1981,6 @@ invalid tests: 345 passed, 32 failed
           <empty>
 
 toml-test v2025-04-21 [./_build/test/compliance/json2toml]: using embedded tests
-encoder tests: 183 passed, 12 failed
+encoder tests: 191 passed, 13 failed
 took 0.8 39.69
 </pre>

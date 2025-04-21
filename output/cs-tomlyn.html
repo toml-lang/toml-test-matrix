@@ -58,6 +58,40 @@ tomlyn version 0.16.2
 <b>     want:</b>
           <empty>
 
+<b>FAIL</b> <b>valid/key/space</b>
+<b> </b>    System.InvalidOperationException: The document has errors: (4,1) : error : Invalid control character found \t
+<b> </b>    (4,1) : error : Invalid control character found \t
+<b> </b>    (4,1) : error : Invalid control character found \t
+<b> </b>
+<b> </b>       at Tomlyn.Model.TomlTable.From(DocumentSyntax documentSyntax)
+<b> </b>       at Tomlyn.Toml.ToModel(DocumentSyntax syntax)
+<b> </b>       at TomlynDecoder.Main(String[] args) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlyn/cs-tomlyn-decoder/cs-tomlyn-decoder.cs:line 17
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       # Keep whitespace inside quotes keys at all positions.
+       "a b"   = 1
+       " c d " = 2
+       "  much 		  whitespace  	\n  \r\n  " = 3
+
+       [ " tbl " ]
+       "\ttab\ttab\t" = "tab"
+
+<b>     output from parser-cmd (stderr):</b>
+       System.InvalidOperationException: The document has errors: (4,1) : error : Invalid control character found \t
+       (4,1) : error : Invalid control character found \t
+       (4,1) : error : Invalid control character found \t
+
+          at Tomlyn.Model.TomlTable.From(DocumentSyntax documentSyntax)
+          at Tomlyn.Toml.ToModel(DocumentSyntax syntax)
+          at TomlynDecoder.Main(String[] args) in /home/martin/code/Toml/toml-test-matrix/src/cs-tomlyn/cs-tomlyn-decoder/cs-tomlyn-decoder.cs:line 17
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
 <b>FAIL</b> <b>valid/string/quoted-unicode</b>
 <b> </b>    System.InvalidOperationException: The document has errors: (2,105) : error : Invalid Unicode scalar value [10FFFF]
 <b> </b>    (5,31) : error : The character `􏿿` is an invalid UTF8 character
@@ -147,6 +181,21 @@ tomlyn version 0.16.2
 <b>     want:</b>
        Exit code 1
 
+<b>FAIL</b> <b>invalid/key/duplicate-keys-7</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       "" = 1
+       "" = 2
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "": {"type": "integer", "value": "2"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
 <b>FAIL</b> <b>invalid/table/super-twice</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -166,8 +215,8 @@ tomlyn version 0.16.2
        Exit code 1
 
 toml-test v2025-04-21 [./cs-tomlyn-decoder/bin/Release/net8.0/cs-tomlyn-decoder]: using embedded tests
-  valid tests: 192 passed,  3 failed
-invalid tests: 372 passed,  5 failed
+  valid tests: 200 passed,  4 failed
+invalid tests: 392 passed,  6 failed
 
 ==> ENCODER TESTS
 (not supported)

@@ -30,7 +30,7 @@ toml-racket version fe46aa2
            "leading-zero-fractional": {"type": "float", "value": "0.0123"}
        }
 
-<b>FAIL</b> <b>valid/spec/float-0</b>
+<b>FAIL</b> <b>valid/spec-1.0.0/float-0</b>
 <b> </b>    Values for key "flt3" don't match:
 <b> </b>      Expected:     -0.01
 <b> </b>      Your encoder: 0.1
@@ -71,6 +71,39 @@ toml-racket version fe46aa2
            "flt7": {"type": "float", "value": "6.626e-34"}
        }
 
+<b>FAIL</b> <b>valid/table/array-empty-name</b>
+<b> </b>    Values for key "a" don't match:
+<b> </b>      Expected:     1
+<b> </b>      Your encoder: 2
+
+<b>     input sent to parser-cmd:</b>
+       # Silly thing to do, but valid.
+
+       [['']]
+       a = 1
+       [['']]
+       a = 2
+
+<b>     output from parser-cmd (stdout):</b>
+       {
+         "": [
+           {
+             "a": {"type": "integer", "value": "2"}
+           },
+           {
+             "a": {"type": "integer", "value": "1"}
+           }
+         ]
+       }
+
+<b>     want:</b>
+       {
+           "": [
+               {"a": {"type": "integer", "value": "1"}},
+               {"a": {"type": "integer", "value": "2"}}
+           ]
+       }
+
 <b>FAIL</b> <b>invalid/datetime/offset-overflow-minute</b>
 <b> </b>    Expected an error, but no error was reported.
 
@@ -88,8 +121,8 @@ toml-racket version fe46aa2
        Exit code 1
 
 toml-test v2025-04-21 [./toml-compliance/compliance/decoder]: using embedded tests
-  valid tests: 193 passed,  2 failed
-invalid tests: 376 passed,  1 failed
+  valid tests: 201 passed,  3 failed
+invalid tests: 397 passed,  1 failed
 
 ==> ENCODER TESTS
 <b>FAIL</b> <b>valid/float/max-int</b>
@@ -330,7 +363,7 @@ invalid tests: 376 passed,  1 failed
        "~  ÿ ퟿  ￿ 𐀀 􏿿" = "basic key"
        'l ~  ÿ ퟿  ￿ 𐀀 􏿿' = "literal key"
 
-<b>FAIL</b> <b>valid/spec/float-0</b>
+<b>FAIL</b> <b>valid/spec-1.0.0/float-0</b>
 <b> </b>    Values for key "flt1" differ:
 <b> </b>      Expected:     1 (float64)
 <b> </b>      Your encoder: 1 (int64)
@@ -370,6 +403,6 @@ invalid tests: 376 passed,  1 failed
        flt7 = 6.626e-34
 
 toml-test v2025-04-21 [./toml-compliance/compliance/encoder]: using embedded tests
-encoder tests: 188 passed,  7 failed
+encoder tests: 197 passed,  7 failed
 took 0.0 0.0
 </pre>

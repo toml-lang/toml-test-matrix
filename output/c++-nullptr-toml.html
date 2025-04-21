@@ -1,5 +1,17 @@
 <pre>
 nullptr-toml version 9b68428
+<b>FAIL</b> <b>valid/empty-crlf</b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd:</b>
+       
+
+<b>     output from parser-cmd (stderr):</b>
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
 <b>FAIL</b> <b>valid/key/like-date</b>
 <b> </b>    Exit 1
 
@@ -63,9 +75,33 @@ nullptr-toml version 9b68428
 <b>     want:</b>
           <empty>
 
+<b>FAIL</b> <b>invalid/control/only-ff</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       
+
+<b>     output from parser-cmd (stdout):</b>
+       {}
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/control/only-vt</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd:</b>
+       
+
+<b>     output from parser-cmd (stdout):</b>
+       {}
+
+<b>     want:</b>
+       Exit code 1
+
 toml-test v2025-04-21 [./c++-nullptr-toml-decoder]: using embedded tests
-  valid tests: 192 passed,  3 failed
-invalid tests: 377 passed,  0 failed
+  valid tests: 200 passed,  4 failed
+invalid tests: 396 passed,  2 failed
 
 ==> ENCODER TESTS
 (not supported)

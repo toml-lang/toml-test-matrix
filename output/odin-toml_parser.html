@@ -2,7 +2,7 @@
 toml_parser version 74b4a91
 <b>FAIL</b> <b>valid/key/quoted-unicode</b>
 <b> </b>    decode JSON output from parser:
-<b> </b>      invalid character 'x' in string escape code
+<b> </b>      invalid character 'U' in string escape code
 
 <b>     input sent to parser-cmd:</b>
 
@@ -14,7 +14,7 @@ toml_parser version 74b4a91
        'l ~  ÿ ퟿  ￿ 𐀀 􏿿' = "literal key"
 
 <b>     output from parser-cmd (stdout):</b>
-       {"\x00":{"type":"string","value":"null"},"~ \u0080 ÿ \ud7ff \ue000 \uffff \U00010000 \U0010ffff":{"type":"string","value":"basic key"},"\b \f A \u007f \u0080 ÿ \ud7ff \ue000 \uffff \x00 \uffff":{"type":"string","value":"escaped key"},"\\u0000":{"type":"string","value":"different key"},"l ~ \u0080 ÿ \ud7ff \ue000 \uffff \U00010000 \U0010ffff":{"type":"string","value":"literal key"}}
+       {"l ~ \u0080 ÿ \ud7ff \ue000 \uffff \U00010000 \U0010ffff":{"type":"string","value":"literal key"},"\b \f A \u007f \u0080 ÿ \ud7ff \ue000 \uffff \x00 \uffff":{"type":"string","value":"escaped key"},"~ \u0080 ÿ \ud7ff \ue000 \uffff \U00010000 \U0010ffff":{"type":"string","value":"basic key"},"\\u0000":{"type":"string","value":"different key"},"\x00":{"type":"string","value":"null"}}
 
 <b>     want:</b>
        {
@@ -25,7 +25,59 @@ toml_parser version 74b4a91
            "~  ÿ ퟿  ￿ 𐀀 􏿿":        {"type": "string", "value": "basic key"}
        }
 
-<b>FAIL</b> <b>valid/spec/float-0</b>
+<b>FAIL</b> <b>valid/multibyte</b>
+<b> </b>    decode JSON output from parser:
+<b> </b>      invalid character 'U' in string escape code
+
+<b>     input sent to parser-cmd:</b>
+       # Test multibyte throughout
+
+       # Tèƨƭ ƒïℓè ƒôř TÓM£
+       # Óñℓ¥ ƭλïƨ ôñè ƭřïèƨ ƭô è₥úℓáƭè á TÓM£ ƒïℓè ωřïƭƭèñ β¥ á úƨèř ôƒ ƭλè ƙïñδ ôƒ ƥářƨèř ωřïƭèřƨ ƥřôβáβℓ¥ λáƭè
+
+       ['𝐭𝐛𝐥']
+       string = "𝓼𝓽𝓻𝓲𝓷𝓰 - #"          # " 𝓼𝓽𝓻𝓲𝓷𝓰
+       	['𝐭𝐛𝐥'.sub]
+       	'𝕒𝕣𝕣𝕒𝕪' = [ "] ", " # "]      # ] 𝓪𝓻𝓻𝓪𝔂
+       	'𝕒𝕣𝕣𝕒𝕪𝟚' = [ "Tèƨƭ #11 ]ƥřôƲèδ ƭλáƭ", "Éжƥèřï₥èñƭ #9 ωáƨ á ƨúççèƨƨ" ]
+       	# Ýôú δïδñ'ƭ ƭλïñƙ ïƭ'δ áƨ èáƨ¥ áƨ çλúçƙïñϱ ôúƭ ƭλè ℓáƨƭ #, δïδ ¥ôú?
+       	another_test_string = "§á₥è ƭλïñϱ, βúƭ ωïƭλ á ƨƭřïñϱ #"
+       	escapes = " Âñδ ωλèñ \"'ƨ ářè ïñ ƭλè ƨƭřïñϱ, áℓôñϱ ωïƭλ # \""   # "áñδ çô₥₥èñƭƨ ářè ƭλèřè ƭôô"
+       	# Tλïñϱƨ ωïℓℓ ϱèƭ λářδèř
+       		['𝐭𝐛𝐥'.sub."βïƭ#"]
+       		"ωλáƭ?" = "Ýôú δôñ'ƭ ƭλïñƙ ƨô₥è úƨèř ωôñ'ƭ δô ƭλáƭ?"
+       		multi_line_array = [
+       			"]",
+       			# ] Óλ ¥èƨ Ì δïδ
+       			]
+
+<b>     output from parser-cmd (stdout):</b>
+       {"\U0001d42d\U0001d41b\U0001d425":{"string":{"type":"string","value":"\ud835\udcfc\ud835\udcfd\ud835\udcfb\ud835\udcf2\ud835\udcf7\ud835\udcf0 - #"},"sub":{"\U0001d552\U0001d563\U0001d563\U0001d552\U0001d56a\U0001d7da":[{"type":"string","value":"Tè\u01a8\u01ad #11 ]\u01a5\u0159ô\u01b2è\u03b4 \u01ad\u03bbá\u01ad"},{"type":"string","value":"É\u0436\u01a5è\u0159ï\u20a5èñ\u01ad #9 \u03c9á\u01a8 á \u01a8úççè\u01a8\u01a8"}],"another_test_string":{"type":"string","value":"§á\u20a5è \u01ad\u03bbïñ\u03f1, \u03b2ú\u01ad \u03c9ï\u01ad\u03bb á \u01a8\u01ad\u0159ïñ\u03f1 #"},"\U0001d552\U0001d563\U0001d563\U0001d552\U0001d56a":[{"type":"string","value":"] "},{"type":"string","value":" # "}],"\u03b2ï\u01ad#":{"multi_line_array":[{"type":"string","value":"]"}],"\u03c9\u03bbá\u01ad?":{"type":"string","value":"Ýôú \u03b4ôñ'\u01ad \u01ad\u03bbïñ\u0199 \u01a8ô\u20a5è ú\u01a8è\u0159 \u03c9ôñ'\u01ad \u03b4ô \u01ad\u03bbá\u01ad?"}},"escapes":{"type":"string","value":" Âñ\u03b4 \u03c9\u03bbèñ \"'\u01a8 á\u0159è ïñ \u01ad\u03bbè \u01a8\u01ad\u0159ïñ\u03f1, á\u2113ôñ\u03f1 \u03c9ï\u01ad\u03bb # \""}}}}
+
+<b>     want:</b>
+       {
+           "𝐭𝐛𝐥": {
+               "string": {"type": "string", "value": "𝓼𝓽𝓻𝓲𝓷𝓰 - #"},
+               "sub": {
+                   "another_test_string": {"type": "string", "value": "§á₥è ƭλïñϱ, βúƭ ωïƭλ á ƨƭřïñϱ #"},
+                   "escapes":             {"type": "string", "value": " Âñδ ωλèñ \"'ƨ ářè ïñ ƭλè ƨƭřïñϱ, áℓôñϱ ωïƭλ # \""},
+                   "βïƭ#": {
+                       "multi_line_array": [{"type": "string", "value": "]"}],
+                       "ωλáƭ?":            {"type": "string", "value": "Ýôú δôñ'ƭ ƭλïñƙ ƨô₥è úƨèř ωôñ'ƭ δô ƭλáƭ?"}
+                   },
+                   "𝕒𝕣𝕣𝕒𝕪": [
+                       {"type": "string", "value": "] "},
+                       {"type": "string", "value": " # "}
+                   ],
+                   "𝕒𝕣𝕣𝕒𝕪𝟚": [
+                       {"type": "string", "value": "Tèƨƭ #11 ]ƥřôƲèδ ƭλáƭ"},
+                       {"type": "string", "value": "Éжƥèřï₥èñƭ #9 ωáƨ á ƨúççèƨƨ"}
+                   ]
+               }
+           }
+       }
+
+<b>FAIL</b> <b>valid/spec-1.0.0/float-0</b>
 <b> </b>    Values for key "flt4" don't match:
 <b> </b>      Expected:     5e+22
 <b> </b>      Your encoder: 4.999999999999999e+22
@@ -88,7 +140,7 @@ toml_parser version 74b4a91
        notunicode4   = "|\\\u0075."
 
 <b>     output from parser-cmd (stdout):</b>
-       {"delete":{"type":"string","value":"|\u007f."},"carriage":{"type":"string","value":"|\r."},"formfeed":{"type":"string","value":"|\f."},"tab":{"type":"string","value":"|\t."},"backspace":{"type":"string","value":"|\b."},"notunicode2":{"type":"string","value":"|\\u."},"newline":{"type":"string","value":"|\n."},"notunicode4":{"type":"string","value":"|\\u."},"notunicode1":{"type":"string","value":"|\\u."},"backslash":{"type":"string","value":"|\\."},"notunicode3":{"type":"string","value":"|\\u0075."},"unitseparator":{"type":"string","value":"|\x1f."},"quote":{"type":"string","value":"|\"."}}
+       {"delete":{"type":"string","value":"|\u007f."},"unitseparator":{"type":"string","value":"|\x1f."},"notunicode1":{"type":"string","value":"|\\u."},"quote":{"type":"string","value":"|\"."},"notunicode4":{"type":"string","value":"|\\u."},"notunicode2":{"type":"string","value":"|\\u."},"formfeed":{"type":"string","value":"|\f."},"carriage":{"type":"string","value":"|\r."},"backspace":{"type":"string","value":"|\b."},"backslash":{"type":"string","value":"|\\."},"newline":{"type":"string","value":"|\n."},"tab":{"type":"string","value":"|\t."},"notunicode3":{"type":"string","value":"|\\u0075."}}
 
 <b>     want:</b>
        {
@@ -155,7 +207,7 @@ toml_parser version 74b4a91
        ml-null-2  = """\U00000000"""
 
 <b>     output from parser-cmd (stdout):</b>
-       {"ml-delta-1":{"type":"string","value":"\u03b4"},"ml-null-1":{"type":"string","value":"\x00"},"delta-2":{"type":"string","value":"\u03b4"},"ml-b":{"type":"string","value":"b"},"null-1":{"type":"string","value":"\x00"},"b":{"type":"string","value":"b"},"delta-1":{"type":"string","value":"\u03b4"},"ml-a":{"type":"string","value":"a"},"ml-null-2":{"type":"string","value":"\x00"},"a":{"type":"string","value":"a"},"ml-delta-2":{"type":"string","value":"\u03b4"},"ml-c":{"type":"string","value":"c"},"null-2":{"type":"string","value":"\x00"},"c":{"type":"string","value":"c"}}
+       {"ml-null-1":{"type":"string","value":"\x00"},"delta-1":{"type":"string","value":"\u03b4"},"null-1":{"type":"string","value":"\x00"},"ml-c":{"type":"string","value":"c"},"b":{"type":"string","value":"b"},"ml-delta-2":{"type":"string","value":"\u03b4"},"ml-b":{"type":"string","value":"b"},"ml-null-2":{"type":"string","value":"\x00"},"a":{"type":"string","value":"a"},"ml-delta-1":{"type":"string","value":"\u03b4"},"null-2":{"type":"string","value":"\x00"},"delta-2":{"type":"string","value":"\u03b4"},"c":{"type":"string","value":"c"},"ml-a":{"type":"string","value":"a"}}
 
 <b>     want:</b>
        {
@@ -938,7 +990,7 @@ toml_parser version 74b4a91
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/spec/inline-table-2-0</b>
+<b>FAIL</b> <b>invalid/spec-1.0.0/inline-table-2-0</b>
 <b> </b>    Expected an error, but no error was reported.
 
 <b>     input sent to parser-cmd:</b>
@@ -959,7 +1011,7 @@ toml_parser version 74b4a91
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/spec/table-9-0</b>
+<b>FAIL</b> <b>invalid/spec-1.0.0/table-9-0</b>
 <b> </b>    Expected an error, but no error was reported.
 
 <b>     input sent to parser-cmd:</b>
@@ -991,7 +1043,7 @@ toml_parser version 74b4a91
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/spec/table-9-1</b>
+<b>FAIL</b> <b>invalid/spec-1.0.0/table-9-1</b>
 <b> </b>    Expected an error, but no error was reported.
 
 <b>     input sent to parser-cmd:</b>
@@ -1401,8 +1453,8 @@ toml_parser version 74b4a91
        Exit code 1
 
 toml-test v2025-04-21 [./toml_parser]: using embedded tests
-  valid tests: 190 passed,  5 failed
-invalid tests: 308 passed, 69 failed
+  valid tests: 198 passed,  6 failed
+invalid tests: 329 passed, 69 failed
 
 ==> ENCODER TESTS
 (not supported)
