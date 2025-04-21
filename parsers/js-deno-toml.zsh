@@ -1,11 +1,12 @@
 if [[ -f ./toolchain/deno/bin/deno ]]; then
 	path+=($PWD/toolchain/deno/bin)
 fi
+export DENO_NO_UPDATE_CHECK=1
 
 deps() { print 'deno' }
 
 setup() {
-	cp ../../scripts/deno-toml-* .
+	cp ../../scripts/js-deno-toml-* .
 }
 
 # These lines are added inconsistently to the stack traces.
@@ -18,8 +19,8 @@ typeset -A info=(
 	toml    '1.0'
 	site    'https://jsr.io/@std/toml'
 	src     'https://github.com/denoland/std'
-	decoder 'deno-toml-decoder.ts'
-	encoder 'deno-toml-encoder.ts'
-	perf    'TODO'
+	decoder 'js-deno-toml-decoder.ts'
+	encoder 'js-deno-toml-encoder.ts'
+	perf    'js-deno-toml-perf.ts'
 	flags   '-int-as-float=1'
 )
