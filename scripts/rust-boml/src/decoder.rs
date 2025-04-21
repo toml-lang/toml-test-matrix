@@ -6,7 +6,10 @@ impl toml_test_harness::Decoder for Decoder {
         "toml"
     }
 
-    fn decode(&self, data: &[u8]) -> Result<toml_test_harness::Decoded, toml_test_harness::Error> {
+    fn decode(
+        &self,
+        data: &[u8],
+    ) -> Result<toml_test_harness::DecodedValue, toml_test_harness::Error> {
         let data = std::str::from_utf8(data).map_err(toml_test_harness::Error::new)?;
         let table = boml::Toml::parse(&data)
             .map_err(|err| toml_test_harness::Error::new(format!("{err:?}")))?
@@ -17,35 +20,35 @@ impl toml_test_harness::Decoder for Decoder {
 
 fn value_to_decoded(
     value: &boml::types::TomlValue,
-) -> Result<toml_test_harness::Decoded, toml_test_harness::Error> {
+) -> Result<toml_test_harness::DecodedValue, toml_test_harness::Error> {
     match value {
-        boml::types::TomlValue::Integer(v) => Ok(toml_test_harness::Decoded::Value(
-            toml_test_harness::DecodedValue::from(*v),
+        boml::types::TomlValue::Integer(v) => Ok(toml_test_harness::DecodedValue::Scalar(
+            toml_test_harness::DecodedScalar::from(*v),
         )),
-        boml::types::TomlValue::String(v) => Ok(toml_test_harness::Decoded::Value(
-            toml_test_harness::DecodedValue::from(v.as_str()),
+        boml::types::TomlValue::String(v) => Ok(toml_test_harness::DecodedValue::Scalar(
+            toml_test_harness::DecodedScalar::from(v.as_str()),
         )),
-        boml::types::TomlValue::Float(v) => Ok(toml_test_harness::Decoded::Value(
-            toml_test_harness::DecodedValue::from(*v),
+        boml::types::TomlValue::Float(v) => Ok(toml_test_harness::DecodedValue::Scalar(
+            toml_test_harness::DecodedScalar::from(*v),
         )),
-        boml::types::TomlValue::OffsetDateTime(v) => Ok(toml_test_harness::Decoded::Value(
-            toml_test_harness::DecodedValue::Datetime(render_offsetdatetime(v)),
+        boml::types::TomlValue::OffsetDateTime(v) => Ok(toml_test_harness::DecodedValue::Scalar(
+            toml_test_harness::DecodedScalar::Datetime(render_offsetdatetime(v)),
         )),
-        boml::types::TomlValue::DateTime(v) => Ok(toml_test_harness::Decoded::Value(
-            toml_test_harness::DecodedValue::DatetimeLocal(render_datetime(v)),
+        boml::types::TomlValue::DateTime(v) => Ok(toml_test_harness::DecodedValue::Scalar(
+            toml_test_harness::DecodedScalar::DatetimeLocal(render_datetime(v)),
         )),
-        boml::types::TomlValue::Date(v) => Ok(toml_test_harness::Decoded::Value(
-            toml_test_harness::DecodedValue::DateLocal(render_date(v)),
+        boml::types::TomlValue::Date(v) => Ok(toml_test_harness::DecodedValue::Scalar(
+            toml_test_harness::DecodedScalar::DateLocal(render_date(v)),
         )),
-        boml::types::TomlValue::Time(v) => Ok(toml_test_harness::Decoded::Value(
-            toml_test_harness::DecodedValue::TimeLocal(render_time(v)),
+        boml::types::TomlValue::Time(v) => Ok(toml_test_harness::DecodedValue::Scalar(
+            toml_test_harness::DecodedScalar::TimeLocal(render_time(v)),
         )),
-        boml::types::TomlValue::Boolean(v) => Ok(toml_test_harness::Decoded::Value(
-            toml_test_harness::DecodedValue::from(*v),
+        boml::types::TomlValue::Boolean(v) => Ok(toml_test_harness::DecodedValue::Scalar(
+            toml_test_harness::DecodedScalar::from(*v),
         )),
         boml::types::TomlValue::Array(v, _) => {
             let v: Result<_, toml_test_harness::Error> = v.iter().map(value_to_decoded).collect();
-            Ok(toml_test_harness::Decoded::Array(v?))
+            Ok(toml_test_harness::DecodedValue::Array(v?))
         }
         boml::types::TomlValue::Table(v) => table_to_decoded(v),
     }
@@ -53,7 +56,7 @@ fn value_to_decoded(
 
 fn table_to_decoded(
     value: &boml::table::TomlTable,
-) -> Result<toml_test_harness::Decoded, toml_test_harness::Error> {
+) -> Result<toml_test_harness::DecodedValue, toml_test_harness::Error> {
     let table: Result<_, toml_test_harness::Error> = value
         .iter()
         .map(|(k, v)| {
@@ -62,7 +65,7 @@ fn table_to_decoded(
             Ok((k, v))
         })
         .collect();
-    Ok(toml_test_harness::Decoded::Table(table?))
+    Ok(toml_test_harness::DecodedValue::Table(table?))
 }
 
 fn render_offsetdatetime(value: &boml::types::OffsetTomlDateTime) -> String {
