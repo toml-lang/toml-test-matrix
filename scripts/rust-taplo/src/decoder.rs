@@ -8,7 +8,10 @@ impl toml_test_harness::Decoder for Decoder {
         "taplo"
     }
 
-    fn decode(&self, data: &[u8]) -> Result<toml_test_harness::Decoded, toml_test_harness::Error> {
+    fn decode(
+        &self,
+        data: &[u8],
+    ) -> Result<toml_test_harness::DecodedValue, toml_test_harness::Error> {
         use std::fmt::Write as _;
 
         let data = std::str::from_utf8(data).map_err(toml_test_harness::Error::new)?;
@@ -32,52 +35,54 @@ impl toml_test_harness::Decoder for Decoder {
     }
 }
 
-fn value_to_decoded(value: &Node) -> Result<toml_test_harness::Decoded, toml_test_harness::Error> {
+fn value_to_decoded(
+    value: &Node,
+) -> Result<toml_test_harness::DecodedValue, toml_test_harness::Error> {
     match value {
         Node::Integer(v) => {
             let v = v.value();
             let v = match v {
                 taplo::dom::node::IntegerValue::Positive(v) => {
-                    toml_test_harness::DecodedValue::Integer(v.to_string())
+                    toml_test_harness::DecodedScalar::Integer(v.to_string())
                 }
                 taplo::dom::node::IntegerValue::Negative(v) => {
-                    toml_test_harness::DecodedValue::from(v)
+                    toml_test_harness::DecodedScalar::from(v)
                 }
             };
-            Ok(toml_test_harness::Decoded::Value(v))
+            Ok(toml_test_harness::DecodedValue::Scalar(v))
         }
-        Node::Str(v) => Ok(toml_test_harness::Decoded::Value(
-            toml_test_harness::DecodedValue::from(v.value()),
+        Node::Str(v) => Ok(toml_test_harness::DecodedValue::Scalar(
+            toml_test_harness::DecodedScalar::from(v.value()),
         )),
-        Node::Float(v) => Ok(toml_test_harness::Decoded::Value(
-            toml_test_harness::DecodedValue::from(v.value()),
+        Node::Float(v) => Ok(toml_test_harness::DecodedValue::Scalar(
+            toml_test_harness::DecodedScalar::from(v.value()),
         )),
         Node::Date(v) => {
             let v = v.value();
             let rendered = v.to_string();
             let v = match v {
                 taplo::dom::node::DateTimeValue::OffsetDateTime(_) => {
-                    toml_test_harness::DecodedValue::Datetime(rendered)
+                    toml_test_harness::DecodedScalar::Datetime(rendered)
                 }
                 taplo::dom::node::DateTimeValue::LocalDateTime(_) => {
-                    toml_test_harness::DecodedValue::DatetimeLocal(rendered)
+                    toml_test_harness::DecodedScalar::DatetimeLocal(rendered)
                 }
                 taplo::dom::node::DateTimeValue::Date(_) => {
-                    toml_test_harness::DecodedValue::DateLocal(rendered)
+                    toml_test_harness::DecodedScalar::DateLocal(rendered)
                 }
                 taplo::dom::node::DateTimeValue::Time(_) => {
-                    toml_test_harness::DecodedValue::TimeLocal(rendered)
+                    toml_test_harness::DecodedScalar::TimeLocal(rendered)
                 }
             };
-            Ok(toml_test_harness::Decoded::Value(v))
+            Ok(toml_test_harness::DecodedValue::Scalar(v))
         }
-        Node::Bool(v) => Ok(toml_test_harness::Decoded::Value(
-            toml_test_harness::DecodedValue::from(v.value()),
+        Node::Bool(v) => Ok(toml_test_harness::DecodedValue::Scalar(
+            toml_test_harness::DecodedScalar::from(v.value()),
         )),
         Node::Array(v) => {
             let v: Result<_, toml_test_harness::Error> =
                 v.items().read().iter().map(value_to_decoded).collect();
-            Ok(toml_test_harness::Decoded::Array(v?))
+            Ok(toml_test_harness::DecodedValue::Array(v?))
         }
         Node::Table(v) => table_to_decoded(v),
         Node::Invalid(_) => unreachable!("validation should prevent this"),
@@ -86,7 +91,7 @@ fn value_to_decoded(value: &Node) -> Result<toml_test_harness::Decoded, toml_tes
 
 fn table_to_decoded(
     value: &taplo::dom::node::Table,
-) -> Result<toml_test_harness::Decoded, toml_test_harness::Error> {
+) -> Result<toml_test_harness::DecodedValue, toml_test_harness::Error> {
     let table: Result<_, toml_test_harness::Error> = value
         .entries()
         .read()
@@ -97,5 +102,5 @@ fn table_to_decoded(
             Ok((k, v))
         })
         .collect();
-    Ok(toml_test_harness::Decoded::Table(table?))
+    Ok(toml_test_harness::DecodedValue::Table(table?))
 }

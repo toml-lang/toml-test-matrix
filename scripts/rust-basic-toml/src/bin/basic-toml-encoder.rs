@@ -7,7 +7,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut raw = String::new();
     stdin.read_to_string(&mut raw)?;
 
-    let decoded: toml_test_harness::Decoded = serde_json::from_str(&raw)?;
+    let decoded: toml_test_harness::DecodedValue = serde_json::from_str(&raw)?;
 
     let toml = rust_basic_toml::encoder::Encoder.encode(decoded)?;
 
