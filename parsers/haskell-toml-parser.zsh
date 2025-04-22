@@ -20,6 +20,11 @@ setup() {
 }
 
 typeset -A info=(
+	# Stopped building for mysterious reasons. God I'm so tired of Haskell
+	# throwing a hissy fit every other day. Horrible ecosystem and I'm done
+	# dealing with it.
+	skip 1
+
 	lang    'Haskell'
 	toml    '1.0'
 	site    'https://github.com/glguy/toml-parser'
