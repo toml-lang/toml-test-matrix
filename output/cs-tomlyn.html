@@ -9,10 +9,10 @@ tomlyn version 0.16.2
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 19956):</b>
        # ~  ÿ ퟿  ￿ 𐀀 􏿿
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 19956) (stderr):</b>
        System.InvalidOperationException: The document has errors: (1,17) : error : The character `􏿿` is an invalid UTF8 character
 
           at Tomlyn.Model.TomlTable.From(DocumentSyntax documentSyntax)
@@ -35,7 +35,7 @@ tomlyn version 0.16.2
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 20567):</b>
 
        "\u0000" = "null"
        '\u0000' = "different key"
@@ -44,7 +44,7 @@ tomlyn version 0.16.2
        "~  ÿ ퟿  ￿ 𐀀 􏿿" = "basic key"
        'l ~  ÿ ퟿  ￿ 𐀀 􏿿' = "literal key"
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 20567) (stderr):</b>
        System.InvalidOperationException: The document has errors: (4,81) : error : Invalid Unicode scalar value [10FFFF]
        (6,16) : error : The character `􏿿` is an invalid UTF8 character
        (7,18) : error : The character `􏿿` is an invalid UTF8 character
@@ -69,7 +69,7 @@ tomlyn version 0.16.2
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 20571):</b>
        # Keep whitespace inside quotes keys at all positions.
        "a b"   = 1
        " c d " = 2
@@ -78,7 +78,7 @@ tomlyn version 0.16.2
        [ " tbl " ]
        "\ttab\ttab\t" = "tab"
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 20571) (stderr):</b>
        System.InvalidOperationException: The document has errors: (4,1) : error : Invalid control character found \t
        (4,1) : error : Invalid control character found \t
        (4,1) : error : Invalid control character found \t
@@ -103,7 +103,7 @@ tomlyn version 0.16.2
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 21166):</b>
 
        escaped_string = "\u0000 \u0008 \u000c \U00000041 \u007f \u0080 \u00ff \ud7ff \ue000 \uffff \U00010000 \U0010ffff"
        not_escaped_string = '\u0000 \u0008 \u000c \U00000041 \u007f \u0080 \u00ff \ud7ff \ue000 \uffff \U00010000 \U0010ffff'
@@ -111,7 +111,7 @@ tomlyn version 0.16.2
        basic_string = "~  ÿ ퟿  ￿ 𐀀 􏿿"
        literal_string = '~  ÿ ퟿  ￿ 𐀀 􏿿'
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 21166) (stderr):</b>
        System.InvalidOperationException: The document has errors: (2,105) : error : Invalid Unicode scalar value [10FFFF]
        (5,31) : error : The character `􏿿` is an invalid UTF8 character
        (6,33) : error : The character `􏿿` is an invalid UTF8 character
@@ -128,11 +128,11 @@ tomlyn version 0.16.2
 <b>FAIL</b> <b>invalid/control/bare-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 21868):</b>
        # The following line contains a single carriage return control character
        
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 21868) (stdout):</b>
        {}
 
 <b>     want:</b>
@@ -141,10 +141,10 @@ tomlyn version 0.16.2
 <b>FAIL</b> <b>invalid/control/comment-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 21895):</b>
        comment-cr   = "Carriage return in comment" # a=1
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 21895) (stdout):</b>
        {
          "a":          {"type": "integer", "value": "1"},
          "comment-cr": {"type": "string", "value": "Carriage return in comment"}
@@ -156,10 +156,10 @@ tomlyn version 0.16.2
 <b>FAIL</b> <b>invalid/control/multi-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 21935):</b>
        multi-cr   = """null"""
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 21935) (stdout):</b>
        {
          "multi-cr": {"type": "string", "value": "null\n"}
        }
@@ -170,10 +170,10 @@ tomlyn version 0.16.2
 <b>FAIL</b> <b>invalid/control/rawmulti-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 22017):</b>
        rawmulti-cr   = '''null'''
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 22017) (stdout):</b>
        {
          "rawmulti-cr": {"type": "string", "value": "null\n"}
        }
@@ -181,16 +181,71 @@ tomlyn version 0.16.2
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/key/duplicate-keys-7</b>
+<b>FAIL</b> <b>invalid/datetime/offset-minus-no-hour-minute-sep</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 22293):</b>
+       foo = 1997-09-09T09:09:09.09+0909
+
+<b>     output from parser-cmd (PID 22293) (stdout):</b>
+       {
+         "foo": {"type": "datetime", "value": "1997-09-09T01:00:09.09+01:00"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/datetime/offset-plus-no-hour-minute-sep</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 22320):</b>
+       foo = 1997-09-09T09:09:09.09+0909
+
+<b>     output from parser-cmd (PID 22320) (stdout):</b>
+       {
+         "foo": {"type": "datetime", "value": "1997-09-09T01:00:09.09+01:00"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/key/duplicate-keys-07</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 23755):</b>
        "" = 1
        "" = 2
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 23755) (stdout):</b>
        {
          "": {"type": "integer", "value": "2"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/append-with-dotted-keys-04</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 25206):</b>
+       [dependencies.foo]
+       version = "0.16"
+
+       [dependencies]
+       libc = "0.2"
+
+       [dependencies]
+       rand = "0.3.14"
+
+<b>     output from parser-cmd (PID 25206) (stdout):</b>
+       {
+         "dependencies": {
+           "libc": {"type": "string", "value": "0.2"},
+           "rand": {"type": "string", "value": "0.3.14"},
+           "foo": {
+             "version": {"type": "string", "value": "0.16"}
+           }
+         }
        }
 
 <b>     want:</b>
@@ -199,12 +254,12 @@ tomlyn version 0.16.2
 <b>FAIL</b> <b>invalid/table/super-twice</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 25654):</b>
        [a.b]
        [a]
        [a]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 25654) (stdout):</b>
        {
          "a": {
            "b": {}
@@ -214,9 +269,9 @@ tomlyn version 0.16.2
 <b>     want:</b>
        Exit code 1
 
-toml-test v2025-04-21 [./cs-tomlyn-decoder/bin/Release/net8.0/cs-tomlyn-decoder]: using embedded tests
-  valid tests: 200 passed,  4 failed
-invalid tests: 392 passed,  6 failed
+toml-test v2025-04-23 [./cs-tomlyn-decoder/bin/Release/net8.0/cs-tomlyn-decoder]: using embedded tests
+  valid tests: 201 passed,  4 failed
+invalid tests: 520 passed,  9 failed
 
 ==> ENCODER TESTS
 (not supported)

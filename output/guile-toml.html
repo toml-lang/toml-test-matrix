@@ -32,7 +32,7 @@ toml version ecb24de
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7522):</b>
        ints = [1, 2, 3, ]
        floats = [1.1, 2.1, 3.1]
        strings = ["a", "b", "c"]
@@ -47,7 +47,7 @@ toml version ecb24de
                 2, #this is ok
        ]
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 7522) (stderr):</b>
        Backtrace:
        In ice-9/boot-9.scm:
          1755:12 13 (with-exception-handler _ _ #:unwind? _ #:unwind-for-type _)
@@ -112,14 +112,14 @@ toml version ecb24de
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8385):</b>
        # "No newlines are allowed between the curly braces unless they are valid within
        # a value"
 
        a = { a = [
        ]}
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 8385) (stderr):</b>
        Backtrace:
        In ice-9/boot-9.scm:
          1755:12 13 (with-exception-handler _ _ #:unwind? _ #:unwind-for-type _)
@@ -179,13 +179,13 @@ toml version ecb24de
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8879):</b>
        ''.x = "empty.x"
        x."" = "x.empty"
        [a]
        "".'' = "empty.empty"
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 8879) (stderr):</b>
        Backtrace:
        In ice-9/boot-9.scm:
          1755:12  9 (with-exception-handler _ _ #:unwind? _ #:unwind-for-type _)
@@ -239,7 +239,7 @@ toml version ecb24de
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 10135):</b>
        [fruit]
        apple.color = "red"
        apple.taste.sweet = true
@@ -250,7 +250,7 @@ toml version ecb24de
        [fruit.apple.texture]  # you can add sub-tables
        smooth = true
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 10135) (stderr):</b>
        Backtrace:
        In ice-9/boot-9.scm:
          1755:12  8 (with-exception-handler _ _ #:unwind? _ #:unwind-for-type _)
@@ -301,14 +301,14 @@ toml version ecb24de
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 10720):</b>
        [fruit]
        apple.color = "red"
 
        [[fruit.apple.seeds]]
        size = 2
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 10720) (stderr):</b>
        Backtrace:
        In ice-9/boot-9.scm:
          1755:12  8 (with-exception-handler _ _ #:unwind? _ #:unwind-for-type _)
@@ -362,7 +362,7 @@ toml version ecb24de
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 10722):</b>
        ['']
        x = 1
 
@@ -372,7 +372,7 @@ toml version ecb24de
        [a.'']
        x = 3
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 10722) (stderr):</b>
        Backtrace:
        In ice-9/boot-9.scm:
          1755:12  9 (with-exception-handler _ _ #:unwind? _ #:unwind-for-type _)
@@ -405,12 +405,12 @@ toml version ecb24de
 <b>FAIL</b> <b>invalid/array/extend-defined-aot</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 11107):</b>
        [[tab.arr]]
        [tab]
        arr.val1=1
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 11107) (stdout):</b>
        {
          "tab": {"arr": [{
            "val1": {"type": "integer", "value": "1"}
@@ -423,10 +423,10 @@ toml version ecb24de
 <b>FAIL</b> <b>invalid/datetime/feb-29</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12553):</b>
        "not a leap year" = 2100-02-29T15:15:15Z
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12553) (stdout):</b>
        {
          "not a leap year": {"type": "datetime", "value": "2100-02-29T15:15:15Z"}
        }
@@ -437,10 +437,10 @@ toml version ecb24de
 <b>FAIL</b> <b>invalid/datetime/feb-30</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12571):</b>
        "only 28 or 29 days in february" = 1988-02-30T15:15:15Z
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12571) (stdout):</b>
        {
          "only 28 or 29 days in february": {"type": "datetime", "value": "1988-02-30T15:15:15Z"}
        }
@@ -451,11 +451,11 @@ toml version ecb24de
 <b>FAIL</b> <b>invalid/datetime/offset-overflow-hour</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12879):</b>
        # Hour must be 00-24
        d = 1985-06-18 17:04:07+25:00
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12879) (stdout):</b>
        {
          "d": {"type": "datetime", "value": "1985-06-18 17:04:07+25:00"}
        }
@@ -463,13 +463,13 @@ toml version ecb24de
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/inline-table/duplicate-key-3</b>
+<b>FAIL</b> <b>invalid/inline-table/duplicate-key-03</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 14624):</b>
        tbl = { fruit = { apple.color = "red" }, fruit.apple.texture = { smooth = true } }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 14624) (stdout):</b>
        {
          "tbl": {
            "fruit": {
@@ -489,10 +489,10 @@ toml version ecb24de
 <b>FAIL</b> <b>invalid/inline-table/overwrite-07</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 14932):</b>
        tab = { inner.table = [{}], inner.table.val = "bad" }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 14932) (stdout):</b>
        {
          "tab": {
            "inner": {"table": [{
@@ -507,10 +507,10 @@ toml version ecb24de
 <b>FAIL</b> <b>invalid/inline-table/overwrite-08</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 14933):</b>
        tab = { inner = { dog = "best" }, inner.cat = "worst" }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 14933) (stdout):</b>
        {
          "tab": {
            "inner": {
@@ -526,10 +526,10 @@ toml version ecb24de
 <b>FAIL</b> <b>invalid/local-date/feb-29</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 16809):</b>
        "not a leap year" = 2100-02-29
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 16809) (stdout):</b>
        {
          "not a leap year": {"type": "date-local", "value": "2100-02-29"}
        }
@@ -540,10 +540,10 @@ toml version ecb24de
 <b>FAIL</b> <b>invalid/local-date/feb-30</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 16825):</b>
        "only 28 or 29 days in february" = 1988-02-30
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 16825) (stdout):</b>
        {
          "only 28 or 29 days in february": {"type": "date-local", "value": "1988-02-30"}
        }
@@ -554,10 +554,10 @@ toml version ecb24de
 <b>FAIL</b> <b>invalid/local-datetime/feb-29</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 16993):</b>
        "not a leap year" = 2100-02-29T15:15:15
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 16993) (stdout):</b>
        {
          "not a leap year": {"type": "datetime-local", "value": "2100-02-29T15:15:15"}
        }
@@ -568,10 +568,10 @@ toml version ecb24de
 <b>FAIL</b> <b>invalid/local-datetime/feb-30</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 16994):</b>
        "only 28 or 29 days in february" = 1988-02-30T15:15:15
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 16994) (stdout):</b>
        {
          "only 28 or 29 days in february": {"type": "datetime-local", "value": "1988-02-30T15:15:15"}
        }
@@ -582,12 +582,12 @@ toml version ecb24de
 <b>FAIL</b> <b>invalid/spec-1.0.0/inline-table-2-0</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 17420):</b>
        [product]
        type = { name = "Nail" }
        type.edible = false  # INVALID
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 17420) (stdout):</b>
        {
          "product": {
            "type": {
@@ -600,16 +600,16 @@ toml version ecb24de
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/table/append-to-array-with-dotted-keys</b>
+<b>FAIL</b> <b>invalid/table/append-with-dotted-keys-03</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 19098):</b>
        [[a.b]]
 
        [a]
        b.y = 2
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 19098) (stdout):</b>
        {
          "a": {"b": [{
            "y": {"type": "integer", "value": "2"}
@@ -619,15 +619,15 @@ toml version ecb24de
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/table/redefine-2</b>
+<b>FAIL</b> <b>invalid/table/redefine-02</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 19951):</b>
        [t1]
        t2.t3.v = 0
        [t1.t2]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 19951) (stdout):</b>
        {
          "t1": {
            "t2": {
@@ -641,20 +641,20 @@ toml version ecb24de
 <b>     want:</b>
        Exit code 1
 
-toml-test v2025-04-21 [./test/test-decoder.scm]: using embedded tests
-  valid tests: 198 passed,  6 failed
-invalid tests: 384 passed, 14 failed
+toml-test v2025-04-23 [./test/test-decoder.scm]: using embedded tests
+  valid tests: 199 passed,  6 failed
+invalid tests: 515 passed, 14 failed
 
 ==> ENCODER TESTS
 <b>FAIL</b> <b>valid/inline-table/array-02</b>
 <b> </b>    Could not find key "a.a" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 21094):</b>
        {
            "a": {"a": []}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 21094) (stdout):</b>
        ["a"]
 
 <b>     want:</b>
@@ -668,7 +668,7 @@ invalid tests: 384 passed, 14 failed
 <b> </b>    decode TOML from encoder:
 <b> </b>      toml: line 6 (last key "\"𝐭𝐛𝐥\".sub"): expected a top-level item to end with a newline, comment, or EOF, but got 'ƨ' instead
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 21891):</b>
        {
            "𝐭𝐛𝐥": {
                "string": {"type": "string", "value": "𝓼𝓽𝓻𝓲𝓷𝓰 - #"},
@@ -691,7 +691,7 @@ invalid tests: 384 passed, 14 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 21891) (stdout):</b>
        ["𝐭𝐛𝐥"]
        "string" = "𝓼𝓽𝓻𝓲𝓷𝓰 - #"
        ["𝐭𝐛𝐥"."sub"]
@@ -729,7 +729,7 @@ invalid tests: 384 passed, 14 failed
 <b> </b>    decode TOML from encoder:
 <b> </b>      toml: line 3 (last key "flt5"): Invalid float value: "1e+06.0"
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 22023):</b>
        {
            "flt1": {"type": "float", "value": "1"},
            "flt2": {"type": "float", "value": "3.1415"},
@@ -740,7 +740,7 @@ invalid tests: 384 passed, 14 failed
            "flt7": {"type": "float", "value": "6.626e-34"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 22023) (stdout):</b>
        "flt7" = 6.626e-34
        "flt6" = -0.02
        "flt5" = 1e+06.0
@@ -770,12 +770,12 @@ invalid tests: 384 passed, 14 failed
 <b> </b>      Your encoder: I'm a string. "You can quote me". Name\u0009José
 <b> </b>    Location\u0009SF. (string)
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 22415):</b>
        {
            "str": {"type": "string", "value": "I'm a string. \"You can quote me\". Name\tJosé\nLocation\tSF."}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 22415) (stdout):</b>
        "str" = '''I'm a string. "You can quote me". Name\u0009José
        Location\u0009SF.'''
 
@@ -784,21 +784,24 @@ invalid tests: 384 passed, 14 failed
 
 <b>FAIL</b> <b>valid/spec-1.0.0/string-6</b>
 <b> </b>    decode TOML from encoder:
-<b> </b>      toml: line 1: expected a top-level item to end with a newline, comment, or EOF, but got 't' instead
+<b> </b>      toml: line 6: expected a top-level item to end with a newline, comment, or EOF, but got 't' instead
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 22567):</b>
        {
-           "lines":  {"type": "string", "value": "The first newline is\ntrimmed in raw strings.\n   All other whitespace\n   is preserved.\n"},
-           "regex2": {"type": "string", "value": "I [dw]on't need \\d{2} apples"}
+           "regex2": {"type": "string", "value": "I [dw]on't need \\d{2} apples"},
+           "lines": {
+               "type":  "string",
+               "value": "The first newline is\ntrimmed in raw strings.\n   All other whitespace\n   is preserved.\n"
+           }
        }
 
-<b>     output from parser-cmd (stdout):</b>
-       "regex2" = 'I [dw]on't need \d{2} apples'
+<b>     output from parser-cmd (PID 22567) (stdout):</b>
        "lines" = """The first newline is
        trimmed in raw strings.
           All other whitespace
           is preserved.
        """
+       "regex2" = 'I [dw]on't need \d{2} apples'
 
 <b>     want:</b>
        regex2 = '''I [dw]on't need \d{2} apples'''
@@ -809,7 +812,7 @@ invalid tests: 384 passed, 14 failed
           is preserved.
        '''
 
-toml-test v2025-04-21 [./test/test-encoder.scm]: using embedded tests
-encoder tests: 199 passed,  5 failed
+toml-test v2025-04-23 [./test/test-encoder.scm]: using embedded tests
+encoder tests: 200 passed,  5 failed
 took 0.0 0.0
 </pre>

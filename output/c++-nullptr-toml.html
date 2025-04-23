@@ -1,12 +1,12 @@
 <pre>
-nullptr-toml version 9b68428
+nullptr-toml version a394dae
 <b>FAIL</b> <b>valid/empty-crlf</b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8733):</b>
        
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 8733) (stderr):</b>
        Exit 1
 
 <b>     want:</b>
@@ -15,7 +15,7 @@ nullptr-toml version 9b68428
 <b>FAIL</b> <b>valid/key/like-date</b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8784):</b>
        # '-' is a valid character in keys: make a key that looks like a date.
        2001-02-03   = 1
        "2001-02-04" = 2
@@ -42,7 +42,7 @@ nullptr-toml version 9b68428
        [[2002-01-04]]
        k = 12
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 8784) (stderr):</b>
        Exit 1
 
 <b>     want:</b>
@@ -51,10 +51,10 @@ nullptr-toml version 9b68428
 <b>FAIL</b> <b>valid/key/numeric-06</b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8792):</b>
        -1    = true
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 8792) (stderr):</b>
        Exit 1
 
 <b>     want:</b>
@@ -63,13 +63,13 @@ nullptr-toml version 9b68428
 <b>FAIL</b> <b>valid/string/multiline-escaped-crlf</b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8864):</b>
        # The following line should be an unescaped backslash followed by a Windows
        # newline sequence ("\r\n")
        0="""\
        """
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 8864) (stderr):</b>
        Exit 1
 
 <b>     want:</b>
@@ -78,10 +78,10 @@ nullptr-toml version 9b68428
 <b>FAIL</b> <b>invalid/control/only-ff</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8972):</b>
        
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 8972) (stdout):</b>
        {}
 
 <b>     want:</b>
@@ -90,18 +90,74 @@ nullptr-toml version 9b68428
 <b>FAIL</b> <b>invalid/control/only-vt</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8975):</b>
        
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 8975) (stdout):</b>
        {}
 
 <b>     want:</b>
        Exit code 1
 
-toml-test v2025-04-21 [./c++-nullptr-toml-decoder]: using embedded tests
-  valid tests: 200 passed,  4 failed
-invalid tests: 396 passed,  2 failed
+<b>FAIL</b> <b>invalid/table/newline-01</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 9407):</b>
+       [tbl
+       ]
+       k = 1
+
+<b>     output from parser-cmd (PID 9407) (stdout):</b>
+       {
+         "tbl": {
+           "k": {"type": "integer", "value": "1"}
+         }
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/newline-03</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 9409):</b>
+       ["tbl"
+       ]
+       k = 1
+
+<b>     output from parser-cmd (PID 9409) (stdout):</b>
+       {
+         "tbl": {
+           "k": {"type": "integer", "value": "1"}
+         }
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/newline-05</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 9411):</b>
+       [tbl
+       .sub]
+       k = 1
+
+<b>     output from parser-cmd (PID 9411) (stdout):</b>
+       {
+         "tbl": {
+           "sub": {
+             "k": {"type": "integer", "value": "1"}
+           }
+         }
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+toml-test v2025-04-23 [./c++-nullptr-toml-decoder]: using embedded tests
+  valid tests: 201 passed,  4 failed
+invalid tests: 524 passed,  5 failed
 
 ==> ENCODER TESTS
 (not supported)

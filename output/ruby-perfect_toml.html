@@ -3,10 +3,10 @@ perfect_toml version 1232974
 <b>FAIL</b> <b>invalid/control/multi-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 10722):</b>
        multi-cr   = """null"""
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 10722) (stdout):</b>
        {
          "multi-cr": {"type": "string", "value": "null\r"}
        }
@@ -17,10 +17,10 @@ perfect_toml version 1232974
 <b>FAIL</b> <b>invalid/control/rawmulti-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 10744):</b>
        rawmulti-cr   = '''null'''
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 10744) (stdout):</b>
        {
          "rawmulti-cr": {"type": "string", "value": "null\r"}
        }
@@ -31,10 +31,10 @@ perfect_toml version 1232974
 <b>FAIL</b> <b>invalid/datetime/feb-29</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 10777):</b>
        "not a leap year" = 2100-02-29T15:15:15Z
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 10777) (stdout):</b>
        {
          "not a leap year": {"type": "datetime", "value": "2100-03-01T15:15:15Z"}
        }
@@ -45,10 +45,10 @@ perfect_toml version 1232974
 <b>FAIL</b> <b>invalid/datetime/feb-30</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 10778):</b>
        "only 28 or 29 days in february" = 1988-02-30T15:15:15Z
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 10778) (stdout):</b>
        {
          "only 28 or 29 days in february": {"type": "datetime", "value": "1988-03-01T15:15:15Z"}
        }
@@ -59,10 +59,10 @@ perfect_toml version 1232974
 <b>FAIL</b> <b>invalid/local-date/feb-29</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 11285):</b>
        "not a leap year" = 2100-02-29
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 11285) (stdout):</b>
        {
          "not a leap year": {"type": "date-local", "value": "2100-02-29"}
        }
@@ -73,10 +73,10 @@ perfect_toml version 1232974
 <b>FAIL</b> <b>invalid/local-date/feb-30</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 11286):</b>
        "only 28 or 29 days in february" = 1988-02-30
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 11286) (stdout):</b>
        {
          "only 28 or 29 days in february": {"type": "date-local", "value": "1988-02-30"}
        }
@@ -87,10 +87,10 @@ perfect_toml version 1232974
 <b>FAIL</b> <b>invalid/local-datetime/feb-29</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 11309):</b>
        "not a leap year" = 2100-02-29T15:15:15
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 11309) (stdout):</b>
        {
          "not a leap year": {"type": "datetime-local", "value": "2100-02-29T15:15:15"}
        }
@@ -101,10 +101,10 @@ perfect_toml version 1232974
 <b>FAIL</b> <b>invalid/local-datetime/feb-30</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 11312):</b>
        "only 28 or 29 days in february" = 1988-02-30T15:15:15
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 11312) (stdout):</b>
        {
          "only 28 or 29 days in february": {"type": "datetime-local", "value": "1988-02-30T15:15:15"}
        }
@@ -115,11 +115,11 @@ perfect_toml version 1232974
 <b>FAIL</b> <b>invalid/local-time/hour-over</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 11342):</b>
        # time-hour       = 2DIGIT  ; 00-23
        d = 24:00:00
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 11342) (stdout):</b>
        {
          "d": {"type": "time-local", "value": "24:00:00"}
        }
@@ -127,20 +127,20 @@ perfect_toml version 1232974
 <b>     want:</b>
        Exit code 1
 
-toml-test v2025-04-21 [./tool/decoder.rb]: using embedded tests
-  valid tests: 204 passed,  0 failed
-invalid tests: 389 passed,  9 failed
+toml-test v2025-04-23 [./tool/decoder.rb]: using embedded tests
+  valid tests: 205 passed,  0 failed
+invalid tests: 520 passed,  9 failed
 
 ==> ENCODER TESTS
 <b>FAIL</b> <b>valid/inline-table/array-02</b>
 <b> </b>    Could not find key "a" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 11809):</b>
        {
            "a": {"a": []}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 11809) (stdout):</b>
 
 
 <b>     want:</b>
@@ -150,7 +150,7 @@ invalid tests: 389 passed,  9 failed
        a = { a = [
        ]}
 
-toml-test v2025-04-21 [./tool/encoder.rb]: using embedded tests
-encoder tests: 203 passed,  1 failed
+toml-test v2025-04-23 [./tool/encoder.rb]: using embedded tests
+encoder tests: 204 passed,  1 failed
 took 1.3 0.44
 </pre>

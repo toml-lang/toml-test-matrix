@@ -5,7 +5,7 @@ taplo version 0.13.2
 <b> </b>      Expected:     map[string]any{"type":"datetime-local", "value":"1979-05-27T07:32:00"}
 <b> </b>      Your encoder: map[string]any{"type":"datetime", "value":"1970-01-01T00:00:00Z"}
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 17193):</b>
        ints = [1, 2, 3, ]
        floats = [1.1, 2.1, 3.1]
        strings = ["a", "b", "c"]
@@ -20,7 +20,7 @@ taplo version 0.13.2
                 2, #this is ok
        ]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 17193) (stdout):</b>
        {
          "comments": [
            {"type": "integer", "value": "1"},
@@ -83,10 +83,10 @@ taplo version 0.13.2
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 17222):</b>
        # ~  ÿ ퟿  ￿ 𐀀 􏿿
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 17222) (stderr):</b>
        Error: Error { message: "invalid character in comment (4..4)\n" }
 
        Exit 1
@@ -99,7 +99,7 @@ taplo version 0.13.2
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 17226):</b>
        first-offset = 0001-01-01 00:00:00Z
        first-local  = 0001-01-01 00:00:00
        first-date   = 0001-01-01
@@ -108,7 +108,7 @@ taplo version 0.13.2
        last-local  = 9999-12-31 23:59:59
        last-date   = 9999-12-31
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 17226) (stderr):</b>
        Error: Error { message: "expected value (15..25)\nexpected new line (26..34)\nexpected new line (34..35)\nexpected value (51..61)\nexpected new line (62..70)\nexpected value (86..96)\n" }
 
        Exit 1
@@ -121,7 +121,7 @@ taplo version 0.13.2
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 17302):</b>
        # '-' is a valid character in keys: make a key that looks like a date.
        2001-02-03   = 1
        "2001-02-04" = 2
@@ -148,7 +148,7 @@ taplo version 0.13.2
        [[2002-01-04]]
        k = 12
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 17302) (stderr):</b>
        Error: Error { message: "expected identifier (361..371)\nexpected identifier (371..372)\nexpected new line (372..382)\nexpected new line (383..384)\nexpected new line (385..386)\nexpected identifier (387..397)\nexpected identifier (397..398)\nexpected new line (398..399)\nexpected new line (399..400)\nexpected new line (400..410)\nexpected new line (411..412)\nexpected new line (413..414)\nexpected identifier (431..441)\nexpected identifier (441..442)\nexpected identifier (452..462)\nexpected identifier (462..463)\nexpected new line (463..473)\nexpected new line (473..474)\nexpected identifier (485..495)\nexpected identifier (495..496)\n" }
 
        Exit 1
@@ -161,10 +161,10 @@ taplo version 0.13.2
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 17306):</b>
        01.23 = true
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 17306) (stderr):</b>
        Error: Error { message: "zero-padded numbers are not allowed (0..5)\nexpected identifier (6..7)\nexpected new line (8..12)\n" }
 
        Exit 1
@@ -177,7 +177,7 @@ taplo version 0.13.2
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 17303):</b>
 
        "\u0000" = "null"
        '\u0000' = "different key"
@@ -186,7 +186,7 @@ taplo version 0.13.2
        "~  ÿ ퟿  ￿ 𐀀 􏿿" = "basic key"
        'l ~  ÿ ퟿  ￿ 𐀀 􏿿' = "literal key"
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 17303) (stderr):</b>
        Error: Error { message: "invalid control character in string literal (205..205)\n" }
 
        Exit 1
@@ -199,7 +199,7 @@ taplo version 0.13.2
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 17384):</b>
 
        escaped_string = "\u0000 \u0008 \u000c \U00000041 \u007f \u0080 \u00ff \ud7ff \ue000 \uffff \U00010000 \U0010ffff"
        not_escaped_string = '\u0000 \u0008 \u000c \U00000041 \u007f \u0080 \u00ff \ud7ff \ue000 \uffff \U00010000 \U0010ffff'
@@ -207,7 +207,7 @@ taplo version 0.13.2
        basic_string = "~  ÿ ퟿  ￿ 𐀀 􏿿"
        literal_string = '~  ÿ ퟿  ￿ 𐀀 􏿿'
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 17384) (stderr):</b>
        Error: Error { message: "invalid control character in string literal (303..303)\n" }
 
        Exit 1
@@ -218,10 +218,10 @@ taplo version 0.13.2
 <b>FAIL</b> <b>invalid/control/multi-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 17479):</b>
        multi-cr   = """null"""
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 17479) (stdout):</b>
        {
          "multi-cr": {"type": "string", "value": "null\r"}
        }
@@ -232,12 +232,39 @@ taplo version 0.13.2
 <b>FAIL</b> <b>invalid/control/rawmulti-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 17503):</b>
        rawmulti-cr   = '''null'''
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 17503) (stdout):</b>
        {
          "rawmulti-cr": {"type": "string", "value": "null\r"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/append-with-dotted-keys-04</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 17898):</b>
+       [dependencies.foo]
+       version = "0.16"
+
+       [dependencies]
+       libc = "0.2"
+
+       [dependencies]
+       rand = "0.3.14"
+
+<b>     output from parser-cmd (PID 17898) (stdout):</b>
+       {
+         "dependencies": {
+           "libc": {"type": "string", "value": "0.2"},
+           "rand": {"type": "string", "value": "0.3.14"},
+           "foo": {
+             "version": {"type": "string", "value": "0.16"}
+           }
+         }
        }
 
 <b>     want:</b>
@@ -246,12 +273,12 @@ taplo version 0.13.2
 <b>FAIL</b> <b>invalid/table/super-twice</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 17962):</b>
        [a.b]
        [a]
        [a]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 17962) (stdout):</b>
        {
          "a": {
            "b": {}
@@ -261,9 +288,9 @@ taplo version 0.13.2
 <b>     want:</b>
        Exit code 1
 
-toml-test v2025-04-21 [./scripts/target/release/taplo-decoder]: using embedded tests
-  valid tests: 197 passed,  7 failed
-invalid tests: 395 passed,  3 failed
+toml-test v2025-04-23 [./scripts/target/release/taplo-decoder]: using embedded tests
+  valid tests: 198 passed,  7 failed
+invalid tests: 525 passed,  4 failed
 
 ==> ENCODER TESTS
 (not supported)

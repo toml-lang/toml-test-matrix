@@ -5,7 +5,7 @@ basic-toml version 0.1.10
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15638):</b>
        ints = [1, 2, 3, ]
        floats = [1.1, 2.1, 3.1]
        strings = ["a", "b", "c"]
@@ -20,7 +20,7 @@ basic-toml version 0.1.10
                 2, #this is ok
        ]
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 15638) (stderr):</b>
        Error: Error { message: "invalid number at line 5 column 2" }
 
        Exit 1
@@ -33,7 +33,7 @@ basic-toml version 0.1.10
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15660):</b>
        # Top comment.
          # Top comment.
        # Top comment.
@@ -68,7 +68,7 @@ basic-toml version 0.1.10
        [[aot]]# Comment
        k = 99# Comment
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 15660) (stderr):</b>
        Error: Error { message: "invalid number at line 27 column 6" }
 
        Exit 1
@@ -81,13 +81,13 @@ basic-toml version 0.1.10
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15676):</b>
        space = 1987-07-05 17:45:00Z
 
        # ABNF is case-insensitive, both "Z" and "z" must be supported.
        lower = 1987-07-05t17:45:00z
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 15676) (stderr):</b>
        Error: Error { message: "invalid number at line 1 column 9" }
 
        Exit 1
@@ -100,7 +100,7 @@ basic-toml version 0.1.10
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15677):</b>
        first-offset = 0001-01-01 00:00:00Z
        first-local  = 0001-01-01 00:00:00
        first-date   = 0001-01-01
@@ -109,7 +109,7 @@ basic-toml version 0.1.10
        last-local  = 9999-12-31 23:59:59
        last-date   = 9999-12-31
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 15677) (stderr):</b>
        Error: Error { message: "invalid number at line 1 column 17" }
 
        Exit 1
@@ -122,7 +122,7 @@ basic-toml version 0.1.10
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15680):</b>
        2000-datetime       = 2000-02-29 15:15:15Z
        2000-datetime-local = 2000-02-29 15:15:15
        2000-date           = 2000-02-29
@@ -131,7 +131,7 @@ basic-toml version 0.1.10
        2024-datetime-local = 2024-02-29 15:15:15
        2024-date           = 2024-02-29
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 15680) (stderr):</b>
        Error: Error { message: "invalid number at line 1 column 23" }
 
        Exit 1
@@ -144,12 +144,12 @@ basic-toml version 0.1.10
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15681):</b>
        local = 1987-07-05T17:45:00
        milli = 1977-12-21T10:32:00.555
        space = 1987-07-05 17:45:00
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 15681) (stderr):</b>
        Error: Error { message: "invalid number at line 1 column 9" }
 
        Exit 1
@@ -162,10 +162,10 @@ basic-toml version 0.1.10
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15679):</b>
        bestdayever = 1987-07-05
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 15679) (stderr):</b>
        Error: Error { message: "invalid number at line 1 column 15" }
 
        Exit 1
@@ -178,11 +178,11 @@ basic-toml version 0.1.10
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15686):</b>
        besttimeever = 17:45:00
        milliseconds = 10:32:00.555
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 15686) (stderr):</b>
        Error: Error { message: "expected newline, found a colon at line 1 column 18" }
 
        Exit 1
@@ -195,13 +195,13 @@ basic-toml version 0.1.10
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15684):</b>
        utc1  = 1987-07-05T17:45:56.123Z
        utc2  = 1987-07-05T17:45:56.6Z
        wita1 = 1987-07-05T17:45:56.123+08:00
        wita2 = 1987-07-05T17:45:56.6+08:00
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 15684) (stderr):</b>
        Error: Error { message: "invalid number at line 1 column 9" }
 
        Exit 1
@@ -214,13 +214,13 @@ basic-toml version 0.1.10
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15682):</b>
        utc  = 1987-07-05T17:45:56Z
        pdt  = 1987-07-05T17:45:56-05:00
        nzst = 1987-07-05T17:45:56+12:00
        nzdt = 1987-07-05T17:45:56+13:00  # DST
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 15682) (stderr):</b>
        Error: Error { message: "invalid number at line 1 column 8" }
 
        Exit 1
@@ -233,14 +233,14 @@ basic-toml version 0.1.10
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15693):</b>
        best-day-ever = 1987-07-05T17:45:00Z
 
        [numtheory]
        boring = false
        perfection = [6, 28, 496]
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 15693) (stderr):</b>
        Error: Error { message: "invalid number at line 1 column 17" }
 
        Exit 1
@@ -253,10 +253,10 @@ basic-toml version 0.1.10
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15784):</b>
        ld1 = 1979-05-27
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 15784) (stderr):</b>
        Error: Error { message: "invalid number at line 1 column 7" }
 
        Exit 1
@@ -269,11 +269,11 @@ basic-toml version 0.1.10
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15786):</b>
        ldt1 = 1979-05-27T07:32:00
        ldt2 = 1979-05-27T00:32:00.999
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 15786) (stderr):</b>
        Error: Error { message: "invalid number at line 1 column 8" }
 
        Exit 1
@@ -286,11 +286,11 @@ basic-toml version 0.1.10
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15787):</b>
        lt1 = 07:32:00
        lt2 = 00:32:00.999
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 15787) (stderr):</b>
        Error: Error { message: "invalid number at line 1 column 8" }
 
        Exit 1
@@ -303,12 +303,12 @@ basic-toml version 0.1.10
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15789):</b>
        odt1 = 1979-05-27T07:32:00Z
        odt2 = 1979-05-27T00:32:00-07:00
        odt3 = 1979-05-27T00:32:00.999-07:00
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 15789) (stderr):</b>
        Error: Error { message: "invalid number at line 1 column 8" }
 
        Exit 1
@@ -321,10 +321,10 @@ basic-toml version 0.1.10
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15788):</b>
        odt4 = 1979-05-27 07:32:00Z
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 15788) (stderr):</b>
        Error: Error { message: "invalid number at line 1 column 8" }
 
        Exit 1
@@ -337,7 +337,7 @@ basic-toml version 0.1.10
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15798):</b>
        # Top-level table begins.
        name = "Fido"
        breed = "pug"
@@ -347,7 +347,7 @@ basic-toml version 0.1.10
        name = "Regina Dogman"
        member_since = 1999-08-04
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 15798) (stderr):</b>
        Error: Error { message: "invalid number at line 8 column 16" }
 
        Exit 1
@@ -360,7 +360,7 @@ basic-toml version 0.1.10
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15809):</b>
        [fruit]
        apple.color = "red"
        apple.taste.sweet = true
@@ -371,7 +371,7 @@ basic-toml version 0.1.10
        [fruit.apple.texture]  # you can add sub-tables
        smooth = true
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 15809) (stderr):</b>
        Error: Error { message: "duplicate key: `apple` for key `fruit` at line 8 column 8" }
 
        Exit 1
@@ -384,7 +384,7 @@ basic-toml version 0.1.10
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15812):</b>
        # This is a TOML document. Boom.
 
        title = "TOML Example"
@@ -419,7 +419,7 @@ basic-toml version 0.1.10
          "omega"
        ]
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 15812) (stderr):</b>
        Error: Error { message: "invalid number at line 7 column 7" }
 
        Exit 1
@@ -432,7 +432,7 @@ basic-toml version 0.1.10
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15808):</b>
        #Useless spaces eliminated.
        title="TOML Example"
        [owner]
@@ -457,7 +457,7 @@ basic-toml version 0.1.10
        "omega"
        ]
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 15808) (stderr):</b>
        Error: Error { message: "invalid number at line 5 column 5" }
 
        Exit 1
@@ -470,14 +470,14 @@ basic-toml version 0.1.10
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15841):</b>
        [fruit]
        apple.color = "red"
 
        [[fruit.apple.seeds]]
        size = 2
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 15841) (stderr):</b>
        Error: Error { message: "duplicate key: `apple` for key `fruit` at line 4 column 9" }
 
        Exit 1
@@ -488,10 +488,10 @@ basic-toml version 0.1.10
 <b>FAIL</b> <b>invalid/control/comment-del</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15920):</b>
        comment-del  = "0x7f"   # 
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 15920) (stdout):</b>
        {
          "comment-del": {"type": "string", "value": "0x7f"}
        }
@@ -502,10 +502,10 @@ basic-toml version 0.1.10
 <b>FAIL</b> <b>invalid/integer/positive-bin</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 16126):</b>
        positive-bin = +0b11010110
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 16126) (stdout):</b>
        {
          "positive-bin": {"type": "integer", "value": "214"}
        }
@@ -516,10 +516,10 @@ basic-toml version 0.1.10
 <b>FAIL</b> <b>invalid/integer/positive-hex</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 16127):</b>
        positive-hex = +0xff
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 16127) (stdout):</b>
        {
          "positive-hex": {"type": "integer", "value": "255"}
        }
@@ -530,10 +530,10 @@ basic-toml version 0.1.10
 <b>FAIL</b> <b>invalid/integer/positive-oct</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 16128):</b>
        positive-oct = +0o755
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 16128) (stdout):</b>
        {
          "positive-oct": {"type": "integer", "value": "493"}
        }
@@ -541,9 +541,9 @@ basic-toml version 0.1.10
 <b>     want:</b>
        Exit code 1
 
-toml-test v2025-04-21 [./scripts/target/release/basic-toml-decoder]: using embedded tests
-  valid tests: 183 passed, 21 failed
-invalid tests: 394 passed,  4 failed
+toml-test v2025-04-23 [./scripts/target/release/basic-toml-decoder]: using embedded tests
+  valid tests: 184 passed, 21 failed
+invalid tests: 525 passed,  4 failed
 
 ==> ENCODER TESTS
 (not supported)

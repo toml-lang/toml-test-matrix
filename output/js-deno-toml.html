@@ -1,11 +1,11 @@
 <pre>
-deno-toml version 390845e7
+deno-toml version 3374f8c2
 <b>FAIL</b> <b>valid/array/array</b>
 <b> </b>    Key "dates" is not "datetime-local" but "datetime":
 <b> </b>      Expected:     map[string]any{"type":"datetime-local", "value":"1979-05-27T07:32:00"}
 <b> </b>      Your encoder: map[string]any{"type":"datetime", "value":"1979-05-27T06:32:00.000Z"}
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 23697):</b>
        ints = [1, 2, 3, ]
        floats = [1.1, 2.1, 3.1]
        strings = ["a", "b", "c"]
@@ -20,7 +20,7 @@ deno-toml version 390845e7
                 2, #this is ok
        ]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 23697) (stdout):</b>
        {
          "comments": [
            {"type": "float", "value": "1"},
@@ -82,23 +82,23 @@ deno-toml version 390845e7
 <b> </b>    error: Uncaught (in promise) SyntaxError: Parse error on line 5, column 0: Cannot parse the TOML: key length is not a positive number
 <b> </b>            throw new SyntaxError(createParseErrorMessage(scanner, error.message));
 <b> </b>                  ^
-<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
 <b> </b>        at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 23690):</b>
        [[parent-table.arr]]
        [[parent-table.arr]]
        [parent-table]
        not-arr = 1
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 23690) (stderr):</b>
        error: Uncaught (in promise) SyntaxError: Parse error on line 5, column 0: Cannot parse the TOML: key length is not a positive number
                throw new SyntaxError(createParseErrorMessage(scanner, error.message));
                      ^
-           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
            at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 
@@ -112,7 +112,7 @@ deno-toml version 390845e7
 <b> </b>      Expected:     map[string]any{"type":"date-local", "value":"1979-05-27"}
 <b> </b>      Your encoder: map[string]any{"type":"datetime", "value":"1979-05-27T00:00:00.000Z"}
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 24103):</b>
        # Top comment.
          # Top comment.
        # Top comment.
@@ -147,7 +147,7 @@ deno-toml version 390845e7
        [[aot]]# Comment
        k = 99# Comment
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 24103) (stdout):</b>
        {
          "aot": [
            {
@@ -193,13 +193,13 @@ deno-toml version 390845e7
 <b> </b>    error: Uncaught (in promise) SyntaxError: Parse error on line 23, column 0: Array is not closed
 <b> </b>            throw new SyntaxError(createParseErrorMessage(scanner, error.message));
 <b> </b>                  ^
-<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
 <b> </b>        at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 24209):</b>
        [section]#attached comment
        #[notsection]
        one = "11"#cmt
@@ -230,11 +230,11 @@ deno-toml version 390845e7
        ]
        tbl1 = { "#" = '}#'}#}}
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 24209) (stderr):</b>
        error: Uncaught (in promise) SyntaxError: Parse error on line 23, column 0: Array is not closed
                throw new SyntaxError(createParseErrorMessage(scanner, error.message));
                      ^
-           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
            at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 
@@ -247,23 +247,23 @@ deno-toml version 390845e7
 <b> </b>    error: Uncaught (in promise) SyntaxError: Parse error on line 4, column 21: key/value pair doesn't have "="
 <b> </b>            throw new SyntaxError(createParseErrorMessage(scanner, error.message));
 <b> </b>                  ^
-<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
 <b> </b>        at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 24210):</b>
        space = 1987-07-05 17:45:00Z
 
        # ABNF is case-insensitive, both "Z" and "z" must be supported.
        lower = 1987-07-05t17:45:00z
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 24210) (stderr):</b>
        error: Uncaught (in promise) SyntaxError: Parse error on line 4, column 21: key/value pair doesn't have "="
                throw new SyntaxError(createParseErrorMessage(scanner, error.message));
                      ^
-           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
            at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 
@@ -277,7 +277,7 @@ deno-toml version 390845e7
 <b> </b>      Expected:     map[string]any{"type":"date-local", "value":"0001-01-01"}
 <b> </b>      Your encoder: map[string]any{"type":"datetime", "value":"0001-01-01T00:00:00.000Z"}
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 24292):</b>
        first-offset = 0001-01-01 00:00:00Z
        first-local  = 0001-01-01 00:00:00
        first-date   = 0001-01-01
@@ -286,7 +286,7 @@ deno-toml version 390845e7
        last-local  = 9999-12-31 23:59:59
        last-date   = 9999-12-31
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 24292) (stdout):</b>
        {
          "first-date":   {"type": "datetime", "value": "0001-01-01T00:00:00.000Z"},
          "first-local":  {"type": "datetime", "value": "2001-01-01T00:00:00.000Z"},
@@ -311,7 +311,7 @@ deno-toml version 390845e7
 <b> </b>      Expected:     map[string]any{"type":"date-local", "value":"2000-02-29"}
 <b> </b>      Your encoder: map[string]any{"type":"datetime", "value":"2000-02-29T00:00:00.000Z"}
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 24338):</b>
        2000-datetime       = 2000-02-29 15:15:15Z
        2000-datetime-local = 2000-02-29 15:15:15
        2000-date           = 2000-02-29
@@ -320,7 +320,7 @@ deno-toml version 390845e7
        2024-datetime-local = 2024-02-29 15:15:15
        2024-date           = 2024-02-29
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 24338) (stdout):</b>
        {
          "2000-date":           {"type": "datetime", "value": "2000-02-29T00:00:00.000Z"},
          "2000-datetime":       {"type": "datetime", "value": "2000-02-29T15:15:15.000Z"},
@@ -345,12 +345,12 @@ deno-toml version 390845e7
 <b> </b>      Expected:     map[string]any{"type":"datetime-local", "value":"1987-07-05T17:45:00"}
 <b> </b>      Your encoder: map[string]any{"type":"datetime", "value":"1987-07-05T16:45:00.000Z"}
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 24344):</b>
        local = 1987-07-05T17:45:00
        milli = 1977-12-21T10:32:00.555
        space = 1987-07-05 17:45:00
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 24344) (stdout):</b>
        {
          "local": {"type": "datetime", "value": "1987-07-05T16:45:00.000Z"},
          "milli": {"type": "datetime", "value": "1977-12-21T10:32:00.555Z"},
@@ -369,10 +369,10 @@ deno-toml version 390845e7
 <b> </b>      Expected:     map[string]any{"type":"date-local", "value":"1987-07-05"}
 <b> </b>      Your encoder: map[string]any{"type":"datetime", "value":"1987-07-05T00:00:00.000Z"}
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 24339):</b>
        bestdayever = 1987-07-05
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 24339) (stdout):</b>
        {
          "bestdayever": {"type": "datetime", "value": "1987-07-05T00:00:00.000Z"}
        }
@@ -387,11 +387,11 @@ deno-toml version 390845e7
 <b> </b>      Expected:     map[string]any{"type":"time-local", "value":"17:45:00"}
 <b> </b>      Your encoder: map[string]any{"type":"string", "value":"17:45:00"}
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 24340):</b>
        besttimeever = 17:45:00
        milliseconds = 10:32:00.555
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 24340) (stdout):</b>
        {
          "besttimeever": {"type": "string", "value": "17:45:00"},
          "milliseconds": {"type": "string", "value": "10:32:00.555"}
@@ -407,24 +407,24 @@ deno-toml version 390845e7
 <b> </b>    error: Uncaught (in promise) SyntaxError: Parse error on line 6, column 0: Cannot parse the TOML: key length is not a positive number
 <b> </b>            throw new SyntaxError(createParseErrorMessage(scanner, error.message));
 <b> </b>                  ^
-<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
 <b> </b>        at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 24658):</b>
        [a.b.c]
        answer = 42
 
        [a]
        better = 43
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 24658) (stderr):</b>
        error: Uncaught (in promise) SyntaxError: Parse error on line 6, column 0: Cannot parse the TOML: key length is not a positive number
                throw new SyntaxError(createParseErrorMessage(scanner, error.message));
                      ^
-           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
            at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 
@@ -437,24 +437,24 @@ deno-toml version 390845e7
 <b> </b>    error: Uncaught (in promise) SyntaxError: Parse error on line 6, column 0: Array is not closed
 <b> </b>            throw new SyntaxError(createParseErrorMessage(scanner, error.message));
 <b> </b>                  ^
-<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
 <b> </b>        at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 24709):</b>
        # "No newlines are allowed between the curly braces unless they are valid within
        # a value"
 
        a = { a = [
        ]}
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 24709) (stderr):</b>
        error: Uncaught (in promise) SyntaxError: Parse error on line 6, column 0: Array is not closed
                throw new SyntaxError(createParseErrorMessage(scanner, error.message));
                      ^
-           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
            at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 
@@ -467,13 +467,13 @@ deno-toml version 390845e7
 <b> </b>    error: Uncaught (in promise) SyntaxError: Parse error on line 8, column 0: Array is not closed
 <b> </b>            throw new SyntaxError(createParseErrorMessage(scanner, error.message));
 <b> </b>                  ^
-<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
 <b> </b>        at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 24713):</b>
        b = { a = [
        		1,
        		2,
@@ -482,43 +482,11 @@ deno-toml version 390845e7
        		4,
        	]}
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 24713) (stderr):</b>
        error: Uncaught (in promise) SyntaxError: Parse error on line 8, column 0: Array is not closed
                throw new SyntaxError(createParseErrorMessage(scanner, error.message));
                      ^
-           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
-           at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
-           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
-
-       Exit 1
-
-<b>     want:</b>
-          <empty>
-
-<b>FAIL</b> <b>valid/inline-table/empty</b>
-<b> </b>    error: Uncaught (in promise) SyntaxError: Parse error on line 2, column 11: Invalid token after "{"
-<b> </b>            throw new SyntaxError(createParseErrorMessage(scanner, error.message));
-<b> </b>                  ^
-<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
-<b> </b>        at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
-<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
-<b> </b>
-<b> </b>    Exit 1
-
-<b>     input sent to parser-cmd:</b>
-       empty1 = {}
-       empty2 = { }
-       empty_in_array = [ { not_empty = 1 }, {} ]
-       empty_in_array2 = [{},{not_empty=1}]
-       many_empty = [{},{},{}]
-       nested_empty = {"empty"={}}
-       with_cmt ={            }#nothing here
-
-<b>     output from parser-cmd (stderr):</b>
-       error: Uncaught (in promise) SyntaxError: Parse error on line 2, column 11: Invalid token after "{"
-               throw new SyntaxError(createParseErrorMessage(scanner, error.message));
-                     ^
-           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
            at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 
@@ -530,7 +498,7 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>valid/key/quoted-unicode</b>
 <b> </b>    Could not find key "\b \f A \x7f \u0080 ÿ \ud7ff \ue000 \uffff 𐀀 \U0010ffff" in parser output.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 25600):</b>
 
        "\u0000" = "null"
        '\u0000' = "different key"
@@ -539,7 +507,7 @@ deno-toml version 390845e7
        "~  ÿ ퟿  ￿ 𐀀 􏿿" = "basic key"
        'l ~  ÿ ퟿  ￿ 𐀀 􏿿' = "literal key"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 25600) (stdout):</b>
        {
          "\u0000":                    {"type": "string", "value": "null"},
          "\b \f \u000041   ÿ ퟿  ￿ Ā00 ჿff": {"type": "string", "value": "escaped key"},
@@ -562,10 +530,10 @@ deno-toml version 390845e7
 <b> </b>      Expected:     map[string]any{"type":"date-local", "value":"1979-05-27"}
 <b> </b>      Your encoder: map[string]any{"type":"datetime", "value":"1979-05-27T00:00:00.000Z"}
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 26285):</b>
        ld1 = 1979-05-27
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 26285) (stdout):</b>
        {
          "ld1": {"type": "datetime", "value": "1979-05-27T00:00:00.000Z"}
        }
@@ -580,11 +548,11 @@ deno-toml version 390845e7
 <b> </b>      Expected:     map[string]any{"type":"datetime-local", "value":"1979-05-27T07:32:00"}
 <b> </b>      Your encoder: map[string]any{"type":"datetime", "value":"1979-05-27T06:32:00.000Z"}
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 26290):</b>
        ldt1 = 1979-05-27T07:32:00
        ldt2 = 1979-05-27T00:32:00.999
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 26290) (stdout):</b>
        {
          "ldt1": {"type": "datetime", "value": "1979-05-27T06:32:00.000Z"},
          "ldt2": {"type": "datetime", "value": "1979-05-26T23:32:00.999Z"}
@@ -601,11 +569,11 @@ deno-toml version 390845e7
 <b> </b>      Expected:     map[string]any{"type":"time-local", "value":"07:32:00"}
 <b> </b>      Your encoder: map[string]any{"type":"string", "value":"07:32:00"}
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 26292):</b>
        lt1 = 07:32:00
        lt2 = 00:32:00.999
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 26292) (stdout):</b>
        {
          "lt1": {"type": "string", "value": "07:32:00"},
          "lt2": {"type": "string", "value": "00:32:00.999"}
@@ -621,13 +589,13 @@ deno-toml version 390845e7
 <b> </b>    error: Uncaught (in promise) SyntaxError: Parse error on line 7, column 0: Cannot parse the TOML: key length is not a positive number
 <b> </b>            throw new SyntaxError(createParseErrorMessage(scanner, error.message));
 <b> </b>                  ^
-<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
 <b> </b>        at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 26616):</b>
        # [x] you
        # [x.y] don't
        # [x.y.z] need these
@@ -635,11 +603,11 @@ deno-toml version 390845e7
 
        [x] # defining a super-table afterward is ok
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 26616) (stderr):</b>
        error: Uncaught (in promise) SyntaxError: Parse error on line 7, column 0: Cannot parse the TOML: key length is not a positive number
                throw new SyntaxError(createParseErrorMessage(scanner, error.message));
                      ^
-           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
            at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 
@@ -653,7 +621,7 @@ deno-toml version 390845e7
 <b> </b>      Expected:     map[string]any{"type":"date-local", "value":"1999-08-04"}
 <b> </b>      Your encoder: map[string]any{"type":"datetime", "value":"1999-08-04T00:00:00.000Z"}
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 26705):</b>
        # Top-level table begins.
        name = "Fido"
        breed = "pug"
@@ -663,7 +631,7 @@ deno-toml version 390845e7
        name = "Regina Dogman"
        member_since = 1999-08-04
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 26705) (stdout):</b>
        {
          "breed": {"type": "string", "value": "pug"},
          "name":  {"type": "string", "value": "Fido"},
@@ -687,13 +655,13 @@ deno-toml version 390845e7
 <b> </b>    error: Uncaught (in promise) SyntaxError: Parse error on line 3, column 6: Invalid escape sequence: \
 <b> </b>            throw new SyntaxError(createParseErrorMessage(scanner, error.message));
 <b> </b>                  ^
-<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
 <b> </b>        at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 26867):</b>
        beee = """
        heeee
        geeee\
@@ -701,11 +669,11 @@ deno-toml version 390845e7
 
              """
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 26867) (stderr):</b>
        error: Uncaught (in promise) SyntaxError: Parse error on line 3, column 6: Invalid escape sequence: \
                throw new SyntaxError(createParseErrorMessage(scanner, error.message));
                      ^
-           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
            at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 
@@ -714,17 +682,49 @@ deno-toml version 390845e7
 <b>     want:</b>
           <empty>
 
+<b>FAIL</b> <b>valid/string/multibyte-escape</b>
+<b> </b>    Values for key "basic-1" don't match:
+<b> </b>      Expected:     ɑ € 𐫱 ɑ€𐫱
+<b> </b>      Your encoder: ɑ € ĊF1 ɑ€ĊF1
+
+<b>     input sent to parser-cmd (PID 26917):</b>
+       # Test each multibyte length: 2, 3, and 4 bytes:
+       # ɑ € 𐫱
+
+       basic-1    = "\u0251 \u20ac \U00010AF1 \u0251\u20ac\U00010AF1"
+       ml-basic-1 = """\u0251 \u20ac \U00010AF1 \u0251\u20ac\U00010AF1"""
+
+       # Again, but only using \U
+       basic-2    = "\U00000251 \U000020ac \U00010AF1 \U00000251\U000020ac\U00010AF1"
+       ml-basic-2 = """\U00000251 \U000020ac \U00010AF1 \U00000251\U000020ac\U00010AF1"""
+
+<b>     output from parser-cmd (PID 26917) (stdout):</b>
+       {
+         "basic-1":    {"type": "string", "value": "ɑ € ĊF1 ɑ€ĊF1"},
+         "basic-2":    {"type": "string", "value": "\u000251  ac ĊF1 \u000251 acĊF1"},
+         "ml-basic-1": {"type": "string", "value": "ɑ € ĊF1 ɑ€ĊF1"},
+         "ml-basic-2": {"type": "string", "value": "\u000251  ac ĊF1 \u000251 acĊF1"}
+       }
+
+<b>     want:</b>
+       {
+           "basic-1":    {"type": "string", "value": "ɑ € 𐫱 ɑ€𐫱"},
+           "ml-basic-1": {"type": "string", "value": "ɑ € 𐫱 ɑ€𐫱"},
+           "basic-2":    {"type": "string", "value": "ɑ € 𐫱 ɑ€𐫱"},
+           "ml-basic-2": {"type": "string", "value": "ɑ € 𐫱 ɑ€𐫱"}
+       }
+
 <b>FAIL</b> <b>valid/string/multiline</b>
 <b> </b>    error: Uncaught (in promise) SyntaxError: Parse error on line 19, column 23: Invalid escape sequence: \
 <b> </b>            throw new SyntaxError(createParseErrorMessage(scanner, error.message));
 <b> </b>                  ^
-<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
 <b> </b>        at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 27040):</b>
        # NOTE: this file includes some literal tab characters.
 
        equivalent_one = "The quick brown fox jumps over the lazy dog."
@@ -763,11 +763,11 @@ deno-toml version 390845e7
        escape-bs-3 = """a \\\\
          b"""
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 27040) (stderr):</b>
        error: Uncaught (in promise) SyntaxError: Parse error on line 19, column 23: Invalid escape sequence: \
                throw new SyntaxError(createParseErrorMessage(scanner, error.message));
                      ^
-           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
            at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 
@@ -780,13 +780,13 @@ deno-toml version 390845e7
 <b> </b>    error: Uncaught (in promise) SyntaxError: Parse error on line 13, column 4: Invalid escape sequence: \
 <b> </b>            throw new SyntaxError(createParseErrorMessage(scanner, error.message));
 <b> </b>                  ^
-<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
 <b> </b>        at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 27027):</b>
        empty-1 = """"""
 
        # A newline immediately following the opening delimiter will be trimmed.
@@ -802,11 +802,11 @@ deno-toml version 390845e7
           \
           """
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 27027) (stderr):</b>
        error: Uncaught (in promise) SyntaxError: Parse error on line 13, column 4: Invalid escape sequence: \
                throw new SyntaxError(createParseErrorMessage(scanner, error.message));
                      ^
-           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
            at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 
@@ -819,13 +819,13 @@ deno-toml version 390845e7
 <b> </b>    error: Uncaught (in promise) SyntaxError: Parse error on line 5, column 30: Single-line string cannot contain EOL
 <b> </b>            throw new SyntaxError(createParseErrorMessage(scanner, error.message));
 <b> </b>                  ^
-<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
 <b> </b>        at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 27038):</b>
        # Make sure that quotes inside multiline strings are allowed, including right
        # after the opening '''/""" and before the closing '''/"""
 
@@ -853,11 +853,11 @@ deno-toml version 390845e7
        Closing with four quotes
        """"
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 27038) (stderr):</b>
        error: Uncaught (in promise) SyntaxError: Parse error on line 5, column 30: Single-line string cannot contain EOL
                throw new SyntaxError(createParseErrorMessage(scanner, error.message));
                      ^
-           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
            at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 
@@ -871,7 +871,7 @@ deno-toml version 390845e7
 <b> </b>      Expected:         A   ÿ ퟿  ￿ 𐀀 􏿿
 <b> </b>      Your encoder:      41   ÿ ퟿  ￿ Ā00 ჿff
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 27124):</b>
 
        escaped_string = "\u0000 \u0008 \u000c \U00000041 \u007f \u0080 \u00ff \ud7ff \ue000 \uffff \U00010000 \U0010ffff"
        not_escaped_string = '\u0000 \u0008 \u000c \U00000041 \u007f \u0080 \u00ff \ud7ff \ue000 \uffff \U00010000 \U0010ffff'
@@ -879,7 +879,7 @@ deno-toml version 390845e7
        basic_string = "~  ÿ ퟿  ￿ 𐀀 􏿿"
        literal_string = '~  ÿ ퟿  ￿ 𐀀 􏿿'
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 27124) (stdout):</b>
        {
          "basic_string":   {"type": "string", "value": "~  ÿ ퟿  ￿ 𐀀 􏿿"},
          "escaped_string": {"type": "string", "value": "\u0000 \b \f \u000041   ÿ ퟿  ￿ Ā00 ჿff"},
@@ -905,13 +905,13 @@ deno-toml version 390845e7
 <b> </b>    error: Uncaught (in promise) SyntaxError: Parse error on line 22, column 5: Single-line string cannot contain EOL
 <b> </b>            throw new SyntaxError(createParseErrorMessage(scanner, error.message));
 <b> </b>                  ^
-<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
 <b> </b>        at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 27163):</b>
        # Single ' should be allowed.
        oneline = '''This string has a ' quote character.'''
 
@@ -935,11 +935,11 @@ deno-toml version 390845e7
        '' two more
        '''''
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 27163) (stderr):</b>
        error: Uncaught (in promise) SyntaxError: Parse error on line 22, column 5: Single-line string cannot contain EOL
                throw new SyntaxError(createParseErrorMessage(scanner, error.message));
                      ^
-           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
            at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 
@@ -953,7 +953,7 @@ deno-toml version 390845e7
 <b> </b>      Expected:     c
 <b> </b>      Your encoder:  63
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 27187):</b>
        delta-1 = "\u03B4"
        delta-2 = "\U000003B4"
        a       = "\u0061"
@@ -970,7 +970,7 @@ deno-toml version 390845e7
        ml-null-1  = """\u0000"""
        ml-null-2  = """\U00000000"""
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 27187) (stdout):</b>
        {
          "a":          {"type": "string", "value": "a"},
          "b":          {"type": "string", "value": "b"},
@@ -1010,24 +1010,24 @@ deno-toml version 390845e7
 <b> </b>    error: Uncaught (in promise) SyntaxError: Parse error on line 6, column 0: Cannot parse the TOML: key length is not a positive number
 <b> </b>            throw new SyntaxError(createParseErrorMessage(scanner, error.message));
 <b> </b>                  ^
-<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
 <b> </b>        at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 27305):</b>
        [[a.b]]
        x = 1
 
        [a]
        y = 2
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 27305) (stderr):</b>
        error: Uncaught (in promise) SyntaxError: Parse error on line 6, column 0: Cannot parse the TOML: key length is not a positive number
                throw new SyntaxError(createParseErrorMessage(scanner, error.message));
                      ^
-           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
            at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 
@@ -1040,24 +1040,24 @@ deno-toml version 390845e7
 <b> </b>    error: Uncaught (in promise) SyntaxError: Parse error on line 6, column 0: Cannot parse the TOML: key length is not a positive number
 <b> </b>            throw new SyntaxError(createParseErrorMessage(scanner, error.message));
 <b> </b>                  ^
-<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
 <b> </b>        at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 27702):</b>
        # [x] you
        # [x.y] don't
        # [x.y.z] need these
        [x.y.z.w] # for this to work
        [x] # defining a super-table afterwards is ok
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 27702) (stderr):</b>
        error: Uncaught (in promise) SyntaxError: Parse error on line 6, column 0: Cannot parse the TOML: key length is not a positive number
                throw new SyntaxError(createParseErrorMessage(scanner, error.message));
                      ^
-           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
            at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 
@@ -1070,13 +1070,13 @@ deno-toml version 390845e7
 <b> </b>    error: Uncaught (in promise) SyntaxError: Parse error on line 10, column 0: Cannot parse the TOML: key length is not a positive number
 <b> </b>            throw new SyntaxError(createParseErrorMessage(scanner, error.message));
 <b> </b>                  ^
-<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+<b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
 <b> </b>        at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 27682):</b>
        # [x] you
        # [x.y] don't
        # [x.y.z] need these
@@ -1087,11 +1087,11 @@ deno-toml version 390845e7
        c = 3
        d = 4
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 27682) (stderr):</b>
        error: Uncaught (in promise) SyntaxError: Parse error on line 10, column 0: Cannot parse the TOML: key length is not a positive number
                throw new SyntaxError(createParseErrorMessage(scanner, error.message));
                      ^
-           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:753:15
+           at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/_parser.ts:810:15
            at parse (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/parse.ts:26:24)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/js-deno-toml-decoder.ts:38:9
 
@@ -1103,7 +1103,7 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/array/extending-table</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 27843):</b>
        a = [{ b = 1 }]
 
        # Cannot extend tables within static arrays
@@ -1111,7 +1111,7 @@ deno-toml version 390845e7
        [a.c]
        foo = 1
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 27843) (stdout):</b>
        {
          "a": [{
            "b": {"type": "float", "value": "1"},
@@ -1124,16 +1124,16 @@ deno-toml version 390845e7
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/array/tables-1</b>
+<b>FAIL</b> <b>invalid/array/tables-01</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28484):</b>
        # INVALID TOML DOC
        fruit = []
 
        [[fruit]] # Not allowed
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 28484) (stdout):</b>
        {
          "fruit": [{}]
        }
@@ -1144,10 +1144,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/comment-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28955):</b>
        comment-cr   = "Carriage return in comment" # a=1
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 28955) (stdout):</b>
        {
          "comment-cr": {"type": "string", "value": "Carriage return in comment"}
        }
@@ -1158,10 +1158,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/comment-del</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28959):</b>
        comment-del  = "0x7f"   # 
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 28959) (stdout):</b>
        {
          "comment-del": {"type": "string", "value": "0x7f"}
        }
@@ -1172,10 +1172,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/comment-ff</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28966):</b>
        comment-ff   = "0x7f"   # 
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 28966) (stdout):</b>
        {
          "comment-ff": {"type": "string", "value": "0x7f"}
        }
@@ -1186,10 +1186,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/comment-lf</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28967):</b>
        comment-lf   = "ctrl-P" # 
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 28967) (stdout):</b>
        {
          "comment-lf": {"type": "string", "value": "ctrl-P"}
        }
@@ -1200,10 +1200,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/comment-null</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29054):</b>
        comment-null = "null"   #  
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29054) (stdout):</b>
        {
          "comment-null": {"type": "string", "value": "null"}
        }
@@ -1214,10 +1214,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/comment-us</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29055):</b>
        comment-us   = "ctrl-_" # 
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29055) (stdout):</b>
        {
          "comment-us": {"type": "string", "value": "ctrl-_"}
        }
@@ -1228,10 +1228,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/multi-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29103):</b>
        multi-cr   = """null"""
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29103) (stdout):</b>
        {
          "multi-cr": {"type": "string", "value": "null\r"}
        }
@@ -1242,10 +1242,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/multi-del</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29104):</b>
        multi-del  = """null"""
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29104) (stdout):</b>
        {
          "multi-del": {"type": "string", "value": "null"}
        }
@@ -1256,10 +1256,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/multi-lf</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29105):</b>
        multi-lf   = """null"""
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29105) (stdout):</b>
        {
          "multi-lf": {"type": "string", "value": "null\u0010"}
        }
@@ -1270,10 +1270,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/multi-null</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29122):</b>
        multi-null = """null """
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29122) (stdout):</b>
        {
          "multi-null": {"type": "string", "value": "null\u0000"}
        }
@@ -1284,10 +1284,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/multi-us</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29178):</b>
        multi-us   = """null"""
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29178) (stdout):</b>
        {
          "multi-us": {"type": "string", "value": "null\u001f"}
        }
@@ -1298,10 +1298,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/rawmulti-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29219):</b>
        rawmulti-cr   = '''null'''
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29219) (stdout):</b>
        {
          "rawmulti-cr": {"type": "string", "value": "null\r"}
        }
@@ -1312,10 +1312,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/rawmulti-del</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29244):</b>
        rawmulti-del  = '''null'''
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29244) (stdout):</b>
        {
          "rawmulti-del": {"type": "string", "value": "null"}
        }
@@ -1326,10 +1326,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/rawmulti-lf</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29276):</b>
        rawmulti-lf   = '''null'''
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29276) (stdout):</b>
        {
          "rawmulti-lf": {"type": "string", "value": "null\u0010"}
        }
@@ -1340,10 +1340,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/rawmulti-null</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29277):</b>
        rawmulti-null = '''null '''
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29277) (stdout):</b>
        {
          "rawmulti-null": {"type": "string", "value": "null\u0000"}
        }
@@ -1354,10 +1354,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/rawmulti-us</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29288):</b>
        rawmulti-us   = '''null'''
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29288) (stdout):</b>
        {
          "rawmulti-us": {"type": "string", "value": "null\u001f"}
        }
@@ -1368,10 +1368,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/rawstring-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29336):</b>
        rawstring-cr   = 'null'
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29336) (stdout):</b>
        {
          "rawstring-cr": {"type": "string", "value": "null\r"}
        }
@@ -1382,10 +1382,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/rawstring-del</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29359):</b>
        rawstring-del  = 'null'
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29359) (stdout):</b>
        {
          "rawstring-del": {"type": "string", "value": "null"}
        }
@@ -1396,10 +1396,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/rawstring-lf</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29360):</b>
        rawstring-lf   = 'null'
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29360) (stdout):</b>
        {
          "rawstring-lf": {"type": "string", "value": "null\u0010"}
        }
@@ -1410,10 +1410,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/rawstring-null</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29421):</b>
        rawstring-null = 'null '
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29421) (stdout):</b>
        {
          "rawstring-null": {"type": "string", "value": "null\u0000"}
        }
@@ -1424,10 +1424,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/rawstring-us</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29422):</b>
        rawstring-us   = 'null'
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29422) (stdout):</b>
        {
          "rawstring-us": {"type": "string", "value": "null\u001f"}
        }
@@ -1438,10 +1438,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/string-bs</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29426):</b>
        string-bs   = "backspace"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29426) (stdout):</b>
        {
          "string-bs": {"type": "string", "value": "backspace\b"}
        }
@@ -1452,10 +1452,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/string-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29444):</b>
        string-cr   = "null"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29444) (stdout):</b>
        {
          "string-cr": {"type": "string", "value": "null\r"}
        }
@@ -1466,10 +1466,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/string-del</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29488):</b>
        string-del  = "null"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29488) (stdout):</b>
        {
          "string-del": {"type": "string", "value": "null"}
        }
@@ -1480,10 +1480,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/string-lf</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29499):</b>
        string-lf   = "null"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29499) (stdout):</b>
        {
          "string-lf": {"type": "string", "value": "null\u0010"}
        }
@@ -1494,10 +1494,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/string-null</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29500):</b>
        string-null = "null "
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29500) (stdout):</b>
        {
          "string-null": {"type": "string", "value": "null\u0000"}
        }
@@ -1508,10 +1508,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/control/string-us</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29548):</b>
        string-us   = "null"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29548) (stdout):</b>
        {
          "string-us": {"type": "string", "value": "null\u001f"}
        }
@@ -1522,10 +1522,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/datetime/feb-29</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29560):</b>
        "not a leap year" = 2100-02-29T15:15:15Z
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29560) (stdout):</b>
        {
          "not a leap year": {"type": "datetime", "value": "2100-03-01T15:15:15.000Z"}
        }
@@ -1536,10 +1536,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/datetime/feb-30</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29564):</b>
        "only 28 or 29 days in february" = 1988-02-30T15:15:15Z
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29564) (stdout):</b>
        {
          "only 28 or 29 days in february": {"type": "datetime", "value": "1988-03-01T15:15:15.000Z"}
        }
@@ -1550,11 +1550,11 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/datetime/hour-over</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29613):</b>
        # time-hour       = 2DIGIT  ; 00-23
        d = 2006-01-01T24:00:00-00:00
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29613) (stdout):</b>
        {
          "d": {"type": "datetime", "value": "2006-01-02T00:00:00.000Z"}
        }
@@ -1565,13 +1565,27 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/datetime/no-secs</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29802):</b>
        # No seconds in time.
        no-secs = 1987-07-05T17:45Z
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29802) (stdout):</b>
        {
          "no-secs": {"type": "datetime", "value": "1987-07-05T17:45:00.000Z"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/datetime/offset-minus-no-hour-minute-sep</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 29863):</b>
+       foo = 1997-09-09T09:09:09.09+0909
+
+<b>     output from parser-cmd (PID 29863) (stdout):</b>
+       {
+         "foo": {"type": "datetime", "value": "1997-09-09T00:00:09.090Z"}
        }
 
 <b>     want:</b>
@@ -1580,13 +1594,27 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/datetime/offset-overflow-hour</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29920):</b>
        # Hour must be 00-24
        d = 1985-06-18 17:04:07+25:00
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29920) (stdout):</b>
        {
          "d": {"type": "datetime", "value": "1985-06-17T16:04:07.000Z"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/datetime/offset-plus-no-hour-minute-sep</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 30027):</b>
+       foo = 1997-09-09T09:09:09.09+0909
+
+<b>     output from parser-cmd (PID 30027) (stdout):</b>
+       {
+         "foo": {"type": "datetime", "value": "1997-09-09T00:00:09.090Z"}
        }
 
 <b>     want:</b>
@@ -1595,10 +1623,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/encoding/bad-codepoint</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 30234):</b>
        # Invalid codepoint U+D800 : ���
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 30234) (stdout):</b>
        {}
 
 <b>     want:</b>
@@ -1607,10 +1635,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/encoding/bad-utf8-in-comment</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 30325):</b>
        # �
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 30325) (stdout):</b>
        {}
 
 <b>     want:</b>
@@ -1619,11 +1647,11 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/encoding/bad-utf8-in-multiline</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 30365):</b>
        # The following line contains an invalid UTF-8 sequence.
        bad = """�"""
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 30365) (stdout):</b>
        {
          "bad": {"type": "string", "value": "�"}
        }
@@ -1634,11 +1662,11 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/encoding/bad-utf8-in-multiline-literal</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 30366):</b>
        # The following line contains an invalid UTF-8 sequence.
        bad = '''�'''
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 30366) (stdout):</b>
        {
          "bad": {"type": "string", "value": "�"}
        }
@@ -1649,11 +1677,11 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/encoding/bad-utf8-in-string</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 30367):</b>
        # The following line contains an invalid UTF-8 sequence.
        bad = "�"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 30367) (stdout):</b>
        {
          "bad": {"type": "string", "value": "�"}
        }
@@ -1664,97 +1692,13 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/encoding/bad-utf8-in-string-literal</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 30364):</b>
        # The following line contains an invalid UTF-8 sequence.
        bad = '�'
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 30364) (stdout):</b>
        {
          "bad": {"type": "string", "value": "�"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/exp-double-us</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       exp-double-us = 1e__23
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "exp-double-us": {"type": "float", "value": "1e+23"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/exp-leading-us</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       exp-leading-us = 1e_23
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "exp-leading-us": {"type": "float", "value": "1e+23"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/exp-trailing-us</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       exp-trailing-us = 1e23_
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "exp-trailing-us": {"type": "float", "value": "1e+23"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/exp-trailing-us-1</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       exp-trailing-us-1 = 1_e2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "exp-trailing-us-1": {"type": "float", "value": "100"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/exp-trailing-us-2</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       exp-trailing-us-2 = 1.2_e2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "exp-trailing-us-2": {"type": "float", "value": "120"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/leading-us</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       leading-us = _1.2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "leading-us": {"type": "float", "value": "1.2"}
        }
 
 <b>     want:</b>
@@ -1763,10 +1707,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/float/leading-zero</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 31292):</b>
        leading-zero = 03.14
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 31292) (stdout):</b>
        {
          "leading-zero": {"type": "float", "value": "3.14"}
        }
@@ -1777,10 +1721,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/float/leading-zero-neg</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 31284):</b>
        leading-zero-neg = -03.14
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 31284) (stdout):</b>
        {
          "leading-zero-neg": {"type": "float", "value": "-3.14"}
        }
@@ -1791,10 +1735,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/float/leading-zero-plus</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 31286):</b>
        leading-zero-plus = +03.14
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 31286) (stdout):</b>
        {
          "leading-zero-plus": {"type": "float", "value": "3.14"}
        }
@@ -1802,84 +1746,14 @@ deno-toml version 390845e7
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/float/trailing-us</b>
+<b>FAIL</b> <b>invalid/inline-table/duplicate-key-01</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
-       trailing-us = 1.2_
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "trailing-us": {"type": "float", "value": "1.2"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/trailing-us-exp-1</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       trailing-us-exp-1 = 1_e2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "trailing-us-exp-1": {"type": "float", "value": "100"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/trailing-us-exp-2</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       trailing-us-exp-2 = 1.2_e2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "trailing-us-exp-2": {"type": "float", "value": "120"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/us-after-point</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       us-after-point = 1._2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "us-after-point": {"type": "float", "value": "1.2"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/float/us-before-point</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       us-before-point = 1_.2
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "us-before-point": {"type": "float", "value": "1.2"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/inline-table/duplicate-key-1</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 31886):</b>
        # Duplicate keys within an inline table are invalid
        a={b=1, b=2}
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 31886) (stdout):</b>
        {
          "a": {
            "b": {"type": "float", "value": "2"}
@@ -1889,13 +1763,13 @@ deno-toml version 390845e7
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/inline-table/duplicate-key-2</b>
+<b>FAIL</b> <b>invalid/inline-table/duplicate-key-02</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 31887):</b>
        table1 = { table2.dupe = 1, table2.dupe = 2 }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 31887) (stdout):</b>
        {
          "table1": {
            "table2": {
@@ -1907,13 +1781,13 @@ deno-toml version 390845e7
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/inline-table/duplicate-key-3</b>
+<b>FAIL</b> <b>invalid/inline-table/duplicate-key-03</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 31888):</b>
        tbl = { fruit = { apple.color = "red" }, fruit.apple.texture = { smooth = true } }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 31888) (stdout):</b>
        {
          "tbl": {
            "fruit": {
@@ -1930,13 +1804,13 @@ deno-toml version 390845e7
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/inline-table/duplicate-key-4</b>
+<b>FAIL</b> <b>invalid/inline-table/duplicate-key-04</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 31946):</b>
        tbl = { a.b = "a_b", a.b.c = "a_b_c" }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 31946) (stdout):</b>
        {
          "tbl": {
            "a": {
@@ -1953,12 +1827,12 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/inline-table/overwrite-01</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 32203):</b>
        a.b=0
        # Since table "a" is already defined, it can't be replaced by an inline table.
        a={}
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 32203) (stdout):</b>
        {
          "a": {
            "b": {"type": "float", "value": "0"}
@@ -1971,12 +1845,12 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/inline-table/overwrite-02</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 32204):</b>
        a={}
        # Inline tables are immutable and can't be extended
        [a.b]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 32204) (stdout):</b>
        {
          "a": {
            "b": {}
@@ -1989,11 +1863,11 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/inline-table/overwrite-03</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 32205):</b>
        a = { b = 1 }
        a.b = 2
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 32205) (stdout):</b>
        {
          "a": {
            "b": {"type": "float", "value": "2"}
@@ -2006,10 +1880,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/inline-table/overwrite-06</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 32279):</b>
        a = { b = 1, b.c = 2 }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 32279) (stdout):</b>
        {
          "a": {
            "b": {
@@ -2024,10 +1898,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/inline-table/overwrite-07</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 32283):</b>
        tab = { inner.table = [{}], inner.table.val = "bad" }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 32283) (stdout):</b>
        {
          "tab": {
            "inner": {
@@ -2044,10 +1918,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/inline-table/overwrite-08</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 32284):</b>
        tab = { inner = { dog = "best" }, inner.cat = "worst" }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 32284) (stdout):</b>
        {
          "tab": {
            "inner": {
@@ -2063,13 +1937,13 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/inline-table/overwrite-10</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 32319):</b>
        # Set implicit "b", overwrite "b" (illegal!) and then set another implicit.
        #
        # Caused panic: https://github.com/BurntSushi/toml/issues/403
        a = {b.a = 1, b = 2, b.c = 3}
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 32319) (stdout):</b>
        {
          "a": {
            "b": {
@@ -2084,10 +1958,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/integer/capital-hex</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 32397):</b>
        capital-hex = 0X1
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 32397) (stdout):</b>
        {
          "capital-hex": {"type": "float", "value": "1"}
        }
@@ -2095,29 +1969,43 @@ deno-toml version 390845e7
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/integer/double-us</b>
+<b>FAIL</b> <b>invalid/integer/leading-zero-01</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
-       double-us = 1__23
+<b>     input sent to parser-cmd (PID 338):</b>
+       leading-zero-1 = 01
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 338) (stdout):</b>
        {
-         "double-us": {"type": "float", "value": "123"}
+         "leading-zero-1": {"type": "float", "value": "1"}
        }
 
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/integer/leading-us</b>
+<b>FAIL</b> <b>invalid/integer/leading-zero-02</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
-       leading-us = _123
+<b>     input sent to parser-cmd (PID 383):</b>
+       leading-zero-2 = 00
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 383) (stdout):</b>
        {
-         "leading-us": {"type": "float", "value": "123"}
+         "leading-zero-2": {"type": "float", "value": "0"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/integer/leading-zero-03</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 387):</b>
+       leading-zero-3 = 0_0
+
+<b>     output from parser-cmd (PID 387) (stdout):</b>
+       {
+         "leading-zero-3": {"type": "float", "value": "0"}
        }
 
 <b>     want:</b>
@@ -2126,10 +2014,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/integer/leading-zero-1</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 388):</b>
        leading-zero-1 = 01
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 388) (stdout):</b>
        {
          "leading-zero-1": {"type": "float", "value": "1"}
        }
@@ -2140,10 +2028,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/integer/leading-zero-2</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 422):</b>
        leading-zero-2 = 00
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 422) (stdout):</b>
        {
          "leading-zero-2": {"type": "float", "value": "0"}
        }
@@ -2154,12 +2042,54 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/integer/leading-zero-3</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 489):</b>
        leading-zero-3 = 0_0
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 489) (stdout):</b>
        {
          "leading-zero-3": {"type": "float", "value": "0"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/integer/leading-zero-sign-01</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 500):</b>
+       leading-zero-sign-1 = -01
+
+<b>     output from parser-cmd (PID 500) (stdout):</b>
+       {
+         "leading-zero-sign-1": {"type": "float", "value": "-1"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/integer/leading-zero-sign-02</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 507):</b>
+       leading-zero-sign-2 = +01
+
+<b>     output from parser-cmd (PID 507) (stdout):</b>
+       {
+         "leading-zero-sign-2": {"type": "float", "value": "1"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/integer/leading-zero-sign-03</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 540):</b>
+       leading-zero-sign-3 = +0_1
+
+<b>     output from parser-cmd (PID 540) (stdout):</b>
+       {
+         "leading-zero-sign-3": {"type": "float", "value": "1"}
        }
 
 <b>     want:</b>
@@ -2168,10 +2098,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/integer/leading-zero-sign-1</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 541):</b>
        leading-zero-sign-1 = -01
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 541) (stdout):</b>
        {
          "leading-zero-sign-1": {"type": "float", "value": "-1"}
        }
@@ -2182,10 +2112,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/integer/leading-zero-sign-2</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 598):</b>
        leading-zero-sign-2 = +01
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 598) (stdout):</b>
        {
          "leading-zero-sign-2": {"type": "float", "value": "1"}
        }
@@ -2196,110 +2126,12 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/integer/leading-zero-sign-3</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 599):</b>
        leading-zero-sign-3 = +0_1
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 599) (stdout):</b>
        {
          "leading-zero-sign-3": {"type": "float", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/trailing-us</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       trailing-us = 123_
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "trailing-us": {"type": "float", "value": "123"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/trailing-us-bin</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       trailing-us-bin = 0b1_
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "trailing-us-bin": {"type": "float", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/trailing-us-hex</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       trailing-us-hex = 0x1_
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "trailing-us-hex": {"type": "float", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/trailing-us-oct</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       trailing-us-oct = 0o1_
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "trailing-us-oct": {"type": "float", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/us-after-bin</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       us-after-bin = 0b_1
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "us-after-bin": {"type": "float", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/us-after-hex</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       us-after-hex = 0x_1
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "us-after-hex": {"type": "float", "value": "1"}
-       }
-
-<b>     want:</b>
-       Exit code 1
-
-<b>FAIL</b> <b>invalid/integer/us-after-oct</b>
-<b> </b>    Expected an error, but no error was reported.
-
-<b>     input sent to parser-cmd:</b>
-       us-after-oct = 0o_1
-
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "us-after-oct": {"type": "float", "value": "1"}
        }
 
 <b>     want:</b>
@@ -2308,10 +2140,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/key/after-array</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 979):</b>
        [[agencies]] owner = "S Cjelli"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 979) (stdout):</b>
        {
          "agencies": [{
            "owner": {"type": "string", "value": "S Cjelli"}
@@ -2324,10 +2156,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/key/after-table</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 980):</b>
        [error] this = "should not be here"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 980) (stdout):</b>
        {
          "error": {
            "this": {"type": "string", "value": "should not be here"}
@@ -2340,10 +2172,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/key/after-value</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 1020):</b>
        first = "Tom" last = "Preston-Werner" # INVALID
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 1020) (stdout):</b>
        {
          "first": {"type": "string", "value": "Tom"},
          "last":  {"type": "string", "value": "Preston-Werner"}
@@ -2352,14 +2184,14 @@ deno-toml version 390845e7
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/key/dotted-redefine-table-1</b>
+<b>FAIL</b> <b>invalid/key/dotted-redefine-table-01</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 1154):</b>
        a = false
        a.b = true
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 1154) (stdout):</b>
        {
          "a": {
            "b": {"type": "bool", "value": "true"}
@@ -2369,16 +2201,16 @@ deno-toml version 390845e7
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/key/dotted-redefine-table-2</b>
+<b>FAIL</b> <b>invalid/key/dotted-redefine-table-02</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 1181):</b>
        # Defined a.b as int
        a.b = 1
        # Tries to access it as table: error
        a.b.c = 2
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 1181) (stdout):</b>
        {
          "a": {
            "b": {
@@ -2390,14 +2222,14 @@ deno-toml version 390845e7
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/key/duplicate-keys-1</b>
+<b>FAIL</b> <b>invalid/key/duplicate-keys-01</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 1182):</b>
        name = "Tom"
        name = "Pradyun"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 1182) (stdout):</b>
        {
          "name": {"type": "string", "value": "Pradyun"}
        }
@@ -2405,14 +2237,14 @@ deno-toml version 390845e7
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/key/duplicate-keys-2</b>
+<b>FAIL</b> <b>invalid/key/duplicate-keys-02</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 1186):</b>
        dupe = false
        dupe = true
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 1186) (stdout):</b>
        {
          "dupe": {"type": "bool", "value": "true"}
        }
@@ -2420,14 +2252,14 @@ deno-toml version 390845e7
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/key/duplicate-keys-3</b>
+<b>FAIL</b> <b>invalid/key/duplicate-keys-03</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 1191):</b>
        spelling   = "favorite"
        "spelling" = "favourite"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 1191) (stdout):</b>
        {
          "spelling": {"type": "string", "value": "favourite"}
        }
@@ -2435,14 +2267,14 @@ deno-toml version 390845e7
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/key/duplicate-keys-4</b>
+<b>FAIL</b> <b>invalid/key/duplicate-keys-04</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 1370):</b>
        spelling   = "favorite"
        'spelling' = "favourite"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 1370) (stdout):</b>
        {
          "spelling": {"type": "string", "value": "favourite"}
        }
@@ -2450,14 +2282,14 @@ deno-toml version 390845e7
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/key/duplicate-keys-5</b>
+<b>FAIL</b> <b>invalid/key/duplicate-keys-05</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 1371):</b>
        a        = 1
        "\u0061" = 1
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 1371) (stdout):</b>
        {
          "a": {"type": "float", "value": "1"}
        }
@@ -2465,14 +2297,14 @@ deno-toml version 390845e7
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/key/duplicate-keys-6</b>
+<b>FAIL</b> <b>invalid/key/duplicate-keys-06</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 1449):</b>
        "a'b"      = 1
        "a\u0027b" = 2
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 1449) (stdout):</b>
        {
          "a'b": {"type": "float", "value": "2"}
        }
@@ -2480,14 +2312,14 @@ deno-toml version 390845e7
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/key/duplicate-keys-7</b>
+<b>FAIL</b> <b>invalid/key/duplicate-keys-07</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 1450):</b>
        "" = 1
        "" = 2
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 1450) (stdout):</b>
        {
          "": {"type": "float", "value": "2"}
        }
@@ -2495,13 +2327,13 @@ deno-toml version 390845e7
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/key/no-eol</b>
+<b>FAIL</b> <b>invalid/key/no-eol-01</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 1757):</b>
        a = 1 b = 2
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 1757) (stdout):</b>
        {
          "a": {"type": "float", "value": "1"},
          "b": {"type": "float", "value": "2"}
@@ -2510,13 +2342,61 @@ deno-toml version 390845e7
 <b>     want:</b>
        Exit code 1
 
+<b>FAIL</b> <b>invalid/key/no-eol-03</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 1781):</b>
+       0=""o=""m=""r=""00="0"q="""0"""e="""0"""
+
+<b>     output from parser-cmd (PID 1781) (stdout):</b>
+       {
+         "0":  {"type": "string", "value": ""},
+         "00": {"type": "string", "value": "0"},
+         "e":  {"type": "string", "value": "0"},
+         "m":  {"type": "string", "value": ""},
+         "o":  {"type": "string", "value": ""},
+         "q":  {"type": "string", "value": "0"},
+         "r":  {"type": "string", "value": ""}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/key/no-eol-04</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 1817):</b>
+       [[0000l0]]
+       0="0"[[0000l0]]
+       0="0"[[0000l0]]
+       0="0"l="0"
+
+<b>     output from parser-cmd (PID 1817) (stdout):</b>
+       {
+         "0000l0": [
+           {
+             "0": {"type": "string", "value": "0"}
+           },
+           {
+             "0": {"type": "string", "value": "0"}
+           },
+           {
+             "0": {"type": "string", "value": "0"},
+             "l": {"type": "string", "value": "0"}
+           }
+         ]
+       }
+
+<b>     want:</b>
+       Exit code 1
+
 <b>FAIL</b> <b>invalid/local-date/feb-29</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 2372):</b>
        "not a leap year" = 2100-02-29
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 2372) (stdout):</b>
        {
          "not a leap year": {"type": "datetime", "value": "2100-03-01T00:00:00.000Z"}
        }
@@ -2527,10 +2407,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/local-date/feb-30</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 2373):</b>
        "only 28 or 29 days in february" = 1988-02-30
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 2373) (stdout):</b>
        {
          "only 28 or 29 days in february": {"type": "datetime", "value": "1988-03-01T00:00:00.000Z"}
        }
@@ -2541,10 +2421,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/local-datetime/feb-29</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 2614):</b>
        "not a leap year" = 2100-02-29T15:15:15
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 2614) (stdout):</b>
        {
          "not a leap year": {"type": "datetime", "value": "2100-03-01T15:15:15.000Z"}
        }
@@ -2555,10 +2435,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/local-datetime/feb-30</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 2618):</b>
        "only 28 or 29 days in february" = 1988-02-30T15:15:15
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 2618) (stdout):</b>
        {
          "only 28 or 29 days in february": {"type": "datetime", "value": "1988-03-01T15:15:15.000Z"}
        }
@@ -2569,11 +2449,11 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/local-datetime/hour-over</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 2619):</b>
        # time-hour       = 2DIGIT  ; 00-23
        d = 2006-01-01T24:00:00
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 2619) (stdout):</b>
        {
          "d": {"type": "datetime", "value": "2006-01-02T00:00:00.000Z"}
        }
@@ -2584,11 +2464,11 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/local-datetime/no-secs</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 2811):</b>
        # No seconds in time.
        no-secs = 1987-07-05T17:45
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 2811) (stdout):</b>
        {
          "no-secs": {"type": "datetime", "value": "1987-07-05T16:45:00.000Z"}
        }
@@ -2599,11 +2479,11 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/local-time/hour-over</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 2911):</b>
        # time-hour       = 2DIGIT  ; 00-23
        d = 24:00:00
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 2911) (stdout):</b>
        {
          "d": {"type": "string", "value": "24:00:00"}
        }
@@ -2614,11 +2494,11 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/local-time/minute-over</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 2953):</b>
        # time-minute     = 2DIGIT  ; 00-59
        d = 00:60:00
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 2953) (stdout):</b>
        {
          "d": {"type": "string", "value": "00:60:00"}
        }
@@ -2629,12 +2509,12 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/local-time/second-over</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 2955):</b>
        # time-second     = 2DIGIT  ; 00-58, 00-59, 00-60 based on leap second
        #                           ; rules
        d = 00:00:61
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 2955) (stdout):</b>
        {
          "d": {"type": "string", "value": "00:00:61"}
        }
@@ -2645,12 +2525,12 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/spec-1.0.0/inline-table-2-0</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 3065):</b>
        [product]
        type = { name = "Nail" }
        type.edible = false  # INVALID
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 3065) (stdout):</b>
        {
          "product": {
            "type": {
@@ -2666,12 +2546,12 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/spec-1.0.0/inline-table-3-0</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 3066):</b>
        [product]
        type.name = "Nail"
        type = { edible = false }  # INVALID
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 3066) (stdout):</b>
        {
          "product": {
            "type": {
@@ -2684,13 +2564,55 @@ deno-toml version 390845e7
 <b>     want:</b>
        Exit code 1
 
+<b>FAIL</b> <b>invalid/string/bad-uni-esc-03</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 3603):</b>
+       bad-uni-esc-3 = "val\U0000000"
+
+<b>     output from parser-cmd (PID 3603) (stdout):</b>
+       {
+         "bad-uni-esc-3": {"type": "string", "value": "val\u00000"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/string/bad-uni-esc-06</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 3689):</b>
+       bad-uni-esc-6 = "This string contains a non scalar unicode codepoint \uD801"
+
+<b>     output from parser-cmd (PID 3689) (stdout):</b>
+       {
+         "bad-uni-esc-6": {"type": "string", "value": "This string contains a non scalar unicode codepoint �"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/string/bad-uni-esc-07</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 3690):</b>
+       bad-uni-esc-7 = "\uabag"
+
+<b>     output from parser-cmd (PID 3690) (stdout):</b>
+       {
+         "bad-uni-esc-7": {"type": "string", "value": "઺"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
 <b>FAIL</b> <b>invalid/string/bad-uni-esc-3</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 3757):</b>
        bad-uni-esc-3 = "val\U0000000"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 3757) (stdout):</b>
        {
          "bad-uni-esc-3": {"type": "string", "value": "val\u00000"}
        }
@@ -2701,10 +2623,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/string/bad-uni-esc-6</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 3857):</b>
        bad-uni-esc-6 = "This string contains a non scalar unicode codepoint \uD801"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 3857) (stdout):</b>
        {
          "bad-uni-esc-6": {"type": "string", "value": "This string contains a non scalar unicode codepoint �"}
        }
@@ -2715,10 +2637,10 @@ deno-toml version 390845e7
 <b>FAIL</b> <b>invalid/string/bad-uni-esc-7</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 3867):</b>
        bad-uni-esc-7 = "\uabag"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 3867) (stdout):</b>
        {
          "bad-uni-esc-7": {"type": "string", "value": "઺"}
        }
@@ -2726,13 +2648,55 @@ deno-toml version 390845e7
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/string/basic-multiline-out-of-range-unicode-escape-2</b>
+<b>FAIL</b> <b>invalid/string/bad-uni-esc-ml-3</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 3889):</b>
+       bad-uni-esc-ml-3 = """val\U0000000"""
+
+<b>     output from parser-cmd (PID 3889) (stdout):</b>
+       {
+         "bad-uni-esc-ml-3": {"type": "string", "value": "val\u00000"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/string/bad-uni-esc-ml-6</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 3999):</b>
+       bad-uni-esc-ml-6 = """This string contains a non scalar unicode codepoint \uD801"""
+
+<b>     output from parser-cmd (PID 3999) (stdout):</b>
+       {
+         "bad-uni-esc-ml-6": {"type": "string", "value": "This string contains a non scalar unicode codepoint �"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/string/bad-uni-esc-ml-7</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 4004):</b>
+       bad-uni-esc-ml-7 = """\uabag"""
+
+<b>     output from parser-cmd (PID 4004) (stdout):</b>
+       {
+         "bad-uni-esc-ml-7": {"type": "string", "value": "઺"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/string/basic-multiline-out-of-range-unicode-escape-02</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 4031):</b>
        a = """\U00D80000"""
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 4031) (stdout):</b>
        {
          "a": {"type": "string", "value": "�00"}
        }
@@ -2740,13 +2704,13 @@ deno-toml version 390845e7
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/string/basic-out-of-range-unicode-escape-2</b>
+<b>FAIL</b> <b>invalid/string/basic-out-of-range-unicode-escape-02</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 4139):</b>
        a = "\U00D80000"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 4139) (stdout):</b>
        {
          "a": {"type": "string", "value": "�00"}
        }
@@ -2754,16 +2718,68 @@ deno-toml version 390845e7
 <b>     want:</b>
        Exit code 1
 
-toml-test v2025-04-21 [./js-deno-toml-decoder.ts]: using embedded tests,  1 skipped
-  valid tests: 173 passed, 30 failed
-invalid tests: 288 passed, 110 failed
+<b>FAIL</b> <b>invalid/table/append-with-dotted-keys-05</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5207):</b>
+       a.b.c = 1
+       a.b = 2
+
+<b>     output from parser-cmd (PID 5207) (stdout):</b>
+       {
+         "a": {
+           "b": {"type": "float", "value": "2"}
+         }
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/append-with-dotted-keys-06</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5208):</b>
+       a = 1
+       a.b = 2
+
+<b>     output from parser-cmd (PID 5208) (stdout):</b>
+       {
+         "a": {
+           "b": {"type": "float", "value": "2"}
+         }
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/append-with-dotted-keys-07</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5209):</b>
+       a = {k1 = 1, k1.name = "joe"}
+
+<b>     output from parser-cmd (PID 5209) (stdout):</b>
+       {
+         "a": {
+           "k1": {
+             "name": {"type": "string", "value": "joe"}
+           }
+         }
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+toml-test v2025-04-23 [./js-deno-toml-decoder.ts]: using embedded tests,  1 skipped
+  valid tests: 174 passed, 30 failed
+invalid tests: 420 passed, 109 failed
 
 ==> ENCODER TESTS
 <b>FAIL</b> <b>valid/array/array</b>
 <b> </b>    decode TOML from encoder:
 <b> </b>      toml: line 1 (last key "dates"): expected value but found "null" instead
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 6545):</b>
        {
            "comments": [
                {"type": "integer", "value": "1"},
@@ -2792,7 +2808,7 @@ invalid tests: 288 passed, 110 failed
            ]
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 6545) (stdout):</b>
        dates = ["1987-07-05T17:45:00.000Z","1979-05-27T06:32:00.000Z","2006-06-01T00:00:00.000Z",null]
        floats = [1.1,2.1,3.1]
        strings = ["a","b","c"]
@@ -2825,7 +2841,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/array/array-subtables</b>
 <b> </b>    Could not find key "arr.subtab.val" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 6552):</b>
        {
            "arr": [
                {
@@ -2841,7 +2857,7 @@ invalid tests: 288 passed, 110 failed
            ]
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 6552) (stdout):</b>
        [[arr]]
 
        [arr.subtab]
@@ -2860,8 +2876,8 @@ invalid tests: 288 passed, 110 failed
        val=2
 
 <b>FAIL</b> <b>valid/array/hetergeneous</b>
-<b> </b>    error: Uncaught (in promise) Error: should never reach
-<b> </b>        throw new Error("should never reach");
+<b> </b>    error: Uncaught (in promise) Error: Should never reach
+<b> </b>        throw new Error("Should never reach");
 <b> </b>              ^
 <b> </b>        at Dumper.#printAsInlineValue (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:161:11)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:147:60
@@ -2876,7 +2892,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 6663):</b>
        {
            "mixed": [
                [
@@ -2894,9 +2910,9 @@ invalid tests: 288 passed, 110 failed
            ]
        }
 
-<b>     output from parser-cmd (stderr):</b>
-       error: Uncaught (in promise) Error: should never reach
-           throw new Error("should never reach");
+<b>     output from parser-cmd (PID 6663) (stderr):</b>
+       error: Uncaught (in promise) Error: Should never reach
+           throw new Error("Should never reach");
                  ^
            at Dumper.#printAsInlineValue (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:161:11)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:147:60
@@ -2915,8 +2931,8 @@ invalid tests: 288 passed, 110 failed
           <empty>
 
 <b>FAIL</b> <b>valid/array/mixed-int-array</b>
-<b> </b>    error: Uncaught (in promise) Error: should never reach
-<b> </b>        throw new Error("should never reach");
+<b> </b>    error: Uncaught (in promise) Error: Should never reach
+<b> </b>        throw new Error("Should never reach");
 <b> </b>              ^
 <b> </b>        at Dumper.#printAsInlineValue (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:161:11)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:87:64
@@ -2928,7 +2944,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 6550):</b>
        {
            "arrays-and-ints": [
                {"type": "integer", "value": "1"},
@@ -2936,9 +2952,9 @@ invalid tests: 288 passed, 110 failed
            ]
        }
 
-<b>     output from parser-cmd (stderr):</b>
-       error: Uncaught (in promise) Error: should never reach
-           throw new Error("should never reach");
+<b>     output from parser-cmd (PID 6550) (stderr):</b>
+       error: Uncaught (in promise) Error: Should never reach
+           throw new Error("Should never reach");
                  ^
            at Dumper.#printAsInlineValue (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:161:11)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:87:64
@@ -2954,8 +2970,8 @@ invalid tests: 288 passed, 110 failed
           <empty>
 
 <b>FAIL</b> <b>valid/array/mixed-int-float</b>
-<b> </b>    error: Uncaught (in promise) Error: should never reach
-<b> </b>        throw new Error("should never reach");
+<b> </b>    error: Uncaught (in promise) Error: Should never reach
+<b> </b>        throw new Error("Should never reach");
 <b> </b>              ^
 <b> </b>        at Dumper.#printAsInlineValue (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:161:11)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:87:64
@@ -2967,7 +2983,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 6662):</b>
        {
            "ints-and-floats": [
                {"type": "integer", "value": "1"},
@@ -2975,9 +2991,9 @@ invalid tests: 288 passed, 110 failed
            ]
        }
 
-<b>     output from parser-cmd (stderr):</b>
-       error: Uncaught (in promise) Error: should never reach
-           throw new Error("should never reach");
+<b>     output from parser-cmd (PID 6662) (stderr):</b>
+       error: Uncaught (in promise) Error: Should never reach
+           throw new Error("Should never reach");
                  ^
            at Dumper.#printAsInlineValue (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:161:11)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:87:64
@@ -2993,8 +3009,8 @@ invalid tests: 288 passed, 110 failed
           <empty>
 
 <b>FAIL</b> <b>valid/array/mixed-int-string</b>
-<b> </b>    error: Uncaught (in promise) Error: should never reach
-<b> </b>        throw new Error("should never reach");
+<b> </b>    error: Uncaught (in promise) Error: Should never reach
+<b> </b>        throw new Error("Should never reach");
 <b> </b>              ^
 <b> </b>        at Dumper.#printAsInlineValue (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:161:11)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:87:64
@@ -3006,7 +3022,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 6664):</b>
        {
            "strings-and-ints": [
                {"type": "string", "value": "hi"},
@@ -3014,9 +3030,9 @@ invalid tests: 288 passed, 110 failed
            ]
        }
 
-<b>     output from parser-cmd (stderr):</b>
-       error: Uncaught (in promise) Error: should never reach
-           throw new Error("should never reach");
+<b>     output from parser-cmd (PID 6664) (stderr):</b>
+       error: Uncaught (in promise) Error: Should never reach
+           throw new Error("Should never reach");
                  ^
            at Dumper.#printAsInlineValue (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:161:11)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:87:64
@@ -3032,8 +3048,8 @@ invalid tests: 288 passed, 110 failed
           <empty>
 
 <b>FAIL</b> <b>valid/array/mixed-string-table</b>
-<b> </b>    error: Uncaught (in promise) Error: should never reach
-<b> </b>        throw new Error("should never reach");
+<b> </b>    error: Uncaught (in promise) Error: Should never reach
+<b> </b>        throw new Error("Should never reach");
 <b> </b>              ^
 <b> </b>        at Dumper.#printAsInlineValue (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:161:11)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:87:64
@@ -3045,7 +3061,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 6546):</b>
        {
            "contributors": [
                {"type": "string", "value": "Foo Bar \u003cfoo@example.com\u003e"},
@@ -3064,9 +3080,9 @@ invalid tests: 288 passed, 110 failed
            ]
        }
 
-<b>     output from parser-cmd (stderr):</b>
-       error: Uncaught (in promise) Error: should never reach
-           throw new Error("should never reach");
+<b>     output from parser-cmd (PID 6546) (stderr):</b>
+       error: Uncaught (in promise) Error: Should never reach
+           throw new Error("Should never reach");
                  ^
            at Dumper.#printAsInlineValue (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:161:11)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:87:64
@@ -3082,8 +3098,8 @@ invalid tests: 288 passed, 110 failed
           <empty>
 
 <b>FAIL</b> <b>valid/array/nested-double</b>
-<b> </b>    error: Uncaught (in promise) Error: should never reach
-<b> </b>        throw new Error("should never reach");
+<b> </b>    error: Uncaught (in promise) Error: Should never reach
+<b> </b>        throw new Error("Should never reach");
 <b> </b>              ^
 <b> </b>        at Dumper.#printAsInlineValue (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:161:11)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:147:60
@@ -3098,7 +3114,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 6661):</b>
        {
            "nest": [[
                [{"type": "string", "value": "a"}],
@@ -3110,9 +3126,9 @@ invalid tests: 288 passed, 110 failed
            ]]
        }
 
-<b>     output from parser-cmd (stderr):</b>
-       error: Uncaught (in promise) Error: should never reach
-           throw new Error("should never reach");
+<b>     output from parser-cmd (PID 6661) (stderr):</b>
+       error: Uncaught (in promise) Error: Should never reach
+           throw new Error("Should never reach");
                  ^
            at Dumper.#printAsInlineValue (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:161:11)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:147:60
@@ -3135,7 +3151,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>      Expected:     1 (int64)
 <b> </b>      Your encoder: map[] (map[string]any)
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 6559):</b>
        {
            "ints": [
                {"type": "integer", "value": "1"},
@@ -3144,7 +3160,7 @@ invalid tests: 288 passed, 110 failed
            ]
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 6559) (stdout):</b>
        [[ints]]
 
        [[ints]]
@@ -3157,7 +3173,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/array/open-parent-table</b>
 <b> </b>    Could not find key "parent-table.not-arr" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 6665):</b>
        {
            "parent-table": {
                "not-arr": {"type": "integer", "value": "1"},
@@ -3168,7 +3184,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 6665) (stdout):</b>
        [parent-table]
 
        [[parent-table.arr]]
@@ -3186,7 +3202,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>      Expected:     1 (int64)
 <b> </b>      Your encoder: map[] (map[string]any)
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 6879):</b>
        {
            "arr-1": [{"type": "integer", "value": "1"}],
            "arr-3": [{"type": "integer", "value": "4"}],
@@ -3200,7 +3216,7 @@ invalid tests: 288 passed, 110 failed
            ]
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 6879) (stdout):</b>
        [[arr-1]]
 
        [[arr-3]]
@@ -3230,7 +3246,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>    decode TOML from encoder:
 <b> </b>      toml: line 3 (last key "nan"): expected value but found "NaN" instead
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 6881):</b>
        {
            "false": {"type": "bool", "value": "false"},
            "inf":   {"type": "float", "value": "inf"},
@@ -3238,7 +3254,7 @@ invalid tests: 288 passed, 110 failed
            "true":  {"type": "bool", "value": "true"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 6881) (stdout):</b>
        false = false
        inf = inf
        nan = NaN
@@ -3253,7 +3269,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/comment/everywhere</b>
 <b> </b>    Could not find key "aot.k" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 6901):</b>
        {
            "aot": [
                {
@@ -3274,7 +3290,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 6901) (stdout):</b>
        [[aot]]
 
        [[aot]]
@@ -3327,7 +3343,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>      Expected:     1 (int64)
 <b> </b>      Your encoder: map[] (map[string]any)
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 6932):</b>
        {
            "hash#tag": {
                "#!":   {"type": "string", "value": "hash bang"},
@@ -3360,7 +3376,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 6932) (stdout):</b>
        ["hash#tag"]
        "#!" = "hash bang"
        arr5 = [[[[["#"]]]]]
@@ -3423,13 +3439,13 @@ invalid tests: 288 passed, 110 failed
 <b> </b>      Expected:     1987-07-05 17:45:00 +0000 UTC (time.Time)
 <b> </b>      Your encoder: 1987-07-05 17:45:00 +0100 datetime-local (time.Time)
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 6980):</b>
        {
            "lower": {"type": "datetime", "value": "1987-07-05T17:45:00Z"},
            "space": {"type": "datetime", "value": "1987-07-05T17:45:00Z"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 6980) (stdout):</b>
        lower = 1987-07-05T17:45:00.000
        space = 1987-07-05T17:45:00.000
 
@@ -3443,7 +3459,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>    decode TOML from encoder:
 <b> </b>      toml: line 1 (last key "first-date"): invalid datetime: "1-01-01T00:00:00.000"
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7114):</b>
        {
            "first-date":   {"type": "date-local", "value": "0001-01-01"},
            "first-local":  {"type": "datetime-local", "value": "0001-01-01T00:00:00"},
@@ -3453,7 +3469,7 @@ invalid tests: 288 passed, 110 failed
            "last-offset":  {"type": "datetime", "value": "9999-12-31T23:59:59Z"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7114) (stdout):</b>
        first-date = 1-01-01T00:00:00.000
        first-local = 1-01-01T00:25:21.000
        first-offset = 1-01-01T00:00:00.000
@@ -3475,7 +3491,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>      Expected:     2000-02-29 15:15:15 +0000 UTC (time.Time)
 <b> </b>      Your encoder: 2000-02-29 15:15:15 +0100 datetime-local (time.Time)
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7197):</b>
        {
            "2000-date":           {"type": "date-local", "value": "2000-02-29"},
            "2000-datetime":       {"type": "datetime", "value": "2000-02-29T15:15:15Z"},
@@ -3485,7 +3501,7 @@ invalid tests: 288 passed, 110 failed
            "2024-datetime-local": {"type": "datetime-local", "value": "2024-02-29T15:15:15"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7197) (stdout):</b>
        2000-date = 2000-02-29T00:00:00.000
        2000-datetime = 2000-02-29T15:15:15.000
        2000-datetime-local = 2000-02-29T15:15:15.000
@@ -3507,14 +3523,14 @@ invalid tests: 288 passed, 110 failed
 <b> </b>      Expected:     1987-07-05 17:45:00 +0100 datetime-local (time.Time)
 <b> </b>      Your encoder: 1987-07-05 16:45:00 +0100 datetime-local (time.Time)
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7201):</b>
        {
            "local": {"type": "datetime-local", "value": "1987-07-05T17:45:00"},
            "milli": {"type": "datetime-local", "value": "1977-12-21T10:32:00.555"},
            "space": {"type": "datetime-local", "value": "1987-07-05T17:45:00"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7201) (stdout):</b>
        local = 1987-07-05T16:45:00.000
        milli = 1977-12-21T10:32:00.555
        space = 1987-07-05T16:45:00.000
@@ -3528,13 +3544,13 @@ invalid tests: 288 passed, 110 failed
 <b> </b>    decode TOML from encoder:
 <b> </b>      toml: line 1 (last key "besttimeever"): expected value but found "NaN" instead
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7200):</b>
        {
            "besttimeever": {"type": "time-local", "value": "17:45:00"},
            "milliseconds": {"type": "time-local", "value": "10:32:00.555"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7200) (stdout):</b>
        besttimeever = NaN-NaN-NaNTNaN:NaN:NaN.NaN
        milliseconds = NaN-NaN-NaNTNaN:NaN:NaN.NaN
 
@@ -3547,7 +3563,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>      Expected:     1987-07-05 17:45:56.123 +0000 UTC (time.Time)
 <b> </b>      Your encoder: 1987-07-05 17:45:56.123 +0100 datetime-local (time.Time)
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7202):</b>
        {
            "utc1":  {"type": "datetime", "value": "1987-07-05T17:45:56.123Z"},
            "utc2":  {"type": "datetime", "value": "1987-07-05T17:45:56.600Z"},
@@ -3555,7 +3571,7 @@ invalid tests: 288 passed, 110 failed
            "wita2": {"type": "datetime", "value": "1987-07-05T17:45:56.600+08:00"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7202) (stdout):</b>
        utc1 = 1987-07-05T17:45:56.123
        utc2 = 1987-07-05T17:45:56.600
        wita1 = 1987-07-05T09:45:56.123
@@ -3572,7 +3588,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>      Expected:     1987-07-05 17:45:56 +1300 +1300 (time.Time)
 <b> </b>      Your encoder: 1987-07-05 04:45:56 +0100 datetime-local (time.Time)
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7203):</b>
        {
            "nzdt": {"type": "datetime", "value": "1987-07-05T17:45:56+13:00"},
            "nzst": {"type": "datetime", "value": "1987-07-05T17:45:56+12:00"},
@@ -3580,7 +3596,7 @@ invalid tests: 288 passed, 110 failed
            "utc":  {"type": "datetime", "value": "1987-07-05T17:45:56Z"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7203) (stdout):</b>
        nzdt = 1987-07-05T04:45:56.000
        nzst = 1987-07-05T05:45:56.000
        pdt = 1987-07-05T22:45:56.000
@@ -3597,7 +3613,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>      Expected:     1987-07-05 17:45:00 +0000 UTC (time.Time)
 <b> </b>      Your encoder: 1987-07-05 17:45:00 +0100 datetime-local (time.Time)
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7357):</b>
        {
            "best-day-ever": {"type": "datetime", "value": "1987-07-05T17:45:00Z"},
            "numtheory": {
@@ -3610,7 +3626,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7357) (stdout):</b>
        best-day-ever = 1987-07-05T17:45:00.000
 
        [numtheory]
@@ -3633,7 +3649,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>    decode TOML from encoder:
 <b> </b>      toml: line 4 (last key "nan"): expected value but found "NaN" instead
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7378):</b>
        {
            "infinity":      {"type": "float", "value": "inf"},
            "infinity_neg":  {"type": "float", "value": "-inf"},
@@ -3643,7 +3659,7 @@ invalid tests: 288 passed, 110 failed
            "nan_plus":      {"type": "float", "value": "nan"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7378) (stdout):</b>
        infinity = inf
        infinity_neg = -inf
        infinity_plus = inf
@@ -3664,7 +3680,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/implicit-and-explicit-after</b>
 <b> </b>    Could not find key "a.better" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7527):</b>
        {
            "a": {
                "better": {"type": "integer", "value": "43"},
@@ -3676,7 +3692,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7527) (stdout):</b>
        [a.b.c]
 
 <b>     want:</b>
@@ -3689,7 +3705,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/implicit-and-explicit-before</b>
 <b> </b>    Could not find key "a.better" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7528):</b>
        {
            "a": {
                "better": {"type": "integer", "value": "43"},
@@ -3701,7 +3717,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7528) (stdout):</b>
        [a.b.c]
 
 <b>     want:</b>
@@ -3714,7 +3730,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/implicit-groups</b>
 <b> </b>    Could not find key "a.b.c.answer" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7530):</b>
        {
            "a": {
                "b": {
@@ -3725,7 +3741,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7530) (stdout):</b>
        [a.b.c]
 
 <b>     want:</b>
@@ -3735,7 +3751,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/inline-table/array-01</b>
 <b> </b>    Could not find key "arr.a" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7581):</b>
        {
            "arr": [
                {
@@ -3761,7 +3777,7 @@ invalid tests: 288 passed, 110 failed
            ]
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7581) (stdout):</b>
        [[arr]]
 
        [[arr]]
@@ -3790,7 +3806,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>      Expected:     1 (int64)
 <b> </b>      Your encoder: map[] (map[string]any)
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7622):</b>
        {
            "b": {
                "a": [
@@ -3804,7 +3820,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7622) (stdout):</b>
        [b]
 
        [[b.a]]
@@ -3827,7 +3843,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/inline-table/empty</b>
 <b> </b>    Could not find key "empty_in_array.not_empty" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7633):</b>
        {
            "empty1":   {},
            "empty2":   {},
@@ -3854,7 +3870,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7633) (stdout):</b>
        [empty1]
 
        [empty2]
@@ -3889,7 +3905,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/inline-table/inline-table</b>
 <b> </b>    Could not find key "point.x" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7635):</b>
        {
            "name": {
                "first": {"type": "string", "value": "Tom"},
@@ -3915,7 +3931,7 @@ invalid tests: 288 passed, 110 failed
            ]
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7635) (stdout):</b>
        [name]
        first = "Tom"
        last = "Preston-Werner"
@@ -3940,7 +3956,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/inline-table/key-dotted-1</b>
 <b> </b>    Could not find key "a.a.b" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7676):</b>
        {
            "a": {
                "a": {
@@ -3969,7 +3985,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7676) (stdout):</b>
        [a.a]
 
        [b.a]
@@ -3990,7 +4006,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/inline-table/key-dotted-2</b>
 <b> </b>    Could not find key "many.dots.here.dot.dot.dot.a.b.c" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7674):</b>
        {
            "many": {
                "dots": {
@@ -4012,7 +4028,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7674) (stdout):</b>
        [many.dots.here.dot.dot.dot.a.b]
 
 <b>     want:</b>
@@ -4021,7 +4037,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/inline-table/key-dotted-3</b>
 <b> </b>    Could not find key "tbl.a.b.c.d.e" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7812):</b>
        {
            "tbl": {
                "a": {
@@ -4047,7 +4063,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7812) (stdout):</b>
        [tbl.a.b.c.d]
 
        [tbl.x.a.b.c.d]
@@ -4062,7 +4078,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/inline-table/key-dotted-4</b>
 <b> </b>    Could not find key "arr.T.a.b" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7847):</b>
        {
            "arr": [
                {
@@ -4092,7 +4108,7 @@ invalid tests: 288 passed, 110 failed
            ]
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7847) (stdout):</b>
        [[arr]]
 
        [arr.T.a]
@@ -4115,8 +4131,8 @@ invalid tests: 288 passed, 110 failed
        T = {a.b=2}
 
 <b>FAIL</b> <b>valid/inline-table/key-dotted-5</b>
-<b> </b>    error: Uncaught (in promise) Error: should never reach
-<b> </b>        throw new Error("should never reach");
+<b> </b>    error: Uncaught (in promise) Error: Should never reach
+<b> </b>        throw new Error("Should never reach");
 <b> </b>              ^
 <b> </b>        at Dumper.#printAsInlineValue (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:161:11)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:156:35
@@ -4131,7 +4147,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7848):</b>
        {
            "arr-1": [{
                "a": {
@@ -4173,9 +4189,9 @@ invalid tests: 288 passed, 110 failed
            ]
        }
 
-<b>     output from parser-cmd (stderr):</b>
-       error: Uncaught (in promise) Error: should never reach
-           throw new Error("should never reach");
+<b>     output from parser-cmd (PID 7848) (stderr):</b>
+       error: Uncaught (in promise) Error: Should never reach
+           throw new Error("Should never reach");
                  ^
            at Dumper.#printAsInlineValue (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:161:11)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:156:35
@@ -4196,7 +4212,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/inline-table/key-dotted-6</b>
 <b> </b>    Could not find key "top.dot.dot.dot.dot.dot" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7849):</b>
        {
            "top": {
                "dot": {
@@ -4220,7 +4236,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7849) (stdout):</b>
        [top.dot]
 
        [[top.dot.dot]]
@@ -4240,7 +4256,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/inline-table/key-dotted-7</b>
 <b> </b>    Could not find key "arr.a.b.c.d" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7850):</b>
        {
            "arr": [{
                "a": {"b": [{
@@ -4251,7 +4267,7 @@ invalid tests: 288 passed, 110 failed
            }]
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7850) (stdout):</b>
        [[arr]]
 
        [arr.a]
@@ -4268,7 +4284,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/inline-table/multiline</b>
 <b> </b>    Could not find key "tbl_multiline.a" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7885):</b>
        {
            "tbl_multiline": {
                "a": {"type": "integer", "value": "1"},
@@ -4278,7 +4294,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7885) (stdout):</b>
        [tbl_multiline]
        b = "multiline\n"
        c = "and yet\nanother line"
@@ -4290,8 +4306,8 @@ invalid tests: 288 passed, 110 failed
        another line""", d = 4 }
 
 <b>FAIL</b> <b>valid/inline-table/nest</b>
-<b> </b>    error: Uncaught (in promise) Error: should never reach
-<b> </b>        throw new Error("should never reach");
+<b> </b>    error: Uncaught (in promise) Error: Should never reach
+<b> </b>        throw new Error("Should never reach");
 <b> </b>              ^
 <b> </b>        at Dumper.#printAsInlineValue (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:161:11)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:156:35
@@ -4306,7 +4322,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7901):</b>
        {
            "arr_arr_tbl_empty": [[{}]],
            "arr_arr_tbl_val":   [[{
@@ -4338,9 +4354,9 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stderr):</b>
-       error: Uncaught (in promise) Error: should never reach
-           throw new Error("should never reach");
+<b>     output from parser-cmd (PID 7901) (stderr):</b>
+       error: Uncaught (in promise) Error: Should never reach
+           throw new Error("Should never reach");
                  ^
            at Dumper.#printAsInlineValue (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:161:11)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:156:35
@@ -4361,13 +4377,13 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/integer/float64-max</b>
 <b> </b>    Could not find key "max_int" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7902):</b>
        {
            "max_int": {"type": "integer", "value": "9007199254740991"},
            "min_int": {"type": "integer", "value": "-9007199254740991"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7902) (stdout):</b>
 
 
 <b>     want:</b>
@@ -4379,7 +4395,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/integer/integer</b>
 <b> </b>    Could not find key "answer" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7903):</b>
        {
            "answer":    {"type": "integer", "value": "42"},
            "neganswer": {"type": "integer", "value": "-42"},
@@ -4387,7 +4403,7 @@ invalid tests: 288 passed, 110 failed
            "zero":      {"type": "integer", "value": "0"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7903) (stdout):</b>
 
 
 <b>     want:</b>
@@ -4399,7 +4415,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/integer/literals</b>
 <b> </b>    Could not find key "bin1" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7904):</b>
        {
            "bin1": {"type": "integer", "value": "214"},
            "bin2": {"type": "integer", "value": "5"},
@@ -4412,7 +4428,7 @@ invalid tests: 288 passed, 110 failed
            "oct3": {"type": "integer", "value": "501"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7904) (stdout):</b>
 
 
 <b>     want:</b>
@@ -4431,13 +4447,13 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/integer/underscore</b>
 <b> </b>    Could not find key "kilo" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7931):</b>
        {
            "kilo": {"type": "integer", "value": "1000"},
            "x":    {"type": "integer", "value": "1111"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7931) (stdout):</b>
 
 
 <b>     want:</b>
@@ -4447,7 +4463,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/integer/zero</b>
 <b> </b>    Could not find key "a2" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7938):</b>
        {
            "a2": {"type": "integer", "value": "0"},
            "a3": {"type": "integer", "value": "0"},
@@ -4463,7 +4479,7 @@ invalid tests: 288 passed, 110 failed
            "o1": {"type": "integer", "value": "0"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7938) (stdout):</b>
 
 
 <b>     want:</b>
@@ -4486,7 +4502,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/key/alphanum</b>
 <b> </b>    Could not find key "34-11" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 7987):</b>
        {
            "000111":      {"type": "string", "value": "leading"},
            "10e3":        {"type": "string", "value": "false float"},
@@ -4504,7 +4520,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 7987) (stdout):</b>
        123 = "num"
        000111 = "leading"
        10e3 = "false float"
@@ -4537,7 +4553,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/key/dotted-1</b>
 <b> </b>    Could not find key "many.dots.dot.dot.dot" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8090):</b>
        {
            "many": {
                "dots": {
@@ -4554,7 +4570,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 8090) (stdout):</b>
        [many.dots.dot.dot]
 
        [name]
@@ -4570,7 +4586,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/key/dotted-2</b>
 <b> </b>    Could not find key "count.a" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8144):</b>
        {
            "count": {
                "a": {"type": "integer", "value": "1"},
@@ -4588,7 +4604,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 8144) (stdout):</b>
        [count]
 
 <b>     want:</b>
@@ -4611,7 +4627,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/key/dotted-3</b>
 <b> </b>    Could not find key "top.key" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8164):</b>
        {
            "a": {
                "few": {
@@ -4635,7 +4651,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 8164) (stdout):</b>
        [a.few.dots.polka]
        dance-with = "Dot"
        dot = "again?"
@@ -4658,7 +4674,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/key/dotted-4</b>
 <b> </b>    Could not find key "arr.a.b.c" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8165):</b>
        {
            "arr": [
                {
@@ -4683,7 +4699,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 8165) (stdout):</b>
        [[arr]]
 
        [arr.a.b]
@@ -4708,12 +4724,12 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/key/empty-3</b>
 <b> </b>    Could not find key "" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8192):</b>
        {
            "": {"type": "integer", "value": "0"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 8192) (stdout):</b>
 
 
 <b>     want:</b>
@@ -4722,12 +4738,12 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/key/equals-nospace</b>
 <b> </b>    Could not find key "answer" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8237):</b>
        {
            "answer": {"type": "integer", "value": "42"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 8237) (stdout):</b>
 
 
 <b>     want:</b>
@@ -4736,7 +4752,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/key/like-date</b>
 <b> </b>    Could not find key "15:16:17" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8255):</b>
        {
            "15:16:17":                  {"type": "integer", "value": "6"},
            "2001-02-03":                {"type": "integer", "value": "1"},
@@ -4766,7 +4782,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 8255) (stdout):</b>
        [[2002-01-04]]
 
        [2001-02-11.a]
@@ -4805,7 +4821,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/key/quoted-dots</b>
 <b> </b>    Could not find key "plain" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8512):</b>
        {
            "plain":    {"type": "integer", "value": "1"},
            "with.dot": {"type": "integer", "value": "2"},
@@ -4822,7 +4838,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 8512) (stdout):</b>
        [plain_table]
 
        [table.withdot]
@@ -4844,7 +4860,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>    decode TOML from encoder:
 <b> </b>      toml: line 2: TOML files cannot contain control characters: '0x7f'
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8513):</b>
        {
            "\u0000":               {"type": "string", "value": "null"},
            "\b \f A   ÿ ퟿  ￿ 𐀀 􏿿": {"type": "string", "value": "escaped key"},
@@ -4853,7 +4869,7 @@ invalid tests: 288 passed, 110 failed
            "~  ÿ ퟿  ￿ 𐀀 􏿿":        {"type": "string", "value": "basic key"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 8513) (stdout):</b>
        "\u0000" = "null"
        "\b \f A   ÿ ퟿  ￿ 𐀀 􏿿" = "escaped key"
        "\\u0000" = "different key"
@@ -4872,7 +4888,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/key/space</b>
 <b> </b>    Could not find key "  much \t\t  whitespace  \t\n  \r\n  " in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8514):</b>
        {
            "  much \t\t  whitespace  \t\n  \r\n  ": {"type": "integer", "value": "3"},
            " c d ":                             {"type": "integer", "value": "2"},
@@ -4882,7 +4898,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 8514) (stdout):</b>
        [" tbl "]
        "\ttab\ttab\t" = "tab"
 
@@ -4898,12 +4914,12 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/key/special-chars</b>
 <b> </b>    Could not find key "=~!@$^&*()_+-`1234567890[]|/?><.,;:'=" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8515):</b>
        {
            "=~!@$^\u0026*()_+-`1234567890[]|/?\u003e\u003c.,;:'=": {"type": "integer", "value": "1"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 8515) (stdout):</b>
 
 
 <b>     want:</b>
@@ -4912,7 +4928,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/key/special-word</b>
 <b> </b>    Could not find key "inf" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8568):</b>
        {
            "false": {"type": "bool", "value": "false"},
            "inf":   {"type": "integer", "value": "100000000"},
@@ -4920,7 +4936,7 @@ invalid tests: 288 passed, 110 failed
            "true":  {"type": "integer", "value": "1"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 8568) (stdout):</b>
        false = false
        nan = "ceci n'est pas un nombre"
 
@@ -4933,7 +4949,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/key/start</b>
 <b> </b>    Could not find key "-.-" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8569):</b>
        {
            "-": {
                "-": {"type": "integer", "value": "4"}
@@ -4971,7 +4987,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 8569) (stdout):</b>
        [1]
 
        [111]
@@ -5029,20 +5045,20 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/key/zero</b>
 <b> </b>    Could not find key "0" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8570):</b>
        {
            "0": {"type": "integer", "value": "0"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 8570) (stdout):</b>
 
 
 <b>     want:</b>
        0=0
 
 <b>FAIL</b> <b>valid/spec-1.0.0/array-0</b>
-<b> </b>    error: Uncaught (in promise) Error: should never reach
-<b> </b>        throw new Error("should never reach");
+<b> </b>    error: Uncaught (in promise) Error: Should never reach
+<b> </b>        throw new Error("Should never reach");
 <b> </b>              ^
 <b> </b>        at Dumper.#printAsInlineValue (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:161:11)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:147:60
@@ -5057,7 +5073,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8618):</b>
        {
            "colors": [
                {"type": "string", "value": "red"},
@@ -5115,9 +5131,9 @@ invalid tests: 288 passed, 110 failed
            ]
        }
 
-<b>     output from parser-cmd (stderr):</b>
-       error: Uncaught (in promise) Error: should never reach
-           throw new Error("should never reach");
+<b>     output from parser-cmd (PID 8618) (stderr):</b>
+       error: Uncaught (in promise) Error: Should never reach
+           throw new Error("Should never reach");
                  ^
            at Dumper.#printAsInlineValue (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:161:11)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:147:60
@@ -5140,7 +5156,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>      Expected:     1 (int64)
 <b> </b>      Your encoder: map[] (map[string]any)
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8626):</b>
        {
            "integers2": [
                {"type": "integer", "value": "1"},
@@ -5153,7 +5169,7 @@ invalid tests: 288 passed, 110 failed
            ]
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 8626) (stdout):</b>
        [[integers2]]
 
        [[integers2]]
@@ -5177,7 +5193,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/spec-1.0.0/array-of-tables-0</b>
 <b> </b>    Could not find key "products.sku" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8677):</b>
        {
            "products": [
                {
@@ -5193,7 +5209,7 @@ invalid tests: 288 passed, 110 failed
            ]
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 8677) (stdout):</b>
        [[products]]
        name = "Hammer"
 
@@ -5219,7 +5235,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/spec-1.0.0/array-of-tables-2</b>
 <b> </b>    Could not find key "points.x" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8817):</b>
        {
            "points": [
                {
@@ -5240,7 +5256,7 @@ invalid tests: 288 passed, 110 failed
            ]
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 8817) (stdout):</b>
        [[points]]
 
        [[points]]
@@ -5256,7 +5272,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>    decode TOML from encoder:
 <b> </b>      toml: line 4 (last key "sf4"): expected value but found "NaN" instead
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8874):</b>
        {
            "sf1": {"type": "float", "value": "inf"},
            "sf2": {"type": "float", "value": "inf"},
@@ -5266,7 +5282,7 @@ invalid tests: 288 passed, 110 failed
            "sf6": {"type": "float", "value": "nan"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 8874) (stdout):</b>
        sf1 = inf
        sf2 = inf
        sf3 = -inf
@@ -5288,7 +5304,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/spec-1.0.0/inline-table-0</b>
 <b> </b>    Could not find key "point.x" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8873):</b>
        {
            "animal": {
                "type": {
@@ -5305,7 +5321,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 8873) (stdout):</b>
        [animal.type]
        name = "pug"
 
@@ -5323,7 +5339,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/spec-1.0.0/inline-table-1</b>
 <b> </b>    Could not find key "point.x" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8906):</b>
        {
            "animal": {
                "type": {
@@ -5340,7 +5356,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 8906) (stdout):</b>
        [animal.type]
        name = "pug"
 
@@ -5365,7 +5381,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/spec-1.0.0/integer-0</b>
 <b> </b>    Could not find key "int1" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8913):</b>
        {
            "int1": {"type": "integer", "value": "99"},
            "int2": {"type": "integer", "value": "42"},
@@ -5373,7 +5389,7 @@ invalid tests: 288 passed, 110 failed
            "int4": {"type": "integer", "value": "-17"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 8913) (stdout):</b>
 
 
 <b>     want:</b>
@@ -5385,7 +5401,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/spec-1.0.0/integer-1</b>
 <b> </b>    Could not find key "int5" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8916):</b>
        {
            "int5": {"type": "integer", "value": "1000"},
            "int6": {"type": "integer", "value": "5349221"},
@@ -5393,7 +5409,7 @@ invalid tests: 288 passed, 110 failed
            "int8": {"type": "integer", "value": "12345"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 8916) (stdout):</b>
 
 
 <b>     want:</b>
@@ -5405,7 +5421,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/spec-1.0.0/integer-2</b>
 <b> </b>    Could not find key "bin1" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 8943):</b>
        {
            "bin1": {"type": "integer", "value": "214"},
            "hex1": {"type": "integer", "value": "3735928559"},
@@ -5415,7 +5431,7 @@ invalid tests: 288 passed, 110 failed
            "oct2": {"type": "integer", "value": "493"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 8943) (stdout):</b>
 
 
 <b>     want:</b>
@@ -5436,13 +5452,13 @@ invalid tests: 288 passed, 110 failed
 <b> </b>      Expected:     1979-05-27 07:32:00 +0100 datetime-local (time.Time)
 <b> </b>      Your encoder: 1979-05-27 06:32:00 +0100 datetime-local (time.Time)
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 9175):</b>
        {
            "ldt1": {"type": "datetime-local", "value": "1979-05-27T07:32:00"},
            "ldt2": {"type": "datetime-local", "value": "1979-05-27T00:32:00.999"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 9175) (stdout):</b>
        ldt1 = 1979-05-27T06:32:00.000
        ldt2 = 1979-05-26T23:32:00.999
 
@@ -5454,13 +5470,13 @@ invalid tests: 288 passed, 110 failed
 <b> </b>    decode TOML from encoder:
 <b> </b>      toml: line 1 (last key "lt1"): expected value but found "NaN" instead
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 9193):</b>
        {
            "lt1": {"type": "time-local", "value": "07:32:00"},
            "lt2": {"type": "time-local", "value": "00:32:00.999"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 9193) (stdout):</b>
        lt1 = NaN-NaN-NaNTNaN:NaN:NaN.NaN
        lt2 = NaN-NaN-NaNTNaN:NaN:NaN.NaN
 
@@ -5473,14 +5489,14 @@ invalid tests: 288 passed, 110 failed
 <b> </b>      Expected:     1979-05-27 07:32:00 +0000 UTC (time.Time)
 <b> </b>      Your encoder: 1979-05-27 07:32:00 +0100 datetime-local (time.Time)
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 9225):</b>
        {
            "odt1": {"type": "datetime", "value": "1979-05-27T07:32:00Z"},
            "odt2": {"type": "datetime", "value": "1979-05-27T00:32:00-07:00"},
            "odt3": {"type": "datetime", "value": "1979-05-27T00:32:00.999-07:00"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 9225) (stdout):</b>
        odt1 = 1979-05-27T07:32:00.000
        odt2 = 1979-05-27T07:32:00.000
        odt3 = 1979-05-27T07:32:00.999
@@ -5495,12 +5511,12 @@ invalid tests: 288 passed, 110 failed
 <b> </b>      Expected:     1979-05-27 07:32:00 +0000 UTC (time.Time)
 <b> </b>      Your encoder: 1979-05-27 07:32:00 +0100 datetime-local (time.Time)
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 9226):</b>
        {
            "odt4": {"type": "datetime", "value": "1979-05-27T07:32:00Z"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 9226) (stdout):</b>
        odt4 = 1979-05-27T07:32:00.000
 
 <b>     want:</b>
@@ -5509,7 +5525,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/spec-1.0.0/table-1</b>
 <b> </b>    Could not find key "table-1.key2" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 9476):</b>
        {
            "table-1": {
                "key1": {"type": "string", "value": "some string"},
@@ -5521,7 +5537,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 9476) (stdout):</b>
        [table-1]
        key1 = "some string"
 
@@ -5538,8 +5554,8 @@ invalid tests: 288 passed, 110 failed
        key2 = 456
 
 <b>FAIL</b> <b>valid/spec-example-1</b>
-<b> </b>    error: Uncaught (in promise) Error: should never reach
-<b> </b>        throw new Error("should never reach");
+<b> </b>    error: Uncaught (in promise) Error: Should never reach
+<b> </b>        throw new Error("Should never reach");
 <b> </b>              ^
 <b> </b>        at Dumper.#printAsInlineValue (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:161:11)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:147:60
@@ -5554,7 +5570,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 9655):</b>
        {
            "title": {"type": "string", "value": "TOML Example"},
            "clients": {
@@ -5599,9 +5615,9 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stderr):</b>
-       error: Uncaught (in promise) Error: should never reach
-           throw new Error("should never reach");
+<b>     output from parser-cmd (PID 9655) (stderr):</b>
+       error: Uncaught (in promise) Error: Should never reach
+           throw new Error("Should never reach");
                  ^
            at Dumper.#printAsInlineValue (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:161:11)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:147:60
@@ -5620,8 +5636,8 @@ invalid tests: 288 passed, 110 failed
           <empty>
 
 <b>FAIL</b> <b>valid/spec-example-1-compact</b>
-<b> </b>    error: Uncaught (in promise) Error: should never reach
-<b> </b>        throw new Error("should never reach");
+<b> </b>    error: Uncaught (in promise) Error: Should never reach
+<b> </b>        throw new Error("Should never reach");
 <b> </b>              ^
 <b> </b>        at Dumper.#printAsInlineValue (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:161:11)
 <b> </b>        at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:147:60
@@ -5636,7 +5652,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 9632):</b>
        {
            "title": {"type": "string", "value": "TOML Example"},
            "clients": {
@@ -5681,9 +5697,9 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stderr):</b>
-       error: Uncaught (in promise) Error: should never reach
-           throw new Error("should never reach");
+<b>     output from parser-cmd (PID 9632) (stderr):</b>
+       error: Uncaught (in promise) Error: Should never reach
+           throw new Error("Should never reach");
                  ^
            at Dumper.#printAsInlineValue (file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:161:11)
            at file:///home/martin/code/Toml/toml-test-matrix/src/js-deno-toml/toml/stringify.ts:147:60
@@ -5705,7 +5721,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>    decode TOML from encoder:
 <b> </b>      toml: line 4 (last key "delete"): TOML files cannot contain control characters: '0x7f'
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 9822):</b>
        {
            "backslash":     {"type": "string", "value": "|\\."},
            "backspace":     {"type": "string", "value": "|\b."},
@@ -5722,7 +5738,7 @@ invalid tests: 288 passed, 110 failed
            "unitseparator": {"type": "string", "value": "|\u001f."}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 9822) (stdout):</b>
        backslash = "|\\."
        backspace = "|\b."
        carriage = "|\r."
@@ -5758,7 +5774,7 @@ invalid tests: 288 passed, 110 failed
 <b> </b>    decode TOML from encoder:
 <b> </b>      toml: line 2 (last key "escaped_string"): TOML files cannot contain control characters: '0x7f'
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 9970):</b>
        {
            "basic_string":   {"type": "string", "value": "~  ÿ ퟿  ￿ 𐀀 􏿿"},
            "escaped_string": {"type": "string", "value": "\u0000 \b \f A   ÿ ퟿  ￿ 𐀀 􏿿"},
@@ -5769,7 +5785,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 9970) (stdout):</b>
        basic_string = "~  ÿ ퟿  ￿ 𐀀 􏿿"
        escaped_string = "\u0000 \b \f A   ÿ ퟿  ￿ 𐀀 􏿿"
        literal_string = "~  ÿ ퟿  ￿ 𐀀 􏿿"
@@ -5786,7 +5802,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/table/array-empty-name</b>
 <b> </b>    Could not find key "a" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 10139):</b>
        {
            "": [
                {"a": {"type": "integer", "value": "1"}},
@@ -5794,7 +5810,7 @@ invalid tests: 288 passed, 110 failed
            ]
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 10139) (stdout):</b>
        [[""]]
 
        [[""]]
@@ -5810,7 +5826,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/table/array-implicit-and-explicit-after</b>
 <b> </b>    Could not find key "a.y" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 10208):</b>
        {
            "a": {
                "b": [{
@@ -5820,7 +5836,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 10208) (stdout):</b>
        [a]
 
        [[a.b]]
@@ -5835,7 +5851,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/table/array-within-dotted</b>
 <b> </b>    Could not find key "fruit.apple.seeds.size" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 10280):</b>
        {
            "fruit": {
                "apple": {
@@ -5847,7 +5863,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 10280) (stdout):</b>
        [fruit.apple]
        color = "red"
 
@@ -5863,7 +5879,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/table/empty-name</b>
 <b> </b>    Could not find key "x" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 10351):</b>
        {
            "": {
                "x": {"type": "integer", "value": "1"},
@@ -5878,7 +5894,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 10351) (stdout):</b>
        ["".a]
 
        [a.""]
@@ -5896,7 +5912,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/table/keyword-with-values</b>
 <b> </b>    Could not find key "false.k" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 10403):</b>
        {
            "false": {
                "k": {"type": "integer", "value": "2"}
@@ -5912,7 +5928,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 10403) (stdout):</b>
        [false]
 
        [inf]
@@ -5937,7 +5953,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/table/names-with-values</b>
 <b> </b>    Could not find key "a. x .key" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 10424):</b>
        {
            "a": {
                " x ": {
@@ -5985,7 +6001,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 10424) (stdout):</b>
        [a." x "]
 
        [a.b.c]
@@ -6030,7 +6046,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/table/sub</b>
 <b> </b>    Could not find key "a.key" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 10479):</b>
        {
            "a": {
                "key": {"type": "integer", "value": "1"},
@@ -6043,7 +6059,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 10479) (stdout):</b>
        [a.extend.more]
 
 <b>     want:</b>
@@ -6060,7 +6076,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/table/with-literal-string</b>
 <b> </b>    Could not find key "a.\"b\".c.answer" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 10570):</b>
        {
            "a": {
                "\"b\"": {
@@ -6071,7 +6087,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 10570) (stdout):</b>
        [a."\"b\"".c]
 
 <b>     want:</b>
@@ -6083,14 +6099,14 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/table/with-pound</b>
 <b> </b>    Could not find key "key#group.answer" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 10571):</b>
        {
            "key#group": {
                "answer": {"type": "integer", "value": "42"}
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 10571) (stdout):</b>
        ["key#group"]
 
 <b>     want:</b>
@@ -6100,7 +6116,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/table/with-single-quotes</b>
 <b> </b>    Could not find key "a.b.c.answer" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 10578):</b>
        {
            "a": {
                "b": {
@@ -6111,7 +6127,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 10578) (stdout):</b>
        [a.b.c]
 
 <b>     want:</b>
@@ -6123,7 +6139,7 @@ invalid tests: 288 passed, 110 failed
 <b>FAIL</b> <b>valid/table/without-super-with-values</b>
 <b> </b>    Could not find key "x.c" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 10579):</b>
        {
            "x": {
                "c": {"type": "integer", "value": "3"},
@@ -6139,7 +6155,7 @@ invalid tests: 288 passed, 110 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 10579) (stdout):</b>
        [x.y.z.w]
 
 <b>     want:</b>
@@ -6153,7 +6169,7 @@ invalid tests: 288 passed, 110 failed
        c = 3
        d = 4
 
-toml-test v2025-04-21 [./js-deno-toml-encoder.ts]: using embedded tests,  1 skipped
-encoder tests: 114 passed, 89 failed
+toml-test v2025-04-23 [./js-deno-toml-encoder.ts]: using embedded tests,  1 skipped
+encoder tests: 115 passed, 89 failed
 took 5.7 0.52
 </pre>

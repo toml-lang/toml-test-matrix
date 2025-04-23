@@ -1,5 +1,32 @@
 <pre>
 tomlrb version 4edc50c
+<b>FAIL</b> <b>valid/datetime/milliseconds</b>
+<b> </b>    Values for key "utc1" don't match:
+<b> </b>      Expected:     1987-07-05 17:45:56.123 +0000 UTC
+<b> </b>      Your encoder: 1987-07-05 17:45:56.1229 +0000 UTC
+
+<b>     input sent to parser-cmd (PID 14174):</b>
+       utc1  = 1987-07-05T17:45:56.123Z
+       utc2  = 1987-07-05T17:45:56.6Z
+       wita1 = 1987-07-05T17:45:56.123+08:00
+       wita2 = 1987-07-05T17:45:56.6+08:00
+
+<b>     output from parser-cmd (PID 14174) (stdout):</b>
+       {
+         "utc1":  {"type": "datetime", "value": "1987-07-05T17:45:56.1229Z"},
+         "utc2":  {"type": "datetime", "value": "1987-07-05T17:45:56.6000Z"},
+         "wita1": {"type": "datetime", "value": "1987-07-05T17:45:56.1229+08:00"},
+         "wita2": {"type": "datetime", "value": "1987-07-05T17:45:56.6000+08:00"}
+       }
+
+<b>     want:</b>
+       {
+           "utc1":  {"type": "datetime", "value": "1987-07-05T17:45:56.123Z"},
+           "utc2":  {"type": "datetime", "value": "1987-07-05T17:45:56.600Z"},
+           "wita1": {"type": "datetime", "value": "1987-07-05T17:45:56.123+08:00"},
+           "wita2": {"type": "datetime", "value": "1987-07-05T17:45:56.600+08:00"}
+       }
+
 <b>FAIL</b> <b>valid/key/like-date</b>
 <b> </b>    /home/martin/code/Toml/toml-test-matrix/src/ruby-tomlrb/lib/tomlrb.rb:28:in `rescue in parse': parse error on value ["2001", "02", "03", nil, nil, nil, nil] (DATETIME) (Tomlrb::ParseError)
 <b> </b>    	from /home/martin/code/Toml/toml-test-matrix/src/ruby-tomlrb/lib/tomlrb.rb:25:in `parse'
@@ -13,7 +40,7 @@ tomlrb version 4edc50c
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 14278):</b>
        # '-' is a valid character in keys: make a key that looks like a date.
        2001-02-03   = 1
        "2001-02-04" = 2
@@ -40,7 +67,7 @@ tomlrb version 4edc50c
        [[2002-01-04]]
        k = 12
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 14278) (stderr):</b>
        /home/martin/code/Toml/toml-test-matrix/src/ruby-tomlrb/lib/tomlrb.rb:28:in `rescue in parse': parse error on value ["2001", "02", "03", nil, nil, nil, nil] (DATETIME) (Tomlrb::ParseError)
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-tomlrb/lib/tomlrb.rb:25:in `parse'
        	from ./ruby-tomlrb-decoder:35:in `<main>'
@@ -56,13 +83,71 @@ tomlrb version 4edc50c
 <b>     want:</b>
           <empty>
 
+<b>FAIL</b> <b>valid/spec-1.0.0/offset-date-time-0</b>
+<b> </b>    Values for key "odt3" don't match:
+<b> </b>      Expected:     1979-05-27 00:32:00.999 -0700 -0700
+<b> </b>      Your encoder: 1979-05-27 00:32:00.9989 -0700 -0700
+
+<b>     input sent to parser-cmd (PID 14375):</b>
+       odt1 = 1979-05-27T07:32:00Z
+       odt2 = 1979-05-27T00:32:00-07:00
+       odt3 = 1979-05-27T00:32:00.999-07:00
+
+<b>     output from parser-cmd (PID 14375) (stdout):</b>
+       {
+         "odt1": {"type": "datetime", "value": "1979-05-27T07:32:00Z"},
+         "odt2": {"type": "datetime", "value": "1979-05-27T00:32:00-07:00"},
+         "odt3": {"type": "datetime", "value": "1979-05-27T00:32:00.9989-07:00"}
+       }
+
+<b>     want:</b>
+       {
+           "odt1": {"type": "datetime", "value": "1979-05-27T07:32:00Z"},
+           "odt2": {"type": "datetime", "value": "1979-05-27T00:32:00-07:00"},
+           "odt3": {"type": "datetime", "value": "1979-05-27T00:32:00.999-07:00"}
+       }
+
+<b>FAIL</b> <b>invalid/array/double-comma-01</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 14544):</b>
+       double-comma-1 = [1,,2]
+
+<b>     output from parser-cmd (PID 14544) (stdout):</b>
+       {
+         "double-comma-1": [
+           {"type": "integer", "value": "1"},
+           {"type": "integer", "value": "2"}
+         ]
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/array/double-comma-02</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 14545):</b>
+       double-comma-2 = [1,2,,]
+
+<b>     output from parser-cmd (PID 14545) (stdout):</b>
+       {
+         "double-comma-2": [
+           {"type": "integer", "value": "1"},
+           {"type": "integer", "value": "2"}
+         ]
+       }
+
+<b>     want:</b>
+       Exit code 1
+
 <b>FAIL</b> <b>invalid/array/double-comma-1</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 14552):</b>
        double-comma-1 = [1,,2]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 14552) (stdout):</b>
        {
          "double-comma-1": [
            {"type": "integer", "value": "1"},
@@ -76,10 +161,10 @@ tomlrb version 4edc50c
 <b>FAIL</b> <b>invalid/array/double-comma-2</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 14554):</b>
        double-comma-2 = [1,2,,]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 14554) (stdout):</b>
        {
          "double-comma-2": [
            {"type": "integer", "value": "1"},
@@ -90,13 +175,41 @@ tomlrb version 4edc50c
 <b>     want:</b>
        Exit code 1
 
+<b>FAIL</b> <b>invalid/array/only-comma-01</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 14610):</b>
+       only-comma-1 = [,]
+
+<b>     output from parser-cmd (PID 14610) (stdout):</b>
+       {
+         "only-comma-1": []
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/array/only-comma-02</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 14612):</b>
+       only-comma-2 = [,,]
+
+<b>     output from parser-cmd (PID 14612) (stdout):</b>
+       {
+         "only-comma-2": []
+       }
+
+<b>     want:</b>
+       Exit code 1
+
 <b>FAIL</b> <b>invalid/array/only-comma-1</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 14614):</b>
        only-comma-1 = [,]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 14614) (stdout):</b>
        {
          "only-comma-1": []
        }
@@ -107,10 +220,10 @@ tomlrb version 4edc50c
 <b>FAIL</b> <b>invalid/array/only-comma-2</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 14618):</b>
        only-comma-2 = [,,]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 14618) (stdout):</b>
        {
          "only-comma-2": []
        }
@@ -121,10 +234,10 @@ tomlrb version 4edc50c
 <b>FAIL</b> <b>invalid/control/multi-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 14678):</b>
        multi-cr   = """null"""
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 14678) (stdout):</b>
        {
          "multi-cr": {"type": "string", "value": "null\r"}
        }
@@ -135,10 +248,10 @@ tomlrb version 4edc50c
 <b>FAIL</b> <b>invalid/control/rawmulti-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 14695):</b>
        rawmulti-cr   = '''null'''
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 14695) (stdout):</b>
        {
          "rawmulti-cr": {"type": "string", "value": "null\r"}
        }
@@ -149,10 +262,10 @@ tomlrb version 4edc50c
 <b>FAIL</b> <b>invalid/datetime/feb-29</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 14728):</b>
        "not a leap year" = 2100-02-29T15:15:15Z
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 14728) (stdout):</b>
        {
          "not a leap year": {"type": "datetime", "value": "2100-03-01T15:15:15Z"}
        }
@@ -163,10 +276,10 @@ tomlrb version 4edc50c
 <b>FAIL</b> <b>invalid/datetime/feb-30</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 14729):</b>
        "only 28 or 29 days in february" = 1988-02-30T15:15:15Z
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 14729) (stdout):</b>
        {
          "only 28 or 29 days in february": {"type": "datetime", "value": "1988-03-01T15:15:15Z"}
        }
@@ -174,13 +287,13 @@ tomlrb version 4edc50c
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/inline-table/duplicate-key-3</b>
+<b>FAIL</b> <b>invalid/inline-table/duplicate-key-03</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 14965):</b>
        tbl = { fruit = { apple.color = "red" }, fruit.apple.texture = { smooth = true } }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 14965) (stdout):</b>
        {
          "tbl": {
            "fruit": {
@@ -200,11 +313,11 @@ tomlrb version 4edc50c
 <b>FAIL</b> <b>invalid/inline-table/overwrite-03</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 14996):</b>
        a = { b = 1 }
        a.b = 2
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 14996) (stdout):</b>
        {
          "a": {
            "b": {"type": "integer", "value": "2"}
@@ -217,10 +330,10 @@ tomlrb version 4edc50c
 <b>FAIL</b> <b>invalid/inline-table/overwrite-08</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15007):</b>
        tab = { inner = { dog = "best" }, inner.cat = "worst" }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 15007) (stdout):</b>
        {
          "tab": {
            "inner": {
@@ -233,14 +346,14 @@ tomlrb version 4edc50c
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/key/dotted-redefine-table-1</b>
+<b>FAIL</b> <b>invalid/key/dotted-redefine-table-01</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15121):</b>
        a = false
        a.b = true
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 15121) (stdout):</b>
        {
          "a": {
            "b": {"type": "bool", "value": "true"}
@@ -253,10 +366,10 @@ tomlrb version 4edc50c
 <b>FAIL</b> <b>invalid/local-date/feb-29</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15225):</b>
        "not a leap year" = 2100-02-29
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 15225) (stdout):</b>
        {
          "not a leap year": {"type": "date-local", "value": "2100-03-01"}
        }
@@ -267,10 +380,10 @@ tomlrb version 4edc50c
 <b>FAIL</b> <b>invalid/local-date/feb-30</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15226):</b>
        "only 28 or 29 days in february" = 1988-02-30
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 15226) (stdout):</b>
        {
          "only 28 or 29 days in february": {"type": "date-local", "value": "1988-03-01"}
        }
@@ -281,10 +394,10 @@ tomlrb version 4edc50c
 <b>FAIL</b> <b>invalid/local-datetime/feb-29</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15248):</b>
        "not a leap year" = 2100-02-29T15:15:15
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 15248) (stdout):</b>
        {
          "not a leap year": {"type": "datetime-local", "value": "2100-03-01T15:15:15"}
        }
@@ -295,10 +408,10 @@ tomlrb version 4edc50c
 <b>FAIL</b> <b>invalid/local-datetime/feb-30</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15249):</b>
        "only 28 or 29 days in february" = 1988-02-30T15:15:15
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 15249) (stdout):</b>
        {
          "only 28 or 29 days in february": {"type": "datetime-local", "value": "1988-03-01T15:15:15"}
        }
@@ -309,11 +422,11 @@ tomlrb version 4edc50c
 <b>FAIL</b> <b>invalid/local-datetime/hour-over</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15253):</b>
        # time-hour       = 2DIGIT  ; 00-23
        d = 2006-01-01T24:00:00
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 15253) (stdout):</b>
        {
          "d": {"type": "datetime-local", "value": "2006-01-02T00:00:00"}
        }
@@ -324,11 +437,11 @@ tomlrb version 4edc50c
 <b>FAIL</b> <b>invalid/local-time/hour-over</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15279):</b>
        # time-hour       = 2DIGIT  ; 00-23
        d = 24:00:00
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 15279) (stdout):</b>
        {
          "d": {"type": "time-local", "value": "00:00:00"}
        }
@@ -336,15 +449,59 @@ tomlrb version 4edc50c
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/string/bad-escape-3</b>
+<b>FAIL</b> <b>invalid/string/bad-escape-03</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15318):</b>
        backslash = "\"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 15318) (stdout):</b>
        {
          "backslash": {"type": "string", "value": "\\"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/append-with-dotted-keys-04</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 15494):</b>
+       [dependencies.foo]
+       version = "0.16"
+
+       [dependencies]
+       libc = "0.2"
+
+       [dependencies]
+       rand = "0.3.14"
+
+<b>     output from parser-cmd (PID 15494) (stdout):</b>
+       {
+         "dependencies": {
+           "libc": {"type": "string", "value": "0.2"},
+           "rand": {"type": "string", "value": "0.3.14"},
+           "foo": {
+             "version": {"type": "string", "value": "0.16"}
+           }
+         }
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/append-with-dotted-keys-05</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 15495):</b>
+       a.b.c = 1
+       a.b = 2
+
+<b>     output from parser-cmd (PID 15495) (stdout):</b>
+       {
+         "a": {
+           "b": {"type": "integer", "value": "2"}
+         }
        }
 
 <b>     want:</b>
@@ -353,12 +510,12 @@ tomlrb version 4edc50c
 <b>FAIL</b> <b>invalid/table/super-twice</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 15601):</b>
        [a.b]
        [a]
        [a]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 15601) (stdout):</b>
        {
          "a": {
            "b": {}
@@ -368,9 +525,23 @@ tomlrb version 4edc50c
 <b>     want:</b>
        Exit code 1
 
-toml-test v2025-04-21 [./ruby-tomlrb-decoder]: using embedded tests
-  valid tests: 203 passed,  1 failed
-invalid tests: 378 passed, 20 failed
+<b>FAIL</b> <b>invalid/table/trailing-dot</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 15603):</b>
+       [a.]
+
+<b>     output from parser-cmd (PID 15603) (stdout):</b>
+       {
+         "a": {}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+toml-test v2025-04-23 [./ruby-tomlrb-decoder]: using embedded tests
+  valid tests: 202 passed,  3 failed
+invalid tests: 502 passed, 27 failed
 
 ==> ENCODER TESTS
 (not supported)

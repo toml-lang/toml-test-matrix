@@ -3,10 +3,10 @@ clop version c0c3fe7
 <b>FAIL</b> <b>valid/comment/nonascii</b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 703):</b>
        # ~  ÿ ퟿  ￿ 𐀀 􏿿
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 703) (stderr):</b>
        Exit 1
 
 <b>     want:</b>
@@ -15,7 +15,7 @@ clop version c0c3fe7
 <b>FAIL</b> <b>valid/key/quoted-unicode</b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 895):</b>
 
        "\u0000" = "null"
        '\u0000' = "different key"
@@ -24,7 +24,7 @@ clop version c0c3fe7
        "~  ÿ ퟿  ￿ 𐀀 􏿿" = "basic key"
        'l ~  ÿ ퟿  ￿ 𐀀 􏿿' = "literal key"
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 895) (stderr):</b>
        Exit 1
 
 <b>     want:</b>
@@ -33,7 +33,7 @@ clop version c0c3fe7
 <b>FAIL</b> <b>valid/multibyte</b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 910):</b>
        # Test multibyte throughout
 
        # Tèƨƭ ƒïℓè ƒôř TÓM£
@@ -55,7 +55,7 @@ clop version c0c3fe7
        			# ] Óλ ¥èƨ Ì δïδ
        			]
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 910) (stderr):</b>
        Exit 1
 
 <b>     want:</b>
@@ -66,7 +66,7 @@ clop version c0c3fe7
 <b> </b>      Expected:     5e+22
 <b> </b>      Your encoder: 5.0000000000000004e+22
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 927):</b>
        # fractional
        flt1 = +1.0
        flt2 = 3.1415
@@ -80,7 +80,7 @@ clop version c0c3fe7
        # both
        flt7 = 6.626e-34
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 927) (stdout):</b>
        {
          "flt1": {"type": "float", "value": "1.0"},
          "flt2": {"type": "float", "value": "3.1415"},
@@ -105,7 +105,7 @@ clop version c0c3fe7
 <b>FAIL</b> <b>valid/string/quoted-unicode</b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 1049):</b>
 
        escaped_string = "\u0000 \u0008 \u000c \U00000041 \u007f \u0080 \u00ff \ud7ff \ue000 \uffff \U00010000 \U0010ffff"
        not_escaped_string = '\u0000 \u0008 \u000c \U00000041 \u007f \u0080 \u00ff \ud7ff \ue000 \uffff \U00010000 \U0010ffff'
@@ -113,15 +113,15 @@ clop version c0c3fe7
        basic_string = "~  ÿ ퟿  ￿ 𐀀 􏿿"
        literal_string = '~  ÿ ퟿  ￿ 𐀀 􏿿'
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 1049) (stderr):</b>
        Exit 1
 
 <b>     want:</b>
           <empty>
 
-toml-test v2025-04-21 [./roswell/decoder]: using embedded tests
-  valid tests: 199 passed,  5 failed
-invalid tests: 398 passed,  0 failed
+toml-test v2025-04-23 [./roswell/decoder]: using embedded tests
+  valid tests: 200 passed,  5 failed
+invalid tests: 529 passed,  0 failed
 
 ==> ENCODER TESTS
 (not supported)

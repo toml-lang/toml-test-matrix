@@ -5,7 +5,7 @@ toml-rb version 36d9d5d
 <b> </b>      Expected:     map[string]any{"type":"datetime-local", "value":"1979-05-27T07:32:00"}
 <b> </b>      Your encoder: map[string]any{"type":"datetime", "value":"1979-05-27T07:32:00+01:00"}
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12137):</b>
        ints = [1, 2, 3, ]
        floats = [1.1, 2.1, 3.1]
        strings = ["a", "b", "c"]
@@ -20,7 +20,7 @@ toml-rb version 36d9d5d
                 2, #this is ok
        ]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12137) (stdout):</b>
        {
          "comments": [
            {"type": "integer", "value": "1"},
@@ -83,7 +83,7 @@ toml-rb version 36d9d5d
 <b> </b>      Expected:     map[string]any{"type":"date-local", "value":"1979-05-27"}
 <b> </b>      Your encoder: map[string]any{"type":"datetime", "value":"1979-05-27T00:00:00+01:00"}
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12199):</b>
        # Top comment.
          # Top comment.
        # Top comment.
@@ -118,7 +118,7 @@ toml-rb version 36d9d5d
        [[aot]]# Comment
        k = 99# Comment
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12199) (stdout):</b>
        {
          "aot": [
            {
@@ -181,7 +181,7 @@ toml-rb version 36d9d5d
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12202):</b>
        [section]#attached comment
        #[notsection]
        one = "11"#cmt
@@ -212,7 +212,7 @@ toml-rb version 36d9d5d
        ]
        tbl1 = { "#" = '}#'}#}}
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 12202) (stderr):</b>
        /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 22 at offset 5 (TomlRB::ParseError)
        2#,9
 
@@ -257,13 +257,13 @@ toml-rb version 36d9d5d
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12203):</b>
        space = 1987-07-05 17:45:00Z
 
        # ABNF is case-insensitive, both "Z" and "z" must be supported.
        lower = 1987-07-05t17:45:00z
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 12203) (stderr):</b>
        /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 4 at offset 21 (TomlRB::ParseError)
        lower = 1987-07-05t17:45:00z
 
@@ -292,7 +292,7 @@ toml-rb version 36d9d5d
 <b> </b>      Expected:     map[string]any{"type":"date-local", "value":"0001-01-01"}
 <b> </b>      Your encoder: map[string]any{"type":"datetime", "value":"0001-01-01T00:00:00-00:25"}
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12204):</b>
        first-offset = 0001-01-01 00:00:00Z
        first-local  = 0001-01-01 00:00:00
        first-date   = 0001-01-01
@@ -301,7 +301,7 @@ toml-rb version 36d9d5d
        last-local  = 9999-12-31 23:59:59
        last-date   = 9999-12-31
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12204) (stdout):</b>
        {
          "first-date":   {"type": "datetime", "value": "0001-01-01T00:00:00-00:25"},
          "first-local":  {"type": "datetime", "value": "0001-01-01T00:00:00-00:25"},
@@ -326,7 +326,7 @@ toml-rb version 36d9d5d
 <b> </b>      Expected:     map[string]any{"type":"date-local", "value":"2000-02-29"}
 <b> </b>      Your encoder: map[string]any{"type":"datetime", "value":"2000-02-29T00:00:00Z"}
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12214):</b>
        2000-datetime       = 2000-02-29 15:15:15Z
        2000-datetime-local = 2000-02-29 15:15:15
        2000-date           = 2000-02-29
@@ -335,7 +335,7 @@ toml-rb version 36d9d5d
        2024-datetime-local = 2024-02-29 15:15:15
        2024-date           = 2024-02-29
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12214) (stdout):</b>
        {
          "2000-date":           {"type": "datetime", "value": "2000-02-29T00:00:00Z"},
          "2000-datetime":       {"type": "datetime", "value": "2000-02-29T15:15:15Z"},
@@ -360,12 +360,12 @@ toml-rb version 36d9d5d
 <b> </b>      Expected:     map[string]any{"type":"datetime-local", "value":"1987-07-05T17:45:00"}
 <b> </b>      Your encoder: map[string]any{"type":"datetime", "value":"1987-07-05T17:45:00+01:00"}
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12218):</b>
        local = 1987-07-05T17:45:00
        milli = 1977-12-21T10:32:00.555
        space = 1987-07-05 17:45:00
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12218) (stdout):</b>
        {
          "local": {"type": "datetime", "value": "1987-07-05T17:45:00+01:00"},
          "milli": {"type": "datetime", "value": "1977-12-21T10:32:00.5550Z"},
@@ -384,10 +384,10 @@ toml-rb version 36d9d5d
 <b> </b>      Expected:     map[string]any{"type":"date-local", "value":"1987-07-05"}
 <b> </b>      Your encoder: map[string]any{"type":"datetime", "value":"1987-07-05T00:00:00+01:00"}
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12215):</b>
        bestdayever = 1987-07-05
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12215) (stdout):</b>
        {
          "bestdayever": {"type": "datetime", "value": "1987-07-05T00:00:00+01:00"}
        }
@@ -402,11 +402,11 @@ toml-rb version 36d9d5d
 <b> </b>      Expected:     map[string]any{"type":"time-local", "value":"17:45:00"}
 <b> </b>      Your encoder: map[string]any{"type":"datetime", "value":"1970-01-01T18:45:00+01:00"}
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12217):</b>
        besttimeever = 17:45:00
        milliseconds = 10:32:00.555
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12217) (stdout):</b>
        {
          "besttimeever": {"type": "datetime", "value": "1970-01-01T18:45:00+01:00"},
          "milliseconds": {"type": "datetime", "value": "1970-01-01T11:32:00.5550+01:00"}
@@ -416,6 +416,33 @@ toml-rb version 36d9d5d
        {
            "besttimeever": {"type": "time-local", "value": "17:45:00"},
            "milliseconds": {"type": "time-local", "value": "10:32:00.555"}
+       }
+
+<b>FAIL</b> <b>valid/datetime/milliseconds</b>
+<b> </b>    Values for key "utc1" don't match:
+<b> </b>      Expected:     1987-07-05 17:45:56.123 +0000 UTC
+<b> </b>      Your encoder: 1987-07-05 17:45:56.1229 +0000 UTC
+
+<b>     input sent to parser-cmd (PID 12219):</b>
+       utc1  = 1987-07-05T17:45:56.123Z
+       utc2  = 1987-07-05T17:45:56.6Z
+       wita1 = 1987-07-05T17:45:56.123+08:00
+       wita2 = 1987-07-05T17:45:56.6+08:00
+
+<b>     output from parser-cmd (PID 12219) (stdout):</b>
+       {
+         "utc1":  {"type": "datetime", "value": "1987-07-05T17:45:56.1229Z"},
+         "utc2":  {"type": "datetime", "value": "1987-07-05T17:45:56.6000Z"},
+         "wita1": {"type": "datetime", "value": "1987-07-05T17:45:56.1229+08:00"},
+         "wita2": {"type": "datetime", "value": "1987-07-05T17:45:56.6000+08:00"}
+       }
+
+<b>     want:</b>
+       {
+           "utc1":  {"type": "datetime", "value": "1987-07-05T17:45:56.123Z"},
+           "utc2":  {"type": "datetime", "value": "1987-07-05T17:45:56.600Z"},
+           "wita1": {"type": "datetime", "value": "1987-07-05T17:45:56.123+08:00"},
+           "wita2": {"type": "datetime", "value": "1987-07-05T17:45:56.600+08:00"}
        }
 
 <b>FAIL</b> <b>valid/empty-space</b>
@@ -437,10 +464,10 @@ toml-rb version 36d9d5d
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12229):</b>
 
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 12229) (stderr):</b>
        /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 1 at offset 1 (TomlRB::ParseError)
 
         ^
@@ -481,10 +508,10 @@ toml-rb version 36d9d5d
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12232):</b>
 
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 12232) (stderr):</b>
        /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 1 at offset 1 (TomlRB::ParseError)
 
         ^
@@ -526,10 +553,10 @@ toml-rb version 36d9d5d
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12272):</b>
        many.dots.here.dot.dot.dot = {a.b.c = 1, a.b.d = 2}
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 12272) (stderr):</b>
        /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/inline_table.rb:15:in `block (2 levels) in value': Key "a" is defined more than once (TomlRB::ValueOverwriteError)
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/inline_table.rb:15:in `merge!'
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/inline_table.rb:15:in `block in value'
@@ -557,10 +584,10 @@ toml-rb version 36d9d5d
 <b> </b>      Expected:     map[string]any{"type":"date-local", "value":"1979-05-27"}
 <b> </b>      Your encoder: map[string]any{"type":"datetime", "value":"1979-05-27T00:00:00+01:00"}
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12416):</b>
        ld1 = 1979-05-27
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12416) (stdout):</b>
        {
          "ld1": {"type": "datetime", "value": "1979-05-27T00:00:00+01:00"}
        }
@@ -575,11 +602,11 @@ toml-rb version 36d9d5d
 <b> </b>      Expected:     map[string]any{"type":"datetime-local", "value":"1979-05-27T07:32:00"}
 <b> </b>      Your encoder: map[string]any{"type":"datetime", "value":"1979-05-27T07:32:00+01:00"}
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12417):</b>
        ldt1 = 1979-05-27T07:32:00
        ldt2 = 1979-05-27T00:32:00.999
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12417) (stdout):</b>
        {
          "ldt1": {"type": "datetime", "value": "1979-05-27T07:32:00+01:00"},
          "ldt2": {"type": "datetime", "value": "1979-05-27T00:32:00.9990+01:00"}
@@ -596,11 +623,11 @@ toml-rb version 36d9d5d
 <b> </b>      Expected:     map[string]any{"type":"time-local", "value":"07:32:00"}
 <b> </b>      Your encoder: map[string]any{"type":"datetime", "value":"1970-01-01T08:32:00+01:00"}
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12420):</b>
        lt1 = 07:32:00
        lt2 = 00:32:00.999
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12420) (stdout):</b>
        {
          "lt1": {"type": "datetime", "value": "1970-01-01T08:32:00+01:00"},
          "lt2": {"type": "datetime", "value": "1970-01-01T01:32:00.9990+01:00"}
@@ -610,6 +637,30 @@ toml-rb version 36d9d5d
        {
            "lt1": {"type": "time-local", "value": "07:32:00"},
            "lt2": {"type": "time-local", "value": "00:32:00.999"}
+       }
+
+<b>FAIL</b> <b>valid/spec-1.0.0/offset-date-time-0</b>
+<b> </b>    Values for key "odt3" don't match:
+<b> </b>      Expected:     1979-05-27 00:32:00.999 -0700 -0700
+<b> </b>      Your encoder: 1979-05-27 00:32:00.9989 -0700 -0700
+
+<b>     input sent to parser-cmd (PID 12421):</b>
+       odt1 = 1979-05-27T07:32:00Z
+       odt2 = 1979-05-27T00:32:00-07:00
+       odt3 = 1979-05-27T00:32:00.999-07:00
+
+<b>     output from parser-cmd (PID 12421) (stdout):</b>
+       {
+         "odt1": {"type": "datetime", "value": "1979-05-27T07:32:00Z"},
+         "odt2": {"type": "datetime", "value": "1979-05-27T00:32:00-07:00"},
+         "odt3": {"type": "datetime", "value": "1979-05-27T00:32:00.9989-07:00"}
+       }
+
+<b>     want:</b>
+       {
+           "odt1": {"type": "datetime", "value": "1979-05-27T07:32:00Z"},
+           "odt2": {"type": "datetime", "value": "1979-05-27T00:32:00-07:00"},
+           "odt3": {"type": "datetime", "value": "1979-05-27T00:32:00.999-07:00"}
        }
 
 <b>FAIL</b> <b>valid/spec-1.0.0/string-4</b>
@@ -633,7 +684,7 @@ toml-rb version 36d9d5d
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12433):</b>
        str4 = """Here are two quotation marks: "". Simple enough."""
        # str5 = """Here are three quotation marks: """."""  # INVALID
        str5 = """Here are three quotation marks: ""\"."""
@@ -642,7 +693,7 @@ toml-rb version 36d9d5d
        # "This," she said, "is just a pointless statement."
        str7 = """"This," she said, "is just a pointless statement.""""
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 12433) (stderr):</b>
        /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 4 at offset 50 (TomlRB::ParseError)
        str6 = """Here are fifteen quotation marks: ""\"""\"""\"""\"""\"."""
 
@@ -671,7 +722,7 @@ toml-rb version 36d9d5d
 <b> </b>      Expected:     map[string]any{"type":"date-local", "value":"1999-08-04"}
 <b> </b>      Your encoder: map[string]any{"type":"datetime", "value":"1999-08-04T00:00:00+01:00"}
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12455):</b>
        # Top-level table begins.
        name = "Fido"
        breed = "pug"
@@ -681,7 +732,7 @@ toml-rb version 36d9d5d
        name = "Regina Dogman"
        member_since = 1999-08-04
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12455) (stdout):</b>
        {
          "breed": {"type": "string", "value": "pug"},
          "name":  {"type": "string", "value": "Fido"},
@@ -716,7 +767,7 @@ toml-rb version 36d9d5d
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12474):</b>
        beee = """
        heeee
        geeee\
@@ -724,7 +775,7 @@ toml-rb version 36d9d5d
 
              """
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 12474) (stderr):</b>
        /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/string.rb:38:in `parse_error': Escape sequence \  is reserved (TomlRB::ParseError)
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/string.rb:30:in `block in transform_escaped_chars'
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/string.rb:28:in `gsub'
@@ -763,7 +814,7 @@ toml-rb version 36d9d5d
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12476):</b>
        end_esc = "String does not end here\" but ends here\\"
        lit_end_esc = 'String ends here\'
 
@@ -780,7 +831,7 @@ toml-rb version 36d9d5d
 
        lit_multiline_end = '''There is no escape\'''
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 12476) (stderr):</b>
        /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:16:in `rescue in initialize': Failed to parse input on line 10 at offset 45 (TomlRB::ParseError)
        multiline_end_esc = """When will it end? \"""...""\" should be here\""""
 
@@ -819,7 +870,7 @@ toml-rb version 36d9d5d
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12493):</b>
        # NOTE: this file includes some literal tab characters.
 
        equivalent_one = "The quick brown fox jumps over the lazy dog."
@@ -858,7 +909,7 @@ toml-rb version 36d9d5d
        escape-bs-3 = """a \\\\
          b"""
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 12493) (stderr):</b>
        /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/string.rb:38:in `parse_error': Escape sequence \  is reserved (TomlRB::ParseError)
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/string.rb:30:in `block in transform_escaped_chars'
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/string.rb:28:in `gsub'
@@ -891,7 +942,7 @@ toml-rb version 36d9d5d
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12484):</b>
        empty-1 = """"""
 
        # A newline immediately following the opening delimiter will be trimmed.
@@ -907,7 +958,7 @@ toml-rb version 36d9d5d
           \
           """
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 12484) (stderr):</b>
        /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/string.rb:38:in `parse_error': Escape sequence \  is reserved (TomlRB::ParseError)
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/string.rb:30:in `block in transform_escaped_chars'
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/string.rb:28:in `gsub'
@@ -939,7 +990,7 @@ toml-rb version 36d9d5d
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12541):</b>
        [a.b.c]
        [a."b.c"]
        [a.'d.e']
@@ -950,7 +1001,7 @@ toml-rb version 36d9d5d
 
        [x.1.2]
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 12541) (stderr):</b>
        /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/table.rb:33:in `ensure_key_not_defined': Key "a.b.c" is defined more than once (TomlRB::ValueOverwriteError)
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/table.rb:8:in `navigate_keys'
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:32:in `visit_table'
@@ -981,7 +1032,7 @@ toml-rb version 36d9d5d
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12540):</b>
        [a.b.c]
        key = 1
 
@@ -1006,7 +1057,7 @@ toml-rb version 36d9d5d
        [x.1.2]
        key = 8
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 12540) (stderr):</b>
        /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/table.rb:33:in `ensure_key_not_defined': Key "a.b.c" is defined more than once (TomlRB::ValueOverwriteError)
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/table.rb:8:in `navigate_keys'
        	from /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/parser.rb:32:in `visit_table'
@@ -1026,7 +1077,7 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/array/extending-table</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12572):</b>
        a = [{ b = 1 }]
 
        # Cannot extend tables within static arrays
@@ -1034,7 +1085,7 @@ toml-rb version 36d9d5d
        [a.c]
        foo = 1
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12572) (stdout):</b>
        {
          "a": [{
            "b": {"type": "integer", "value": "1"},
@@ -1047,13 +1098,13 @@ toml-rb version 36d9d5d
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/array/only-comma-1</b>
+<b>FAIL</b> <b>invalid/array/only-comma-01</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12625):</b>
        only-comma-1 = [,]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12625) (stdout):</b>
        {
          "only-comma-1": []
        }
@@ -1061,16 +1112,30 @@ toml-rb version 36d9d5d
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/array/tables-1</b>
+<b>FAIL</b> <b>invalid/array/only-comma-1</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12630):</b>
+       only-comma-1 = [,]
+
+<b>     output from parser-cmd (PID 12630) (stdout):</b>
+       {
+         "only-comma-1": []
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/array/tables-01</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 12632):</b>
        # INVALID TOML DOC
        fruit = []
 
        [[fruit]] # Not allowed
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12632) (stdout):</b>
        {
          "fruit": [{}]
        }
@@ -1081,10 +1146,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/comment-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12681):</b>
        comment-cr   = "Carriage return in comment" # a=1
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12681) (stdout):</b>
        {
          "comment-cr": {"type": "string", "value": "Carriage return in comment"}
        }
@@ -1095,10 +1160,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/comment-del</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12682):</b>
        comment-del  = "0x7f"   # 
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12682) (stdout):</b>
        {
          "comment-del": {"type": "string", "value": "0x7f"}
        }
@@ -1109,10 +1174,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/comment-ff</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12684):</b>
        comment-ff   = "0x7f"   # 
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12684) (stdout):</b>
        {
          "comment-ff": {"type": "string", "value": "0x7f"}
        }
@@ -1123,10 +1188,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/comment-lf</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12691):</b>
        comment-lf   = "ctrl-P" # 
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12691) (stdout):</b>
        {
          "comment-lf": {"type": "string", "value": "ctrl-P"}
        }
@@ -1137,10 +1202,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/comment-null</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12692):</b>
        comment-null = "null"   #  
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12692) (stdout):</b>
        {
          "comment-null": {"type": "string", "value": "null"}
        }
@@ -1151,10 +1216,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/comment-us</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12695):</b>
        comment-us   = "ctrl-_" # 
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12695) (stdout):</b>
        {
          "comment-us": {"type": "string", "value": "ctrl-_"}
        }
@@ -1165,10 +1230,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/multi-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12697):</b>
        multi-cr   = """null"""
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12697) (stdout):</b>
        {
          "multi-cr": {"type": "string", "value": "null\r"}
        }
@@ -1179,10 +1244,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/multi-del</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12698):</b>
        multi-del  = """null"""
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12698) (stdout):</b>
        {
          "multi-del": {"type": "string", "value": "null"}
        }
@@ -1193,10 +1258,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/multi-lf</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12699):</b>
        multi-lf   = """null"""
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12699) (stdout):</b>
        {
          "multi-lf": {"type": "string", "value": "null\u0010"}
        }
@@ -1207,10 +1272,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/multi-null</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12703):</b>
        multi-null = """null """
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12703) (stdout):</b>
        {
          "multi-null": {"type": "string", "value": "null\u0000"}
        }
@@ -1221,10 +1286,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/multi-us</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12704):</b>
        multi-us   = """null"""
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12704) (stdout):</b>
        {
          "multi-us": {"type": "string", "value": "null\u001f"}
        }
@@ -1235,10 +1300,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/rawmulti-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12712):</b>
        rawmulti-cr   = '''null'''
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12712) (stdout):</b>
        {
          "rawmulti-cr": {"type": "string", "value": "null\r"}
        }
@@ -1249,10 +1314,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/rawmulti-del</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12714):</b>
        rawmulti-del  = '''null'''
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12714) (stdout):</b>
        {
          "rawmulti-del": {"type": "string", "value": "null"}
        }
@@ -1263,10 +1328,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/rawmulti-lf</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12715):</b>
        rawmulti-lf   = '''null'''
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12715) (stdout):</b>
        {
          "rawmulti-lf": {"type": "string", "value": "null\u0010"}
        }
@@ -1277,10 +1342,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/rawmulti-null</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12716):</b>
        rawmulti-null = '''null '''
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12716) (stdout):</b>
        {
          "rawmulti-null": {"type": "string", "value": "null\u0000"}
        }
@@ -1291,10 +1356,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/rawmulti-us</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12719):</b>
        rawmulti-us   = '''null'''
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12719) (stdout):</b>
        {
          "rawmulti-us": {"type": "string", "value": "null\u001f"}
        }
@@ -1305,10 +1370,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/rawstring-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12723):</b>
        rawstring-cr   = 'null'
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12723) (stdout):</b>
        {
          "rawstring-cr": {"type": "string", "value": "null\r"}
        }
@@ -1319,10 +1384,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/rawstring-del</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12725):</b>
        rawstring-del  = 'null'
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12725) (stdout):</b>
        {
          "rawstring-del": {"type": "string", "value": "null"}
        }
@@ -1333,10 +1398,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/rawstring-lf</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12727):</b>
        rawstring-lf   = 'null'
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12727) (stdout):</b>
        {
          "rawstring-lf": {"type": "string", "value": "null\u0010"}
        }
@@ -1347,10 +1412,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/rawstring-null</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12729):</b>
        rawstring-null = 'null '
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12729) (stdout):</b>
        {
          "rawstring-null": {"type": "string", "value": "null\u0000"}
        }
@@ -1361,10 +1426,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/rawstring-us</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12730):</b>
        rawstring-us   = 'null'
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12730) (stdout):</b>
        {
          "rawstring-us": {"type": "string", "value": "null\u001f"}
        }
@@ -1375,10 +1440,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/string-bs</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12731):</b>
        string-bs   = "backspace"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12731) (stdout):</b>
        {
          "string-bs": {"type": "string", "value": "backspace\b"}
        }
@@ -1389,10 +1454,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/string-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12735):</b>
        string-cr   = "null"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12735) (stdout):</b>
        {
          "string-cr": {"type": "string", "value": "null\r"}
        }
@@ -1403,10 +1468,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/string-del</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12736):</b>
        string-del  = "null"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12736) (stdout):</b>
        {
          "string-del": {"type": "string", "value": "null"}
        }
@@ -1417,10 +1482,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/string-lf</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12737):</b>
        string-lf   = "null"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12737) (stdout):</b>
        {
          "string-lf": {"type": "string", "value": "null\u0010"}
        }
@@ -1431,10 +1496,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/string-null</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12738):</b>
        string-null = "null "
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12738) (stdout):</b>
        {
          "string-null": {"type": "string", "value": "null\u0000"}
        }
@@ -1445,10 +1510,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/control/string-us</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12740):</b>
        string-us   = "null"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12740) (stdout):</b>
        {
          "string-us": {"type": "string", "value": "null\u001f"}
        }
@@ -1459,10 +1524,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/datetime/feb-29</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12746):</b>
        "not a leap year" = 2100-02-29T15:15:15Z
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12746) (stdout):</b>
        {
          "not a leap year": {"type": "datetime", "value": "2100-03-01T15:15:15Z"}
        }
@@ -1473,10 +1538,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/datetime/feb-30</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12747):</b>
        "only 28 or 29 days in february" = 1988-02-30T15:15:15Z
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12747) (stdout):</b>
        {
          "only 28 or 29 days in february": {"type": "datetime", "value": "1988-03-01T15:15:15Z"}
        }
@@ -1487,11 +1552,11 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/datetime/hour-over</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12749):</b>
        # time-hour       = 2DIGIT  ; 00-23
        d = 2006-01-01T24:00:00-00:00
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12749) (stdout):</b>
        {
          "d": {"type": "datetime", "value": "2006-01-02T00:00:00Z"}
        }
@@ -1502,10 +1567,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/float/leading-zero</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12918):</b>
        leading-zero = 03.14
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12918) (stdout):</b>
        {
          "leading-zero": {"type": "float", "value": "3.14"}
        }
@@ -1516,10 +1581,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/float/leading-zero-neg</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12914):</b>
        leading-zero-neg = -03.14
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12914) (stdout):</b>
        {
          "leading-zero-neg": {"type": "float", "value": "-3.14"}
        }
@@ -1530,10 +1595,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/float/leading-zero-plus</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 12917):</b>
        leading-zero-plus = +03.14
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 12917) (stdout):</b>
        {
          "leading-zero-plus": {"type": "float", "value": "3.14"}
        }
@@ -1544,12 +1609,12 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/inline-table/overwrite-02</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13010):</b>
        a={}
        # Inline tables are immutable and can't be extended
        [a.b]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13010) (stdout):</b>
        {
          "a": {
            "b": {}
@@ -1562,12 +1627,12 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/inline-table/overwrite-05</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13016):</b>
        inline-t = { nest = {} }
 
        [inline-t.nest]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13016) (stdout):</b>
        {
          "inline-t": {
            "nest": {}
@@ -1577,13 +1642,55 @@ toml-rb version 36d9d5d
 <b>     want:</b>
        Exit code 1
 
+<b>FAIL</b> <b>invalid/integer/leading-zero-01</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 13071):</b>
+       leading-zero-1 = 01
+
+<b>     output from parser-cmd (PID 13071) (stdout):</b>
+       {
+         "leading-zero-1": {"type": "integer", "value": "1"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/integer/leading-zero-02</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 13072):</b>
+       leading-zero-2 = 00
+
+<b>     output from parser-cmd (PID 13072) (stdout):</b>
+       {
+         "leading-zero-2": {"type": "integer", "value": "0"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/integer/leading-zero-03</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 13076):</b>
+       leading-zero-3 = 0_0
+
+<b>     output from parser-cmd (PID 13076) (stdout):</b>
+       {
+         "leading-zero-3": {"type": "integer", "value": "0"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
 <b>FAIL</b> <b>invalid/integer/leading-zero-1</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13078):</b>
        leading-zero-1 = 01
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13078) (stdout):</b>
        {
          "leading-zero-1": {"type": "integer", "value": "1"}
        }
@@ -1594,10 +1701,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/integer/leading-zero-2</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13079):</b>
        leading-zero-2 = 00
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13079) (stdout):</b>
        {
          "leading-zero-2": {"type": "integer", "value": "0"}
        }
@@ -1608,12 +1715,54 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/integer/leading-zero-3</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13081):</b>
        leading-zero-3 = 0_0
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13081) (stdout):</b>
        {
          "leading-zero-3": {"type": "integer", "value": "0"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/integer/leading-zero-sign-01</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 13082):</b>
+       leading-zero-sign-1 = -01
+
+<b>     output from parser-cmd (PID 13082) (stdout):</b>
+       {
+         "leading-zero-sign-1": {"type": "integer", "value": "-1"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/integer/leading-zero-sign-02</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 13086):</b>
+       leading-zero-sign-2 = +01
+
+<b>     output from parser-cmd (PID 13086) (stdout):</b>
+       {
+         "leading-zero-sign-2": {"type": "integer", "value": "1"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/integer/leading-zero-sign-03</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 13087):</b>
+       leading-zero-sign-3 = +0_1
+
+<b>     output from parser-cmd (PID 13087) (stdout):</b>
+       {
+         "leading-zero-sign-3": {"type": "integer", "value": "1"}
        }
 
 <b>     want:</b>
@@ -1622,10 +1771,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/integer/leading-zero-sign-1</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13090):</b>
        leading-zero-sign-1 = -01
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13090) (stdout):</b>
        {
          "leading-zero-sign-1": {"type": "integer", "value": "-1"}
        }
@@ -1636,10 +1785,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/integer/leading-zero-sign-2</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13092):</b>
        leading-zero-sign-2 = +01
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13092) (stdout):</b>
        {
          "leading-zero-sign-2": {"type": "integer", "value": "1"}
        }
@@ -1650,10 +1799,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/integer/leading-zero-sign-3</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13094):</b>
        leading-zero-sign-3 = +0_1
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13094) (stdout):</b>
        {
          "leading-zero-sign-3": {"type": "integer", "value": "1"}
        }
@@ -1664,10 +1813,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/key/after-array</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13125):</b>
        [[agencies]] owner = "S Cjelli"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13125) (stdout):</b>
        {
          "agencies": [{
            "owner": {"type": "string", "value": "S Cjelli"}
@@ -1680,10 +1829,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/key/after-table</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13127):</b>
        [error] this = "should not be here"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13127) (stdout):</b>
        {
          "error": {
            "this": {"type": "string", "value": "should not be here"}
@@ -1696,10 +1845,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/key/after-value</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13129):</b>
        first = "Tom" last = "Preston-Werner" # INVALID
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13129) (stdout):</b>
        {
          "first": {"type": "string", "value": "Tom"},
          "last":  {"type": "string", "value": "Preston-Werner"}
@@ -1708,13 +1857,13 @@ toml-rb version 36d9d5d
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/key/no-eol</b>
+<b>FAIL</b> <b>invalid/key/no-eol-01</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13182):</b>
        a = 1 b = 2
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13182) (stdout):</b>
        {
          "a": {"type": "integer", "value": "1"},
          "b": {"type": "integer", "value": "2"}
@@ -1723,13 +1872,109 @@ toml-rb version 36d9d5d
 <b>     want:</b>
        Exit code 1
 
+<b>FAIL</b> <b>invalid/key/no-eol-02</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 13187):</b>
+       0=0r=false
+
+<b>     output from parser-cmd (PID 13187) (stdout):</b>
+       {
+         "0": {"type": "integer", "value": "0"},
+         "r": {"type": "bool", "value": "false"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/key/no-eol-03</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 13189):</b>
+       0=""o=""m=""r=""00="0"q="""0"""e="""0"""
+
+<b>     output from parser-cmd (PID 13189) (stdout):</b>
+       {
+         "0":  {"type": "string", "value": ""},
+         "00": {"type": "string", "value": "0"},
+         "e":  {"type": "string", "value": "0"},
+         "m":  {"type": "string", "value": ""},
+         "o":  {"type": "string", "value": ""},
+         "q":  {"type": "string", "value": "0"},
+         "r":  {"type": "string", "value": ""}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/key/no-eol-04</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 13191):</b>
+       [[0000l0]]
+       0="0"[[0000l0]]
+       0="0"[[0000l0]]
+       0="0"l="0"
+
+<b>     output from parser-cmd (PID 13191) (stdout):</b>
+       {
+         "0000l0": [
+           {
+             "0": {"type": "string", "value": "0"}
+           },
+           {
+             "0": {"type": "string", "value": "0"}
+           },
+           {
+             "0": {"type": "string", "value": "0"},
+             "l": {"type": "string", "value": "0"}
+           }
+         ]
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/key/no-eol-06</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 13195):</b>
+       0=0r0=0r=false
+
+<b>     output from parser-cmd (PID 13195) (stdout):</b>
+       {
+         "0":  {"type": "integer", "value": "0"},
+         "r":  {"type": "bool", "value": "false"},
+         "r0": {"type": "integer", "value": "0"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/key/no-eol-07</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 13196):</b>
+       0=0r0=0r=falsefal=false
+
+<b>     output from parser-cmd (PID 13196) (stdout):</b>
+       {
+         "0":   {"type": "integer", "value": "0"},
+         "fal": {"type": "bool", "value": "false"},
+         "r":   {"type": "bool", "value": "false"},
+         "r0":  {"type": "integer", "value": "0"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
 <b>FAIL</b> <b>invalid/local-date/feb-29</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13243):</b>
        "not a leap year" = 2100-02-29
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13243) (stdout):</b>
        {
          "not a leap year": {"type": "datetime", "value": "2100-03-01T00:00:00Z"}
        }
@@ -1740,10 +1985,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/local-date/feb-30</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13246):</b>
        "only 28 or 29 days in february" = 1988-02-30
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13246) (stdout):</b>
        {
          "only 28 or 29 days in february": {"type": "datetime", "value": "1988-03-01T00:00:00Z"}
        }
@@ -1754,10 +1999,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/local-datetime/feb-29</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13267):</b>
        "not a leap year" = 2100-02-29T15:15:15
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13267) (stdout):</b>
        {
          "not a leap year": {"type": "datetime", "value": "2100-03-01T15:15:15Z"}
        }
@@ -1768,10 +2013,10 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/local-datetime/feb-30</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13269):</b>
        "only 28 or 29 days in february" = 1988-02-30T15:15:15
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13269) (stdout):</b>
        {
          "only 28 or 29 days in february": {"type": "datetime", "value": "1988-03-01T15:15:15Z"}
        }
@@ -1782,11 +2027,11 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/local-datetime/hour-over</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13270):</b>
        # time-hour       = 2DIGIT  ; 00-23
        d = 2006-01-01T24:00:00
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13270) (stdout):</b>
        {
          "d": {"type": "datetime", "value": "2006-01-02T00:00:00Z"}
        }
@@ -1797,11 +2042,11 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/local-time/hour-over</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13297):</b>
        # time-hour       = 2DIGIT  ; 00-23
        d = 24:00:00
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13297) (stdout):</b>
        {
          "d": {"type": "datetime", "value": "1970-01-02T01:00:00+01:00"}
        }
@@ -1812,11 +2057,11 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/local-time/minute-over</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13299):</b>
        # time-minute     = 2DIGIT  ; 00-59
        d = 00:60:00
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13299) (stdout):</b>
        {
          "d": {"type": "datetime", "value": "1970-01-01T02:00:00+01:00"}
        }
@@ -1827,12 +2072,12 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/local-time/second-over</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13302):</b>
        # time-second     = 2DIGIT  ; 00-58, 00-59, 00-60 based on leap second
        #                           ; rules
        d = 00:00:61
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13302) (stdout):</b>
        {
          "d": {"type": "datetime", "value": "1970-01-01T01:01:01+01:00"}
        }
@@ -1843,7 +2088,7 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/spec-1.0.0/table-9-0</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13324):</b>
        [fruit]
        apple.color = "red"
        apple.taste.sweet = true
@@ -1854,7 +2099,7 @@ toml-rb version 36d9d5d
        [fruit.apple.texture]  # you can add sub-tables
        smooth = true
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13324) (stdout):</b>
        {
          "fruit": {
            "apple": {
@@ -1875,7 +2120,7 @@ toml-rb version 36d9d5d
 <b>FAIL</b> <b>invalid/spec-1.0.0/table-9-1</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13327):</b>
        [fruit]
        apple.color = "red"
        apple.taste.sweet = true
@@ -1886,7 +2131,7 @@ toml-rb version 36d9d5d
        [fruit.apple.texture]  # you can add sub-tables
        smooth = true
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13327) (stdout):</b>
        {
          "fruit": {
            "apple": {
@@ -1904,13 +2149,13 @@ toml-rb version 36d9d5d
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/string/bad-escape-3</b>
+<b>FAIL</b> <b>invalid/string/bad-escape-03</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13336):</b>
        backslash = "\"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13336) (stdout):</b>
        {
          "backslash": {"type": "string", "value": ""}
        }
@@ -1918,13 +2163,13 @@ toml-rb version 36d9d5d
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/string/literal-multiline-quotes-1</b>
+<b>FAIL</b> <b>invalid/string/literal-multiline-quotes-01</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13423):</b>
        a = '''6 apostrophes: ''''''
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13423) (stdout):</b>
        {
          "a": {"type": "string", "value": "6 apostrophes: '''"}
        }
@@ -1932,13 +2177,13 @@ toml-rb version 36d9d5d
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/string/literal-multiline-quotes-2</b>
+<b>FAIL</b> <b>invalid/string/literal-multiline-quotes-02</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13425):</b>
        a = '''15 apostrophes: ''''''''''''''''''
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13425) (stdout):</b>
        {
          "a": {"type": "string", "value": "15 apostrophes: '''''''''''''''"}
        }
@@ -1946,13 +2191,13 @@ toml-rb version 36d9d5d
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/string/multiline-bad-escape-4</b>
+<b>FAIL</b> <b>invalid/string/multiline-bad-escape-04</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13439):</b>
        backslash = """\"""
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13439) (stdout):</b>
        {
          "backslash": {"type": "string", "value": "\\"}
        }
@@ -1960,13 +2205,13 @@ toml-rb version 36d9d5d
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/string/multiline-quotes-1</b>
+<b>FAIL</b> <b>invalid/string/multiline-quotes-01</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13462):</b>
        a = """6 quotes: """"""
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13462) (stdout):</b>
        {
          "a": {"type": "string", "value": "6 quotes: \"\"\""}
        }
@@ -1974,10 +2219,10 @@ toml-rb version 36d9d5d
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/table/append-with-dotted-keys-1</b>
+<b>FAIL</b> <b>invalid/table/append-with-dotted-keys-01</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13504):</b>
        # First a.b.c defines a table: a.b.c = {z=9}
        #
        # Then we define a.b.c.t = "str" to add a str to the above table, making it:
@@ -1996,7 +2241,7 @@ toml-rb version 36d9d5d
        [a]
          b.c.t = "Using dotted keys to add to [a.b.c] after explicitly defining it above is not allowed"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13504) (stdout):</b>
        {
          "a": {
            "b": {
@@ -2014,10 +2259,10 @@ toml-rb version 36d9d5d
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/table/append-with-dotted-keys-2</b>
+<b>FAIL</b> <b>invalid/table/append-with-dotted-keys-02</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13505):</b>
        # This is the same issue as in injection-1.toml, except that nests one level
        # deeper. See that file for a more complete description.
 
@@ -2027,7 +2272,7 @@ toml-rb version 36d9d5d
        [a]
          b.c.d.k.t = "Using dotted keys to add to [a.b.c.d] after explicitly defining it above is not allowed"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13505) (stdout):</b>
        {
          "a": {
            "b": {
@@ -2049,16 +2294,16 @@ toml-rb version 36d9d5d
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/table/duplicate-key-dotted-table</b>
+<b>FAIL</b> <b>invalid/table/duplicate-key-04</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13544):</b>
        [fruit]
        apple.color = "red"
 
        [fruit.apple] # INVALID
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13544) (stdout):</b>
        {
          "fruit": {
            "apple": {
@@ -2070,16 +2315,16 @@ toml-rb version 36d9d5d
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/table/duplicate-key-dotted-table2</b>
+<b>FAIL</b> <b>invalid/table/duplicate-key-05</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13547):</b>
        [fruit]
        apple.taste.sweet = true
 
        [fruit.apple.taste] # INVALID
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13547) (stdout):</b>
        {
          "fruit": {
            "apple": {
@@ -2093,14 +2338,14 @@ toml-rb version 36d9d5d
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/table/duplicate-table-array2</b>
+<b>FAIL</b> <b>invalid/table/duplicate-key-07</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13551):</b>
        [[tbl]]
        [tbl]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13551) (stdout):</b>
        {
          "tbl": [{}]
        }
@@ -2108,15 +2353,30 @@ toml-rb version 36d9d5d
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/table/redefine-2</b>
+<b>FAIL</b> <b>invalid/table/duplicate-key-10</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13556):</b>
+       a = []
+       [[a.b]]
+
+<b>     output from parser-cmd (PID 13556) (stdout):</b>
+       {
+         "a": [{"b": [{}]}]
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/redefine-02</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 13611):</b>
        [t1]
        t2.t3.v = 0
        [t1.t2]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13611) (stdout):</b>
        {
          "t1": {
            "t2": {
@@ -2130,15 +2390,15 @@ toml-rb version 36d9d5d
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/table/redefine-3</b>
+<b>FAIL</b> <b>invalid/table/redefine-03</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13613):</b>
        [t1]
        t2.t3.v = 0
        [t1.t2.t3]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13613) (stdout):</b>
        {
          "t1": {
            "t2": {
@@ -2152,9 +2412,9 @@ toml-rb version 36d9d5d
 <b>     want:</b>
        Exit code 1
 
-toml-test v2025-04-21 [./ruby-toml-rb-decoder]: using embedded tests
-  valid tests: 181 passed, 23 failed
-invalid tests: 328 passed, 70 failed
+toml-test v2025-04-23 [./ruby-toml-rb-decoder]: using embedded tests
+  valid tests: 180 passed, 25 failed
+invalid tests: 446 passed, 83 failed
 
 ==> ENCODER TESTS
 <b>FAIL</b> <b>valid/array/array</b>
@@ -2172,7 +2432,7 @@ invalid tests: 328 passed, 70 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13639):</b>
        {
            "comments": [
                {"type": "integer", "value": "1"},
@@ -2201,7 +2461,7 @@ invalid tests: 328 passed, 70 failed
            ]
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 13639) (stderr):</b>
        ./ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 
            when "datetime" then Time.iso8601(val)
@@ -2238,7 +2498,7 @@ invalid tests: 328 passed, 70 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13675):</b>
        {
            "contributors": [
                {"type": "string", "value": "Foo Bar \u003cfoo@example.com\u003e"},
@@ -2257,7 +2517,7 @@ invalid tests: 328 passed, 70 failed
            ]
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 13675) (stderr):</b>
        /home/martin/code/Toml/toml-test-matrix/src/ruby-toml-rb/lib/toml-rb/dumper.rb:32:in `sort_pairs': undefined method `keys' for an instance of String (NoMethodError)
 
              hash.keys.sort.each do |key|
@@ -2283,7 +2543,7 @@ invalid tests: 328 passed, 70 failed
 <b> </b>    decode TOML from encoder:
 <b> </b>      toml: line 2 (last key "inf"): expected value but found "Infinity" instead
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13693):</b>
        {
            "false": {"type": "bool", "value": "false"},
            "inf":   {"type": "float", "value": "inf"},
@@ -2291,7 +2551,7 @@ invalid tests: 328 passed, 70 failed
            "true":  {"type": "bool", "value": "true"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13693) (stdout):</b>
        false = false
        inf = Infinity
        nan = NaN
@@ -2321,7 +2581,7 @@ invalid tests: 328 passed, 70 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13701):</b>
        {
            "aot": [
                {
@@ -2342,7 +2602,7 @@ invalid tests: 328 passed, 70 failed
            }
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 13701) (stderr):</b>
        ./ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 
          if json.key?("type")
@@ -2375,13 +2635,13 @@ invalid tests: 328 passed, 70 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13706):</b>
        {
            "lower": {"type": "datetime", "value": "1987-07-05T17:45:00Z"},
            "space": {"type": "datetime", "value": "1987-07-05T17:45:00Z"}
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 13706) (stderr):</b>
        ./ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 
            when "datetime" then Time.iso8601(val)
@@ -2411,7 +2671,7 @@ invalid tests: 328 passed, 70 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13714):</b>
        {
            "first-date":   {"type": "date-local", "value": "0001-01-01"},
            "first-local":  {"type": "datetime-local", "value": "0001-01-01T00:00:00"},
@@ -2421,7 +2681,7 @@ invalid tests: 328 passed, 70 failed
            "last-offset":  {"type": "datetime", "value": "9999-12-31T23:59:59Z"}
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 13714) (stderr):</b>
        ./ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 
          if json.key?("type")
@@ -2454,7 +2714,7 @@ invalid tests: 328 passed, 70 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13718):</b>
        {
            "2000-date":           {"type": "date-local", "value": "2000-02-29"},
            "2000-datetime":       {"type": "datetime", "value": "2000-02-29T15:15:15Z"},
@@ -2464,7 +2724,7 @@ invalid tests: 328 passed, 70 failed
            "2024-datetime-local": {"type": "datetime-local", "value": "2024-02-29T15:15:15"}
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 13718) (stderr):</b>
        ./ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 
          if json.key?("type")
@@ -2497,14 +2757,14 @@ invalid tests: 328 passed, 70 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13722):</b>
        {
            "local": {"type": "datetime-local", "value": "1987-07-05T17:45:00"},
            "milli": {"type": "datetime-local", "value": "1977-12-21T10:32:00.555"},
            "space": {"type": "datetime-local", "value": "1987-07-05T17:45:00"}
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 13722) (stderr):</b>
        ./ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 
          if json.key?("type")
@@ -2537,12 +2797,12 @@ invalid tests: 328 passed, 70 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13720):</b>
        {
            "bestdayever": {"type": "date-local", "value": "1987-07-05"}
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 13720) (stderr):</b>
        ./ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 
          if json.key?("type")
@@ -2575,13 +2835,13 @@ invalid tests: 328 passed, 70 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13721):</b>
        {
            "besttimeever": {"type": "time-local", "value": "17:45:00"},
            "milliseconds": {"type": "time-local", "value": "10:32:00.555"}
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 13721) (stderr):</b>
        ./ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 
          if json.key?("type")
@@ -2611,7 +2871,7 @@ invalid tests: 328 passed, 70 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13723):</b>
        {
            "utc1":  {"type": "datetime", "value": "1987-07-05T17:45:56.123Z"},
            "utc2":  {"type": "datetime", "value": "1987-07-05T17:45:56.600Z"},
@@ -2619,7 +2879,7 @@ invalid tests: 328 passed, 70 failed
            "wita2": {"type": "datetime", "value": "1987-07-05T17:45:56.600+08:00"}
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 13723) (stderr):</b>
        ./ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 
            when "datetime" then Time.iso8601(val)
@@ -2646,7 +2906,7 @@ invalid tests: 328 passed, 70 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13724):</b>
        {
            "nzdt": {"type": "datetime", "value": "1987-07-05T17:45:56+13:00"},
            "nzst": {"type": "datetime", "value": "1987-07-05T17:45:56+12:00"},
@@ -2654,7 +2914,7 @@ invalid tests: 328 passed, 70 failed
            "utc":  {"type": "datetime", "value": "1987-07-05T17:45:56Z"}
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 13724) (stderr):</b>
        ./ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 
            when "datetime" then Time.iso8601(val)
@@ -2681,7 +2941,7 @@ invalid tests: 328 passed, 70 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13736):</b>
        {
            "best-day-ever": {"type": "datetime", "value": "1987-07-05T17:45:00Z"},
            "numtheory": {
@@ -2694,7 +2954,7 @@ invalid tests: 328 passed, 70 failed
            }
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 13736) (stderr):</b>
        ./ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 
            when "datetime" then Time.iso8601(val)
@@ -2713,7 +2973,7 @@ invalid tests: 328 passed, 70 failed
 <b> </b>    decode TOML from encoder:
 <b> </b>      toml: line 1 (last key "infinity"): expected value but found "Infinity" instead
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13743):</b>
        {
            "infinity":      {"type": "float", "value": "inf"},
            "infinity_neg":  {"type": "float", "value": "-inf"},
@@ -2723,7 +2983,7 @@ invalid tests: 328 passed, 70 failed
            "nan_plus":      {"type": "float", "value": "nan"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13743) (stdout):</b>
        infinity = Infinity
        infinity_neg = -Infinity
        infinity_plus = Infinity
@@ -2745,7 +3005,7 @@ invalid tests: 328 passed, 70 failed
 <b> </b>    decode TOML from encoder:
 <b> </b>      toml: line 1 (last key "arr-2.a"): expected value but found '>' instead
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13784):</b>
        {
            "arr-1": [{
                "a": {
@@ -2787,7 +3047,7 @@ invalid tests: 328 passed, 70 failed
            ]
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13784) (stdout):</b>
        arr-2 = ["str", {"a"=>{"b"=>1}}]
        arr-4 = ["str", {"a"=>{"b"=>1}}, {"a"=>{"b"=>2}}]
        [[arr-1]]
@@ -2811,7 +3071,7 @@ invalid tests: 328 passed, 70 failed
 <b> </b>    decode TOML from encoder:
 <b> </b>      toml: line 2 (last key "arr_arr_tbl_val.one"): expected value but found '>' instead
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13790):</b>
        {
            "arr_arr_tbl_empty": [[{}]],
            "arr_arr_tbl_val":   [[{
@@ -2843,7 +3103,7 @@ invalid tests: 328 passed, 70 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13790) (stdout):</b>
        arr_arr_tbl_empty = [[{}]]
        arr_arr_tbl_val = [[{"one"=>1}]]
        arr_arr_tbls = [[{"one"=>1}, {"two"=>2}]]
@@ -2872,7 +3132,7 @@ invalid tests: 328 passed, 70 failed
 <b> </b>    decode TOML from encoder:
 <b> </b>      toml: line 2: expected four hexadecimal digits after '\u', but got "\\b \\f A \\u007F \\u0080 ÿ \\uD7FF \ue000 \\uFFFF 𐀀 \\u{" instead
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13851):</b>
        {
            "\u0000":               {"type": "string", "value": "null"},
            "\b \f A   ÿ ퟿  ￿ 𐀀 􏿿": {"type": "string", "value": "escaped key"},
@@ -2881,7 +3141,7 @@ invalid tests: 328 passed, 70 failed
            "~  ÿ ퟿  ￿ 𐀀 􏿿":        {"type": "string", "value": "basic key"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13851) (stdout):</b>
        "\u0000" = "null"
        "\b \f A \u007F \u0080 ÿ \uD7FF  \uFFFF 𐀀 \u{10FFFF}" = "escaped key"
        "\\u0000" = "different key"
@@ -2901,7 +3161,7 @@ invalid tests: 328 passed, 70 failed
 <b> </b>    decode TOML from encoder:
 <b> </b>      toml: line 2 (last key "contributors.email"): expected value but found '>' instead
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13871):</b>
        {
            "colors": [
                {"type": "string", "value": "red"},
@@ -2959,7 +3219,7 @@ invalid tests: 328 passed, 70 failed
            ]
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13871) (stdout):</b>
        colors = ["red", "yellow", "green"]
        contributors = ["Foo Bar <foo@example.com>", {"email"=>"bazqux@example.com", "name"=>"Baz Qux", "url"=>"https://example.com/bazqux"}]
        integers = [1, 2, 3]
@@ -2986,7 +3246,7 @@ invalid tests: 328 passed, 70 failed
 <b> </b>    decode TOML from encoder:
 <b> </b>      toml: line 1 (last key "sf1"): expected value but found "Infinity" instead
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13889):</b>
        {
            "sf1": {"type": "float", "value": "inf"},
            "sf2": {"type": "float", "value": "inf"},
@@ -2996,7 +3256,7 @@ invalid tests: 328 passed, 70 failed
            "sf6": {"type": "float", "value": "nan"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 13889) (stdout):</b>
        sf1 = Infinity
        sf2 = Infinity
        sf3 = -Infinity
@@ -3030,12 +3290,12 @@ invalid tests: 328 passed, 70 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13922):</b>
        {
            "ld1": {"type": "date-local", "value": "1979-05-27"}
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 13922) (stderr):</b>
        ./ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 
          if json.key?("type")
@@ -3068,13 +3328,13 @@ invalid tests: 328 passed, 70 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13924):</b>
        {
            "ldt1": {"type": "datetime-local", "value": "1979-05-27T07:32:00"},
            "ldt2": {"type": "datetime-local", "value": "1979-05-27T00:32:00.999"}
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 13924) (stderr):</b>
        ./ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 
          if json.key?("type")
@@ -3107,13 +3367,13 @@ invalid tests: 328 passed, 70 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13925):</b>
        {
            "lt1": {"type": "time-local", "value": "07:32:00"},
            "lt2": {"type": "time-local", "value": "00:32:00.999"}
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 13925) (stderr):</b>
        ./ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 
          if json.key?("type")
@@ -3143,14 +3403,14 @@ invalid tests: 328 passed, 70 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13926):</b>
        {
            "odt1": {"type": "datetime", "value": "1979-05-27T07:32:00Z"},
            "odt2": {"type": "datetime", "value": "1979-05-27T00:32:00-07:00"},
            "odt3": {"type": "datetime", "value": "1979-05-27T00:32:00.999-07:00"}
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 13926) (stderr):</b>
        ./ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 
            when "datetime" then Time.iso8601(val)
@@ -3177,12 +3437,12 @@ invalid tests: 328 passed, 70 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13927):</b>
        {
            "odt4": {"type": "datetime", "value": "1979-05-27T07:32:00Z"}
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 13927) (stderr):</b>
        ./ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 
            when "datetime" then Time.iso8601(val)
@@ -3215,7 +3475,7 @@ invalid tests: 328 passed, 70 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13959):</b>
        {
            "breed": {"type": "string", "value": "pug"},
            "name":  {"type": "string", "value": "Fido"},
@@ -3225,7 +3485,7 @@ invalid tests: 328 passed, 70 failed
            }
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 13959) (stderr):</b>
        ./ruby-toml-rb-encoder:10:in `convert': undefined method `key?' for an instance of String (NoMethodError)
 
          if json.key?("type")
@@ -3261,7 +3521,7 @@ invalid tests: 328 passed, 70 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13970):</b>
        {
            "title": {"type": "string", "value": "TOML Example"},
            "clients": {
@@ -3306,7 +3566,7 @@ invalid tests: 328 passed, 70 failed
            }
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 13970) (stderr):</b>
        ./ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 
            when "datetime" then Time.iso8601(val)
@@ -3339,7 +3599,7 @@ invalid tests: 328 passed, 70 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 13966):</b>
        {
            "title": {"type": "string", "value": "TOML Example"},
            "clients": {
@@ -3384,7 +3644,7 @@ invalid tests: 328 passed, 70 failed
            }
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 13966) (stderr):</b>
        ./ruby-toml-rb-encoder:24:in `convert': undefined method `iso8601' for class Time (NoMethodError)
 
            when "datetime" then Time.iso8601(val)
@@ -3406,7 +3666,7 @@ invalid tests: 328 passed, 70 failed
 <b> </b>    decode TOML from encoder:
 <b> </b>      toml: line 1 (last key "basic_string"): expected four hexadecimal digits after '\u', but got "~ \\u0080 ÿ \\uD7FF \ue000 \\uFFFF 𐀀 \\u{" instead
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 14003):</b>
        {
            "basic_string":   {"type": "string", "value": "~  ÿ ퟿  ￿ 𐀀 􏿿"},
            "escaped_string": {"type": "string", "value": "\u0000 \b \f A   ÿ ퟿  ￿ 𐀀 􏿿"},
@@ -3417,7 +3677,7 @@ invalid tests: 328 passed, 70 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 14003) (stdout):</b>
        basic_string = "~ \u0080 ÿ \uD7FF  \uFFFF 𐀀 \u{10FFFF}"
        escaped_string = "\u0000 \b \f A \u007F \u0080 ÿ \uD7FF  \uFFFF 𐀀 \u{10FFFF}"
        literal_string = "~ \u0080 ÿ \uD7FF  \uFFFF 𐀀 \u{10FFFF}"
@@ -3431,7 +3691,7 @@ invalid tests: 328 passed, 70 failed
        basic_string = "~  ÿ ퟿  ￿ 𐀀 􏿿"
        literal_string = '~  ÿ ퟿  ￿ 𐀀 􏿿'
 
-toml-test v2025-04-21 [./ruby-toml-rb-encoder]: using embedded tests
-encoder tests: 176 passed, 28 failed
+toml-test v2025-04-23 [./ruby-toml-rb-encoder]: using embedded tests
+encoder tests: 177 passed, 28 failed
 took 46.0 126.60
 </pre>

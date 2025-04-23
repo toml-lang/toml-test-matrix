@@ -20,7 +20,7 @@ toml-f version 056d362
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28757):</b>
        "\n" = "newline"
        "\b" = "bell"
        "\u00c0" = "latin capital letter A with grave"
@@ -33,7 +33,7 @@ toml-f version 056d362
 
        ["a.b"."\u00c0"]
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 28757) (stderr):</b>
        error: Invalid character in key
         --> stdin:1:1-4
          |
@@ -76,7 +76,7 @@ toml-f version 056d362
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28767):</b>
        plain = 1
        "with.dot" = 2
 
@@ -89,7 +89,7 @@ toml-f version 056d362
        "key.with.dots" = 6
        "escaped\u002edot" = 7
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 28767) (stderr):</b>
        error: Invalid syntax
          --> stdin:11:1-18
           |
@@ -132,7 +132,7 @@ toml-f version 056d362
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28766):</b>
 
        "\u0000" = "null"
        '\u0000' = "different key"
@@ -141,7 +141,7 @@ toml-f version 056d362
        "~  ÿ ퟿  ￿ 𐀀 􏿿" = "basic key"
        'l ~  ÿ ퟿  ￿ 𐀀 􏿿' = "literal key"
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 28766) (stderr):</b>
        error: Invalid syntax
         --> stdin:2:1-8
          |
@@ -184,7 +184,7 @@ toml-f version 056d362
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28768):</b>
        # Keep whitespace inside quotes keys at all positions.
        "a b"   = 1
        " c d " = 2
@@ -193,7 +193,7 @@ toml-f version 056d362
        [ " tbl " ]
        "\ttab\ttab\t" = "tab"
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 28768) (stderr):</b>
        error: Invalid character in key
         --> stdin:4:1-36
          |
@@ -222,10 +222,10 @@ toml-f version 056d362
 <b> </b>    Location	SF.
 <b> </b>      Your encoder: I'm a string. "You can quote me". Name	JosénLocation	SF.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28806):</b>
        str = "I'm a string. \"You can quote me\". Name\tJos\u00E9\nLocation\tSF."
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 28806) (stdout):</b>
        {
          "str": {"type": "string", "value": "I'm a string. \"You can quote me\". Name\tJosénLocation\tSF."}
        }
@@ -242,7 +242,7 @@ toml-f version 056d362
 <b> </b>
 <b> </b>      fox jumps over     the lazy dog.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28808):</b>
        # The following strings are byte-for-byte equivalent:
        str1 = "The quick brown fox jumps over the lazy dog."
 
@@ -259,7 +259,7 @@ toml-f version 056d362
               the lazy dog.\
               """
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 28808) (stdout):</b>
        {
          "str1": {"type": "string", "value": "The quick brown fox jumps over the lazy dog."},
          "str2": {"type": "string", "value": "The quick brown \n\n  fox jumps over     the lazy dog."},
@@ -283,7 +283,7 @@ toml-f version 056d362
 <b> </b>      Your encoder: heeee
 <b> </b>    geeee
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28830):</b>
        beee = """
        heeee
        geeee\
@@ -291,7 +291,7 @@ toml-f version 056d362
 
              """
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 28830) (stdout):</b>
        {
          "beee": {"type": "string", "value": "heeee\ngeeee\n\n      "}
        }
@@ -321,7 +321,7 @@ toml-f version 056d362
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28832):</b>
        end_esc = "String does not end here\" but ends here\\"
        lit_end_esc = 'String ends here\'
 
@@ -338,7 +338,7 @@ toml-f version 056d362
 
        lit_multiline_end = '''There is no escape\'''
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 28832) (stderr):</b>
        error: Invalid expression for value
         --> stdin:4:21-33
          |
@@ -365,7 +365,7 @@ toml-f version 056d362
 <b> </b>    decode JSON output from parser:
 <b> </b>      invalid character '\x1f' in string literal
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28833):</b>
        backspace     = "|\b."
        tab           = "|\t."
        newline       = "|\n."
@@ -382,7 +382,7 @@ toml-f version 056d362
        notunicode3   = "|\\u0075."
        notunicode4   = "|\\\u0075."
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 28833) (stdout):</b>
        {
          "backspace": {"type": "string", "value": "|\b."},
          "tab": {"type": "string", "value": "|\t."},
@@ -416,12 +416,66 @@ toml-f version 056d362
            "unitseparator": {"type": "string", "value": "|\u001f."}
        }
 
+<b>FAIL</b> <b>valid/string/multibyte-escape</b>
+<b> </b>    error: Invalid expression for value
+<b> </b>     --> stdin:4:14-62
+<b> </b>      |
+<b> </b>    4 | basic-1    = "\u0251 \u20ac \U00010AF1 \u0251\u20ac\U00010AF1"
+<b> </b>      |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unexpected invalid sequence
+<b> </b>      |
+<b> </b>    ERROR STOP
+<b> </b>
+<b> </b>    Error termination. Backtrace:
+<b> </b>    #0  0x… in ???
+<b> </b>    #1  0x… in ???
+<b> </b>    #2  0x… in ???
+<b> </b>    #3  0x… in toml2json
+<b> </b>    	at ../test/compliance/toml2json.f90:63
+<b> </b>    #4  0x… in main
+<b> </b>    	at ../test/compliance/toml2json.f90:17
+<b> </b>
+<b> </b>    Exit 1
+
+<b>     input sent to parser-cmd (PID 28834):</b>
+       # Test each multibyte length: 2, 3, and 4 bytes:
+       # ɑ € 𐫱
+
+       basic-1    = "\u0251 \u20ac \U00010AF1 \u0251\u20ac\U00010AF1"
+       ml-basic-1 = """\u0251 \u20ac \U00010AF1 \u0251\u20ac\U00010AF1"""
+
+       # Again, but only using \U
+       basic-2    = "\U00000251 \U000020ac \U00010AF1 \U00000251\U000020ac\U00010AF1"
+       ml-basic-2 = """\U00000251 \U000020ac \U00010AF1 \U00000251\U000020ac\U00010AF1"""
+
+<b>     output from parser-cmd (PID 28834) (stderr):</b>
+       error: Invalid expression for value
+        --> stdin:4:14-62
+         |
+       4 | basic-1    = "\u0251 \u20ac \U00010AF1 \u0251\u20ac\U00010AF1"
+         |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unexpected invalid sequence
+         |
+       ERROR STOP
+
+       Error termination. Backtrace:
+       #0  0x… in ???
+       #1  0x… in ???
+       #2  0x… in ???
+       #3  0x… in toml2json
+       	at ../test/compliance/toml2json.f90:63
+       #4  0x… in main
+       	at ../test/compliance/toml2json.f90:17
+
+       Exit 1
+
+<b>     want:</b>
+          <empty>
+
 <b>FAIL</b> <b>valid/string/multiline</b>
 <b> </b>    Values for key "equivalent_three" don't match:
 <b> </b>      Expected:     The quick brown fox jumps over the lazy dog.
 <b> </b>      Your encoder:        The quick brown        fox jumps over        the lazy dog.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28839):</b>
        # NOTE: this file includes some literal tab characters.
 
        equivalent_one = "The quick brown fox jumps over the lazy dog."
@@ -460,7 +514,7 @@ toml-f version 056d362
        escape-bs-3 = """a \\\\
          b"""
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 28839) (stdout):</b>
        {
          "equivalent_one": {"type": "string", "value": "The quick brown fox jumps over the lazy dog."},
          "equivalent_two": {"type": "string", "value": "The quick brown \n\n  fox jumps over     the lazy dog."},
@@ -497,7 +551,7 @@ toml-f version 056d362
 <b> </b>      Expected:
 <b> </b>      Your encoder:
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28836):</b>
        empty-1 = """"""
 
        # A newline immediately following the opening delimiter will be trimmed.
@@ -513,7 +567,7 @@ toml-f version 056d362
           \
           """
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 28836) (stdout):</b>
        {
          "empty-1": {"type": "string", "value": ""},
          "empty-2": {"type": "string", "value": ""},
@@ -549,7 +603,7 @@ toml-f version 056d362
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28840):</b>
 
        escaped_string = "\u0000 \u0008 \u000c \U00000041 \u007f \u0080 \u00ff \ud7ff \ue000 \uffff \U00010000 \U0010ffff"
        not_escaped_string = '\u0000 \u0008 \u000c \U00000041 \u007f \u0080 \u00ff \ud7ff \ue000 \uffff \U00010000 \U0010ffff'
@@ -557,7 +611,7 @@ toml-f version 056d362
        basic_string = "~  ÿ ퟿  ￿ 𐀀 􏿿"
        literal_string = '~  ÿ ퟿  ￿ 𐀀 􏿿'
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 28840) (stderr):</b>
        error: Invalid expression for value
         --> stdin:2:18-114
          |
@@ -600,7 +654,7 @@ toml-f version 056d362
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28846):</b>
        delta-1 = "\u03B4"
        delta-2 = "\U000003B4"
        a       = "\u0061"
@@ -617,7 +671,7 @@ toml-f version 056d362
        ml-null-1  = """\u0000"""
        ml-null-2  = """\U00000000"""
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 28846) (stderr):</b>
        error: Invalid expression for value
         --> stdin:6:11-18
          |
@@ -643,12 +697,12 @@ toml-f version 056d362
 <b>FAIL</b> <b>invalid/array/extend-defined-aot</b>
 <b> </b>    signal: segmentation fault
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28877):</b>
        [[tab.arr]]
        [tab]
        arr.val1=1
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 28877) (stderr):</b>
        Program received signal SIGSEGV: Segmentation fault - invalid memory reference.
 
        Backtrace for this error:
@@ -675,7 +729,7 @@ toml-f version 056d362
 <b>FAIL</b> <b>invalid/array/extending-table</b>
 <b> </b>    signal: aborted
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28879):</b>
        a = [{ b = 1 }]
 
        # Cannot extend tables within static arrays
@@ -683,7 +737,7 @@ toml-f version 056d362
        [a.c]
        foo = 1
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 28879) (stderr):</b>
        double free or corruption (out)
 
        Program received signal SIGABRT: Process abort signal.
@@ -728,11 +782,11 @@ toml-f version 056d362
 <b>FAIL</b> <b>invalid/control/bare-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28929):</b>
        # The following line contains a single carriage return control character
        
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 28929) (stdout):</b>
        {}
 
 <b>     want:</b>
@@ -741,10 +795,10 @@ toml-f version 056d362
 <b>FAIL</b> <b>invalid/control/comment-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28933):</b>
        comment-cr   = "Carriage return in comment" # a=1
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 28933) (stdout):</b>
        {
          "a":          {"type": "integer", "value": "1"},
          "comment-cr": {"type": "string", "value": "Carriage return in comment"}
@@ -756,10 +810,10 @@ toml-f version 056d362
 <b>FAIL</b> <b>invalid/control/comment-del</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28934):</b>
        comment-del  = "0x7f"   # 
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 28934) (stdout):</b>
        {
          "comment-del": {"type": "string", "value": "0x7f"}
        }
@@ -770,10 +824,10 @@ toml-f version 056d362
 <b>FAIL</b> <b>invalid/control/comment-ff</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28935):</b>
        comment-ff   = "0x7f"   # 
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 28935) (stdout):</b>
        {
          "comment-ff": {"type": "string", "value": "0x7f"}
        }
@@ -784,10 +838,10 @@ toml-f version 056d362
 <b>FAIL</b> <b>invalid/control/comment-lf</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28936):</b>
        comment-lf   = "ctrl-P" # 
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 28936) (stdout):</b>
        {
          "comment-lf": {"type": "string", "value": "ctrl-P"}
        }
@@ -798,10 +852,10 @@ toml-f version 056d362
 <b>FAIL</b> <b>invalid/control/comment-null</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28937):</b>
        comment-null = "null"   #  
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 28937) (stdout):</b>
        {
          "comment-null": {"type": "string", "value": "null"}
        }
@@ -812,10 +866,10 @@ toml-f version 056d362
 <b>FAIL</b> <b>invalid/control/comment-us</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28938):</b>
        comment-us   = "ctrl-_" # 
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 28938) (stdout):</b>
        {
          "comment-us": {"type": "string", "value": "ctrl-_"}
        }
@@ -826,10 +880,10 @@ toml-f version 056d362
 <b>FAIL</b> <b>invalid/control/multi-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28939):</b>
        multi-cr   = """null"""
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 28939) (stdout):</b>
        {
          "multi-cr": {"type": "string", "value": "null\n"}
        }
@@ -840,10 +894,10 @@ toml-f version 056d362
 <b>FAIL</b> <b>invalid/control/rawmulti-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28947):</b>
        rawmulti-cr   = '''null'''
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 28947) (stdout):</b>
        {
          "rawmulti-cr": {"type": "string", "value": "null\n"}
        }
@@ -854,11 +908,11 @@ toml-f version 056d362
 <b>FAIL</b> <b>invalid/datetime/time-no-leads</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28995):</b>
        # Leading 0 is always required.
        d = 2023-10-01T1:32:00Z
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 28995) (stdout):</b>
        {
          "d": {"type": "date-local", "value": "2023-10-01"}
        }
@@ -869,10 +923,10 @@ toml-f version 056d362
 <b>FAIL</b> <b>invalid/encoding/bad-codepoint</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 28998):</b>
        # Invalid codepoint U+D800 : ���
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 28998) (stdout):</b>
        {}
 
 <b>     want:</b>
@@ -881,10 +935,10 @@ toml-f version 056d362
 <b>FAIL</b> <b>invalid/encoding/bad-utf8-in-comment</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29001):</b>
        # �
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29001) (stdout):</b>
        {}
 
 <b>     want:</b>
@@ -893,11 +947,11 @@ toml-f version 056d362
 <b>FAIL</b> <b>invalid/encoding/bad-utf8-in-multiline</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29003):</b>
        # The following line contains an invalid UTF-8 sequence.
        bad = """�"""
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29003) (stdout):</b>
        {
          "bad": {"type": "string", "value": "�"}
        }
@@ -908,11 +962,11 @@ toml-f version 056d362
 <b>FAIL</b> <b>invalid/encoding/bad-utf8-in-multiline-literal</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29002):</b>
        # The following line contains an invalid UTF-8 sequence.
        bad = '''�'''
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29002) (stdout):</b>
        {
          "bad": {"type": "string", "value": "�"}
        }
@@ -923,11 +977,11 @@ toml-f version 056d362
 <b>FAIL</b> <b>invalid/encoding/bad-utf8-in-string</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29005):</b>
        # The following line contains an invalid UTF-8 sequence.
        bad = "�"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29005) (stdout):</b>
        {
          "bad": {"type": "string", "value": "�"}
        }
@@ -938,11 +992,11 @@ toml-f version 056d362
 <b>FAIL</b> <b>invalid/encoding/bad-utf8-in-string-literal</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29004):</b>
        # The following line contains an invalid UTF-8 sequence.
        bad = '�'
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29004) (stdout):</b>
        {
          "bad": {"type": "string", "value": "�"}
        }
@@ -950,13 +1004,13 @@ toml-f version 056d362
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/inline-table/duplicate-key-4</b>
+<b>FAIL</b> <b>invalid/inline-table/duplicate-key-04</b>
 <b> </b>    signal: segmentation fault
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29082):</b>
        tbl = { a.b = "a_b", a.b.c = "a_b_c" }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 29082) (stderr):</b>
        Program received signal SIGSEGV: Segmentation fault - invalid memory reference.
 
        Backtrace for this error:
@@ -991,10 +1045,10 @@ toml-f version 056d362
 <b>FAIL</b> <b>invalid/inline-table/overwrite-06</b>
 <b> </b>    signal: segmentation fault
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29099):</b>
        a = { b = 1, b.c = 2 }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 29099) (stderr):</b>
        Program received signal SIGSEGV: Segmentation fault - invalid memory reference.
 
        Backtrace for this error:
@@ -1027,10 +1081,10 @@ toml-f version 056d362
 <b>FAIL</b> <b>invalid/inline-table/overwrite-07</b>
 <b> </b>    signal: segmentation fault
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29100):</b>
        tab = { inner.table = [{}], inner.table.val = "bad" }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 29100) (stderr):</b>
        Program received signal SIGSEGV: Segmentation fault - invalid memory reference.
 
        Backtrace for this error:
@@ -1062,14 +1116,14 @@ toml-f version 056d362
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/key/dotted-redefine-table-1</b>
+<b>FAIL</b> <b>invalid/key/dotted-redefine-table-01</b>
 <b> </b>    signal: segmentation fault
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29159):</b>
        a = false
        a.b = true
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 29159) (stderr):</b>
        Program received signal SIGSEGV: Segmentation fault - invalid memory reference.
 
        Backtrace for this error:
@@ -1093,16 +1147,16 @@ toml-f version 056d362
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/key/dotted-redefine-table-2</b>
+<b>FAIL</b> <b>invalid/key/dotted-redefine-table-02</b>
 <b> </b>    signal: segmentation fault
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29160):</b>
        # Defined a.b as int
        a.b = 1
        # Tries to access it as table: error
        a.b.c = 2
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 29160) (stderr):</b>
        Program received signal SIGSEGV: Segmentation fault - invalid memory reference.
 
        Backtrace for this error:
@@ -1128,14 +1182,14 @@ toml-f version 056d362
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/key/duplicate-keys-6</b>
+<b>FAIL</b> <b>invalid/key/duplicate-keys-06</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29166):</b>
        "a'b"      = 1
        "a\u0027b" = 2
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29166) (stdout):</b>
        {
          "a'":  {"type": "integer", "value": "2"},
          "a'b": {"type": "integer", "value": "1"}
@@ -1147,11 +1201,11 @@ toml-f version 056d362
 <b>FAIL</b> <b>invalid/local-datetime/hour-over</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29225):</b>
        # time-hour       = 2DIGIT  ; 00-23
        d = 2006-01-01T24:00:00
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29225) (stdout):</b>
        {
          "d": {"type": "datetime", "value": "2006-01-01 24:00:00
 
@@ -1164,11 +1218,11 @@ toml-f version 056d362
 <b>FAIL</b> <b>invalid/local-datetime/minute-over</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29228):</b>
        # time-minute     = 2DIGIT  ; 00-59
        d = 2006-01-01T00:60:00
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29228) (stdout):</b>
        {
          "d": {"type": "datetime", "value": "2006-01-01 00:60:00
 
@@ -1181,12 +1235,12 @@ toml-f version 056d362
 <b>FAIL</b> <b>invalid/local-datetime/second-over</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29235):</b>
        # time-second     = 2DIGIT  ; 00-58, 00-59, 00-60 based on leap second
        #                           ; rules
        d = 2006-01-01T00:00:61
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29235) (stdout):</b>
        {
          "d": {"type": "datetime", "value": "2006-01-01 00:00:61
 
@@ -1199,11 +1253,11 @@ toml-f version 056d362
 <b>FAIL</b> <b>invalid/local-datetime/time-no-leads</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29236):</b>
        # Leading 0 is always required.
        d = 2023-10-01T1:32:00Z
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29236) (stdout):</b>
        {
          "d": {"type": "date-local", "value": "2023-10-01"}
        }
@@ -1211,13 +1265,13 @@ toml-f version 056d362
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/string/basic-out-of-range-unicode-escape-2</b>
+<b>FAIL</b> <b>invalid/string/basic-out-of-range-unicode-escape-02</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29299):</b>
        a = "\U00D80000"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29299) (stdout):</b>
        {
          "a": {"type": "string", "value": "�����"}
        }
@@ -1225,16 +1279,91 @@ toml-f version 056d362
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/table/append-to-array-with-dotted-keys</b>
+<b>FAIL</b> <b>invalid/table/append-with-dotted-keys-01</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 29342):</b>
+       # First a.b.c defines a table: a.b.c = {z=9}
+       #
+       # Then we define a.b.c.t = "str" to add a str to the above table, making it:
+       #
+       #   a.b.c = {z=9, t="..."}
+       #
+       # While this makes sense, logically, it was decided this is not valid TOML as
+       # it's too confusing/convoluted.
+       #
+       # See: https://github.com/toml-lang/toml/issues/846
+       #      https://github.com/toml-lang/toml/pull/859
+
+       [a.b.c]
+         z = 9
+
+       [a]
+         b.c.t = "Using dotted keys to add to [a.b.c] after explicitly defining it above is not allowed"
+
+<b>     output from parser-cmd (PID 29342) (stdout):</b>
+       {
+         "a": {
+           "b": {
+             "c": {
+               "z": {"type": "integer", "value": "9"},
+               "t": {
+                 "type":  "string",
+                 "value": "Using dotted keys to add to [a.b.c] after explicitly defining it above is not allowed"
+               }
+             }
+           }
+         }
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/append-with-dotted-keys-02</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 29343):</b>
+       # This is the same issue as in injection-1.toml, except that nests one level
+       # deeper. See that file for a more complete description.
+
+       [a.b.c.d]
+         z = 9
+
+       [a]
+         b.c.d.k.t = "Using dotted keys to add to [a.b.c.d] after explicitly defining it above is not allowed"
+
+<b>     output from parser-cmd (PID 29343) (stdout):</b>
+       {
+         "a": {
+           "b": {
+             "c": {
+               "d": {
+                 "z": {"type": "integer", "value": "9"},
+                 "k": {
+                   "t": {
+                     "type":  "string",
+                     "value": "Using dotted keys to add to [a.b.c.d] after explicitly defining it above is not allowed"
+                   }
+                 }
+               }
+             }
+           }
+         }
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/append-with-dotted-keys-03</b>
 <b> </b>    signal: segmentation fault
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29344):</b>
        [[a.b]]
 
        [a]
        b.y = 2
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 29344) (stderr):</b>
        Program received signal SIGSEGV: Segmentation fault - invalid memory reference.
 
        Backtrace for this error:
@@ -1258,39 +1387,26 @@ toml-f version 056d362
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/table/append-with-dotted-keys-1</b>
+<b>FAIL</b> <b>invalid/table/append-with-dotted-keys-04</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
-       # First a.b.c defines a table: a.b.c = {z=9}
-       #
-       # Then we define a.b.c.t = "str" to add a str to the above table, making it:
-       #
-       #   a.b.c = {z=9, t="..."}
-       #
-       # While this makes sense, logically, it was decided this is not valid TOML as
-       # it's too confusing/convoluted.
-       #
-       # See: https://github.com/toml-lang/toml/issues/846
-       #      https://github.com/toml-lang/toml/pull/859
+<b>     input sent to parser-cmd (PID 29345):</b>
+       [dependencies.foo]
+       version = "0.16"
 
-       [a.b.c]
-         z = 9
+       [dependencies]
+       libc = "0.2"
 
-       [a]
-         b.c.t = "Using dotted keys to add to [a.b.c] after explicitly defining it above is not allowed"
+       [dependencies]
+       rand = "0.3.14"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29345) (stdout):</b>
        {
-         "a": {
-           "b": {
-             "c": {
-               "z": {"type": "integer", "value": "9"},
-               "t": {
-                 "type":  "string",
-                 "value": "Using dotted keys to add to [a.b.c] after explicitly defining it above is not allowed"
-               }
-             }
+         "dependencies": {
+           "libc": {"type": "string", "value": "0.2"},
+           "rand": {"type": "string", "value": "0.3.14"},
+           "foo": {
+             "version": {"type": "string", "value": "0.16"}
            }
          }
        }
@@ -1298,37 +1414,102 @@ toml-f version 056d362
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/table/append-with-dotted-keys-2</b>
-<b> </b>    Expected an error, but no error was reported.
+<b>FAIL</b> <b>invalid/table/append-with-dotted-keys-06</b>
+<b> </b>    signal: segmentation fault
 
-<b>     input sent to parser-cmd:</b>
-       # This is the same issue as in injection-1.toml, except that nests one level
-       # deeper. See that file for a more complete description.
+<b>     input sent to parser-cmd (PID 29347):</b>
+       a = 1
+       a.b = 2
 
-       [a.b.c.d]
-         z = 9
+<b>     output from parser-cmd (PID 29347) (stderr):</b>
+       Program received signal SIGSEGV: Segmentation fault - invalid memory reference.
 
-       [a]
-         b.c.d.k.t = "Using dotted keys to add to [a.b.c.d] after explicitly defining it above is not allowed"
+       Backtrace for this error:
+       #0  0x… in ???
+       #1  0x… in ???
+       #2  0x… in ???
+       	at ./signal/../sysdeps/unix/sysv/linux/x86_64/libc_sigaction.c:0
+       #3  0x… in parse_keyval
+       	at ../src/tomlf/de/parser.f90:443
+       #4  0x… in parse_root
+       	at ../src/tomlf/de/parser.f90:134
+       #5  0x… in __tomlf_de_parser_MOD_parse
+       	at ../src/tomlf/de/parser.f90:105
+       #6  0x… in __tomlf_de_MOD_toml_load_unit
+       	at ../src/tomlf/de.f90:124
+       #7  0x… in toml2json
+       	at ../test/compliance/toml2json.f90:55
+       #8  0x… in main
+       	at ../test/compliance/toml2json.f90:17
 
-<b>     output from parser-cmd (stdout):</b>
-       {
-         "a": {
-           "b": {
-             "c": {
-               "d": {
-                 "z": {"type": "integer", "value": "9"},
-                 "k": {
-                   "t": {
-                     "type":  "string",
-                     "value": "Using dotted keys to add to [a.b.c.d] after explicitly defining it above is not allowed"
-                   }
-                 }
-               }
-             }
-           }
-         }
-       }
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/append-with-dotted-keys-07</b>
+<b> </b>    signal: segmentation fault
+
+<b>     input sent to parser-cmd (PID 29348):</b>
+       a = {k1 = 1, k1.name = "joe"}
+
+<b>     output from parser-cmd (PID 29348) (stderr):</b>
+       Program received signal SIGSEGV: Segmentation fault - invalid memory reference.
+
+       Backtrace for this error:
+       #0  0x… in ???
+       #1  0x… in ???
+       #2  0x… in ???
+       	at ./signal/../sysdeps/unix/sysv/linux/x86_64/libc_sigaction.c:0
+       #3  0x… in parse_keyval
+       	at ../src/tomlf/de/parser.f90:443
+       #4  0x… in parse_inline_table
+       	at ../src/tomlf/de/parser.f90:598
+       #5  0x… in parse_inline_table
+       	at ../src/tomlf/de/parser.f90:568
+       #6  0x… in parse_keyval
+       	at ../src/tomlf/de/parser.f90:497
+       #7  0x… in parse_root
+       	at ../src/tomlf/de/parser.f90:134
+       #8  0x… in __tomlf_de_parser_MOD_parse
+       	at ../src/tomlf/de/parser.f90:105
+       #9  0x… in __tomlf_de_MOD_toml_load_unit
+       	at ../src/tomlf/de.f90:124
+       #10  0x… in toml2json
+       	at ../test/compliance/toml2json.f90:55
+       #11  0x… in main
+       	at ../test/compliance/toml2json.f90:17
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/duplicate-key-10</b>
+<b> </b>    signal: segmentation fault
+
+<b>     input sent to parser-cmd (PID 29368):</b>
+       a = []
+       [[a.b]]
+
+<b>     output from parser-cmd (PID 29368) (stderr):</b>
+       Program received signal SIGSEGV: Segmentation fault - invalid memory reference.
+
+       Backtrace for this error:
+       #0  0x… in ???
+       #1  0x… in ???
+       #2  0x… in ???
+       	at ./signal/../sysdeps/unix/sysv/linux/x86_64/libc_sigaction.c:0
+       #3  0x… in walk_stack
+       	at ../src/tomlf/de/parser.f90:367
+       #4  0x… in parse_table_header
+       	at ../src/tomlf/de/parser.f90:190
+       #5  0x… in parse_root
+       	at ../src/tomlf/de/parser.f90:137
+       #6  0x… in __tomlf_de_parser_MOD_parse
+       	at ../src/tomlf/de/parser.f90:105
+       #7  0x… in __tomlf_de_MOD_toml_load_unit
+       	at ../src/tomlf/de.f90:124
+       #8  0x… in toml2json
+       	at ../test/compliance/toml2json.f90:55
+       #9  0x… in main
+       	at ../test/compliance/toml2json.f90:17
 
 <b>     want:</b>
        Exit code 1
@@ -1336,12 +1517,12 @@ toml-f version 056d362
 <b>FAIL</b> <b>invalid/table/super-twice</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29398):</b>
        [a.b]
        [a]
        [a]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29398) (stdout):</b>
        {
          "a": {
            "b": {}
@@ -1351,9 +1532,9 @@ toml-f version 056d362
 <b>     want:</b>
        Exit code 1
 
-toml-test v2025-04-21 [./_build/test/compliance/toml2json]: using embedded tests
-  valid tests: 191 passed, 13 failed
-invalid tests: 365 passed, 33 failed
+toml-test v2025-04-23 [./_build/test/compliance/toml2json]: using embedded tests
+  valid tests: 191 passed, 14 failed
+invalid tests: 492 passed, 37 failed
 
 ==> ENCODER TESTS
 <b>FAIL</b> <b>valid/array/mixed-string-table</b>
@@ -1370,7 +1551,7 @@ invalid tests: 365 passed, 33 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29433):</b>
        {
            "contributors": [
                {"type": "string", "value": "Foo Bar \u003cfoo@example.com\u003e"},
@@ -1389,7 +1570,7 @@ invalid tests: 365 passed, 33 failed
            ]
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 29433) (stderr):</b>
        ERROR STOP
 
        Error termination. Backtrace:
@@ -1420,7 +1601,7 @@ invalid tests: 365 passed, 33 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29490):</b>
        {
            "black": {
                "allow_prereleases": {"type": "bool", "value": "true"},
@@ -1429,7 +1610,7 @@ invalid tests: 365 passed, 33 failed
            }
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 29490) (stderr):</b>
        ERROR STOP
 
        Error termination. Backtrace:
@@ -1449,7 +1630,7 @@ invalid tests: 365 passed, 33 failed
 <b>FAIL</b> <b>valid/inline-table/key-dotted-5</b>
 <b> </b>    Could not find key "arr-2.a" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29496):</b>
        {
            "arr-1": [{
                "a": {
@@ -1491,7 +1672,7 @@ invalid tests: 365 passed, 33 failed
            ]
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29496) (stdout):</b>
        arr-2 = [ "str", { b = 1 } ]
        arr-4 = [ "str", { b = 1 }, { b = 2 } ]
        [[arr-1]]
@@ -1525,7 +1706,7 @@ invalid tests: 365 passed, 33 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29515):</b>
        {
            "\b":         {"type": "string", "value": "bell"},
            "\n":         {"type": "string", "value": "newline"},
@@ -1540,7 +1721,7 @@ invalid tests: 365 passed, 33 failed
            }
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 29515) (stderr):</b>
        ERROR STOP
 
        Error termination. Backtrace:
@@ -1571,7 +1752,7 @@ invalid tests: 365 passed, 33 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29531):</b>
        {
            "\u0000":               {"type": "string", "value": "null"},
            "\b \f A   ÿ ퟿  ￿ 𐀀 􏿿": {"type": "string", "value": "escaped key"},
@@ -1580,7 +1761,7 @@ invalid tests: 365 passed, 33 failed
            "~  ÿ ퟿  ￿ 𐀀 􏿿":        {"type": "string", "value": "basic key"}
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 29531) (stderr):</b>
        ERROR STOP
 
        Error termination. Backtrace:
@@ -1611,7 +1792,7 @@ invalid tests: 365 passed, 33 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29532):</b>
        {
            "  much \t\t  whitespace  \t\n  \r\n  ": {"type": "integer", "value": "3"},
            " c d ":                             {"type": "integer", "value": "2"},
@@ -1621,7 +1802,7 @@ invalid tests: 365 passed, 33 failed
            }
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 29532) (stderr):</b>
        ERROR STOP
 
        Error termination. Backtrace:
@@ -1652,12 +1833,12 @@ invalid tests: 365 passed, 33 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29533):</b>
        {
            "=~!@$^\u0026*()_+-`1234567890[]|/?\u003e\u003c.,;:'=": {"type": "integer", "value": "1"}
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 29533) (stderr):</b>
        ERROR STOP
 
        Error termination. Backtrace:
@@ -1688,7 +1869,7 @@ invalid tests: 365 passed, 33 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29537):</b>
        {
            "colors": [
                {"type": "string", "value": "red"},
@@ -1746,7 +1927,7 @@ invalid tests: 365 passed, 33 failed
            ]
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 29537) (stderr):</b>
        ERROR STOP
 
        Error termination. Backtrace:
@@ -1768,7 +1949,7 @@ invalid tests: 365 passed, 33 failed
 <b> </b>      Expected:     6.626e-34 (float64)
 <b> </b>      Your encoder: 0 (float64)
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29547):</b>
        {
            "flt1": {"type": "float", "value": "1"},
            "flt2": {"type": "float", "value": "3.1415"},
@@ -1779,7 +1960,7 @@ invalid tests: 365 passed, 33 failed
            "flt7": {"type": "float", "value": "6.626e-34"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 29547) (stdout):</b>
        flt1 = 1.0000000000000000
        flt2 = 3.1415000000000002
        flt3 = -0.0100000000000000
@@ -1816,7 +1997,7 @@ invalid tests: 365 passed, 33 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29577):</b>
        {
            "quoted":   {"type": "string", "value": "Tom \"Dubs\" Preston-Werner"},
            "regex":    {"type": "string", "value": "\u003c\\i\\c*\\s*\u003e"},
@@ -1824,7 +2005,7 @@ invalid tests: 365 passed, 33 failed
            "winpath2": {"type": "string", "value": "\\\\ServerX\\admin$\\system32\\"}
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 29577) (stderr):</b>
        ERROR STOP
 
        Error termination. Backtrace:
@@ -1855,7 +2036,7 @@ invalid tests: 365 passed, 33 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29597):</b>
        {
            "backslash":     {"type": "string", "value": "|\\."},
            "backspace":     {"type": "string", "value": "|\b."},
@@ -1872,7 +2053,7 @@ invalid tests: 365 passed, 33 failed
            "unitseparator": {"type": "string", "value": "|\u001f."}
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 29597) (stderr):</b>
        ERROR STOP
 
        Error termination. Backtrace:
@@ -1903,7 +2084,7 @@ invalid tests: 365 passed, 33 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29604):</b>
        {
            "basic_string":   {"type": "string", "value": "~  ÿ ퟿  ￿ 𐀀 􏿿"},
            "escaped_string": {"type": "string", "value": "\u0000 \b \f A   ÿ ퟿  ￿ 𐀀 􏿿"},
@@ -1914,7 +2095,7 @@ invalid tests: 365 passed, 33 failed
            }
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 29604) (stderr):</b>
        ERROR STOP
 
        Error termination. Backtrace:
@@ -1945,7 +2126,7 @@ invalid tests: 365 passed, 33 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 29611):</b>
        {
            "a":          {"type": "string", "value": "a"},
            "b":          {"type": "string", "value": "b"},
@@ -1963,7 +2144,7 @@ invalid tests: 365 passed, 33 failed
            "null-2":     {"type": "string", "value": "\u0000"}
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 29611) (stderr):</b>
        ERROR STOP
 
        Error termination. Backtrace:
@@ -1980,7 +2161,7 @@ invalid tests: 365 passed, 33 failed
 <b>     want:</b>
           <empty>
 
-toml-test v2025-04-21 [./_build/test/compliance/json2toml]: using embedded tests
-encoder tests: 191 passed, 13 failed
+toml-test v2025-04-23 [./_build/test/compliance/json2toml]: using embedded tests
+encoder tests: 192 passed, 13 failed
 took 0.8 39.69
 </pre>

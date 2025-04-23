@@ -20,7 +20,7 @@ toml version 65bab75
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5152):</b>
        contributors = [
          "Foo Bar <foo@example.com>",
          { name = "Baz Qux", email = "bazqux@example.com", url = "https://example.com/bazqux" }
@@ -33,7 +33,7 @@ toml version 65bab75
        # longer.
        mixed = [{k="a"}, "b", 1]
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 5152) (stderr):</b>
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/./tests/decoding_test.py", line 37, in <module>
            tdata = toml.loads(sys.stdin.read())
@@ -73,14 +73,14 @@ toml version 65bab75
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5162):</b>
        title = [
        """Client: XXXX,
        Job: XXXX""",
        "Code: XXXX"
        ]
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 5162) (stderr):</b>
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/./tests/decoding_test.py", line 37, in <module>
            tdata = toml.loads(sys.stdin.read())
@@ -103,7 +103,7 @@ toml version 65bab75
 <b>FAIL</b> <b>valid/comment/tricky</b>
 <b> </b>    Could not find key "hash#tag" in parser output.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5174):</b>
        [section]#attached comment
        #[notsection]
        one = "11"#cmt
@@ -134,7 +134,7 @@ toml version 65bab75
        ]
        tbl1 = { "#" = '}#'}#}}
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5174) (stdout):</b>
        {
          "section": {
            "one":   {"type": "string", "value": "11"},
@@ -176,6 +176,27 @@ toml version 65bab75
            }
        }
 
+<b>FAIL</b> <b>valid/datetime/local-time</b>
+<b> </b>    Values for key "milliseconds" don't match:
+<b> </b>      Expected:     0000-01-01 10:32:00.555 +0000 UTC
+<b> </b>      Your encoder: 0000-01-01 10:32:00.000555 +0000 UTC
+
+<b>     input sent to parser-cmd (PID 5181):</b>
+       besttimeever = 17:45:00
+       milliseconds = 10:32:00.555
+
+<b>     output from parser-cmd (PID 5181) (stdout):</b>
+       {
+         "besttimeever": {"type": "time-local", "value": "17:45:00.000000"},
+         "milliseconds": {"type": "time-local", "value": "10:32:00.000555"}
+       }
+
+<b>     want:</b>
+       {
+           "besttimeever": {"type": "time-local", "value": "17:45:00"},
+           "milliseconds": {"type": "time-local", "value": "10:32:00.555"}
+       }
+
 <b>FAIL</b> <b>valid/float/zero</b>
 <b> </b>    Traceback (most recent call last):
 <b> </b>      File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 511, in loads
@@ -200,7 +221,7 @@ toml version 65bab75
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5198):</b>
        zero = 0.0
        signed-pos = +0.0
        signed-neg = -0.0
@@ -209,7 +230,7 @@ toml version 65bab75
        exponent-signed-pos = +0e0
        exponent-signed-neg = -0e0
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 5198) (stderr):</b>
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 511, in loads
            ret = decoder.load_line(line, currentlevel, multikey,
@@ -239,14 +260,14 @@ toml version 65bab75
 <b>FAIL</b> <b>valid/inline-table/key-dotted-1</b>
 <b> </b>    Could not find key "c.a" in parser output.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5208):</b>
        a = {   a.b  =  1   }
        b = {   "a"."b"  =  1   }
        c = {   a   .   b  =  1   }
        d = {   'a'   .   "b"  =  1   }
        e = {a.b=1}
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5208) (stdout):</b>
        {
          "a": {
            "a": {
@@ -324,14 +345,14 @@ toml version 65bab75
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5212):</b>
        arr-1 = [{a.b = 1}]
        arr-2 = ["str", {a.b = 1}]
 
        arr-3 = [{a.b = 1}, {a.b = 2}]
        arr-4 = ["str", {a.b = 1}, {a.b = 2}]
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 5212) (stderr):</b>
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/./tests/decoding_test.py", line 37, in <module>
            tdata = toml.loads(sys.stdin.read())
@@ -380,13 +401,13 @@ toml version 65bab75
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5216):</b>
        tbl_multiline = { a = 1, b = """
        multiline
        """, c = """and yet
        another line""", d = 4 }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 5216) (stderr):</b>
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 511, in loads
            ret = decoder.load_line(line, currentlevel, multikey,
@@ -418,13 +439,13 @@ toml version 65bab75
 <b>FAIL</b> <b>valid/key/dotted-1</b>
 <b> </b>    Could not find key "name.last" in parser output.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5226):</b>
        name.first = "Arthur"
        "name".'last' = "Dent"
 
        many.dots.dot.dot.dot = 42
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5226) (stdout):</b>
        {
          "many": {
            "dots": {
@@ -470,7 +491,7 @@ toml version 65bab75
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5228):</b>
        # Note: this file contains literal tab characters.
 
        # Space are ignored, and key parts can be quoted.
@@ -487,7 +508,7 @@ toml version 65bab75
        "count".k     = 11
        "count" . l   = 12
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 5228) (stderr):</b>
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/./tests/decoding_test.py", line 37, in <module>
            tdata = toml.loads(sys.stdin.read())
@@ -522,13 +543,13 @@ toml version 65bab75
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5231):</b>
        ''.x = "empty.x"
        x."" = "x.empty"
        [a]
        "".'' = "empty.empty"
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 5231) (stderr):</b>
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 511, in loads
            ret = decoder.load_line(line, currentlevel, multikey,
@@ -554,7 +575,7 @@ toml version 65bab75
 <b>FAIL</b> <b>valid/key/escapes</b>
 <b> </b>    Could not find key "\"quoted\"" in parser output.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5236):</b>
        "\n" = "newline"
        "\b" = "bell"
        "\u00c0" = "latin capital letter A with grave"
@@ -567,7 +588,7 @@ toml version 65bab75
 
        ["a.b"."\u00c0"]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5236) (stdout):</b>
        {
          "\b":         {"type": "string", "value": "bell"},
          "\n":         {"type": "string", "value": "newline"},
@@ -600,7 +621,7 @@ toml version 65bab75
 <b>FAIL</b> <b>valid/key/quoted-dots</b>
 <b> </b>    Could not find key "table.withdot.escaped.dot" in parser output.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5246):</b>
        plain = 1
        "with.dot" = 2
 
@@ -613,7 +634,7 @@ toml version 65bab75
        "key.with.dots" = 6
        "escaped\u002edot" = 7
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5246) (stdout):</b>
        {
          "plain":    {"type": "integer", "value": "1"},
          "with.dot": {"type": "integer", "value": "2"},
@@ -667,7 +688,7 @@ toml version 65bab75
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5247):</b>
 
        "\u0000" = "null"
        '\u0000' = "different key"
@@ -676,7 +697,7 @@ toml version 65bab75
        "~  ÿ ퟿  ￿ 𐀀 􏿿" = "basic key"
        'l ~  ÿ ퟿  ￿ 𐀀 􏿿' = "literal key"
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 5247) (stderr):</b>
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 511, in loads
            ret = decoder.load_line(line, currentlevel, multikey,
@@ -719,7 +740,7 @@ toml version 65bab75
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5256):</b>
        integers = [ 1, 2, 3 ]
        colors = [ "red", "yellow", "green" ]
        nested_arrays_of_ints = [ [ 1, 2 ], [3, 4, 5] ]
@@ -733,7 +754,7 @@ toml version 65bab75
          { name = "Baz Qux", email = "bazqux@example.com", url = "https://example.com/bazqux" }
        ]
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 5256) (stderr):</b>
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/./tests/decoding_test.py", line 37, in <module>
            tdata = toml.loads(sys.stdin.read())
@@ -768,12 +789,12 @@ toml version 65bab75
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5277):</b>
        fruit.name = "banana"     # this is best practice
        fruit. color = "yellow"    # same as fruit.color
        fruit . flavor = "banana"   # same as fruit.flavor
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 5277) (stderr):</b>
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/./tests/decoding_test.py", line 37, in <module>
            tdata = toml.loads(sys.stdin.read())
@@ -787,6 +808,27 @@ toml version 65bab75
 
 <b>     want:</b>
           <empty>
+
+<b>FAIL</b> <b>valid/spec-1.0.0/local-time-0</b>
+<b> </b>    Values for key "lt2" don't match:
+<b> </b>      Expected:     0000-01-01 00:32:00.999 +0000 UTC
+<b> </b>      Your encoder: 0000-01-01 00:32:00.000999 +0000 UTC
+
+<b>     input sent to parser-cmd (PID 5283):</b>
+       lt1 = 07:32:00
+       lt2 = 00:32:00.999
+
+<b>     output from parser-cmd (PID 5283) (stdout):</b>
+       {
+         "lt1": {"type": "time-local", "value": "07:32:00.000000"},
+         "lt2": {"type": "time-local", "value": "00:32:00.000999"}
+       }
+
+<b>     want:</b>
+       {
+           "lt1": {"type": "time-local", "value": "07:32:00"},
+           "lt2": {"type": "time-local", "value": "00:32:00.999"}
+       }
 
 <b>FAIL</b> <b>valid/string/ends-in-whitespace-escape</b>
 <b> </b>    Traceback (most recent call last):
@@ -808,7 +850,7 @@ toml version 65bab75
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5310):</b>
        beee = """
        heeee
        geeee\
@@ -816,7 +858,7 @@ toml version 65bab75
 
              """
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 5310) (stderr):</b>
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/toml/decoder.py", line 395, in loads
            value, vtype = decoder.load_value(multilinestr)
@@ -850,7 +892,7 @@ toml version 65bab75
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5318):</b>
        # Make sure that quotes inside multiline strings are allowed, including right
        # after the opening '''/""" and before the closing '''/"""
 
@@ -878,7 +920,7 @@ toml version 65bab75
        Closing with four quotes
        """"
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 5318) (stderr):</b>
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/./tests/decoding_test.py", line 37, in <module>
            tdata = toml.loads(sys.stdin.read())
@@ -902,7 +944,7 @@ toml version 65bab75
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5323):</b>
        # Single ' should be allowed.
        oneline = '''This string has a ' quote character.'''
 
@@ -926,7 +968,7 @@ toml version 65bab75
        '' two more
        '''''
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 5323) (stderr):</b>
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/./tests/decoding_test.py", line 37, in <module>
            tdata = toml.loads(sys.stdin.read())
@@ -950,7 +992,7 @@ toml version 65bab75
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5329):</b>
        # Silly thing to do, but valid.
 
        [['']]
@@ -958,7 +1000,7 @@ toml version 65bab75
        [['']]
        a = 2
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 5329) (stderr):</b>
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/./tests/decoding_test.py", line 37, in <module>
            tdata = toml.loads(sys.stdin.read())
@@ -983,7 +1025,7 @@ toml version 65bab75
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5338):</b>
        ['']
        x = 1
 
@@ -993,7 +1035,7 @@ toml version 65bab75
        [a.'']
        x = 3
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 5338) (stderr):</b>
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/./tests/decoding_test.py", line 37, in <module>
            tdata = toml.loads(sys.stdin.read())
@@ -1007,13 +1049,47 @@ toml version 65bab75
 <b>     want:</b>
           <empty>
 
+<b>FAIL</b> <b>invalid/array/double-comma-01</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5353):</b>
+       double-comma-1 = [1,,2]
+
+<b>     output from parser-cmd (PID 5353) (stdout):</b>
+       {
+         "double-comma-1": [
+           {"type": "integer", "value": "1"},
+           {"type": "integer", "value": "2"}
+         ]
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/array/double-comma-02</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5354):</b>
+       double-comma-2 = [1,2,,]
+
+<b>     output from parser-cmd (PID 5354) (stdout):</b>
+       {
+         "double-comma-2": [
+           {"type": "integer", "value": "1"},
+           {"type": "integer", "value": "2"}
+         ]
+       }
+
+<b>     want:</b>
+       Exit code 1
+
 <b>FAIL</b> <b>invalid/array/double-comma-1</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5355):</b>
        double-comma-1 = [1,,2]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5355) (stdout):</b>
        {
          "double-comma-1": [
            {"type": "integer", "value": "1"},
@@ -1027,10 +1103,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/array/double-comma-2</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5356):</b>
        double-comma-2 = [1,2,,]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5356) (stdout):</b>
        {
          "double-comma-2": [
            {"type": "integer", "value": "1"},
@@ -1044,7 +1120,7 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/array/extending-table</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5358):</b>
        a = [{ b = 1 }]
 
        # Cannot extend tables within static arrays
@@ -1052,7 +1128,7 @@ toml version 65bab75
        [a.c]
        foo = 1
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5358) (stdout):</b>
        {
          "a": [{
            "b": {"type": "integer", "value": "1"},
@@ -1065,13 +1141,128 @@ toml version 65bab75
 <b>     want:</b>
        Exit code 1
 
+<b>FAIL</b> <b>invalid/array/no-close-01</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5361):</b>
+       no-close-1 = [ 1, 2, 3
+
+<b>     output from parser-cmd (PID 5361) (stdout):</b>
+       {
+         "no-close-1": [
+           {"type": "integer", "value": "1"},
+           {"type": "integer", "value": "2"}
+         ]
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/array/no-close-02</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5362):</b>
+       no-close-2 = [1,
+
+<b>     output from parser-cmd (PID 5362) (stdout):</b>
+       {
+         "no-close-2": [{"type": "integer", "value": "1"}]
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/array/no-close-03</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5363):</b>
+       no-close-3 = [42 #]
+
+<b>     output from parser-cmd (PID 5363) (stdout):</b>
+       {
+         "no-close-3": [{"type": "integer", "value": "4"}]
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/array/no-close-04</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5364):</b>
+       no-close-4 = [{ key = 42
+
+<b>     output from parser-cmd (PID 5364) (stdout):</b>
+       {
+         "no-close-4": []
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/array/no-close-05</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5365):</b>
+       no-close-5 = [{ key = 42}
+
+<b>     output from parser-cmd (PID 5365) (stdout):</b>
+       {
+         "no-close-5": []
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/array/no-close-06</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5366):</b>
+       no-close-6 = [{ key = 42 #}]
+
+<b>     output from parser-cmd (PID 5366) (stdout):</b>
+       {
+         "no-close-6": []
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/array/no-close-07</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5367):</b>
+       no-close-7 = [{ key = 42} #]
+
+<b>     output from parser-cmd (PID 5367) (stdout):</b>
+       {
+         "no-close-7": []
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/array/no-close-08</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5368):</b>
+       no-close-8 = [
+
+<b>     output from parser-cmd (PID 5368) (stdout):</b>
+       {
+         "no-close-8": []
+       }
+
+<b>     want:</b>
+       Exit code 1
+
 <b>FAIL</b> <b>invalid/array/no-close-1</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5369):</b>
        no-close-1 = [ 1, 2, 3
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5369) (stdout):</b>
        {
          "no-close-1": [
            {"type": "integer", "value": "1"},
@@ -1085,10 +1276,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/array/no-close-2</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5370):</b>
        no-close-2 = [1,
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5370) (stdout):</b>
        {
          "no-close-2": [{"type": "integer", "value": "1"}]
        }
@@ -1099,10 +1290,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/array/no-close-3</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5371):</b>
        no-close-3 = [42 #]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5371) (stdout):</b>
        {
          "no-close-3": [{"type": "integer", "value": "4"}]
        }
@@ -1113,10 +1304,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/array/no-close-4</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5372):</b>
        no-close-4 = [{ key = 42
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5372) (stdout):</b>
        {
          "no-close-4": []
        }
@@ -1127,10 +1318,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/array/no-close-5</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5373):</b>
        no-close-5 = [{ key = 42}
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5373) (stdout):</b>
        {
          "no-close-5": []
        }
@@ -1141,10 +1332,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/array/no-close-6</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5374):</b>
        no-close-6 = [{ key = 42 #}]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5374) (stdout):</b>
        {
          "no-close-6": []
        }
@@ -1155,10 +1346,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/array/no-close-7</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5375):</b>
        no-close-7 = [{ key = 42} #]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5375) (stdout):</b>
        {
          "no-close-7": []
        }
@@ -1169,10 +1360,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/array/no-close-8</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5376):</b>
        no-close-8 = [
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5376) (stdout):</b>
        {
          "no-close-8": []
        }
@@ -1180,13 +1371,13 @@ toml version 65bab75
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/array/no-close-table-1</b>
+<b>FAIL</b> <b>invalid/array/no-close-table-01</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5377):</b>
        x = [{ key = 42
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5377) (stdout):</b>
        {
          "x": []
        }
@@ -1194,15 +1385,29 @@ toml version 65bab75
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/array/no-close-table-2</b>
+<b>FAIL</b> <b>invalid/array/no-close-table-02</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5378):</b>
        x = [{ key = 42 #
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5378) (stdout):</b>
        {
          "x": []
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/array/no-comma-03</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5381):</b>
+       no-comma-3 = [ 1 #,]
+
+<b>     output from parser-cmd (PID 5381) (stdout):</b>
+       {
+         "no-comma-3": []
        }
 
 <b>     want:</b>
@@ -1211,12 +1416,40 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/array/no-comma-3</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5384):</b>
        no-comma-3 = [ 1 #,]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5384) (stdout):</b>
        {
          "no-comma-3": []
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/array/only-comma-01</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5385):</b>
+       only-comma-1 = [,]
+
+<b>     output from parser-cmd (PID 5385) (stdout):</b>
+       {
+         "only-comma-1": []
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/array/only-comma-02</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5386):</b>
+       only-comma-2 = [,,]
+
+<b>     output from parser-cmd (PID 5386) (stdout):</b>
+       {
+         "only-comma-2": []
        }
 
 <b>     want:</b>
@@ -1225,10 +1458,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/array/only-comma-1</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5387):</b>
        only-comma-1 = [,]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5387) (stdout):</b>
        {
          "only-comma-1": []
        }
@@ -1239,10 +1472,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/array/only-comma-2</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5388):</b>
        only-comma-2 = [,,]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5388) (stdout):</b>
        {
          "only-comma-2": []
        }
@@ -1250,16 +1483,16 @@ toml version 65bab75
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/array/tables-1</b>
+<b>FAIL</b> <b>invalid/array/tables-01</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5389):</b>
        # INVALID TOML DOC
        fruit = []
 
        [[fruit]] # Not allowed
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5389) (stdout):</b>
        {
          "fruit": [{}]
        }
@@ -1270,10 +1503,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/comment-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5413):</b>
        comment-cr   = "Carriage return in comment" # a=1
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5413) (stdout):</b>
        {
          "comment-cr": {"type": "string", "value": "Carriage return in comment"}
        }
@@ -1284,10 +1517,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/comment-del</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5414):</b>
        comment-del  = "0x7f"   # 
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5414) (stdout):</b>
        {
          "comment-del": {"type": "string", "value": "0x7f"}
        }
@@ -1298,10 +1531,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/comment-ff</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5415):</b>
        comment-ff   = "0x7f"   # 
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5415) (stdout):</b>
        {
          "comment-ff": {"type": "string", "value": "0x7f"}
        }
@@ -1312,10 +1545,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/comment-lf</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5417):</b>
        comment-lf   = "ctrl-P" # 
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5417) (stdout):</b>
        {
          "comment-lf": {"type": "string", "value": "ctrl-P"}
        }
@@ -1326,10 +1559,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/comment-null</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5416):</b>
        comment-null = "null"   #  
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5416) (stdout):</b>
        {
          "comment-null": {"type": "string", "value": "null"}
        }
@@ -1340,10 +1573,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/comment-us</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5418):</b>
        comment-us   = "ctrl-_" # 
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5418) (stdout):</b>
        {
          "comment-us": {"type": "string", "value": "ctrl-_"}
        }
@@ -1354,10 +1587,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/multi-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5419):</b>
        multi-cr   = """null"""
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5419) (stdout):</b>
        {
          "multi-cr": {"type": "string", "value": "null\r"}
        }
@@ -1368,10 +1601,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/multi-del</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5420):</b>
        multi-del  = """null"""
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5420) (stdout):</b>
        {
          "multi-del": {"type": "string", "value": "null"}
        }
@@ -1382,10 +1615,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/multi-lf</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5421):</b>
        multi-lf   = """null"""
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5421) (stdout):</b>
        {
          "multi-lf": {"type": "string", "value": "null\u0010"}
        }
@@ -1396,10 +1629,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/multi-null</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5422):</b>
        multi-null = """null """
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5422) (stdout):</b>
        {
          "multi-null": {"type": "string", "value": "null\u0000"}
        }
@@ -1410,10 +1643,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/multi-us</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5423):</b>
        multi-us   = """null"""
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5423) (stdout):</b>
        {
          "multi-us": {"type": "string", "value": "null\u001f"}
        }
@@ -1424,10 +1657,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/rawmulti-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5427):</b>
        rawmulti-cr   = '''null'''
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5427) (stdout):</b>
        {
          "rawmulti-cr": {"type": "string", "value": "null\r"}
        }
@@ -1438,10 +1671,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/rawmulti-del</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5428):</b>
        rawmulti-del  = '''null'''
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5428) (stdout):</b>
        {
          "rawmulti-del": {"type": "string", "value": "null"}
        }
@@ -1452,10 +1685,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/rawmulti-lf</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5429):</b>
        rawmulti-lf   = '''null'''
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5429) (stdout):</b>
        {
          "rawmulti-lf": {"type": "string", "value": "null\u0010"}
        }
@@ -1466,10 +1699,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/rawmulti-null</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5430):</b>
        rawmulti-null = '''null '''
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5430) (stdout):</b>
        {
          "rawmulti-null": {"type": "string", "value": "null\u0000"}
        }
@@ -1480,10 +1713,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/rawmulti-us</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5431):</b>
        rawmulti-us   = '''null'''
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5431) (stdout):</b>
        {
          "rawmulti-us": {"type": "string", "value": "null\u001f"}
        }
@@ -1494,10 +1727,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/rawstring-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5432):</b>
        rawstring-cr   = 'null'
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5432) (stdout):</b>
        {
          "rawstring-cr": {"type": "string", "value": "null\r"}
        }
@@ -1508,10 +1741,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/rawstring-del</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5433):</b>
        rawstring-del  = 'null'
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5433) (stdout):</b>
        {
          "rawstring-del": {"type": "string", "value": "null"}
        }
@@ -1522,10 +1755,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/rawstring-lf</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5434):</b>
        rawstring-lf   = 'null'
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5434) (stdout):</b>
        {
          "rawstring-lf": {"type": "string", "value": "null\u0010"}
        }
@@ -1536,10 +1769,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/rawstring-null</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5435):</b>
        rawstring-null = 'null '
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5435) (stdout):</b>
        {
          "rawstring-null": {"type": "string", "value": "null\u0000"}
        }
@@ -1550,10 +1783,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/rawstring-us</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5436):</b>
        rawstring-us   = 'null'
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5436) (stdout):</b>
        {
          "rawstring-us": {"type": "string", "value": "null\u001f"}
        }
@@ -1564,10 +1797,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/string-bs</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5437):</b>
        string-bs   = "backspace"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5437) (stdout):</b>
        {
          "string-bs": {"type": "string", "value": "backspace\b"}
        }
@@ -1578,10 +1811,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/string-cr</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5438):</b>
        string-cr   = "null"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5438) (stdout):</b>
        {
          "string-cr": {"type": "string", "value": "null\r"}
        }
@@ -1592,10 +1825,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/string-del</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5439):</b>
        string-del  = "null"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5439) (stdout):</b>
        {
          "string-del": {"type": "string", "value": "null"}
        }
@@ -1606,10 +1839,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/string-lf</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5440):</b>
        string-lf   = "null"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5440) (stdout):</b>
        {
          "string-lf": {"type": "string", "value": "null\u0010"}
        }
@@ -1620,10 +1853,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/string-null</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5441):</b>
        string-null = "null "
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5441) (stdout):</b>
        {
          "string-null": {"type": "string", "value": "null\u0000"}
        }
@@ -1634,12 +1867,68 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/control/string-us</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5442):</b>
        string-us   = "null"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5442) (stdout):</b>
        {
          "string-us": {"type": "string", "value": "null\u001f"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/datetime/offset-minus-minute-1digit</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5460):</b>
+       foo = 1997-09-09T09:09:09.09+09:9
+
+<b>     output from parser-cmd (PID 5460) (stdout):</b>
+       {
+         "foo": {"type": "datetime", "value": "1997-09-09T09:09:09.090000+09:09"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/datetime/offset-minus-no-hour-minute</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5462):</b>
+       foo = 1997-09-09T09:09:09.09+
+
+<b>     output from parser-cmd (PID 5462) (stdout):</b>
+       {
+         "foo": {"type": "datetime-local", "value": "1997-09-09T09:09:09"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/datetime/offset-minus-no-hour-minute-sep</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5461):</b>
+       foo = 1997-09-09T09:09:09.09+0909
+
+<b>     output from parser-cmd (PID 5461) (stdout):</b>
+       {
+         "foo": {"type": "datetime", "value": "1997-09-09T09:09:09.090000+09:09"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/datetime/offset-minus-no-minute</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5463):</b>
+       foo = 1997-09-09T09:09:09.09+09
+
+<b>     output from parser-cmd (PID 5463) (stdout):</b>
+       {
+         "foo": {"type": "datetime-local", "value": "1997-09-09T09:09:09"}
        }
 
 <b>     want:</b>
@@ -1648,14 +1937,98 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/datetime/offset-overflow-minute</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5465):</b>
        # Minute must be 00-59; we allow 60 too because some people do write offsets of
        # 60 minutes
        d = 1985-06-18 17:04:07+12:61
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5465) (stdout):</b>
        {
          "d": {"type": "datetime", "value": "1985-06-18T17:04:07+13:01"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/datetime/offset-plus-minute-1digit</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5466):</b>
+       foo = 1997-09-09T09:09:09.09+09:9
+
+<b>     output from parser-cmd (PID 5466) (stdout):</b>
+       {
+         "foo": {"type": "datetime", "value": "1997-09-09T09:09:09.090000+09:09"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/datetime/offset-plus-no-hour-minute</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5468):</b>
+       foo = 1997-09-09T09:09:09.09+
+
+<b>     output from parser-cmd (PID 5468) (stdout):</b>
+       {
+         "foo": {"type": "datetime-local", "value": "1997-09-09T09:09:09"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/datetime/offset-plus-no-hour-minute-sep</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5467):</b>
+       foo = 1997-09-09T09:09:09.09+0909
+
+<b>     output from parser-cmd (PID 5467) (stdout):</b>
+       {
+         "foo": {"type": "datetime", "value": "1997-09-09T09:09:09.090000+09:09"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/datetime/offset-plus-no-minute</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5469):</b>
+       foo = 1997-09-09T09:09:09.09+09
+
+<b>     output from parser-cmd (PID 5469) (stdout):</b>
+       {
+         "foo": {"type": "datetime-local", "value": "1997-09-09T09:09:09"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/datetime/second-trailing-dot</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5474):</b>
+       foo = 1997-09-09T09:09:09.
+
+<b>     output from parser-cmd (PID 5474) (stdout):</b>
+       {
+         "foo": {"type": "datetime-local", "value": "1997-09-09T09:09:09"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/datetime/second-trailing-dotz</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5475):</b>
+       foo = 2016-09-09T09:09:09.Z
+
+<b>     output from parser-cmd (PID 5475) (stdout):</b>
+       {
+         "foo": {"type": "datetime-local", "value": "2016-09-09T09:09:09"}
        }
 
 <b>     want:</b>
@@ -1664,13 +2037,41 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/encoding/ideographic-space</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5488):</b>
        # First on next line is U+3000 IDEOGRAPHIC SPACE
        　foo = "bar"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5488) (stdout):</b>
        {
          "foo": {"type": "string", "value": "bar"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/float/exp-dot-02</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5498):</b>
+       exp-point-2 = 1.e2
+
+<b>     output from parser-cmd (PID 5498) (stdout):</b>
+       {
+         "exp-point-2": {"type": "float", "value": "100.0"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/float/exp-dot-03</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5499):</b>
+       exp-point-3 = 3.e+20
+
+<b>     output from parser-cmd (PID 5499) (stdout):</b>
+       {
+         "exp-point-3": {"type": "float", "value": "3e+20"}
        }
 
 <b>     want:</b>
@@ -1679,10 +2080,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/float/exp-leading-us</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5505):</b>
        exp-leading-us = 1e_23
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5505) (stdout):</b>
        {
          "exp-leading-us": {"type": "float", "value": "1e+23"}
        }
@@ -1693,10 +2094,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/float/exp-point-2</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5507):</b>
        exp-point-2 = 1.e2
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5507) (stdout):</b>
        {
          "exp-point-2": {"type": "float", "value": "100.0"}
        }
@@ -1707,12 +2108,40 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/float/exp-point-3</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5508):</b>
        exp-point-3 = 3.e+20
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5508) (stdout):</b>
        {
          "exp-point-3": {"type": "float", "value": "3e+20"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/float/exp-trailing-us-01</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5509):</b>
+       exp-trailing-us-1 = 1_e2
+
+<b>     output from parser-cmd (PID 5509) (stdout):</b>
+       {
+         "exp-trailing-us-1": {"type": "float", "value": "100.0"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/float/exp-trailing-us-02</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5510):</b>
+       exp-trailing-us-2 = 1.2_e2
+
+<b>     output from parser-cmd (PID 5510) (stdout):</b>
+       {
+         "exp-trailing-us-2": {"type": "float", "value": "120.0"}
        }
 
 <b>     want:</b>
@@ -1721,10 +2150,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/float/exp-trailing-us-1</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5511):</b>
        exp-trailing-us-1 = 1_e2
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5511) (stdout):</b>
        {
          "exp-trailing-us-1": {"type": "float", "value": "100.0"}
        }
@@ -1735,10 +2164,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/float/exp-trailing-us-2</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5512):</b>
        exp-trailing-us-2 = 1.2_e2
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5512) (stdout):</b>
        {
          "exp-trailing-us-2": {"type": "float", "value": "120.0"}
        }
@@ -1749,10 +2178,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/float/inf-capital</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5514):</b>
        v = Inf
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5514) (stdout):</b>
        {
          "v": {"type": "float", "value": "inf"}
        }
@@ -1763,10 +2192,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/float/inf_underscore</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5521):</b>
        inf_underscore = in_f
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5521) (stdout):</b>
        {
          "inf_underscore": {"type": "float", "value": "inf"}
        }
@@ -1777,10 +2206,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/float/nan-capital</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5532):</b>
        v = NaN
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5532) (stdout):</b>
        {
          "v": {"type": "float", "value": "nan"}
        }
@@ -1791,10 +2220,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/float/nan_underscore</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5538):</b>
        nan_underscore = na_n
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5538) (stdout):</b>
        {
          "nan_underscore": {"type": "float", "value": "nan"}
        }
@@ -1802,13 +2231,13 @@ toml version 65bab75
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/float/trailing-us-exp-1</b>
+<b>FAIL</b> <b>invalid/float/trailing-us-exp-01</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5551):</b>
        trailing-us-exp-1 = 1_e2
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5551) (stdout):</b>
        {
          "trailing-us-exp-1": {"type": "float", "value": "100.0"}
        }
@@ -1816,13 +2245,13 @@ toml version 65bab75
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/float/trailing-us-exp-2</b>
+<b>FAIL</b> <b>invalid/float/trailing-us-exp-02</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5552):</b>
        trailing-us-exp-2 = 1.2_e2
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5552) (stdout):</b>
        {
          "trailing-us-exp-2": {"type": "float", "value": "120.0"}
        }
@@ -1830,13 +2259,13 @@ toml version 65bab75
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/inline-table/duplicate-key-3</b>
+<b>FAIL</b> <b>invalid/inline-table/duplicate-key-03</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5562):</b>
        tbl = { fruit = { apple.color = "red" }, fruit.apple.texture = { smooth = true } }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5562) (stdout):</b>
        {
          "tbl": {
            "fruit": {
@@ -1853,13 +2282,13 @@ toml version 65bab75
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/inline-table/no-close-1</b>
+<b>FAIL</b> <b>invalid/inline-table/no-close-01</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5571):</b>
        a={
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5571) (stdout):</b>
        {
          "a": {}
        }
@@ -1870,12 +2299,12 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/inline-table/overwrite-02</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5576):</b>
        a={}
        # Inline tables are immutable and can't be extended
        [a.b]
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5576) (stdout):</b>
        {
          "a": {
            "b": {}
@@ -1888,10 +2317,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/inline-table/overwrite-08</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5582):</b>
        tab = { inner = { dog = "best" }, inner.cat = "worst" }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5582) (stdout):</b>
        {
          "tab": {
            "inner": {
@@ -1907,10 +2336,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/integer/double-sign-nex</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5589):</b>
        double-sign-nex = --99
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5589) (stdout):</b>
        {
          "double-sign-nex": {"type": "integer", "value": "99"}
        }
@@ -1921,10 +2350,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/integer/double-sign-plus</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5590):</b>
        double-sign-plus = ++99
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5590) (stdout):</b>
        {
          "double-sign-plus": {"type": "integer", "value": "99"}
        }
@@ -1935,10 +2364,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/integer/us-after-bin</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5629):</b>
        us-after-bin = 0b_1
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5629) (stdout):</b>
        {
          "us-after-bin": {"type": "integer", "value": "1"}
        }
@@ -1949,10 +2378,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/integer/us-after-hex</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5630):</b>
        us-after-hex = 0x_1
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5630) (stdout):</b>
        {
          "us-after-hex": {"type": "integer", "value": "1"}
        }
@@ -1963,10 +2392,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/integer/us-after-oct</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5631):</b>
        us-after-oct = 0o_1
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5631) (stdout):</b>
        {
          "us-after-oct": {"type": "integer", "value": "1"}
        }
@@ -1974,14 +2403,28 @@ toml version 65bab75
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/key/duplicate-keys-5</b>
+<b>FAIL</b> <b>invalid/key/bare-invalid-character-01</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5635):</b>
+       ! = 123
+
+<b>     output from parser-cmd (PID 5635) (stdout):</b>
+       {
+         "!": {"type": "integer", "value": "123"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/key/duplicate-keys-05</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5645):</b>
        a        = 1
        "\u0061" = 1
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5645) (stdout):</b>
        {
          "\\u0061": {"type": "integer", "value": "1"},
          "a":      {"type": "integer", "value": "1"}
@@ -1990,14 +2433,14 @@ toml version 65bab75
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/key/duplicate-keys-6</b>
+<b>FAIL</b> <b>invalid/key/duplicate-keys-06</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5646):</b>
        "a'b"      = 1
        "a\u0027b" = 2
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5646) (stdout):</b>
        {
          "a'b":      {"type": "integer", "value": "1"},
          "a\\u0027b": {"type": "integer", "value": "2"}
@@ -2009,12 +2452,54 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/key/escape</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5650):</b>
        \u00c0 = "latin capital letter A with grave"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5650) (stdout):</b>
        {
          "\\u00c0": {"type": "string", "value": "latin capital letter A with grave"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/key/no-eol-02</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5663):</b>
+       0=0r=false
+
+<b>     output from parser-cmd (PID 5663) (stdout):</b>
+       {
+         "0=0r": {"type": "bool", "value": "false"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/key/no-eol-06</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5667):</b>
+       0=0r0=0r=false
+
+<b>     output from parser-cmd (PID 5667) (stdout):</b>
+       {
+         "0=0r0=0r": {"type": "bool", "value": "false"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/key/no-eol-07</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5668):</b>
+       0=0r0=0r=falsefal=false
+
+<b>     output from parser-cmd (PID 5668) (stdout):</b>
+       {
+         "0=0r0=0r=falsefal": {"type": "bool", "value": "false"}
        }
 
 <b>     want:</b>
@@ -2023,10 +2508,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/key/special-character</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5678):</b>
        μ = "greek small letter mu"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5678) (stdout):</b>
        {
          "μ": {"type": "string", "value": "greek small letter mu"}
        }
@@ -2037,10 +2522,10 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/key/start-dot</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5680):</b>
        .key = 1
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5680) (stdout):</b>
        {
          "key": {"type": "integer", "value": "1"}
        }
@@ -2048,13 +2533,13 @@ toml version 65bab75
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/key/two-equals-2</b>
+<b>FAIL</b> <b>invalid/key/two-equals-02</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5682):</b>
        a==1
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5682) (stdout):</b>
        {
          "a=": {"type": "integer", "value": "1"}
        }
@@ -2062,15 +2547,43 @@ toml version 65bab75
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/key/two-equals-3</b>
+<b>FAIL</b> <b>invalid/key/two-equals-03</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5683):</b>
        a=b=1
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5683) (stdout):</b>
        {
          "a=b": {"type": "integer", "value": "1"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/local-time/trailing-dot</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5724):</b>
+       t = 12:13:14.
+
+<b>     output from parser-cmd (PID 5724) (stdout):</b>
+       {
+         "t": {"type": "time-local", "value": "12:13:14.000000"}
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/local-time/trailing-dotdot</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5725):</b>
+       t = 12:13:14..
+
+<b>     output from parser-cmd (PID 5725) (stdout):</b>
+       {
+         "t": {"type": "time-local", "value": "12:13:14.000000"}
        }
 
 <b>     want:</b>
@@ -2079,12 +2592,12 @@ toml version 65bab75
 <b>FAIL</b> <b>invalid/spec-1.0.0/inline-table-2-0</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5726):</b>
        [product]
        type = { name = "Nail" }
        type.edible = false  # INVALID
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5726) (stdout):</b>
        {
          "product": {
            "type": {
@@ -2097,10 +2610,10 @@ toml version 65bab75
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/table/append-with-dotted-keys-1</b>
+<b>FAIL</b> <b>invalid/table/append-with-dotted-keys-01</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5823):</b>
        # First a.b.c defines a table: a.b.c = {z=9}
        #
        # Then we define a.b.c.t = "str" to add a str to the above table, making it:
@@ -2119,7 +2632,7 @@ toml version 65bab75
        [a]
          b.c.t = "Using dotted keys to add to [a.b.c] after explicitly defining it above is not allowed"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5823) (stdout):</b>
        {
          "a": {
            "b": {
@@ -2137,10 +2650,10 @@ toml version 65bab75
 <b>     want:</b>
        Exit code 1
 
-<b>FAIL</b> <b>invalid/table/append-with-dotted-keys-2</b>
+<b>FAIL</b> <b>invalid/table/append-with-dotted-keys-02</b>
 <b> </b>    Expected an error, but no error was reported.
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5824):</b>
        # This is the same issue as in injection-1.toml, except that nests one level
        # deeper. See that file for a more complete description.
 
@@ -2150,7 +2663,7 @@ toml version 65bab75
        [a]
          b.c.d.k.t = "Using dotted keys to add to [a.b.c.d] after explicitly defining it above is not allowed"
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5824) (stdout):</b>
        {
          "a": {
            "b": {
@@ -2172,9 +2685,43 @@ toml version 65bab75
 <b>     want:</b>
        Exit code 1
 
-toml-test v2025-04-21 [./tests/decoding_test.py]: using embedded tests
-  valid tests: 184 passed, 20 failed
-invalid tests: 322 passed, 76 failed
+<b>FAIL</b> <b>invalid/table/multiline-key-01</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5854):</b>
+       ["""tbl"""]
+       k = 1
+
+<b>     output from parser-cmd (PID 5854) (stdout):</b>
+       {
+         "\"\"tbl\"\"": {
+           "k": {"type": "integer", "value": "1"}
+         }
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+<b>FAIL</b> <b>invalid/table/multiline-key-02</b>
+<b> </b>    Expected an error, but no error was reported.
+
+<b>     input sent to parser-cmd (PID 5855):</b>
+       ['''tbl''']
+       k = 1
+
+<b>     output from parser-cmd (PID 5855) (stdout):</b>
+       {
+         "''tbl''": {
+           "k": {"type": "integer", "value": "1"}
+         }
+       }
+
+<b>     want:</b>
+       Exit code 1
+
+toml-test v2025-04-23 [./tests/decoding_test.py]: using embedded tests
+  valid tests: 183 passed, 22 failed
+invalid tests: 418 passed, 111 failed
 
 ==> ENCODER TESTS
 <b>FAIL</b> <b>valid/array/mixed-string-table</b>
@@ -2195,7 +2742,7 @@ invalid tests: 322 passed, 76 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5942):</b>
        {
            "contributors": [
                {"type": "string", "value": "Foo Bar \u003cfoo@example.com\u003e"},
@@ -2214,7 +2761,7 @@ invalid tests: 322 passed, 76 failed
            ]
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 5942) (stderr):</b>
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/./tests/encoding_test.py", line 28, in <module>
            print(toml.dumps({k: convert(v) for (k, v) in j.items()}))
@@ -2238,14 +2785,14 @@ invalid tests: 322 passed, 76 failed
 <b>FAIL</b> <b>valid/array/nested-inline-table</b>
 <b> </b>    Could not find key "a.b" in encoder output
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5932):</b>
        {
            "a": [{
                "b": {}
            }]
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5932) (stdout):</b>
        [[a]]
 
 <b>     want:</b>
@@ -2256,13 +2803,13 @@ invalid tests: 322 passed, 76 failed
 <b> </b>      Expected:     0000-01-01 10:32:00.555 +0100 time-local (time.Time)
 <b> </b>      Your encoder: 0000-01-01 10:32:00.000555 +0100 time-local (time.Time)
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 5980):</b>
        {
            "besttimeever": {"type": "time-local", "value": "17:45:00"},
            "milliseconds": {"type": "time-local", "value": "10:32:00.555"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 5980) (stdout):</b>
        besttimeever = 17:45:00
        milliseconds = 10:32:00.000555
 
@@ -2288,7 +2835,7 @@ invalid tests: 322 passed, 76 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 6062):</b>
        {
            "arr-1": [{
                "a": {
@@ -2330,7 +2877,7 @@ invalid tests: 322 passed, 76 failed
            ]
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 6062) (stderr):</b>
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/./tests/encoding_test.py", line 28, in <module>
            print(toml.dumps({k: convert(v) for (k, v) in j.items()}))
@@ -2356,7 +2903,7 @@ invalid tests: 322 passed, 76 failed
 <b> </b>      Expected:     map[string]any(nil)
 <b> </b>      Your encoder: map[string]any
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 6066):</b>
        {
            "arr_arr_tbl_empty": [[{}]],
            "arr_arr_tbl_val":   [[{
@@ -2388,7 +2935,7 @@ invalid tests: 322 passed, 76 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 6066) (stdout):</b>
        arr_arr_tbl_empty = [ [ [],],]
        arr_arr_tbl_val = [ [ [ "one",],],]
        arr_arr_tbls = [ [ [ "one",], [ "two",],],]
@@ -2435,7 +2982,7 @@ invalid tests: 322 passed, 76 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 6089):</b>
        {
            "\b":         {"type": "string", "value": "bell"},
            "\n":         {"type": "string", "value": "newline"},
@@ -2450,7 +2997,7 @@ invalid tests: 322 passed, 76 failed
            }
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 6089) (stderr):</b>
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/./tests/encoding_test.py", line 28, in <module>
            print(toml.dumps({k: convert(v) for (k, v) in j.items()}))
@@ -2487,7 +3034,7 @@ invalid tests: 322 passed, 76 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 6101):</b>
        {
            "\u0000":               {"type": "string", "value": "null"},
            "\b \f A   ÿ ퟿  ￿ 𐀀 􏿿": {"type": "string", "value": "escaped key"},
@@ -2496,7 +3043,7 @@ invalid tests: 322 passed, 76 failed
            "~  ÿ ퟿  ￿ 𐀀 􏿿":        {"type": "string", "value": "basic key"}
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 6101) (stderr):</b>
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/./tests/encoding_test.py", line 28, in <module>
            print(toml.dumps({k: convert(v) for (k, v) in j.items()}))
@@ -2534,7 +3081,7 @@ invalid tests: 322 passed, 76 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 6110):</b>
        {
            "colors": [
                {"type": "string", "value": "red"},
@@ -2592,7 +3139,7 @@ invalid tests: 322 passed, 76 failed
            ]
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 6110) (stderr):</b>
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/./tests/encoding_test.py", line 28, in <module>
            print(toml.dumps({k: convert(v) for (k, v) in j.items()}))
@@ -2618,13 +3165,13 @@ invalid tests: 322 passed, 76 failed
 <b> </b>      Expected:     0000-01-01 00:32:00.999 +0100 time-local (time.Time)
 <b> </b>      Your encoder: 0000-01-01 00:32:00.000999 +0100 time-local (time.Time)
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 6176):</b>
        {
            "lt1": {"type": "time-local", "value": "07:32:00"},
            "lt2": {"type": "time-local", "value": "00:32:00.999"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 6176) (stdout):</b>
        lt1 = 07:32:00
        lt2 = 00:32:00.000999
 
@@ -2653,7 +3200,7 @@ invalid tests: 322 passed, 76 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 6204):</b>
        {
            "end_esc":                   {"type": "string", "value": "String does not end here\" but ends here\\"},
            "lit_end_esc":               {"type": "string", "value": "String ends here\\"},
@@ -2664,7 +3211,7 @@ invalid tests: 322 passed, 76 failed
            "multiline_unicode":         {"type": "string", "value": " "}
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 6204) (stderr):</b>
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/./tests/encoding_test.py", line 28, in <module>
            print(toml.dumps({k: convert(v) for (k, v) in j.items()}))
@@ -2693,12 +3240,12 @@ invalid tests: 322 passed, 76 failed
 <b> </b>      Expected:     \x64 (string)
 <b> </b>      Your encoder: d (string)
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 6205):</b>
        {
            "answer": {"type": "string", "value": "\\x64"}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 6205) (stdout):</b>
        answer = "\u0064"
 
 <b>     want:</b>
@@ -2709,7 +3256,7 @@ invalid tests: 322 passed, 76 failed
 <b> </b>      Expected:     |. (string)
 <b> </b>      Your encoder: |x08. (string)
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 6206):</b>
        {
            "backslash":     {"type": "string", "value": "|\\."},
            "backspace":     {"type": "string", "value": "|\b."},
@@ -2726,7 +3273,7 @@ invalid tests: 322 passed, 76 failed
            "unitseparator": {"type": "string", "value": "|\u001f."}
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 6206) (stdout):</b>
        backslash = "|\\."
        backspace = "|x08."
        carriage = "|\r."
@@ -2763,7 +3310,7 @@ invalid tests: 322 passed, 76 failed
 <b> </b>      Expected:     ~  ÿ ퟿  ￿ 𐀀 􏿿 (string)
 <b> </b>      Your encoder: ~ x80 ÿ ퟿  ￿ 𐀀 􏿿 (string)
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 6240):</b>
        {
            "basic_string":   {"type": "string", "value": "~  ÿ ퟿  ￿ 𐀀 􏿿"},
            "escaped_string": {"type": "string", "value": "\u0000 \b \f A   ÿ ퟿  ￿ 𐀀 􏿿"},
@@ -2774,7 +3321,7 @@ invalid tests: 322 passed, 76 failed
            }
        }
 
-<b>     output from parser-cmd (stdout):</b>
+<b>     output from parser-cmd (PID 6240) (stdout):</b>
        basic_string = "~ x80 ÿ \ud7ff \ue000 \uffff 𐀀 \U0010ffff"
        escaped_string = "00 x08 x0c A x7f x80 ÿ \ud7ff \ue000 \uffff 𐀀 \U0010ffff"
        literal_string = "~ x80 ÿ \ud7ff \ue000 \uffff 𐀀 \U0010ffff"
@@ -2809,7 +3356,7 @@ invalid tests: 322 passed, 76 failed
 <b> </b>
 <b> </b>    Exit 1
 
-<b>     input sent to parser-cmd:</b>
+<b>     input sent to parser-cmd (PID 6247):</b>
        {
            "a":          {"type": "string", "value": "a"},
            "b":          {"type": "string", "value": "b"},
@@ -2827,7 +3374,7 @@ invalid tests: 322 passed, 76 failed
            "null-2":     {"type": "string", "value": "\u0000"}
        }
 
-<b>     output from parser-cmd (stderr):</b>
+<b>     output from parser-cmd (PID 6247) (stderr):</b>
        Traceback (most recent call last):
          File "/home/martin/code/Toml/toml-test-matrix/src/python-toml/./tests/encoding_test.py", line 28, in <module>
            print(toml.dumps({k: convert(v) for (k, v) in j.items()}))
@@ -2851,7 +3398,7 @@ invalid tests: 322 passed, 76 failed
 <b>     want:</b>
           <empty>
 
-toml-test v2025-04-21 [./tests/encoding_test.py]: using embedded tests
-encoder tests: 190 passed, 14 failed
+toml-test v2025-04-23 [./tests/encoding_test.py]: using embedded tests
+encoder tests: 191 passed, 14 failed
 took 2.4 1.20
 </pre>
