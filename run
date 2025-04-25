@@ -171,6 +171,7 @@ do_run() {
 			iv=($(grep -a '^invalid tests:' $out))
 			e=($(grep -a '^encoder tests:' $out || print 'encoder tests:   0 passed,  0 failed'))
 
+			sed -Ei 's/ \(PID [0-9]+\)//' $out
 			typeset -f after-run >/dev/null && after-run
 
 			print -f 'pass %3d; fail %3d; took %6ss\n' \
