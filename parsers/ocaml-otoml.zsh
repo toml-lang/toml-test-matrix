@@ -1,7 +1,7 @@
 deps() { print 'opam' }
 
 setup() {
-	opam init -a
+	opam init -a --disable-shell-hook
 	eval $(opam env)
 	opam -y pin --with-test add .
 
