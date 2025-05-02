@@ -1,8 +1,0 @@
-#!/usr/bin/env ruby
-
-require 'tomlrb'
-
-data = File.read ARGV[0]
-s = Time.now
-Tomlrb.parse(data)
-puts Time.now - s

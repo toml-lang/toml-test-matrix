@@ -1,0 +1,376 @@
+<style>
+		html     { font:16px/1.4rem sans-serif; }
+		div      { }
+		h3       { margin-left:2rem; background:#ffe3e3; padding:.5rem .4rem; }
+		h4       { margin-left:3rem; }
+		div >pre { margin-left:5rem; }
+	</style>
+<pre>toml-test v0001-01-01
+toml bfec893 (https://github.com/BurntSushi/toml)
+run on 2025-05-02 03:15:30 +0000 UTC
+
+  valid tests: 205 passed,  0 failed
+invalid tests: 515 passed, 14 failed
+
+</pre><h2>FAILED INVALID TESTS</h2>
+
+<div>
+<h3>invalid/array/extend-defined-aot</h3>
+<pre>Expected an error, but no error was reported.</pre>
+
+<h4>input sent to parser-cmd</h4>
+<pre>[[tab.arr]]
+[tab]
+arr.val1=1
+</pre>
+<h4>output from parser-cmd (stdout)</h4>
+<pre>{
+  &#34;tab&#34;: {&#34;arr&#34;: [{
+    &#34;val1&#34;: {&#34;type&#34;: &#34;integer&#34;, &#34;value&#34;: &#34;1&#34;}
+  }]}
+}
+</pre>
+<h4>want</h4>
+<pre>Exit code 1</pre>
+</div>
+
+<div>
+<h3>invalid/inline-table/duplicate-key-03</h3>
+<pre>Expected an error, but no error was reported.</pre>
+
+<h4>input sent to parser-cmd</h4>
+<pre>tbl = { fruit = { apple.color = &#34;red&#34; }, fruit.apple.texture = { smooth = true } }
+
+</pre>
+<h4>output from parser-cmd (stdout)</h4>
+<pre>{
+  &#34;tbl&#34;: {
+    &#34;fruit&#34;: {
+      &#34;apple&#34;: {
+        &#34;color&#34;: {&#34;type&#34;: &#34;string&#34;, &#34;value&#34;: &#34;red&#34;},
+        &#34;texture&#34;: {
+          &#34;smooth&#34;: {&#34;type&#34;: &#34;bool&#34;, &#34;value&#34;: &#34;true&#34;}
+        }
+      }
+    }
+  }
+}
+</pre>
+<h4>want</h4>
+<pre>Exit code 1</pre>
+</div>
+
+<div>
+<h3>invalid/inline-table/overwrite-02</h3>
+<pre>Expected an error, but no error was reported.</pre>
+
+<h4>input sent to parser-cmd</h4>
+<pre>a={}
+# Inline tables are immutable and can&#39;t be extended
+[a.b]
+</pre>
+<h4>output from parser-cmd (stdout)</h4>
+<pre>{
+  &#34;a&#34;: {
+    &#34;b&#34;: {}
+  }
+}
+</pre>
+<h4>want</h4>
+<pre>Exit code 1</pre>
+</div>
+
+<div>
+<h3>invalid/inline-table/overwrite-08</h3>
+<pre>Expected an error, but no error was reported.</pre>
+
+<h4>input sent to parser-cmd</h4>
+<pre>tab = { inner = { dog = &#34;best&#34; }, inner.cat = &#34;worst&#34; }</pre>
+<h4>output from parser-cmd (stdout)</h4>
+<pre>{
+  &#34;tab&#34;: {
+    &#34;inner&#34;: {
+      &#34;cat&#34;: {&#34;type&#34;: &#34;string&#34;, &#34;value&#34;: &#34;worst&#34;},
+      &#34;dog&#34;: {&#34;type&#34;: &#34;string&#34;, &#34;value&#34;: &#34;best&#34;}
+    }
+  }
+}
+</pre>
+<h4>want</h4>
+<pre>Exit code 1</pre>
+</div>
+
+<div>
+<h3>invalid/spec-1.0.0/inline-table-2-0</h3>
+<pre>Expected an error, but no error was reported.</pre>
+
+<h4>input sent to parser-cmd</h4>
+<pre>[product]
+type = { name = &#34;Nail&#34; }
+type.edible = false  # INVALID
+</pre>
+<h4>output from parser-cmd (stdout)</h4>
+<pre>{
+  &#34;product&#34;: {
+    &#34;type&#34;: {
+      &#34;edible&#34;: {&#34;type&#34;: &#34;bool&#34;, &#34;value&#34;: &#34;false&#34;},
+      &#34;name&#34;:   {&#34;type&#34;: &#34;string&#34;, &#34;value&#34;: &#34;Nail&#34;}
+    }
+  }
+}
+</pre>
+<h4>want</h4>
+<pre>Exit code 1</pre>
+</div>
+
+<div>
+<h3>invalid/spec-1.0.0/table-9-1</h3>
+<pre>Expected an error, but no error was reported.</pre>
+
+<h4>input sent to parser-cmd</h4>
+<pre>[fruit]
+apple.color = &#34;red&#34;
+apple.taste.sweet = true
+
+# [fruit.apple]  # INVALID
+[fruit.apple.taste]  # INVALID
+
+[fruit.apple.texture]  # you can add sub-tables
+smooth = true
+</pre>
+<h4>output from parser-cmd (stdout)</h4>
+<pre>{
+  &#34;fruit&#34;: {
+    &#34;apple&#34;: {
+      &#34;color&#34;: {&#34;type&#34;: &#34;string&#34;, &#34;value&#34;: &#34;red&#34;},
+      &#34;taste&#34;: {
+        &#34;sweet&#34;: {&#34;type&#34;: &#34;bool&#34;, &#34;value&#34;: &#34;true&#34;}
+      },
+      &#34;texture&#34;: {
+        &#34;smooth&#34;: {&#34;type&#34;: &#34;bool&#34;, &#34;value&#34;: &#34;true&#34;}
+      }
+    }
+  }
+}
+</pre>
+<h4>want</h4>
+<pre>Exit code 1</pre>
+</div>
+
+<div>
+<h3>invalid/table/append-with-dotted-keys-01</h3>
+<pre>Expected an error, but no error was reported.</pre>
+
+<h4>input sent to parser-cmd</h4>
+<pre># First a.b.c defines a table: a.b.c = {z=9}
+#
+# Then we define a.b.c.t = &#34;str&#34; to add a str to the above table, making it:
+#
+#   a.b.c = {z=9, t=&#34;...&#34;}
+#
+# While this makes sense, logically, it was decided this is not valid TOML as
+# it&#39;s too confusing/convoluted.
+# 
+# See: https://github.com/toml-lang/toml/issues/846
+#      https://github.com/toml-lang/toml/pull/859
+
+[a.b.c]
+  z = 9
+
+[a]
+  b.c.t = &#34;Using dotted keys to add to [a.b.c] after explicitly defining it above is not allowed&#34;
+</pre>
+<h4>output from parser-cmd (stdout)</h4>
+<pre>{
+  &#34;a&#34;: {
+    &#34;b&#34;: {
+      &#34;c&#34;: {
+        &#34;z&#34;: {&#34;type&#34;: &#34;integer&#34;, &#34;value&#34;: &#34;9&#34;},
+        &#34;t&#34;: {
+          &#34;type&#34;:  &#34;string&#34;,
+          &#34;value&#34;: &#34;Using dotted keys to add to [a.b.c] after explicitly defining it above is not allowed&#34;
+        }
+      }
+    }
+  }
+}
+</pre>
+<h4>want</h4>
+<pre>Exit code 1</pre>
+</div>
+
+<div>
+<h3>invalid/table/append-with-dotted-keys-02</h3>
+<pre>Expected an error, but no error was reported.</pre>
+
+<h4>input sent to parser-cmd</h4>
+<pre># This is the same issue as in injection-1.toml, except that nests one level
+# deeper. See that file for a more complete description.
+
+[a.b.c.d]
+  z = 9
+
+[a]
+  b.c.d.k.t = &#34;Using dotted keys to add to [a.b.c.d] after explicitly defining it above is not allowed&#34;
+</pre>
+<h4>output from parser-cmd (stdout)</h4>
+<pre>{
+  &#34;a&#34;: {
+    &#34;b&#34;: {
+      &#34;c&#34;: {
+        &#34;d&#34;: {
+          &#34;z&#34;: {&#34;type&#34;: &#34;integer&#34;, &#34;value&#34;: &#34;9&#34;},
+          &#34;k&#34;: {
+            &#34;t&#34;: {
+              &#34;type&#34;:  &#34;string&#34;,
+              &#34;value&#34;: &#34;Using dotted keys to add to [a.b.c.d] after explicitly defining it above is not allowed&#34;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</pre>
+<h4>want</h4>
+<pre>Exit code 1</pre>
+</div>
+
+<div>
+<h3>invalid/table/append-with-dotted-keys-03</h3>
+<pre>Expected an error, but no error was reported.</pre>
+
+<h4>input sent to parser-cmd</h4>
+<pre>[[a.b]]
+
+[a]
+b.y = 2
+</pre>
+<h4>output from parser-cmd (stdout)</h4>
+<pre>{
+  &#34;a&#34;: {&#34;b&#34;: [{
+    &#34;y&#34;: {&#34;type&#34;: &#34;integer&#34;, &#34;value&#34;: &#34;2&#34;}
+  }]}
+}
+</pre>
+<h4>want</h4>
+<pre>Exit code 1</pre>
+</div>
+
+<div>
+<h3>invalid/table/append-with-dotted-keys-05</h3>
+<pre>Expected an error, but no error was reported.</pre>
+
+<h4>input sent to parser-cmd</h4>
+<pre>a.b.c = 1
+a.b = 2
+</pre>
+<h4>output from parser-cmd (stdout)</h4>
+<pre>{
+  &#34;a&#34;: {
+    &#34;b&#34;: {
+      &#34;c&#34;: {&#34;type&#34;: &#34;integer&#34;, &#34;value&#34;: &#34;1&#34;}
+    }
+  }
+}
+</pre>
+<h4>want</h4>
+<pre>Exit code 1</pre>
+</div>
+
+<div>
+<h3>invalid/table/duplicate-key-04</h3>
+<pre>Expected an error, but no error was reported.</pre>
+
+<h4>input sent to parser-cmd</h4>
+<pre>[fruit]
+apple.color = &#34;red&#34;
+
+[fruit.apple] # INVALID
+</pre>
+<h4>output from parser-cmd (stdout)</h4>
+<pre>{
+  &#34;fruit&#34;: {
+    &#34;apple&#34;: {
+      &#34;color&#34;: {&#34;type&#34;: &#34;string&#34;, &#34;value&#34;: &#34;red&#34;}
+    }
+  }
+}
+</pre>
+<h4>want</h4>
+<pre>Exit code 1</pre>
+</div>
+
+<div>
+<h3>invalid/table/duplicate-key-05</h3>
+<pre>Expected an error, but no error was reported.</pre>
+
+<h4>input sent to parser-cmd</h4>
+<pre>[fruit]
+apple.taste.sweet = true
+
+[fruit.apple.taste] # INVALID
+</pre>
+<h4>output from parser-cmd (stdout)</h4>
+<pre>{
+  &#34;fruit&#34;: {
+    &#34;apple&#34;: {
+      &#34;taste&#34;: {
+        &#34;sweet&#34;: {&#34;type&#34;: &#34;bool&#34;, &#34;value&#34;: &#34;true&#34;}
+      }
+    }
+  }
+}
+</pre>
+<h4>want</h4>
+<pre>Exit code 1</pre>
+</div>
+
+<div>
+<h3>invalid/table/redefine-02</h3>
+<pre>Expected an error, but no error was reported.</pre>
+
+<h4>input sent to parser-cmd</h4>
+<pre>[t1]
+t2.t3.v = 0
+[t1.t2]
+</pre>
+<h4>output from parser-cmd (stdout)</h4>
+<pre>{
+  &#34;t1&#34;: {
+    &#34;t2&#34;: {
+      &#34;t3&#34;: {
+        &#34;v&#34;: {&#34;type&#34;: &#34;integer&#34;, &#34;value&#34;: &#34;0&#34;}
+      }
+    }
+  }
+}
+</pre>
+<h4>want</h4>
+<pre>Exit code 1</pre>
+</div>
+
+<div>
+<h3>invalid/table/redefine-03</h3>
+<pre>Expected an error, but no error was reported.</pre>
+
+<h4>input sent to parser-cmd</h4>
+<pre>[t1]
+t2.t3.v = 0
+[t1.t2.t3]
+</pre>
+<h4>output from parser-cmd (stdout)</h4>
+<pre>{
+  &#34;t1&#34;: {
+    &#34;t2&#34;: {
+      &#34;t3&#34;: {
+        &#34;v&#34;: {&#34;type&#34;: &#34;integer&#34;, &#34;value&#34;: &#34;0&#34;}
+      }
+    }
+  }
+}
+</pre>
+<h4>want</h4>
+<pre>Exit code 1</pre>
+</div>
+

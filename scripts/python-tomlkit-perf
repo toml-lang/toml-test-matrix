@@ -1,9 +1,0 @@
-#!/usr/bin/env python
-
-import datetime, sys, tomlkit
-
-with open(sys.argv[1], 'rb') as fp:
-    data = fp.read().decode()
-start = datetime.datetime.now()
-tomlkit.loads(data)
-print(f'{(datetime.datetime.now() - start).total_seconds():f}')

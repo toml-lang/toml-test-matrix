@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TOML test matrix</title>
+<style>
+	html            { background-color:#eee; font:18px/1.5em sans-serif; }
+	body            { overflow-y:scroll; }
+	.page, footer   { padding:1em; max-width:80em; margin:1em auto; }
+	.page           { background-color:#fff; box-shadow:2px 2px #000; border-radius:2px; border:1px solid #666; }
+	.intro          { padding:0 1em; }
+	footer          { text-align:right; margin-top:-.75em; padding:0; }
+	small, em       { font-size:.75em; }
+	table           { border-collapse:separate; border-spacing:0; margin-left:-1em; margin-right:-1em;
+	                  margin-bottom:-1em; }
+	td, th          { border:1px solid #d7d7d7; padding:.5em;  }
+	td.lang         { white-space:nowrap; }
+	td.name         { white-space:nowrap; }
+	th              { position:sticky; top:0; padding:0 .5em; white-space:nowrap; text-align:left;
+	                  background:#f3f3f3; font-weight:normal; font-size:.9em; border-bottom:2px solid #000; }
+	th.noborder     { border-left:none; border-right:none; }
+	tr:hover        { background-color:#fffde7; }
+	.pass           { }
+	.fail           { float:right; }
+	.didfail        { font-weight:bold; color:red; }
+	.didfail-mute   { }
+	a               { text-decoration:none; }
+	a:hover         { text-decoration:underline; }
+	.ui:visited     { color:LinkText; text-decoration:none; }
+	.bars           { height:.5em; line-height:0; }
+	.barp, .barf    { display:inline-block; height:.5em; }
+	.barp           { background:#e1e1e1; color:#fff; }
+	.barf           { background:red; color:#fff; text-align:right;}
+	.barf-mute      { background:#999; }
+	.allpass        { }
+	#langs          { gap:1em; margin-bottom:.5em; display:none; }
+	#langs >span:nth-child(1) { white-space:nowrap; }
+	#langs-inner    { display:flex; flex-wrap:wrap; gap:.8rem 0; }
+	label           { white-space:nowrap; break-inside:avoid; margin-right:.4em; padding:.2em .3em;
+	                  box-shadow:2px 2px #000; border-radius:2px; border:1px solid #666;
+	                  user-select:none; cursor:pointer; }
+	label:hover     { background:#eee; }
+	.on             { box-shadow:-1px -1px #000; background:#eee; }
+	input[type="checkbox"] { vertical-align:text-top; cursor:pointer; }
+	.good           { color:green; }
+	.slow           {}
+	.very-slow      { color:red; }
+</style>
+</head>
+<body>
+<div class="page intro">
+<p>This tests various parsers against the
+<a href="https://github.com/toml-lang/toml-test">toml-test</a> suite.</p>
+
+<p>"Decoder tests" check if valid TOML documents are processed
+correctly, "encoder tests" checks writing TOML files, and "invalid
+input" checks that the parser rejects invalid TOML documents.
+Implementations are marked as "compliant" (✅) if both the "valid" and
+"encoder" tests pass, otherwise they're marked as non-compliant (❌).
+Usually it's not a big deal to accept some technically invalid TOML;
+almost all failing "invalid" tests are uncommon edge cases.</p>
+
+<p>See <a href="https://github.com/toml-lang/toml-test-matrix">https://github.com/toml-lang/toml-test-matrix</a>
+on how to add new implementations.</p>
+</div>
+
+<div class="page">
+<div id="langs"><span>Show only:</span><span id="langs-inner">
+{{range $l := .Langs}}<label><input type='checkbox' value='{{$l}}'>{{$l}}</label>{{end}}
+
+</span></div>
+<table>
+<thead><tr>
+<th class="noborder"></th>
+<th class="noborder"></th>
+<th>Name</th>
+<th>Decoder tests</th>
+<th>Encoder tests</th>
+<th>Invalid input</th>
+<th></th>
+</tr></thead>
+<tbody>
+
+{{range $p := .Parsers}}
+<tr data-lang="{{$p.Lang}}">
+	<td>{{compliant $p}}</td>
+	<td class="lang">{{$p.Lang}}</td>
+	<td class="name" title="Version $info[version]"><a href="{{$p.Src}}">{{$p.Name}}</a></td>
+	{{if $p.Tested}}
+		<td style="width:30em">{{bars $p.Tests.PassedValid $p.Tests.FailedValid false}}</td>
+		<td style="width:30em">
+			{{- if $p.Tests.Encoder -}}
+				{{bars $p.Tests.PassedEncoder $p.Tests.FailedEncoder false}}
+			{{- else -}}
+				<em>(doesn't include encoder)</em>
+			{{- end -}}
+		</td>
+		<td style="width:30em">{{bars $p.Tests.PassedInvalid $p.Tests.FailedInvalid true}}</td>
+		<td><a href="output/{{$p.Lang}}-{{$p.Name}}.html" class="ui">output</a></td>
+	{{else}}
+	<td colspan="4"><em>Not yet tested</em></td>
+	{{end}}
+</tr>
+{{end}}
+
+</tbody></table>
+</div> <!-- page -->
+<footer><small>
+	Generated on {{.Now.Format "2006-01-02"}} by
+	<a href="https://github.com/toml-lang/toml-test-matrix">https://github.com/toml-lang/toml-test-matrix</a>
+</small></footer>
+<script>
+	window.langs.style.display = 'flex'
+
+	let checks = document.querySelectorAll('input'),
+	    rows   = document.querySelectorAll('tbody tr')
+	window.langs.addEventListener('click', (e) => {
+		if (e.target.tagName !== 'INPUT')
+			return
+		e.target.parentNode.classList.toggle('on')
+		let boxes = {},
+		    v     = false
+		checks.forEach((elem) => boxes[elem.value] = elem.checked)
+		rows.forEach((elem) => {
+			elem.style.display = boxes[elem.dataset.lang] ? '' : 'none'
+			v = v || boxes[elem.dataset.lang]
+		})
+		if (!v)
+			rows.forEach((elem) => elem.style.display = '')
+	})
+	// Make sure we keep the list after refresh in Firefox (which keeps form state).
+	checks.forEach((elem) => {
+		if (elem.checked) {
+			elem.click()
+			elem.parentNode.classList.toggle('on')
+			elem.click()
+		}
+	})
+</script>
+</body></html>
