@@ -1,8 +1,0 @@
-#!/usr/bin/env -S ruby --disable-gems
-
-require_relative "./lib/perfect_toml"
-
-data = File.read ARGV[0]
-s = Time.now
-PerfectTOML.parse(data)
-puts Time.now - s

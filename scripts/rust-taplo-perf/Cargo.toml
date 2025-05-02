@@ -1,8 +1,0 @@
-[package]
-name = "rust-taplo-perf"
-version.workspace = true
-edition.workspace = true
-publish.workspace = true
-
-[dependencies]
-taplo.workspace = true

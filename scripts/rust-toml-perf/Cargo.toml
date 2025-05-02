@@ -1,8 +1,0 @@
-[package]
-name = "rust-toml-perf"
-version.workspace = true
-edition.workspace = true
-publish.workspace = true
-
-[dependencies]
-toml.workspace = true
